@@ -1,0 +1,32 @@
+name: Epic
+description: A multi-work-item mastery outcome with integrated evidence
+title: "[EPIC] "
+labels: ["type:epic"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: Describe the capability and why it matters.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Required evidence
+      description: List the artifacts that will prove the outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: work_items
+    attributes:
+      label: Child work items
+      description: Add task-list links as work items are created.
+  - type: textarea
+    id: exit_criteria
+    attributes:
+      label: Exit criteria
+      description: State the measurable conditions for closing the epic.
+    validations:
+      required: true
+

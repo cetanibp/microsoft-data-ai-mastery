@@ -1,0 +1,42 @@
+name: Skill work item
+description: A bounded build, design, research, assessment, or documentation task
+title: ""
+body:
+  - type: dropdown
+    id: work_type
+    attributes:
+      label: Work type
+      options: [Build, Design, Research, Assessment, Documentation]
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State the measurable result, not the learning activity.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Implementation or analysis is complete
+        - [ ] Happy path is verified
+        - [ ] Failure paths are tested
+        - [ ] Architecture and tradeoffs are documented
+        - [ ] Security, operations, and cost impacts are considered
+        - [ ] Evidence links are added
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence produced
+      description: Link code, tests, diagrams, ADRs, dashboards, demos, or reports.
+  - type: textarea
+    id: retrospective
+    attributes:
+      label: Retrospective
+      description: Complete before closing—what worked, what failed, and what changes next.
+
