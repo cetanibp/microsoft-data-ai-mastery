@@ -17,27 +17,27 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 
 | Competency | Baseline | Target | Evidence |
 |---|---:|---:|---|
-| Fabric workspace and domain architecture | TBD | 5 | — |
-| Lakehouse, Delta, and Spark engineering | TBD | 4 | — |
-| Warehouse and semantic model engineering | TBD | 4 | — |
-| Metadata-driven ingestion | TBD | 5 | — |
-| Performance and capacity optimization | TBD | 4 | — |
-| CI/CD and environment promotion | TBD | 5 | — |
-| Observability, SLOs, and incident response | TBD | 5 | — |
-| Real-Time Intelligence | TBD | 4 | — |
-| Foundry application engineering | TBD | 4 | — |
-| Retrieval and grounding | TBD | 5 | — |
-| Agent tools and orchestration | TBD | 5 | — |
-| Agent evaluation and tracing | TBD | 5 | — |
-| Agent security and human oversight | TBD | 5 | — |
-| AI-ready data and metadata design | TBD | 5 | — |
-| Purview governance, lineage, and policy | TBD | 4 | — |
-| Data products, contracts, APIs, and GraphQL | TBD | 4 | — |
-| Identity, networking, and platform security | TBD | 4 | — |
-| Resiliency, recovery, and continuity | TBD | 4 | — |
-| Cost estimation and FinOps | TBD | 4 | — |
-| Architecture decisions and tradeoff analysis | TBD | 5 | — |
-| Executive and engineering communication | TBD | 5 | — |
+| Fabric workspace and domain architecture | TBD | 5 | 1 |
+| Lakehouse, Delta, and Spark engineering | TBD | 4 | 1 |
+| Warehouse and semantic model engineering | TBD | 4 | 1 |
+| Metadata-driven ingestion | TBD | 5 | 1 |
+| Performance and capacity optimization | TBD | 4 | 1 |
+| CI/CD and environment promotion | TBD | 5 | 1 |
+| Observability, SLOs, and incident response | TBD | 5 | 1 |
+| Real-Time Intelligence | TBD | 4 | 1 |
+| Foundry application engineering | TBD | 4 | 1 |
+| Retrieval and grounding | TBD | 5 | 1 |
+| Agent tools and orchestration | TBD | 5 | 1 |
+| Agent evaluation and tracing | TBD | 5 | 1 |
+| Agent security and human oversight | TBD | 5 | 1 |
+| AI-ready data and metadata design | TBD | 5 | 1 |
+| Purview governance, lineage, and policy | TBD | 4 | 1 |
+| Data products, contracts, APIs, and GraphQL | TBD | 4 | 1 |
+| Identity, networking, and platform security | TBD | 4 | 1 |
+| Resiliency, recovery, and continuity | TBD | 4 | 1 |
+| Cost estimation and FinOps | TBD | 4 | 1 |
+| Architecture decisions and tradeoff analysis | TBD | 5 | 1 |
+| Executive and engineering communication | TBD | 5 | 1 |
 
 ## Monthly assessment questions
 
