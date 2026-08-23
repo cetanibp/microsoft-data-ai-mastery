@@ -17,27 +17,27 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 
 | Competency | Baseline | Target | Evidence |
 |---|---:|---:|---|
-| Fabric workspace and domain architecture | TBD | 5 | 1 |
-| Lakehouse, Delta, and Spark engineering | TBD | 4 | 1 |
-| Warehouse and semantic model engineering | TBD | 4 | 1 |
-| Metadata-driven ingestion | TBD | 5 | 1 |
-| Performance and capacity optimization | TBD | 4 | 1 |
-| CI/CD and environment promotion | TBD | 5 | 1 |
-| Observability, SLOs, and incident response | TBD | 5 | 1 |
-| Real-Time Intelligence | TBD | 4 | 1 |
-| Foundry application engineering | TBD | 4 | 1 |
-| Retrieval and grounding | TBD | 5 | 1 |
-| Agent tools and orchestration | TBD | 5 | 1 |
-| Agent evaluation and tracing | TBD | 5 | 1 |
-| Agent security and human oversight | TBD | 5 | 1 |
-| AI-ready data and metadata design | TBD | 5 | 1 |
-| Purview governance, lineage, and policy | TBD | 4 | 1 |
-| Data products, contracts, APIs, and GraphQL | TBD | 4 | 1 |
-| Identity, networking, and platform security | TBD | 4 | 1 |
-| Resiliency, recovery, and continuity | TBD | 4 | 1 |
-| Cost estimation and FinOps | TBD | 4 | 1 |
-| Architecture decisions and tradeoff analysis | TBD | 5 | 1 |
-| Executive and engineering communication | TBD | 5 | 1 |
+| Fabric workspace and domain architecture | 1 | 5 |  |
+| Lakehouse, Delta, and Spark engineering | 1 | 4 |  |
+| Warehouse and semantic model engineering | 1 | 4 |  |
+| Metadata-driven ingestion | 1 | 5 |  |
+| Performance and capacity optimization | 1 | 4 |  |
+| CI/CD and environment promotion | 1 | 5 | 1 |
+| Observability, SLOs, and incident response | 1 | 5 |  |
+| Real-Time Intelligence | 1 | 4 |  |
+| Foundry application engineering | 1 | 4 |  |
+| Retrieval and grounding | 1 | 5 |  |
+| Agent tools and orchestration | 1 | 5 |  |
+| Agent evaluation and tracing | 1 | 5 |  |
+| Agent security and human oversight | 1 | 5 |  |
+| AI-ready data and metadata design | 1 | 5 |  |
+| Purview governance, lineage, and policy | 1 | 4 |  |
+| Data products, contracts, APIs, and GraphQL | 1 | 4 |  |
+| Identity, networking, and platform security | 1 | 4 |  |
+| Resiliency, recovery, and continuity | 1 | 4 |  |
+| Cost estimation and FinOps | 1 | 4 |  |
+| Architecture decisions and tradeoff analysis | 1 | 5 |  |
+| Executive and engineering communication | 1 | 5 |  |
 
 ## Monthly assessment questions
 
