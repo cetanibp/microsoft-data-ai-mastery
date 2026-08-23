@@ -15,29 +15,29 @@
 
 Update scores monthly. Every score of 3 or higher must link to repository evidence.
 
-| Competency | Baseline | Target | Evidence |
-|---|---:|---:|---|
-| Fabric workspace and domain architecture | 1 | 5 | |
-| Lakehouse, Delta, and Spark engineering | 1 | 4 | |
-| Warehouse and semantic model engineering | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 5 | |
-| Performance and capacity optimization | 1 | 4 | |
-| CI/CD and environment promotion | 1 | 5 | |
-| Observability, SLOs, and incident response | 1 | 5 | |
-| Real-Time Intelligence | 1 | 4 | |
-| Foundry application engineering | 1 | 4 | |
-| Retrieval and grounding | 1 | 5 | |
-| Agent tools and orchestration | 1 | 5 | |
-| Agent evaluation and tracing | 1 | 5 | |
-| Agent security and human oversight | 1 | 5 | |
-| AI-ready data and metadata design | 1 | 5 | |
-| Purview governance, lineage, and policy | 1 | 4 | |
-| Data products, contracts, APIs, and GraphQL | 1 | 4 | |
-| Identity, networking, and platform security | 1 | 4 | |
-| Resiliency, recovery, and continuity | 1 | 4 | |
-| Cost estimation and FinOps | 1 | 4 | |
-| Architecture decisions and tradeoff analysis | 1 | 5 | |
-| Executive and engineering communication | 1 | 5 | |
+| Competency | Baseline | Current | Target | Evidence |
+|---|---:|---:|---:|---|
+| Fabric workspace and domain architecture | 1 | 1 | 5 | |
+| Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
+| Warehouse and semantic model engineering | 1 | 1 | 4 | |
+| Metadata-driven ingestion | 1 | 1 | 5 | |
+| Performance and capacity optimization | 1 | 1 | 4 | |
+| CI/CD and environment promotion | 1 | 1 | 5 | |
+| Observability, SLOs, and incident response | 1 | 1 | 5 | |
+| Real-Time Intelligence | 1 | 1 | 4 | |
+| Foundry application engineering | 1 | 1 | 4 | |
+| Retrieval and grounding | 1 | 1 | 5 | |
+| Agent tools and orchestration | 1 | 1 | 5 | |
+| Agent evaluation and tracing | 1 | 1 | 5 | |
+| Agent security and human oversight | 1 | 1 | 5 | |
+| AI-ready data and metadata design | 1 | 1 | 5 | |
+| Purview governance, lineage, and policy | 1 | 1 | 4 | |
+| Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
+| Identity, networking, and platform security | 1 | 1 | 4 | |
+| Resiliency, recovery, and continuity | 1 | 1 | 4 | |
+| Cost estimation and FinOps | 1 | 1 | 4 | |
+| Architecture decisions and tradeoff analysis | 1 | 1 | 5 | |
+| Executive and engineering communication | 1 | 1 | 5 | |
 
 ## Baseline assessment — August 2026
 

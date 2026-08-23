@@ -5,7 +5,7 @@
 | Measure | Current |
 |---|---:|
 | Milestones completed | 0 / 5 |
-| Epics completed | 0 / 10 |
+| Epics completed | 0 / 4 |
 | Work items completed | 0 |
 | Competencies at level 3+ | Baseline pending |
 | Competencies at level 4+ | Baseline pending |

@@ -21,7 +21,8 @@
 
 ## Repository conventions
 
-- Use architecture decision records for consequential choices.
+- Use architecture decision records for consequential choices. Copy `09-enterprise-architecture/decisions/ADR-000-template.md` and number sequentially.
+- Inside each track folder, keep evidence for a work item in a subfolder named after its planning ID (for example `01-fabric-platform-engineering/FAB-002/`) containing source, tests, docs or diagrams, and a short `RETRO.md`.
 - Never commit secrets, credentials, patient data, or proprietary production data.
 - Use synthetic or approved public datasets.
 - Prefer diagrams-as-code or source-editable diagrams.
