@@ -36,7 +36,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Identity, networking, and platform security | 1 | 1 | 4 | |
 | Resiliency, recovery, and continuity | 1 | 1 | 4 | |
 | Cost estimation and FinOps | 1 | 1 | 4 | |
-| Architecture decisions and tradeoff analysis | 1 | 1 | 5 | |
+| Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
 
 ## Baseline assessment — August 2026
