@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/valueSet/1.0.0/schema.json",
+  "name": "production",
+  "variableOverrides": [
+    {
+      "name": "environment_name",
+      "value": "production"
+    },
+    {
+      "name": "release_ring",
+      "value": "stable"
+    },
+    {
+      "name": "minimum_quality_pct",
+      "value": 99
+    },
+    {
+      "name": "allow_destructive_tests",
+      "value": false
+    }
+  ]
+}

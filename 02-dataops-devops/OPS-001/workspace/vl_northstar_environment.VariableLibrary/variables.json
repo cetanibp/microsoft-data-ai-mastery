@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/variables/1.0.0/schema.json",
+  "variables": [
+    {
+      "name": "environment_name",
+      "note": "",
+      "type": "String",
+      "value": "unconfigured"
+    },
+    {
+      "name": "release_ring",
+      "note": "",
+      "type": "String",
+      "value": "unconfigured"
+    },
+    {
+      "name": "minimum_quality_pct",
+      "note": "",
+      "type": "Integer",
+      "value": 95
+    },
+    {
+      "name": "allow_destructive_tests",
+      "note": "",
+      "type": "Boolean",
+      "value": false
+    }
+  ]
+}

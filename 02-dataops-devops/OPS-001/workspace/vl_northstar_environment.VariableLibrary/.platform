@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "VariableLibrary",
+    "displayName": "vl_northstar_environment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "41b75362-c5a6-b2ad-4bfb-d673d4ac32c9"
+  }
+}
