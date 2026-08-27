@@ -24,6 +24,12 @@
       "note": "",
       "type": "Boolean",
       "value": false
+    },
+    {
+      "name": "validation_contract_version",
+      "note": "",
+      "type": "String",
+      "value": "unconfigured"
     }
   ]
 }

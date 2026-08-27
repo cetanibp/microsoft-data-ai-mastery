@@ -22,6 +22,7 @@ environment_name = library.environment_name
 release_ring = library.release_ring
 minimum_quality_pct = int(library.minimum_quality_pct)
 allow_destructive_tests = library.allow_destructive_tests
+validation_contract_version = library.validation_contract_version
 
 expected_release_rings = {
     "development": "development",
@@ -53,6 +54,10 @@ assert not (
     environment_name != "development" and allow_destructive_tests
 ), "Destructive tests must be disabled outside Development."
 
+assert validation_contract_version == "1.0.0", (
+    f"Unsupported validation contract: {validation_contract_version}"
+)
+
 result = {
     "status": "PASS",
     "environment": environment_name,
@@ -60,6 +65,7 @@ result = {
     "minimum_quality_pct": minimum_quality_pct,
     "allow_destructive_tests": allow_destructive_tests,
     "validated_at_utc": datetime.now(timezone.utc).isoformat(),
+    "validation_contract_version": validation_contract_version,
 }
 
 result_json = json.dumps(result, indent=2)
