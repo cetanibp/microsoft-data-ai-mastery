@@ -1,0 +1,57 @@
+name: OPS-001 Fabric validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "02-dataops-devops/OPS-001/workspace/**"
+      - "02-dataops-devops/OPS-001/scripts/**"
+      - ".github/workflows/ops-001-fabric-validation.yml"
+  push:
+    branches:
+      - main
+      - "feature/ops-001-*"
+    paths:
+      - "02-dataops-devops/OPS-001/workspace/**"
+      - "02-dataops-devops/OPS-001/scripts/**"
+      - ".github/workflows/ops-001-fabric-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ops-001-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-fabric-definitions:
+    name: Validate Fabric definitions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Fabric artifacts
+        run: >-
+          python
+          02-dataops-devops/OPS-001/scripts/validate_fabric_artifacts.py
+          --report
+          02-dataops-devops/OPS-001/evidence/ci-validation-report.json
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ops-001-validation-${{ github.run_id }}
+          path: 02-dataops-devops/OPS-001/evidence/ci-validation-report.json
+          if-no-files-found: error
+          retention-days: 30
