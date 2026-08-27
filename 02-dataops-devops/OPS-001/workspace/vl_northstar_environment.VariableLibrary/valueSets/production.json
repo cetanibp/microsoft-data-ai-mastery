@@ -16,7 +16,7 @@
     },
     {
       "name": "allow_destructive_tests",
-      "value": true
+      "value": false
     },
     {
       "name": "validation_contract_version",
