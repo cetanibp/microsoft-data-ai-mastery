@@ -4,10 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - "02-dataops-devops/OPS-001/workspace/**"
-      - "02-dataops-devops/OPS-001/scripts/**"
-      - ".github/workflows/ops-001-fabric-validation.yml"
   push:
     branches:
       - main
