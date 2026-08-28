@@ -1,0 +1,109 @@
+name: Promote Fabric content
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: Protected GitHub environment and Fabric target
+        required: true
+        type: choice
+        options:
+          - test
+          - production
+      mode:
+        description: Verify access or perform the deployment
+        required: true
+        default: preflight
+        type: choice
+        options:
+          - preflight
+          - deploy
+      note:
+        description: Optional Fabric deployment-history note
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: fabric-promote-${{ inputs.target_environment }}
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.target_environment }}
+    env:
+      AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      FABRIC_DEPLOYMENT_PIPELINE_ID: ${{ vars.FABRIC_DEPLOYMENT_PIPELINE_ID }}
+      FABRIC_SOURCE_STAGE_NAME: ${{ vars.FABRIC_SOURCE_STAGE_NAME }}
+      FABRIC_TARGET_STAGE_NAME: ${{ vars.FABRIC_TARGET_STAGE_NAME }}
+      FABRIC_TARGET_WORKSPACE_ID: ${{ vars.FABRIC_TARGET_WORKSPACE_ID }}
+      PROMOTION_MODE: ${{ inputs.mode }}
+      PROMOTION_NOTE: ${{ inputs.note }}
+
+    steps:
+      - name: Check out approved revision
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sign in to Azure with OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ env.AZURE_CLIENT_ID }}
+          tenant-id: ${{ env.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Acquire short-lived Fabric token
+        shell: bash
+        run: |
+          token="$(az account get-access-token \
+            --resource https://api.fabric.microsoft.com \
+            --query accessToken \
+            --output tsv)"
+          echo "::add-mask::$token"
+          echo "FABRIC_ACCESS_TOKEN=$token" >> "$GITHUB_ENV"
+
+      - name: Preflight or deploy
+        id: promotion
+        shell: bash
+        run: |
+          python 02-dataops-devops/OPS-001/scripts/fabric_promote.py \
+            --pipeline-id "$FABRIC_DEPLOYMENT_PIPELINE_ID" \
+            --source-stage "$FABRIC_SOURCE_STAGE_NAME" \
+            --target-stage "$FABRIC_TARGET_STAGE_NAME" \
+            --target-workspace-id "$FABRIC_TARGET_WORKSPACE_ID" \
+            --mode "$PROMOTION_MODE" \
+            --note "$PROMOTION_NOTE" \
+            --report evidence/fabric-promotion.json
+
+      - name: Publish run summary
+        if: always()
+        shell: bash
+        run: |
+          echo '## Fabric promotion evidence' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          if [[ -f evidence/fabric-promotion.json ]]; then
+            cat evidence/fabric-promotion.json >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '{"status":"FAIL","error":"Evidence report was not created"}' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload promotion evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fabric-${{ inputs.target_environment }}-${{ inputs.mode }}-${{ github.run_id }}
+          path: evidence/fabric-promotion.json
+          if-no-files-found: error
+          retention-days: 30
