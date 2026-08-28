@@ -1,9 +1,10 @@
 # ADR-002 — Environment isolation and promotion
 
-**Status:** Proposed  
+**Status:** Accepted  
+**Accepted:** 2026-08-28  
 **Date:** 2026-08-23  
 **Decision owner:** Bryan Cetani  
-**Reviewers:** To be assigned  
+**Reviewers:** Single-maintainer implementation; evidence retained in Issue #8  
 **Related issues:** [#3 — ARCH-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/3), [#8 — OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8)  
 **Related requirements:** Environment isolation, least privilege, deployment validation, approval, auditability, reproducibility, rollback, and maintainability  
 
@@ -183,7 +184,13 @@ flowchart LR
     Prod --> Verify["Post-deployment verification"]
 ```
 
-This decision remains **Proposed** until Issue #8 implements and validates the promotion process.
+This decision is **Accepted** based on the implementation and validation evidence completed through Issue #8.
+
+## Implementation outcome — 2026-08-28
+
+Issue #8 implemented Option C with separate Fabric workspaces, Git-connected Development, Fabric Deployment Pipelines, Variable Library stage configuration, required GitHub validation, OIDC authentication, protected environments, evidence capture, and rollback through a reverted Git revision.
+
+The exercise demonstrated a blocked unsafe change, successful Development-to-Test promotion of contract `1.1.0`, Test verification with stage-specific configuration, rollback to known-good contract `1.0.0`, and an explicitly approved Production preflight. Production content was intentionally not deployed. Stateful migration, automated drift detection, and break-glass access remain follow-up validation areas.
 
 ## Consequences
 
@@ -252,25 +259,25 @@ Deployable artifacts, tests, configuration definitions, and deployment procedure
 
 | Validation | Success measure | Evidence | Status |
 |---|---|---|---|
-| Source-to-test promotion | Approved source version deploys reproducibly to test | Pipeline run, source version, deployment manifest, and test results | Planned |
-| Test-to-production promotion | Only validated and approved changes reach production | Approval record, production deployment run, and artifact comparison | Planned |
-| Configuration and secret separation | No environment secret is present in source; correct environment values are supplied securely | Secret scan, configuration validation, and identity evidence | Planned |
-| Failed-validation behavior | A deliberately invalid change is blocked before production | Failure-path test and pipeline evidence | Planned |
-| Failed-deployment recovery | A controlled failure produces actionable telemetry and successful rollback or forward recovery | Failure record, alert, recovery steps, and verification | Planned |
-| Environment drift detection | Unauthorized or unexpected differences are identified | Drift report and remediation evidence | Planned |
-| Direct-change control | Normal users cannot directly modify production; emergency access is audited | Access matrix and break-glass test evidence | Planned |
-| Stateful-change validation | Schema or data change demonstrates compatibility and recovery behavior | Migration test, data validation, and recovery evidence | Planned |
+| Source-to-test promotion | Approved source version deploys reproducibly to test | PR #29, run 33214204525, Fabric deployment and notebook results | Demonstrated |
+| Test-to-production promotion | Only validated and approved changes reach production | Run 33217616794 approval and Production preflight; no Production deployment | Approval path demonstrated |
+| Configuration and secret separation | No environment secret is present in source; correct environment values are supplied securely | Required validation, Variable Library results, and OIDC evidence | Demonstrated |
+| Failed-validation behavior | A deliberately invalid change is blocked before production | Runs 33126491709 and 33126488739 | Demonstrated |
+| Definition rollback recovery | A known-good Git revision can be restored through governed redeployment | PR #30, run 33216209623, recovery validation | Demonstrated |
+| Environment drift detection | Unauthorized or unexpected differences are identified | Future automated comparison | Not exercised |
+| Direct-change control | Normal changes follow Git and Deployment Pipelines; exceptions are reconciled | OPS-001 branching and release runbooks | Documented; access test pending |
+| Stateful-change validation | Schema or data change demonstrates compatibility and recovery behavior | Forward-recovery criteria documented; no stateful migration | Not exercised |
 
 ## Follow-up actions
 
-- [ ] Implement repository, branching, and review conventions through [#8 — OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8).
-- [ ] Define the required automated validation suite.
-- [ ] Establish environment-specific configuration and secret patterns.
-- [ ] Implement test and production promotion with approval evidence.
-- [ ] Define artifact-specific rollback and forward-recovery procedures.
+- [x] Implement repository, branching, and review conventions through [#8 — OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8).
+- [x] Define the required automated validation suite.
+- [x] Establish environment-specific configuration and secret patterns.
+- [x] Implement Test promotion and Production approval/preflight evidence.
+- [x] Define artifact-specific rollback and forward-recovery procedures.
 - [ ] Test failed validation, failed deployment, drift, and emergency-change scenarios.
-- [ ] Establish deployment telemetry and release-retention standards.
-- [ ] Document governance requirements for schema, contract, security, and AI changes.
+- [x] Establish deployment telemetry and release-retention standards.
+- [x] Document governance requirements for schema, contract, security, and AI changes.
 
 ## Reconsideration triggers
 
