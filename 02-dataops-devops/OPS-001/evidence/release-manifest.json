@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "tracking_id": "OPS-001",
+  "final_environment_state": {
+    "development_contract": "1.0.0",
+    "test_contract": "1.0.0",
+    "production_deployed": false
+  },
+  "forward_release": {
+    "pull_request": 29,
+    "commit_sha": "42e22d4b220a13f5d06c0b4cd89401bc6e53f178",
+    "workflow_run_id": 33214204525,
+    "fabric_deployment_id": "eee1c50a-8178-44a6-84d9-5f30171fb4d8",
+    "fabric_operation_id": "75b71a9b-1409-462b-964d-ddbe25d3e0b7",
+    "status": "Succeeded",
+    "target": "Test",
+    "contract_version": "1.1.0"
+  },
+  "rollback": {
+    "pull_request": 30,
+    "commit_sha": "da36f30498c3e586ea652034c9590ee264b779da",
+    "workflow_run_id": 33216209623,
+    "fabric_deployment_id": "555b5b15-024c-4c88-bdc7-5cbc9cf42c99",
+    "fabric_operation_id": "c478dcfc-d662-45ab-9ba6-3a93afa82652",
+    "status": "Succeeded",
+    "target": "Test",
+    "contract_version": "1.0.0"
+  },
+  "production_authorization": {
+    "workflow_run_id": 33217616794,
+    "environment": "production",
+    "reviewer": "cetanibp",
+    "decision": "approved",
+    "mode": "preflight",
+    "deployed": false
+  }
+}
