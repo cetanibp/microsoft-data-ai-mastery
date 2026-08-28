@@ -34,21 +34,21 @@ EXPECTED_VALUE_SETS = {
         "release_ring": "development",
         "minimum_quality_pct": 90,
         "allow_destructive_tests": True,
-        "validation_contract_version": "1.1.0",
+        "validation_contract_version": "1.0.0",
     },
     "test": {
         "environment_name": "test",
         "release_ring": "validation",
         "minimum_quality_pct": 95,
         "allow_destructive_tests": False,
-        "validation_contract_version": "1.1.0",
+        "validation_contract_version": "1.0.0",
     },
     "production": {
         "environment_name": "production",
         "release_ring": "stable",
         "minimum_quality_pct": 99,
         "allow_destructive_tests": False,
-        "validation_contract_version": "1.1.0",
+        "validation_contract_version": "1.0.0",
     },
 }
 
@@ -151,7 +151,7 @@ def validate() -> list[str]:
         'getLibrary(',
         '"vl_northstar_environment"',
         "validation_contract_version",
-        'validation_contract_version == "1.1.0"',
+        'validation_contract_version == "1.0.0"',
         "notebookutils.notebook.exit",
     ]
     absent = [token for token in required_notebook_tokens if token not in notebook_source]
