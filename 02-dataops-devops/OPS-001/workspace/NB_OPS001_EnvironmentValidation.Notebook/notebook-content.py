@@ -54,7 +54,7 @@ assert not (
     environment_name != "development" and allow_destructive_tests
 ), "Destructive tests must be disabled outside Development."
 
-assert validation_contract_version == "1.1.0", (
+assert validation_contract_version == "1.0.0", (
     f"Unsupported validation contract: {validation_contract_version}"
 )
 
