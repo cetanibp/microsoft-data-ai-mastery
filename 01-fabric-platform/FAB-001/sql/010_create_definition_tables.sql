@@ -781,16 +781,38 @@ BEGIN
 END;
 GO
 
-CREATE INDEX IX_ctrl_IngestionObject_selection
-    ON ctrl.IngestionObject (release_id, domain_key, ingestion_object_key);
+IF NOT EXISTS
+(
+    SELECT 1
+    FROM sys.indexes
+    WHERE object_id = OBJECT_ID(N'ctrl.IngestionObject')
+      AND name = N'IX_ctrl_IngestionObject_selection'
+)
+    CREATE INDEX IX_ctrl_IngestionObject_selection
+        ON ctrl.IngestionObject
+            (release_id, domain_key, ingestion_object_key);
 GO
 
-CREATE INDEX IX_ctrl_ObjectEnvironmentConfig_enabled
-    ON ctrl.ObjectEnvironmentConfig
-        (environment_id, release_id, is_enabled, ingestion_object_key);
+IF NOT EXISTS
+(
+    SELECT 1
+    FROM sys.indexes
+    WHERE object_id = OBJECT_ID(N'ctrl.ObjectEnvironmentConfig')
+      AND name = N'IX_ctrl_ObjectEnvironmentConfig_enabled'
+)
+    CREATE INDEX IX_ctrl_ObjectEnvironmentConfig_enabled
+        ON ctrl.ObjectEnvironmentConfig
+            (environment_id, release_id, is_enabled, ingestion_object_key);
 GO
 
-CREATE INDEX IX_ctrl_ObjectDependency_successor
-    ON ctrl.ObjectDependency
-        (release_id, successor_object_key, predecessor_object_key);
+IF NOT EXISTS
+(
+    SELECT 1
+    FROM sys.indexes
+    WHERE object_id = OBJECT_ID(N'ctrl.ObjectDependency')
+      AND name = N'IX_ctrl_ObjectDependency_successor'
+)
+    CREATE INDEX IX_ctrl_ObjectDependency_successor
+        ON ctrl.ObjectDependency
+            (release_id, successor_object_key, predecessor_object_key);
 GO
