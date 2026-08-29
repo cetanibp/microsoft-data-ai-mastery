@@ -23,7 +23,7 @@ erDiagram
     }
 
     SOURCE_SYSTEM {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string source_system_key PK
         string domain_key
         string source_type
@@ -32,16 +32,16 @@ erDiagram
     }
 
     SOURCE_ENVIRONMENT_CONFIG {
-        uuid release_id PK,FK
-        uuid environment_id PK,FK
-        string source_system_key PK,FK
+        uuid release_id PK, FK
+        uuid environment_id PK, FK
+        string source_system_key PK, FK
         string connection_reference_key
         string landing_zone_key
         boolean is_enabled
     }
 
     SOURCE_OBJECT {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string source_object_key PK
         string source_system_key FK
         string namespace_name
@@ -51,7 +51,7 @@ erDiagram
     }
 
     TARGET_OBJECT {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string target_object_key PK
         string target_layer
         string store_alias
@@ -61,7 +61,7 @@ erDiagram
     }
 
     INGESTION_OBJECT {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string ingestion_object_key PK
         string source_object_key FK
         string target_object_key FK
@@ -71,24 +71,24 @@ erDiagram
     }
 
     OBJECT_ENVIRONMENT_CONFIG {
-        uuid release_id PK,FK
-        uuid environment_id PK,FK
-        string ingestion_object_key PK,FK
+        uuid release_id PK, FK
+        uuid environment_id PK, FK
+        string ingestion_object_key PK, FK
         boolean is_enabled
         int priority_override
         string routing_alias
     }
 
     OBJECT_DEPENDENCY {
-        uuid release_id PK,FK
-        string predecessor_object_key PK,FK
-        string successor_object_key PK,FK
+        uuid release_id PK, FK
+        string predecessor_object_key PK, FK
+        string successor_object_key PK, FK
         string dependency_condition
         boolean is_optional
     }
 
     EXECUTION_POLICY {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string execution_policy_key PK
         int timeout_minutes
         int max_retries
@@ -99,7 +99,7 @@ erDiagram
     }
 
     LOAD_POLICY {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string load_policy_key PK
         string strategy_type
         string duplicate_behavior
@@ -117,14 +117,14 @@ erDiagram
     }
 
     LOAD_POLICY_PARAMETER {
-        uuid release_id PK,FK
-        string load_policy_key PK,FK
-        string parameter_key PK,FK
+        uuid release_id PK, FK
+        string load_policy_key PK, FK
+        string parameter_key PK, FK
         string typed_value
     }
 
     WATERMARK_POLICY {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string watermark_policy_key PK
         string column_name
         string logical_data_type
@@ -135,7 +135,7 @@ erDiagram
     }
 
     SCHEDULE {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string schedule_key PK
         string schedule_type
         string iana_time_zone
@@ -144,14 +144,14 @@ erDiagram
     }
 
     OBJECT_SCHEDULE {
-        uuid release_id PK,FK
-        string ingestion_object_key PK,FK
-        string schedule_key PK,FK
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string schedule_key PK, FK
         int deadline_offset_minutes
     }
 
     SLO_DEFINITION {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string slo_key PK
         string metric_type
         string comparison_operator
@@ -162,14 +162,14 @@ erDiagram
     }
 
     OBJECT_SLO {
-        uuid release_id PK,FK
-        string ingestion_object_key PK,FK
-        string slo_key PK,FK
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string slo_key PK, FK
         boolean blocks_publication
     }
 
     QUALITY_POLICY {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string quality_policy_key PK
         string policy_version
         string enforcement_level
@@ -177,23 +177,23 @@ erDiagram
     }
 
     OBJECT_QUALITY_POLICY {
-        uuid release_id PK,FK
-        string ingestion_object_key PK,FK
-        string quality_policy_key PK,FK
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string quality_policy_key PK, FK
         int evaluation_order
     }
 
     OWNER_GROUP {
-        uuid release_id PK,FK
+        uuid release_id PK, FK
         string owner_group_key PK
         string display_name
         string routing_alias
     }
 
     OBJECT_OWNERSHIP {
-        uuid release_id PK,FK
-        string ingestion_object_key PK,FK
-        string owner_group_key PK,FK
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string owner_group_key PK, FK
         string ownership_role PK
     }
 
@@ -220,7 +220,7 @@ erDiagram
     }
 
     WATERMARK_STATE {
-        uuid environment_id PK,FK
+        uuid environment_id PK, FK
         string ingestion_object_key PK
         string committed_value
         string value_type
@@ -275,7 +275,7 @@ erDiagram
     LOAD_POLICY ||--o{ INGESTION_OBJECT : governs
     EXECUTION_POLICY ||--o{ INGESTION_OBJECT : governs
 
-    WATERMARK_POLICY ||--o| LOAD_POLICY : enables
+    WATERMARK_POLICY ||--o{ LOAD_POLICY : enables
     LOAD_POLICY ||--o{ LOAD_POLICY_PARAMETER : has
     STRATEGY_PARAMETER_DEFINITION ||--o{ LOAD_POLICY_PARAMETER : validates
 
@@ -299,7 +299,7 @@ erDiagram
     INGESTION_OBJECT ||--o{ OBJECT_RUN : executes
 
     ENVIRONMENT ||--o{ WATERMARK_STATE : isolates
-    INGESTION_OBJECT ||--o| WATERMARK_STATE : tracks
+    INGESTION_OBJECT ||--o{ WATERMARK_STATE : tracks
     OBJECT_RUN ||--o| WATERMARK_CANDIDATE : proposes
     WATERMARK_STATE ||--o{ WATERMARK_CANDIDATE : compares
     OBJECT_RUN ||--o| WATERMARK_STATE : commits
