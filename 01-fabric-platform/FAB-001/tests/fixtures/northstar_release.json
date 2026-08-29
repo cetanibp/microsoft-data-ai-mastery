@@ -1,0 +1,259 @@
+{
+  "release": {
+    "id": "20000000-0000-0000-0000-000000000001",
+    "version": "1.0.0",
+    "status": "APPROVED"
+  },
+  "environments": [
+    {"code": "development", "production": false},
+    {"code": "test", "production": false},
+    {"code": "production", "production": true}
+  ],
+  "strategy_parameter_definitions": {
+    "FULL": {"batch_size": {"type": "INTEGER", "required": true, "minimum": 1, "maximum": 1000000}},
+    "WATERMARK": {"batch_size": {"type": "INTEGER", "required": true, "minimum": 1, "maximum": 1000000}},
+    "APPEND": {"batch_size": {"type": "INTEGER", "required": true, "minimum": 1, "maximum": 1000000}},
+    "SNAPSHOT": {"batch_size": {"type": "INTEGER", "required": true, "minimum": 1, "maximum": 1000000}}
+  },
+  "watermark_policies": [
+    {"key": "wm-updated-at-5m-overlap", "value_type": "DATETIME2"},
+    {"key": "wm-order-sequence", "value_type": "BIGINT"}
+  ],
+  "load_policies": [
+    {
+      "key": "full-reference-replace",
+      "strategy": "FULL",
+      "watermark_policy": null,
+      "parameters": {"batch_size": 100000}
+    },
+    {
+      "key": "watermark-timestamp-merge",
+      "strategy": "WATERMARK",
+      "watermark_policy": "wm-updated-at-5m-overlap",
+      "parameters": {"batch_size": 250000}
+    },
+    {
+      "key": "watermark-sequence-merge",
+      "strategy": "WATERMARK",
+      "watermark_policy": "wm-order-sequence",
+      "parameters": {"batch_size": 250000}
+    },
+    {
+      "key": "append-event-identity",
+      "strategy": "APPEND",
+      "watermark_policy": null,
+      "parameters": {"batch_size": 50000}
+    },
+    {
+      "key": "daily-effective-snapshot",
+      "strategy": "SNAPSHOT",
+      "watermark_policy": null,
+      "parameters": {"batch_size": 100000}
+    }
+  ],
+  "execution_policies": [
+    {"key": "standard-batch", "default_priority": 50},
+    {"key": "critical-incremental", "default_priority": 90},
+    {"key": "low-latency-event", "default_priority": 95},
+    {"key": "daily-snapshot", "default_priority": 40}
+  ],
+  "schedules": [
+    {"key": "daily-0100-pacific", "type": "DAILY"},
+    {"key": "interval-15-minute", "type": "INTERVAL"},
+    {"key": "facility-event-arrival", "type": "EVENT"}
+  ],
+  "slos": [
+    {"key": "freshness-critical-15m", "metric": "FRESHNESS"},
+    {"key": "freshness-batch-by-0600", "metric": "FRESHNESS"},
+    {"key": "reliability-monthly-99_5", "metric": "RELIABILITY"},
+    {"key": "duration-standard-120m", "metric": "DURATION"},
+    {"key": "quality-critical-100pct", "metric": "QUALITY"}
+  ],
+  "quality_policies": [
+    {"key": "critical-keys-and-counts", "enforcement": "BLOCK"},
+    {"key": "reference-count-warning", "enforcement": "WARN"}
+  ],
+  "owner_groups": [
+    {"key": "platform-engineering"},
+    {"key": "data-operations"},
+    {"key": "clinical-stewards"},
+    {"key": "pharmacy-stewards"},
+    {"key": "finance-stewards"},
+    {"key": "facilities-stewards"},
+    {"key": "clinical-data-product"},
+    {"key": "operations-data-product"}
+  ],
+  "sources": [
+    {
+      "key": "enterprise-ehr",
+      "environment_config": {
+        "development": {"connection_reference": "connection-ehr-reader-development", "landing_zone": "landing-clinical-development", "enabled": true},
+        "test": {"connection_reference": "connection-ehr-reader-test", "landing_zone": "landing-clinical-test", "enabled": true},
+        "production": {"connection_reference": "connection-ehr-reader-production", "landing_zone": "landing-clinical-production", "enabled": true}
+      }
+    },
+    {
+      "key": "pharmacy-platform",
+      "environment_config": {
+        "development": {"connection_reference": "connection-pharmacy-reader-development", "landing_zone": "landing-pharmacy-development", "enabled": true},
+        "test": {"connection_reference": "connection-pharmacy-reader-test", "landing_zone": "landing-pharmacy-test", "enabled": true},
+        "production": {"connection_reference": "connection-pharmacy-reader-production", "landing_zone": "landing-pharmacy-production", "enabled": true}
+      }
+    },
+    {
+      "key": "facility-reference-api",
+      "environment_config": {
+        "development": {"connection_reference": "connection-facility-api-development", "landing_zone": "landing-reference-development", "enabled": true},
+        "test": {"connection_reference": "connection-facility-api-test", "landing_zone": "landing-reference-test", "enabled": true},
+        "production": {"connection_reference": "connection-facility-api-production", "landing_zone": "landing-reference-production", "enabled": true}
+      }
+    },
+    {
+      "key": "facility-event-stream",
+      "environment_config": {
+        "development": {"connection_reference": "connection-facility-events-development", "landing_zone": "landing-operations-development", "enabled": true},
+        "test": {"connection_reference": "connection-facility-events-test", "landing_zone": "landing-operations-test", "enabled": true},
+        "production": {"connection_reference": "connection-facility-events-production", "landing_zone": "landing-operations-production", "enabled": true}
+      }
+    },
+    {
+      "key": "finance-file-exchange",
+      "environment_config": {
+        "development": {"connection_reference": "connection-finance-files-development", "landing_zone": "landing-finance-development", "enabled": true},
+        "test": {"connection_reference": "connection-finance-files-test", "landing_zone": "landing-finance-test", "enabled": true},
+        "production": {"connection_reference": "connection-finance-files-production", "landing_zone": "landing-finance-production", "enabled": true}
+      }
+    }
+  ],
+  "source_objects": [
+    {"key": "facility-reference", "source": "facility-reference-api"},
+    {"key": "clinical-encounter", "source": "enterprise-ehr"},
+    {"key": "pharmacy-order", "source": "pharmacy-platform"},
+    {"key": "facility-status-event", "source": "facility-event-stream"},
+    {"key": "finance-daily-census", "source": "finance-file-exchange"}
+  ],
+  "target_objects": [
+    {"key": "bronze-facility-reference"},
+    {"key": "bronze-clinical-encounter"},
+    {"key": "bronze-pharmacy-order"},
+    {"key": "bronze-facility-status-event"},
+    {"key": "bronze-finance-daily-census"}
+  ],
+  "ingestion_objects": [
+    {
+      "key": "ingest-facility-reference",
+      "source_object": "facility-reference",
+      "target_object": "bronze-facility-reference",
+      "load_policy": "full-reference-replace",
+      "execution_policy": "standard-batch",
+      "schedules": ["daily-0100-pacific"],
+      "slos": ["freshness-batch-by-0600", "reliability-monthly-99_5"],
+      "quality_policies": ["reference-count-warning"],
+      "ownership": [
+        {"owner": "platform-engineering", "role": "ENGINEERING"},
+        {"owner": "facilities-stewards", "role": "SOURCE_STEWARD"},
+        {"owner": "data-operations", "role": "OPERATIONS"},
+        {"owner": "data-operations", "role": "INCIDENT"},
+        {"owner": "operations-data-product", "role": "DATA_PRODUCT"}
+      ],
+      "environment_config": {
+        "development": {"enabled": true, "priority": 50, "routing_alias": "route-facility-reference-development"},
+        "test": {"enabled": true, "priority": 55, "routing_alias": "route-facility-reference-test"},
+        "production": {"enabled": true, "priority": 60, "routing_alias": "route-facility-reference-production"}
+      }
+    },
+    {
+      "key": "ingest-clinical-encounter",
+      "source_object": "clinical-encounter",
+      "target_object": "bronze-clinical-encounter",
+      "load_policy": "watermark-timestamp-merge",
+      "execution_policy": "critical-incremental",
+      "schedules": ["interval-15-minute"],
+      "slos": ["freshness-critical-15m", "quality-critical-100pct"],
+      "quality_policies": ["critical-keys-and-counts"],
+      "ownership": [
+        {"owner": "platform-engineering", "role": "ENGINEERING"},
+        {"owner": "clinical-stewards", "role": "SOURCE_STEWARD"},
+        {"owner": "data-operations", "role": "OPERATIONS"},
+        {"owner": "data-operations", "role": "INCIDENT"},
+        {"owner": "clinical-data-product", "role": "DATA_PRODUCT"}
+      ],
+      "environment_config": {
+        "development": {"enabled": true, "priority": 90, "routing_alias": "route-clinical-encounter-development"},
+        "test": {"enabled": true, "priority": 90, "routing_alias": "route-clinical-encounter-test"},
+        "production": {"enabled": true, "priority": 95, "routing_alias": "route-clinical-encounter-production"}
+      }
+    },
+    {
+      "key": "ingest-pharmacy-order",
+      "source_object": "pharmacy-order",
+      "target_object": "bronze-pharmacy-order",
+      "load_policy": "watermark-sequence-merge",
+      "execution_policy": "critical-incremental",
+      "schedules": ["interval-15-minute"],
+      "slos": ["freshness-critical-15m", "quality-critical-100pct"],
+      "quality_policies": ["critical-keys-and-counts"],
+      "ownership": [
+        {"owner": "platform-engineering", "role": "ENGINEERING"},
+        {"owner": "pharmacy-stewards", "role": "SOURCE_STEWARD"},
+        {"owner": "data-operations", "role": "OPERATIONS"},
+        {"owner": "data-operations", "role": "INCIDENT"},
+        {"owner": "clinical-data-product", "role": "DATA_PRODUCT"}
+      ],
+      "environment_config": {
+        "development": {"enabled": true, "priority": 90, "routing_alias": "route-pharmacy-order-development"},
+        "test": {"enabled": true, "priority": 85, "routing_alias": "route-pharmacy-order-test"},
+        "production": {"enabled": true, "priority": 90, "routing_alias": "route-pharmacy-order-production"}
+      }
+    },
+    {
+      "key": "ingest-facility-status-event",
+      "source_object": "facility-status-event",
+      "target_object": "bronze-facility-status-event",
+      "load_policy": "append-event-identity",
+      "execution_policy": "low-latency-event",
+      "schedules": ["facility-event-arrival"],
+      "slos": ["freshness-critical-15m"],
+      "quality_policies": ["critical-keys-and-counts"],
+      "ownership": [
+        {"owner": "platform-engineering", "role": "ENGINEERING"},
+        {"owner": "facilities-stewards", "role": "SOURCE_STEWARD"},
+        {"owner": "data-operations", "role": "OPERATIONS"},
+        {"owner": "data-operations", "role": "INCIDENT"},
+        {"owner": "operations-data-product", "role": "DATA_PRODUCT"}
+      ],
+      "environment_config": {
+        "development": {"enabled": true, "priority": 95, "routing_alias": "route-facility-status-event-development"},
+        "test": {"enabled": true, "priority": 95, "routing_alias": "route-facility-status-event-test"},
+        "production": {"enabled": false, "priority": 95, "routing_alias": "route-facility-status-event-production"}
+      }
+    },
+    {
+      "key": "ingest-finance-daily-census",
+      "source_object": "finance-daily-census",
+      "target_object": "bronze-finance-daily-census",
+      "load_policy": "daily-effective-snapshot",
+      "execution_policy": "daily-snapshot",
+      "schedules": ["daily-0100-pacific"],
+      "slos": ["freshness-batch-by-0600", "duration-standard-120m"],
+      "quality_policies": ["critical-keys-and-counts"],
+      "ownership": [
+        {"owner": "platform-engineering", "role": "ENGINEERING"},
+        {"owner": "finance-stewards", "role": "SOURCE_STEWARD"},
+        {"owner": "data-operations", "role": "OPERATIONS"},
+        {"owner": "data-operations", "role": "INCIDENT"},
+        {"owner": "operations-data-product", "role": "DATA_PRODUCT"}
+      ],
+      "environment_config": {
+        "development": {"enabled": true, "priority": 40, "routing_alias": "route-finance-daily-census-development"},
+        "test": {"enabled": true, "priority": 45, "routing_alias": "route-finance-daily-census-test"},
+        "production": {"enabled": true, "priority": 50, "routing_alias": "route-finance-daily-census-production"}
+      }
+    }
+  ],
+  "dependencies": [
+    {"predecessor": "ingest-facility-reference", "successor": "ingest-clinical-encounter", "condition": "DATA_AVAILABLE"},
+    {"predecessor": "ingest-clinical-encounter", "successor": "ingest-pharmacy-order", "condition": "SUCCESS"},
+    {"predecessor": "ingest-facility-reference", "successor": "ingest-finance-daily-census", "condition": "COMPLETION"}
+  ]
+}
