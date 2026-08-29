@@ -22,7 +22,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
 | Metadata-driven ingestion | 1 | 1 | 5 | |
 | Performance and capacity optimization | 1 | 1 | 4 | |
-| CI/CD and environment promotion | 1 | 1 | 5 | |
+| CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
 | Real-Time Intelligence | 1 | 1 | 4 | |
 | Foundry application engineering | 1 | 1 | 4 | |
@@ -66,6 +66,33 @@ Complete [#1](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/1) an
 - The roadmap will favor end-to-end builds, failure testing, security, governance, operational evidence, and documented tradeoffs over course completion alone.
 - Each completed work item should link its evidence back to this scorecard and record whether the associated competency score changed.
 - Reassess the scorecard monthly and only raise a score when the evidence threshold is satisfied.
+
+## Progress reassessment — August 29, 2026
+
+### CI/CD and environment promotion: 1 → 3
+
+[OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) now provides independent implementation and troubleshooting evidence across the complete Development-to-Test promotion path:
+
+- GitHub is the source of truth for Fabric item definitions and deployment automation.
+- Fabric Git integration and Deployment Pipelines are implemented across separate Development, Test, and Production boundaries.
+- GitHub Actions performs validation, predeployment checks, promotion orchestration, and evidence capture.
+- Microsoft Entra workload identity federation (OIDC) is used instead of committed long-lived credentials.
+- A controlled invalid configuration was demonstrated to block promotion.
+- A successful Development-to-Test promotion is reproducible and traceable to a commit and Fabric deployment ID.
+- Recovery was demonstrated by reverting Git to a known-good revision and redeploying.
+- Protected environments and an explicit Production approval gate were tested without performing a Production deployment.
+
+This satisfies Level 3: the solution was designed, built, tested, deliberately broken, troubleshot, recovered, and documented with durable evidence.
+
+**Why the score is not yet 4:** post-deployment notebook verification remains operator-executed, and automated drift detection, stateful migration handling, and break-glass testing remain future validation areas. Level 4 will require evidence that these broader operational and governance scenarios are handled and that tradeoffs can be demonstrated across multiple deployment patterns.
+
+### Architecture decisions and tradeoff analysis: remains 2
+
+ARCH-003 established a strong ADR and review discipline. OPS-001 has now provided enough implementation evidence for ADR-002 to be accepted, but broader implementation, benchmark, security, cost, recovery, and independent-review evidence is still needed before the overall architecture competency meets the Level 3 threshold.
+
+### Next skill target
+
+The next evidence-producing priority is [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5), which should establish a versioned ingestion control-plane metadata model with automated metadata-contract tests. Successful completion should be used to reevaluate **Metadata-driven ingestion**, currently at Level 1.
 
 ## Monthly assessment questions
 
