@@ -4,7 +4,7 @@ FAB-001 designs and validates the metadata contract that will drive Northstar's 
 
 ## Status
 
-In progress. Requirements, design principles, the logical model, and the Fabric SQL Database physical package are drafted. Automated metadata-contract tests are the next increment.
+In progress. Requirements, the logical and physical models, and automated metadata-contract tests are complete. Environment, secrets, ownership, and lifecycle guidance is the next increment.
 
 ## Evidence index
 
@@ -13,7 +13,7 @@ In progress. Requirements, design principles, the logical model, and the Fabric 
 | [Architecture requirements and principles](architecture.md) | Records inherited decisions, downstream contracts, requirements, boundaries, validation scenarios, and design principles | Drafted |
 | [Logical metadata model](metadata-model.md) and [Mermaid ER source](metadata-model.mmd) | Defines entities, relationships, cardinality, lifecycle, environment resolution, dependencies, and safe watermark transitions | Drafted |
 | [Fabric SQL Database package](sql/README.md) | Implements 28 definition, runtime, and audit tables; resolution and validation views; and synthetic Northstar release 1.0.0 | Drafted and statically validated |
-| Automated metadata-contract tests | Proves validation and state-transition behavior | Pending |
+| [Automated metadata-contract tests](tests/README.md) and [evidence](evidence/README.md) | Proves semantic validation, environment resolution, SQL package structure, failure paths, and watermark state behavior | 33 tests passed in CI |
 | Environment and secrets guidance | Documents configuration ownership and prohibited content | Pending |
 | Ownership and lifecycle guidance | Documents roles, approvals, versioning, rollback, and recovery | Pending |
 | Validation evidence | Records test results and exercised scenarios | Pending |
