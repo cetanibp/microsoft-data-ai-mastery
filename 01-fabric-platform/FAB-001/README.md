@@ -4,14 +4,14 @@ FAB-001 designs and validates the metadata contract that will drive Northstar's 
 
 ## Status
 
-In progress. The downstream requirements and governing design principles have been inventoried. Logical modeling is the next increment.
+In progress. Requirements, design principles, the initial physical-store decision, and the logical metadata model are drafted. Fabric-compatible DDL is the next increment.
 
 ## Evidence index
 
 | Evidence | Purpose | Status |
 |---|---|---|
 | [Architecture requirements and principles](architecture.md) | Records inherited decisions, downstream contracts, requirements, boundaries, validation scenarios, and design principles | Drafted |
-| Logical metadata model | Defines entities, relationships, cardinality, and lifecycle | Pending |
+| [Logical metadata model](metadata-model.md) and [Mermaid ER source](metadata-model.mmd) | Defines entities, relationships, cardinality, lifecycle, environment resolution, dependencies, and safe watermark transitions | Drafted |
 | Fabric-compatible DDL and seed data | Demonstrates the physical implementation | Pending |
 | Automated metadata-contract tests | Proves validation and state-transition behavior | Pending |
 | Environment and secrets guidance | Documents configuration ownership and prohibited content | Pending |
