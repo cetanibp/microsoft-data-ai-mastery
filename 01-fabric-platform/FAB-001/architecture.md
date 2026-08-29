@@ -152,19 +152,19 @@ The completed design must support automated tests for:
 11. use of a superseded or unapproved metadata version;
 12. an object whose quality failure blocks publication and one whose warning does not.
 
-## Decisions required during logical modeling
+## Logical-model decisions
 
-The next increment must resolve and document:
+The [logical metadata model](metadata-model.md) resolves the initial design questions as follows:
 
-- the initial physical control-plane store in Fabric;
-- bundle-level versus row-level metadata versioning;
-- how flexible strategy parameters are represented without permitting arbitrary executable content;
-- dependency scope across schedules, domains, and environments;
-- schedule representation and time-zone rules;
-- concurrency and priority semantics;
-- watermark lease, proposal, and commit transitions;
-- the minimum ownership and escalation model;
-- whether audit history uses temporal snapshots, append-only events, or both.
+- SQL Database in Microsoft Fabric is the initial transactional control store.
+- Definitions use immutable full-release snapshots rather than row-level version chains.
+- Flexible strategy settings use allowlisted, typed parameters; arbitrary executable content is prohibited.
+- Dependencies are release- and environment-consistent and must form a directed acyclic graph.
+- Schedules use IANA time zones and separate eligibility from the physical Fabric trigger.
+- Execution policies define priority, retry, timeout, concurrency, and recovery semantics.
+- Watermark candidates are proposed per object run and committed with an atomic state-version check.
+- Production objects require engineering, source-steward, operations or incident, and applicable data-product ownership.
+- Append-only state events preserve operational history; current-state tables remain optimized for runtime resolution.
 
 ## Exit criteria for this inventory
 
