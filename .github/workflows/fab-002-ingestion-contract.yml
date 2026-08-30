@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "01-fabric-platform-engineering/FAB-002/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/StoredProcedures/**"
       - ".github/workflows/fab-002-ingestion-contract.yml"
   push:
     branches:
@@ -13,6 +14,7 @@ on:
       - "feature/fab-002-*"
     paths:
       - "01-fabric-platform-engineering/FAB-002/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/StoredProcedures/**"
       - ".github/workflows/fab-002-ingestion-contract.yml"
   workflow_dispatch:
 

@@ -15,8 +15,11 @@ This credential-free suite executes the safety contract that the Fabric implemen
 - stale-candidate rejection;
 - correlation identity, boundary hash, counts, status, and duration evidence;
 - sanitized missing-column failure.
+- deployable SQL procedure structure and transaction boundaries;
+- compare-and-commit and failure-state SQL predicates;
+- Fabric notebook identity, parameter, window, deduplication, merge, drift, and sanitized-output contracts.
 
-Schema-drift classification and routing tests will be added with the source-schema adapter. Live tests remain required because an in-memory model cannot prove Fabric SQL transaction behavior, Delta merge behavior, managed-connection resolution, or actual pipeline retry behavior.
+Live tests remain required because repository validation cannot prove Fabric SQL transaction behavior, Delta merge behavior, Lakehouse binding, or actual pipeline retry behavior.
 
 ## Run locally
 

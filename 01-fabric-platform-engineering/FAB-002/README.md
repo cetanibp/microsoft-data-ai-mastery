@@ -4,7 +4,7 @@ FAB-002 implements the first shared ingestion runtime that consumes the FAB-001 
 
 ## Status
 
-In progress. The initial runtime architecture and credential-free executable contract are implemented. Fabric pipeline/notebook implementation, live failure injection, schema-drift routing, and final evidence remain outstanding.
+In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, and Fabric encounter notebook are implemented. Live pipeline configuration, Lakehouse binding, failure injection, and final evidence remain outstanding.
 
 ## Issue acceptance criteria
 
@@ -12,7 +12,7 @@ In progress. The initial runtime architecture and credential-free executable con
 |---|---|---|
 | Watermark-based incremental loading | Executable lower-exclusive, upper-inclusive extraction window and compare-and-commit state transition | Contract implemented |
 | Restart, duplicate handling, and idempotent reprocessing | Crash-after-write replay test and business-key upsert contract | Contract implemented |
-| Detect and route schema changes | Blocking and quarantine behavior defined in the architecture | Planned |
+| Detect and route schema changes | Notebook blocks missing required columns and writes schema-only additive-drift evidence before publishing the approved projection | Repository implementation complete; live validation pending |
 | Capture row counts, duration, status, and correlation identifiers | Run result and object-run evidence contract | Contract implemented |
 | Pass intentional failure and recovery tests | Credential-free failure tests complete; live Fabric failure injection remains | In progress |
 
@@ -35,6 +35,7 @@ The first live implementation will use the synthetic `ingest-clinical-encounter`
 |---|---|
 | [architecture.md](architecture.md) | Runtime boundaries, invariants, execution flow, recovery cases, and live implementation plan |
 | [runtime/incremental_ingestion.py](runtime/incremental_ingestion.py) | Credential-free executable reference contract |
+| [Fabric workspace artifacts](workspace/README.md) | Parameterized encounter notebook and pipeline orchestration contract |
 | [tests](tests/README.md) | Happy-path, replay, failure, duplicate, telemetry, and concurrency tests |
 | [evidence](evidence/README.md) | Evidence index and sanitization rules |
 
