@@ -55,37 +55,41 @@ FAB-002 consumes rather than redefines:
 
 ## Execution flow
 
-```mermaid
-sequenceDiagram
-    participant O as Orchestrator
-    participant C as Control plane
-    participant S as Source adapter
-    participant D as Drift classifier
-    participant T as Bronze target
-
-    O->>C: Resolve and pin environment/release/object
-    O->>C: Create run and object attempt
-    O->>C: Read committed watermark and state version
-    O->>S: Capture fixed upper bound
-    O->>S: Extract lower-exclusive/upper-inclusive window
-    O->>D: Compare discovered and approved schema
-    alt blocking drift or extraction failure
-        O->>C: Record failure; preserve committed watermark
-    else accepted or quarantined input
-        O->>C: Propose watermark candidate
-        O->>T: Idempotent publish by business key
-        alt target failure
-            O->>C: Abandon candidate and record failure
-        else target accepted
-            O->>C: Compare-and-commit candidate
-            alt state version changed
-                O->>C: Mark recovery required
-            else commit accepted
-                O->>C: Record success and counts
-            end
-        end
-    end
+```text
+Resolve configuration and pin release
+                 |
+                 v
+Create run identity and read committed watermark
+                 |
+                 v
+Capture upper bound and extract the fixed window
+                 |
+                 v
+Compare discovered schema with the approved contract
+        |                              |
+        | blocking drift/failure       | accepted projection
+        v                              v
+Record failure and              Propose watermark candidate
+preserve watermark                       |
+                                        v
+                              Merge into Bronze by business key
+                                        |
+                       +----------------+----------------+
+                       |                                 |
+                       | target failure                  | target accepted
+                       v                                 v
+              Abandon candidate and            Compare-and-commit candidate
+              preserve watermark                        |
+                                             +----------+----------+
+                                             |                     |
+                                             | stale version       | accepted
+                                             v                     v
+                                      Recovery required     Record success
 ```
+
+The committed watermark changes only on the final accepted path. Every failure
+or stale-state path leaves it unchanged and retains the fixed window for safe
+recovery.
 
 ## Replay and failure behavior
 
@@ -145,11 +149,11 @@ Issue #9 may project this evidence into SLOs and alerts, but it must retain thes
 
 | Scenario | Credential-free contract | Live Fabric |
 |---|---:|---:|
-| First successful watermark window | Required | Required |
+| First successful notebook window | Required | Passed |
 | Empty subsequent window | Required | Required |
-| Duplicate rows in one source window | Required | Required |
+| Duplicate rows in one source window | Required | Passed |
 | Crash after target write, before commit | Required | Required |
-| Retry without duplicate accepted records | Required | Required |
+| Retry without duplicate accepted records | Required | Passed |
 | Failed attempt preserves watermark | Required | Required |
 | Stale candidate rejected | Required | Required |
 | Breaking schema drift blocked | Planned | Required |

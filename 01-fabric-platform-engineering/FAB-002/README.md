@@ -4,16 +4,16 @@ FAB-002 implements the first shared ingestion runtime that consumes the FAB-001 
 
 ## Status
 
-In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, and Fabric encounter notebook are implemented. Live pipeline configuration, Lakehouse binding, failure injection, and final evidence remain outstanding.
+In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, and Fabric encounter notebook are implemented. The FAB-002 Lakehouse is attached, and notebook-level baseline and same-window replay tests passed in Fabric. Live schema-drift tests, failure injection, pipeline configuration, transactional watermark integration, and final evidence remain outstanding.
 
 ## Issue acceptance criteria
 
 | Criterion | Initial evidence | Status |
 |---|---|---|
 | Watermark-based incremental loading | Executable lower-exclusive, upper-inclusive extraction window and compare-and-commit state transition | Contract implemented |
-| Restart, duplicate handling, and idempotent reprocessing | Crash-after-write replay test and business-key upsert contract | Contract implemented |
+| Restart, duplicate handling, and idempotent reprocessing | Crash-after-write replay test and business-key upsert contract | Contract implemented; live same-window replay passed |
 | Detect and route schema changes | Notebook blocks missing required columns and writes schema-only additive-drift evidence before publishing the approved projection | Repository implementation complete; live validation pending |
-| Capture row counts, duration, status, and correlation identifiers | Run result and object-run evidence contract | Contract implemented |
+| Capture row counts, duration, status, and correlation identifiers | Run result and object-run evidence contract | Contract implemented; notebook result counts validated live |
 | Pass intentional failure and recovery tests | Credential-free failure tests complete; live Fabric failure injection remains | In progress |
 
 ## First vertical slice

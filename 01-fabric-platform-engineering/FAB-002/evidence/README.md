@@ -4,10 +4,11 @@
 
 | Evidence | Purpose | Status |
 |---|---|---|
-| `ci-contract-test-results.json` workflow artifact | Credential-free runtime safety contract | Pending first branch run |
+| `ci-contract-test-results.json` workflow artifact | Credential-free runtime safety contract | Passed on feature branch |
+| [Live Fabric checkpoint](live-fabric-checkpoint.md) | Sanitized Lakehouse binding, baseline, and replay results | Baseline and replay passed |
 | Live configuration resolution | Prove FAB-001 release/object resolution | Planned |
-| Live successful incremental load | Prove extraction, target publication, and watermark commit | Planned |
-| Live intentional failure and replay | Prove state preservation and idempotent recovery | Planned |
+| Live successful incremental load | Prove extraction, target publication, and watermark commit | Notebook publication passed; transactional commit pending |
+| Live intentional failure and replay | Prove state preservation and idempotent recovery | Same-window replay passed; intentional failure pending |
 | Live schema drift routes | Prove blocking and quarantine behavior | Planned |
 | Live telemetry trace | Prove counts, duration, status, and correlation continuity | Planned |
 
