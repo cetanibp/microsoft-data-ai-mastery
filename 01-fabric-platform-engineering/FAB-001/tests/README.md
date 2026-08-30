@@ -7,8 +7,8 @@ The test suite is credential-free and uses only Python's standard library. It va
 From the repository root:
 
 ```bash
-python 01-fabric-platform/FAB-001/tests/run_contract_tests.py \
-  --output 01-fabric-platform/FAB-001/evidence/local-contract-test-results.json
+python 01-fabric-platform-engineering/FAB-001/tests/run_contract_tests.py \
+  --output 01-fabric-platform-engineering/FAB-001/evidence/local-contract-test-results.json
 ```
 
 The generated report contains test counts, status, commit and workflow identifiers when available, and sanitized failure details. It never contains connection values beyond the synthetic logical aliases in the fixture.

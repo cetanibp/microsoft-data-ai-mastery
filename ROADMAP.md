@@ -28,7 +28,7 @@ Target: October–December 2026
 
 Exit evidence: a repeatable framework, failure-injection tests, operational dashboard, runbook, ADRs, and benchmark report.
 
-**Progress to date:** OPS-001 demonstrated GitHub-based source control, Fabric Git integration, Fabric Deployment Pipelines, OIDC authentication, protected environments, blocked invalid changes, reproducible Development-to-Test promotion, and Git-based recovery. ADR-002 is Accepted. The current priority is [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5), which defines the ingestion control-plane metadata contract required by later ingestion, reconciliation, and observability work.
+**Progress to date:** OPS-001 established the governed Fabric delivery foundation and ADR-002 is Accepted. FAB-001 completed the versioned ingestion control-plane contract, automated tests, and live Fabric SQL validation. The current priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6), the first runtime consumer of that contract.
 
 ## Phase 2 — Production AI and agent engineering
 

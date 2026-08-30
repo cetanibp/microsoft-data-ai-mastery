@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - "01-fabric-platform/FAB-001/**"
+      - "01-fabric-platform-engineering/FAB-001/**"
       - ".github/workflows/fab-001-metadata-contract.yml"
   push:
     branches:
       - main
       - "feature/fab-001-*"
     paths:
-      - "01-fabric-platform/FAB-001/**"
+      - "01-fabric-platform-engineering/FAB-001/**"
       - ".github/workflows/fab-001-metadata-contract.yml"
   workflow_dispatch:
 
@@ -41,15 +41,15 @@ jobs:
       - name: Run metadata-contract tests
         run: >-
           python
-          01-fabric-platform/FAB-001/tests/run_contract_tests.py
+          01-fabric-platform-engineering/FAB-001/tests/run_contract_tests.py
           --output
-          01-fabric-platform/FAB-001/evidence/ci-contract-test-results.json
+          01-fabric-platform-engineering/FAB-001/evidence/ci-contract-test-results.json
 
       - name: Upload contract evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fab-001-contract-${{ github.run_id }}
-          path: 01-fabric-platform/FAB-001/evidence/ci-contract-test-results.json
+          path: 01-fabric-platform-engineering/FAB-001/evidence/ci-contract-test-results.json
           if-no-files-found: error
           retention-days: 30
