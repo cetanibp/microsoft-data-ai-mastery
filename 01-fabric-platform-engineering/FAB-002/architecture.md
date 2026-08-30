@@ -150,14 +150,14 @@ Issue #9 may project this evidence into SLOs and alerts, but it must retain thes
 | Scenario | Credential-free contract | Live Fabric |
 |---|---:|---:|
 | First successful notebook window | Required | Passed |
-| Empty subsequent window | Required | Required |
+| Empty subsequent window | Required | Passed |
 | Duplicate rows in one source window | Required | Passed |
-| Crash after target write, before commit | Required | Required |
+| Crash after target write, before commit | Required | Notebook passed; pipeline pending |
 | Retry without duplicate accepted records | Required | Passed |
 | Failed attempt preserves watermark | Required | Required |
 | Stale candidate rejected | Required | Required |
 | Breaking schema drift blocked | Planned | Passed |
-| Additive drift quarantined | Planned | Retest required |
+| Additive drift quarantined | Planned | Passed |
 | Counts, duration, status, and correlation trace | Required | Required |
 
 ## First implementation increment exit criteria

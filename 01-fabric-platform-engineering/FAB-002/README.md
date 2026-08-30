@@ -4,7 +4,7 @@ FAB-002 implements the first shared ingestion runtime that consumes the FAB-001 
 
 ## Status
 
-In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, and Fabric encounter notebook are implemented. The FAB-002 Lakehouse is attached; notebook-level baseline, same-window replay, additive-drift routing, and breaking-drift blocking were exercised in Fabric. Additive-drift replay exposed a duplicate-evidence defect, and the notebook now merges that evidence by object-run identity. Live remediation validation, failure injection, pipeline configuration, transactional watermark integration, and final evidence remain outstanding.
+In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, and Fabric encounter notebook are implemented. The FAB-002 Lakehouse is attached, and all planned notebook-level live scenarios now pass: baseline, same-window replay, additive and breaking drift, both injected failure stages, recovery after a post-write failure, and an empty window. Additive-drift replay exposed a duplicate-evidence defect that was corrected and successfully retested. Live pipeline configuration, transactional watermark integration, pipeline retry validation, and final evidence remain outstanding.
 
 ## Issue acceptance criteria
 
@@ -12,9 +12,9 @@ In progress. The runtime architecture, credential-free executable contract, tran
 |---|---|---|
 | Watermark-based incremental loading | Executable lower-exclusive, upper-inclusive extraction window and compare-and-commit state transition | Contract implemented |
 | Restart, duplicate handling, and idempotent reprocessing | Crash-after-write replay test and business-key upsert contract | Contract implemented; live same-window replay passed |
-| Detect and route schema changes | Notebook blocks missing required columns and writes schema-only additive-drift evidence before publishing the approved projection | Live routes exercised; additive replay remediation pending validation |
+| Detect and route schema changes | Notebook blocks missing required columns and writes schema-only additive-drift evidence before publishing the approved projection | Live routes and additive replay remediation passed |
 | Capture row counts, duration, status, and correlation identifiers | Run result and object-run evidence contract | Contract implemented; notebook result counts validated live |
-| Pass intentional failure and recovery tests | Credential-free failure tests complete; live Fabric failure injection remains | In progress |
+| Pass intentional failure and recovery tests | Credential-free failure tests plus live notebook failure and recovery tests | Notebook-level validation passed; pipeline retry validation pending |
 
 ## First vertical slice
 

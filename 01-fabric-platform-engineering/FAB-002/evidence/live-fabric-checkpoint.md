@@ -23,32 +23,37 @@ that pipeline orchestration or transactional watermark commit is complete.
 |---|---:|---:|---:|---:|---:|---:|---|
 | Baseline fixed window | 4 | 3 | 1 | 3 | 0 | 3 | Passed |
 | Same-window replay | 4 | 3 | 1 | 0 | 3 | 3 | Passed |
+| Recovery after post-write failure | 4 | 3 | 1 | 0 | 3 | 3 | Passed |
+| Empty window | 0 | 0 | 0 | 0 | 0 | 3 | Passed |
 
 The replay result confirms that the Delta merge updates the three existing
 business keys instead of appending duplicate accepted encounters.
 
 | Drift scenario | Observed behavior | Result |
 |---|---|---|
-| Additive source column | Approved projection published and schema-only evidence written | Route passed; replay remediation pending |
+| Additive source column | Approved projection published and schema-only evidence written once per object run | Passed after idempotency fix and retest |
 | Missing required key | Run failed with `BREAKING_SCHEMA_DRIFT`; target remained unchanged | Passed |
 
-Rerunning the same additive-drift object-run identity produced a second
-equivalent evidence row with a later detection timestamp. The live test exposed
-that the original append was not idempotent. The repository notebook now uses a
-Delta merge on `object_run_id`; the existing duplicate still requires one-time
-cleanup in the live Lakehouse before the fix is retested.
+Rerunning the same additive-drift object-run identity initially produced a
+second equivalent evidence row with a later detection timestamp. The live test
+exposed that the original append was not idempotent. The repository notebook
+now uses a Delta merge on `object_run_id`; after one-time cleanup and notebook
+synchronization, replay retained exactly one event.
+
+| Failure scenario | Observed behavior | Durable table result | Result |
+|---|---|---|---|
+| After extraction | Failed with the expected injected error before publication | Bronze 3; drift events 1 | Passed |
+| After target write | Failed with the expected injected error after an idempotent merge | Bronze 3; drift events 1 | Passed |
+| Recovery replay | Completed with 0 inserts and 3 updates | Bronze 3; drift events 1 | Passed |
 
 ## Resume point
 
-Synchronize the corrected notebook into Fabric, remove the duplicate live drift
-row, and rerun the same additive-drift object-run identity. The evidence table
-must remain at one row. Then continue with the two injected failure stages
-before building the live pipeline.
+Create and configure the live Fabric pipeline that resolves the FAB-001 control
+plane, begins a watermark attempt, invokes the notebook, and routes success or
+failure to the matching transactional procedure.
 
 ## Outstanding scope
 
-- additive-drift idempotency remediation and retest;
-- intentional failure after extraction and after target write;
 - pipeline orchestration and retry routes;
 - FAB-001 SQL configuration resolution and transactional watermark calls;
 - sanitized final run evidence.

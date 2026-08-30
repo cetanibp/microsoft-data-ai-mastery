@@ -5,6 +5,7 @@
 | Item | Purpose |
 |---|---|
 | `NB_FAB002_IncrementalEncounter` | Execute one fixed encounter watermark window and idempotently merge it into a Bronze Delta table |
+| `PL_FAB002_IncrementalEncounter` | Resolve, claim, execute, and transactionally complete or fail one encounter watermark attempt |
 
 The notebook requires a default Lakehouse. Its repository definition intentionally contains no physical Lakehouse, workspace, connection, or tenant identifier. Attach the isolated FAB-002 Lakehouse after the feature workspace is connected to Git; enable Lakehouse auto-binding before later promotion.
 
