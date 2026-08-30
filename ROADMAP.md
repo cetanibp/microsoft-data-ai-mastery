@@ -4,53 +4,63 @@ This roadmap emphasizes applied engineering and architecture rather than additio
 
 ## Phase 0 — Foundation and baseline
 
+**Status:** Complete — August 2026  
 Target: September 2026
 
-- Establish repository conventions, issue templates, scorecard, and monthly review cadence.
-- Create a reference enterprise scenario and nonfunctional requirements.
-- Complete a baseline self-assessment with evidence links.
-- Publish the first architecture context diagram and decision log.
+- [x] Establish repository conventions, issue templates, scorecard, and monthly review cadence.
+- [x] Create a reference enterprise scenario and nonfunctional requirements.
+- [x] Complete a baseline self-assessment with evidence links.
+- [x] Publish the first architecture context diagram and decision log.
 
 Exit evidence: a prioritized backlog, baseline skill scores, defined capstone scenario, and an architecture review checklist.
 
+**Outcome:** Phase 0 completed ahead of the planning target. ARCH-001, ARCH-002, and ARCH-003 established the Northstar reference scenario, conservative evidence-based skills baseline, ADR discipline, and reusable 84-question architecture review standard.
+
 ## Phase 1 — Fabric platform engineering and DataOps
 
+**Status:** In progress  
 Target: October–December 2026
 
-- Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
-- Add CI/CD, environment promotion, configuration separation, observability, and automated quality gates.
-- Benchmark performance and document capacity/cost tradeoffs.
+- [ ] Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
+- [x] Implement the initial governed CI/CD and environment-promotion foundation through OPS-001.
+- [ ] Add production observability and automated quality gates beyond the deployment validation already implemented.
+- [ ] Benchmark performance and document capacity/cost tradeoffs.
 
 Exit evidence: a repeatable framework, failure-injection tests, operational dashboard, runbook, ADRs, and benchmark report.
 
+**Progress to date:** OPS-001 demonstrated GitHub-based source control, Fabric Git integration, Fabric Deployment Pipelines, OIDC authentication, protected environments, blocked invalid changes, reproducible Development-to-Test promotion, and Git-based recovery. ADR-002 is Accepted. The current priority is [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5), which defines the ingestion control-plane metadata contract required by later ingestion, reconciliation, and observability work.
+
 ## Phase 2 — Production AI and agent engineering
 
+**Status:** Not started  
 Target: January–March 2027
 
-- Build a grounded AI application with retrieval, tool calling, evaluation, tracing, and safety controls.
-- Implement a Data Operations Agent that diagnoses pipeline failures using telemetry and lineage.
-- Add human approval, identity boundaries, adversarial tests, and measurable quality targets.
+- [ ] Build a grounded AI application with retrieval, tool calling, evaluation, tracing, and safety controls.
+- [ ] Implement a Data Operations Agent that diagnoses pipeline failures using telemetry and lineage.
+- [ ] Add human approval, identity boundaries, adversarial tests, and measurable quality targets.
 
 Exit evidence: eval suite, trace samples, threat model, deployment architecture, operating runbook, and demo.
 
 ## Phase 3 — AI-ready data, governance, and data products
 
+**Status:** Not started  
 Target: April–June 2027
 
-- Design governed semantic and metadata layers for safe AI consumption.
-- Implement lineage-aware discovery and policy enforcement.
-- Publish reusable data products through documented APIs or GraphQL.
-- Demonstrate security, privacy, data quality, and responsible-AI controls.
+- [ ] Design governed semantic and metadata layers for safe AI consumption.
+- [ ] Implement lineage-aware discovery and policy enforcement.
+- [ ] Publish reusable data products through documented APIs or GraphQL.
+- [ ] Demonstrate security, privacy, data quality, and responsible-AI controls.
 
 Exit evidence: data contracts, policy matrix, lineage views, API specifications, quality SLOs, and governance playbook.
 
 ## Phase 4 — Enterprise architecture and capstone
 
+**Status:** Not started  
 Target: July–September 2027
 
-- Integrate Fabric, AI, agents, governance, observability, and APIs into one enterprise reference solution.
-- Produce cost and capacity models, resiliency design, migration plan, executive narrative, and technical deep dive.
-- Run architecture, security, failure-recovery, and stakeholder-review exercises.
+- [ ] Integrate Fabric, AI, agents, governance, observability, and APIs into one enterprise reference solution.
+- [ ] Produce cost and capacity models, resiliency design, migration plan, executive narrative, and technical deep dive.
+- [ ] Run architecture, security, failure-recovery, and stakeholder-review exercises.
 
 Exit evidence: deployable capstone, architecture pack, demo, executive briefing, engineering handoff, and retrospective.
 
@@ -60,4 +70,3 @@ Exit evidence: deployable capstone, architecture pack, demo, executive briefing,
 - Monthly: update progress and reassess affected competencies.
 - Quarterly: conduct an architecture review and reprioritize the backlog.
 - At every milestone: publish a short retrospective covering outcomes, evidence, gaps, and next decisions.
-

@@ -67,15 +67,44 @@ Complete [#1](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/1) an
 - Each completed work item should link its evidence back to this scorecard and record whether the associated competency score changed.
 - Reassess the scorecard monthly and only raise a score when the evidence threshold is satisfied.
 
-## August 2026 evidence reassessment
+## Progress reassessment — August 29, 2026
 
-The scorecard remains conservative and credits demonstrated repository evidence rather than certifications or professional experience alone.
+### CI/CD and environment promotion: 1 → 3
 
-- **CI/CD and environment promotion reached level 3.** OPS-001 includes a working multi-environment Fabric lifecycle, required validation, OIDC authentication, Test promotion, Production approval/preflight, rollback, and retained evidence.
-- **Metadata-driven ingestion reached level 2.** FAB-001 independently validates the control-plane model and state contract, but the shared ingestion runtime remains Issue #6.
-- **Fabric workspace architecture, AI-ready metadata design, platform security, and recovery reached level 2.** The repository now contains guided working designs and live validation; broader scenarios, enforced production permissions, and operational scale evidence are still required for level 3.
+[OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) now provides independent implementation and troubleshooting evidence across the complete Development-to-Test promotion path:
 
-The next score increase should come from FAB-002 only after the runtime demonstrates restartability, idempotency, dependency handling, partial-failure recovery, and concurrency behavior.
+- GitHub is the source of truth for Fabric item definitions and deployment automation.
+- Fabric Git integration and Deployment Pipelines are implemented across separate Development, Test, and Production boundaries.
+- GitHub Actions performs validation, predeployment checks, promotion orchestration, and evidence capture.
+- Microsoft Entra workload identity federation (OIDC) is used instead of committed long-lived credentials.
+- A controlled invalid configuration was demonstrated to block promotion.
+- A successful Development-to-Test promotion is reproducible and traceable to a commit and Fabric deployment ID.
+- Recovery was demonstrated by reverting Git to a known-good revision and redeploying.
+- Protected environments and an explicit Production approval gate were tested without performing a Production deployment.
+
+This satisfies Level 3: the solution was designed, built, tested, deliberately broken, troubleshot, recovered, and documented with durable evidence.
+
+**Why the score is not yet 4:** post-deployment notebook verification remains operator-executed, and automated drift detection, stateful migration handling, and break-glass testing remain future validation areas. Level 4 will require evidence that these broader operational and governance scenarios are handled and that tradeoffs can be demonstrated across multiple deployment patterns.
+
+### Architecture decisions and tradeoff analysis: remains 2
+
+ARCH-003 established a strong ADR and review discipline. OPS-001 has now provided enough implementation evidence for ADR-002 to be accepted, but broader implementation, benchmark, security, cost, recovery, and independent-review evidence is still needed before the overall architecture competency meets the Level 3 threshold.
+
+### FAB-001 reassessment
+
+FAB-001 adds guided implementation and live validation evidence across several competencies:
+
+- **Fabric workspace and domain architecture: 1 → 2.** OPS-001 established the permanent environment topology, and FAB-001 used an isolated feature workspace without creating an unnecessary second branch.
+- **Metadata-driven ingestion: 1 → 2.** The repository now contains a tested metadata contract, physical control store, environment resolution, dependencies, multiple load strategies, and failure-safe watermark state. The shared runtime remains Issue #6.
+- **AI-ready data and metadata design: 1 → 2.** Stable identities, ownership, SLOs, quality references, and lineage-ready correlation keys provide a reusable governed metadata foundation.
+- **Identity, networking, and platform security: 1 → 2.** OPS-001 and FAB-001 define OIDC, least privilege, logical connection references, external secret resolution, and fail-closed validation.
+- **Resiliency, recovery, and continuity: 1 → 2.** Definition rollback, forward recovery, state correction, failed-attempt preservation, and stale-write rejection are documented and validated.
+
+These competencies remain below Level 3 because the complete ingestion runtime, enforced database roles, operational scale, and broader recovery scenarios have not yet been implemented.
+
+### Next skill target
+
+The next evidence-producing priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6). Level 3 for **Metadata-driven ingestion** requires a working shared runtime with restartability, idempotency, dependency handling, partial-failure recovery, and concurrency evidence.
 
 ## Monthly assessment questions
 
