@@ -43,11 +43,33 @@ Generated result files are intentionally ignored by Git. Durable evidence retain
 - Successful single commit
 - Stale concurrent candidate rejection
 
+## Live Fabric SQL Database deployment — 2026-08-29
+
+The SQL package was deployed to the isolated `Northstar Data Platform - FAB-001` workspace and committed to the existing `feature/fab-001-control-plane-design` branch. The deployment used the Fabric SQL Database item `sqldb_northstar_control` and synthetic Northstar metadata only.
+
+| Validation | Result |
+|---|---:|
+| Deployment | PASS |
+| User tables | 28 |
+| Views | 3 |
+| Foreign keys | 47 |
+| Check constraints | 80 |
+| Default constraints | 7 |
+| Active environment/object configurations | 14 |
+| Dependency edges | 3 |
+| Metadata validation issues | 0 |
+
+Validated views:
+
+- `ctrl.vw_ActiveIngestionConfiguration`
+- `ctrl.vw_MetadataValidationIssue`
+- `ctrl.vw_ObjectDependencyEdge`
+
+The zero-row result from `ctrl.vw_MetadataValidationIssue` confirms that the deployed synthetic release has no unresolved or inconsistent configuration.
+
 ## Remaining live evidence
 
-- Deploy the SQL package to a Fabric SQL Database in an isolated Development workspace.
-- Confirm that the seed resolves 14 active environment/object configurations and zero metadata validation issues.
-- Exercise the watermark transaction protocol against the database engine.
-- Preserve sanitized deployment and query evidence.
+- Exercise the watermark transaction protocol against the Fabric SQL Database engine.
+- Preserve the resulting sanitized state-transition evidence.
 
-The automated suite proves the repository contract and failure paths without credentials. It does not replace live Fabric SQL Database deployment and transaction validation.
+The automated suite proves the repository contract and failure paths without credentials. The live deployment additionally proves that the physical package is accepted by Fabric SQL Database and that its active metadata resolves without validation issues.
