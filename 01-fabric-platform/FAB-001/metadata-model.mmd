@@ -1,0 +1,309 @@
+erDiagram
+    METADATA_RELEASE {
+        uuid release_id PK
+        string release_version UK
+        string status
+        string content_hash
+        string source_commit
+        datetime approved_at
+    }
+
+    ENVIRONMENT {
+        uuid environment_id PK
+        string environment_code UK
+        string environment_name
+    }
+
+    ENVIRONMENT_RELEASE {
+        uuid environment_id PK
+        uuid release_id FK
+        uuid prior_release_id
+        string approval_reference
+        datetime activated_at
+    }
+
+    SOURCE_SYSTEM {
+        uuid release_id PK, FK
+        string source_system_key PK
+        string domain_key
+        string source_type
+        string default_connection_key
+        string classification
+    }
+
+    SOURCE_ENVIRONMENT_CONFIG {
+        uuid release_id PK, FK
+        uuid environment_id PK, FK
+        string source_system_key PK, FK
+        string connection_reference_key
+        string landing_zone_key
+        boolean is_enabled
+    }
+
+    SOURCE_OBJECT {
+        uuid release_id PK, FK
+        string source_object_key PK
+        string source_system_key FK
+        string namespace_name
+        string object_name
+        string object_type
+        string schema_drift_policy
+    }
+
+    TARGET_OBJECT {
+        uuid release_id PK, FK
+        string target_object_key PK
+        string target_layer
+        string store_alias
+        string namespace_name
+        string object_name
+        string write_disposition
+    }
+
+    INGESTION_OBJECT {
+        uuid release_id PK, FK
+        string ingestion_object_key PK
+        string source_object_key FK
+        string target_object_key FK
+        string load_policy_key FK
+        string execution_policy_key FK
+        string domain_key
+    }
+
+    OBJECT_ENVIRONMENT_CONFIG {
+        uuid release_id PK, FK
+        uuid environment_id PK, FK
+        string ingestion_object_key PK, FK
+        boolean is_enabled
+        int priority_override
+        string routing_alias
+    }
+
+    OBJECT_DEPENDENCY {
+        uuid release_id PK, FK
+        string predecessor_object_key PK, FK
+        string successor_object_key PK, FK
+        string dependency_condition
+        boolean is_optional
+    }
+
+    EXECUTION_POLICY {
+        uuid release_id PK, FK
+        string execution_policy_key PK
+        int timeout_minutes
+        int max_retries
+        int retry_delay_seconds
+        string concurrency_group
+        int max_parallelism
+        string recovery_mode
+    }
+
+    LOAD_POLICY {
+        uuid release_id PK, FK
+        string load_policy_key PK
+        string strategy_type
+        string duplicate_behavior
+        string delete_behavior
+        string schema_behavior
+        string watermark_policy_key FK
+    }
+
+    STRATEGY_PARAMETER_DEFINITION {
+        string strategy_type PK
+        string parameter_key PK
+        string value_type
+        boolean is_required
+        string validation_rule
+    }
+
+    LOAD_POLICY_PARAMETER {
+        uuid release_id PK, FK
+        string load_policy_key PK, FK
+        string parameter_key PK, FK
+        string typed_value
+    }
+
+    WATERMARK_POLICY {
+        uuid release_id PK, FK
+        string watermark_policy_key PK
+        string column_name
+        string logical_data_type
+        string comparison_operator
+        int overlap_amount
+        string overlap_unit
+        string upper_bound_mode
+    }
+
+    SCHEDULE {
+        uuid release_id PK, FK
+        string schedule_key PK
+        string schedule_type
+        string iana_time_zone
+        string trigger_alias
+        string eligibility_rule
+    }
+
+    OBJECT_SCHEDULE {
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string schedule_key PK, FK
+        int deadline_offset_minutes
+    }
+
+    SLO_DEFINITION {
+        uuid release_id PK, FK
+        string slo_key PK
+        string metric_type
+        string comparison_operator
+        decimal target_value
+        string target_unit
+        string evaluation_window
+        string severity
+    }
+
+    OBJECT_SLO {
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string slo_key PK, FK
+        boolean blocks_publication
+    }
+
+    QUALITY_POLICY {
+        uuid release_id PK, FK
+        string quality_policy_key PK
+        string policy_version
+        string enforcement_level
+        boolean quarantine_required
+    }
+
+    OBJECT_QUALITY_POLICY {
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string quality_policy_key PK, FK
+        int evaluation_order
+    }
+
+    OWNER_GROUP {
+        uuid release_id PK, FK
+        string owner_group_key PK
+        string display_name
+        string routing_alias
+    }
+
+    OBJECT_OWNERSHIP {
+        uuid release_id PK, FK
+        string ingestion_object_key PK, FK
+        string owner_group_key PK, FK
+        string ownership_role PK
+    }
+
+    EXECUTION_RUN {
+        uuid run_id PK
+        uuid environment_id FK
+        uuid release_id FK
+        string trigger_type
+        string correlation_id UK
+        string requested_scope
+        string status
+        datetime started_at
+        datetime completed_at
+    }
+
+    OBJECT_RUN {
+        uuid object_run_id PK
+        uuid run_id FK
+        string ingestion_object_key FK
+        int attempt_number
+        string status
+        string input_boundary_hash
+        bigint accepted_row_count
+    }
+
+    WATERMARK_STATE {
+        uuid environment_id PK, FK
+        string ingestion_object_key PK
+        string committed_value
+        string value_type
+        bigint state_version
+        uuid committed_object_run_id FK
+        datetime committed_at
+    }
+
+    WATERMARK_CANDIDATE {
+        uuid candidate_id PK
+        uuid object_run_id FK
+        uuid environment_id FK
+        string ingestion_object_key FK
+        string from_value
+        string to_value
+        bigint observed_state_version
+        string status
+    }
+
+    STATE_EVENT {
+        uuid state_event_id PK
+        uuid environment_id FK
+        uuid release_id FK
+        uuid run_id FK
+        string event_type
+        string actor
+        string reason
+        string correlation_id
+        datetime occurred_at
+    }
+
+    METADATA_RELEASE ||--o{ ENVIRONMENT_RELEASE : activates
+    ENVIRONMENT ||--|| ENVIRONMENT_RELEASE : selects
+
+    METADATA_RELEASE ||--o{ SOURCE_SYSTEM : versions
+    METADATA_RELEASE ||--o{ SOURCE_OBJECT : versions
+    METADATA_RELEASE ||--o{ TARGET_OBJECT : versions
+    METADATA_RELEASE ||--o{ INGESTION_OBJECT : versions
+    METADATA_RELEASE ||--o{ LOAD_POLICY : versions
+    METADATA_RELEASE ||--o{ EXECUTION_POLICY : versions
+    METADATA_RELEASE ||--o{ SCHEDULE : versions
+    METADATA_RELEASE ||--o{ SLO_DEFINITION : versions
+    METADATA_RELEASE ||--o{ QUALITY_POLICY : versions
+    METADATA_RELEASE ||--o{ OWNER_GROUP : versions
+
+    SOURCE_SYSTEM ||--o{ SOURCE_OBJECT : contains
+    SOURCE_SYSTEM ||--o{ SOURCE_ENVIRONMENT_CONFIG : resolves
+    ENVIRONMENT ||--o{ SOURCE_ENVIRONMENT_CONFIG : configures
+
+    SOURCE_OBJECT ||--o{ INGESTION_OBJECT : supplies
+    TARGET_OBJECT ||--o{ INGESTION_OBJECT : receives
+    LOAD_POLICY ||--o{ INGESTION_OBJECT : governs
+    EXECUTION_POLICY ||--o{ INGESTION_OBJECT : governs
+
+    WATERMARK_POLICY ||--o{ LOAD_POLICY : enables
+    LOAD_POLICY ||--o{ LOAD_POLICY_PARAMETER : has
+    STRATEGY_PARAMETER_DEFINITION ||--o{ LOAD_POLICY_PARAMETER : validates
+
+    INGESTION_OBJECT ||--o{ OBJECT_ENVIRONMENT_CONFIG : configures
+    ENVIRONMENT ||--o{ OBJECT_ENVIRONMENT_CONFIG : scopes
+    INGESTION_OBJECT ||--o{ OBJECT_DEPENDENCY : predecessor
+    INGESTION_OBJECT ||--o{ OBJECT_DEPENDENCY : successor
+
+    INGESTION_OBJECT ||--o{ OBJECT_SCHEDULE : receives
+    SCHEDULE ||--o{ OBJECT_SCHEDULE : assigns
+    INGESTION_OBJECT ||--o{ OBJECT_SLO : receives
+    SLO_DEFINITION ||--o{ OBJECT_SLO : assigns
+    INGESTION_OBJECT ||--o{ OBJECT_QUALITY_POLICY : receives
+    QUALITY_POLICY ||--o{ OBJECT_QUALITY_POLICY : assigns
+    INGESTION_OBJECT ||--o{ OBJECT_OWNERSHIP : owns
+    OWNER_GROUP ||--o{ OBJECT_OWNERSHIP : assigns
+
+    ENVIRONMENT ||--o{ EXECUTION_RUN : runs
+    METADATA_RELEASE ||--o{ EXECUTION_RUN : resolves
+    EXECUTION_RUN ||--o{ OBJECT_RUN : contains
+    INGESTION_OBJECT ||--o{ OBJECT_RUN : executes
+
+    ENVIRONMENT ||--o{ WATERMARK_STATE : isolates
+    INGESTION_OBJECT ||--o{ WATERMARK_STATE : tracks
+    OBJECT_RUN ||--o| WATERMARK_CANDIDATE : proposes
+    WATERMARK_STATE ||--o{ WATERMARK_CANDIDATE : compares
+    OBJECT_RUN ||--o| WATERMARK_STATE : commits
+
+    ENVIRONMENT ||--o{ STATE_EVENT : scopes
+    METADATA_RELEASE ||--o{ STATE_EVENT : identifies
+    EXECUTION_RUN ||--o{ STATE_EVENT : correlates

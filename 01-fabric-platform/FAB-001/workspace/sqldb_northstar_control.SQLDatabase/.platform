@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SQLDatabase",
+    "displayName": "sqldb_northstar_control"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d"
+  }
+}

@@ -17,10 +17,10 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 
 | Competency | Baseline | Current | Target | Evidence |
 |---|---:|---:|---:|---|
-| Fabric workspace and domain architecture | 1 | 1 | 5 | |
+| Fabric workspace and domain architecture | 1 | 2 | 5 | [OPS-001 architecture](02-dataops-devops/OPS-001/architecture.md) |
 | Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 1 | 5 | |
+| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform/FAB-001/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
@@ -30,11 +30,11 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Agent tools and orchestration | 1 | 1 | 5 | |
 | Agent evaluation and tracing | 1 | 1 | 5 | |
 | Agent security and human oversight | 1 | 1 | 5 | |
-| AI-ready data and metadata design | 1 | 1 | 5 | |
+| AI-ready data and metadata design | 1 | 2 | 5 | [FAB-001 logical model](01-fabric-platform/FAB-001/metadata-model.md) |
 | Purview governance, lineage, and policy | 1 | 1 | 4 | |
 | Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
-| Identity, networking, and platform security | 1 | 1 | 4 | |
-| Resiliency, recovery, and continuity | 1 | 1 | 4 | |
+| Identity, networking, and platform security | 1 | 2 | 4 | [OPS-001 identity boundaries](02-dataops-devops/OPS-001/architecture.md) |
+| Resiliency, recovery, and continuity | 1 | 2 | 4 | [FAB-001 lifecycle and validation](01-fabric-platform/FAB-001/ownership-and-lifecycle.md) |
 | Cost estimation and FinOps | 1 | 1 | 4 | |
 | Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
@@ -90,9 +90,21 @@ This satisfies Level 3: the solution was designed, built, tested, deliberately b
 
 ARCH-003 established a strong ADR and review discipline. OPS-001 has now provided enough implementation evidence for ADR-002 to be accepted, but broader implementation, benchmark, security, cost, recovery, and independent-review evidence is still needed before the overall architecture competency meets the Level 3 threshold.
 
+### FAB-001 reassessment
+
+FAB-001 adds guided implementation and live validation evidence across several competencies:
+
+- **Fabric workspace and domain architecture: 1 → 2.** OPS-001 established the permanent environment topology, and FAB-001 used an isolated feature workspace without creating an unnecessary second branch.
+- **Metadata-driven ingestion: 1 → 2.** The repository now contains a tested metadata contract, physical control store, environment resolution, dependencies, multiple load strategies, and failure-safe watermark state. The shared runtime remains Issue #6.
+- **AI-ready data and metadata design: 1 → 2.** Stable identities, ownership, SLOs, quality references, and lineage-ready correlation keys provide a reusable governed metadata foundation.
+- **Identity, networking, and platform security: 1 → 2.** OPS-001 and FAB-001 define OIDC, least privilege, logical connection references, external secret resolution, and fail-closed validation.
+- **Resiliency, recovery, and continuity: 1 → 2.** Definition rollback, forward recovery, state correction, failed-attempt preservation, and stale-write rejection are documented and validated.
+
+These competencies remain below Level 3 because the complete ingestion runtime, enforced database roles, operational scale, and broader recovery scenarios have not yet been implemented.
+
 ### Next skill target
 
-The next evidence-producing priority is [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5), which should establish a versioned ingestion control-plane metadata model with automated metadata-contract tests. Successful completion should be used to reevaluate **Metadata-driven ingestion**, currently at Level 1.
+The next evidence-producing priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6). Level 3 for **Metadata-driven ingestion** requires a working shared runtime with restartability, idempotency, dependency handling, partial-failure recovery, and concurrency evidence.
 
 ## Monthly assessment questions
 
