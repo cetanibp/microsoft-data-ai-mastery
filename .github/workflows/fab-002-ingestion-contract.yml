@@ -1,0 +1,55 @@
+name: FAB-002 ingestion contract
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "01-fabric-platform-engineering/FAB-002/**"
+      - ".github/workflows/fab-002-ingestion-contract.yml"
+  push:
+    branches:
+      - main
+      - "feature/fab-002-*"
+    paths:
+      - "01-fabric-platform-engineering/FAB-002/**"
+      - ".github/workflows/fab-002-ingestion-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fab-002-contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-ingestion-contract:
+    name: Validate FAB-002 ingestion contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run ingestion-contract tests
+        run: >-
+          python
+          01-fabric-platform-engineering/FAB-002/tests/run_contract_tests.py
+          --output
+          01-fabric-platform-engineering/FAB-002/evidence/ci-contract-test-results.json
+
+      - name: Upload contract evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fab-002-contract-${{ github.run_id }}
+          path: 01-fabric-platform-engineering/FAB-002/evidence/ci-contract-test-results.json
+          if-no-files-found: error
+          retention-days: 30
