@@ -67,9 +67,19 @@ Validated views:
 
 The zero-row result from `ctrl.vw_MetadataValidationIssue` confirms that the deployed synthetic release has no unresolved or inconsistent configuration.
 
-## Remaining live evidence
+## Live watermark transaction validation — 2026-08-29
 
-- Exercise the watermark transaction protocol against the Fabric SQL Database engine.
-- Preserve the resulting sanitized state-transition evidence.
+The rollback-safe `110_validate_watermark_protocol.sql` script exercised the mutable state model directly against Fabric SQL Database. All synthetic changes were enclosed in one transaction and rolled back after validation.
 
-The automated suite proves the repository contract and failure paths without credentials. The live deployment additionally proves that the physical package is accepted by Fabric SQL Database and that its active metadata resolves without validation issues.
+| Scenario | Expected | Actual | Result |
+|---|---|---|---|
+| Failed attempt preserves committed state | Initial value; version 0 | Initial value; version 0 | PASS |
+| Successful compare-and-commit | 1 affected row; version 1 | 1 affected row; state verified = 1 | PASS |
+| Stale candidate rejected | 0 affected rows | 0 affected rows | PASS |
+| Audit evidence appended | 3 events | 3 events | PASS |
+
+This proves that a failed attempt does not advance the committed boundary, a successful attempt advances it exactly once, stale optimistic-concurrency writes are rejected, and each state outcome can append correlated audit evidence.
+
+## Validation conclusion
+
+The automated suite proves the repository contract and failure paths without credentials. The live deployment additionally proves that Fabric SQL Database accepts the physical package, resolves the expected active metadata without validation issues, and enforces the intended watermark state-transition behavior.
