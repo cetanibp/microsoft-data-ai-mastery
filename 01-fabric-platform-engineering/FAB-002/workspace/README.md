@@ -41,6 +41,7 @@ The pipeline definition will be captured from Fabric Git integration after the l
 
 - Only synthetic rows are embedded in the notebook.
 - Drift evidence records schema names and classifications, never rejected payloads.
+- Drift evidence merges by `object_run_id`, so replaying one attempt does not append a duplicate event.
 - The notebook cannot advance a watermark; only the SQL compare-and-commit procedure can.
 - A target-write failure or injected crash leaves the candidate uncommitted.
 - Replaying the same window uses Delta `MERGE` on `encounter_id`.

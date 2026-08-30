@@ -138,9 +138,22 @@ if extra_columns:
             T.StructField("detected_at_utc", T.TimestampType(), False),
         ]
     )
-    spark.createDataFrame(drift_event, drift_schema).write.format("delta").mode(
-        "append"
-    ).saveAsTable(drift_table)
+    drift_event_frame = spark.createDataFrame(drift_event, drift_schema)
+    if spark.catalog.tableExists(drift_table):
+        drift_target = DeltaTable.forName(spark, drift_table)
+        (
+            drift_target.alias("target")
+            .merge(
+                drift_event_frame.alias("source"),
+                "target.object_run_id = source.object_run_id",
+            )
+            .whenNotMatchedInsertAll()
+            .execute()
+        )
+    else:
+        drift_event_frame.write.format("delta").mode("errorifexists").saveAsTable(
+            drift_table
+        )
     drift_event_count = 1
     source = source.select(*APPROVED_COLUMNS)
 

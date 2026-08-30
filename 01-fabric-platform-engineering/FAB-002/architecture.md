@@ -156,8 +156,8 @@ Issue #9 may project this evidence into SLOs and alerts, but it must retain thes
 | Retry without duplicate accepted records | Required | Passed |
 | Failed attempt preserves watermark | Required | Required |
 | Stale candidate rejected | Required | Required |
-| Breaking schema drift blocked | Planned | Required |
-| Additive drift quarantined | Planned | Required |
+| Breaking schema drift blocked | Planned | Passed |
+| Additive drift quarantined | Planned | Retest required |
 | Counts, duration, status, and correlation trace | Required | Required |
 
 ## First implementation increment exit criteria

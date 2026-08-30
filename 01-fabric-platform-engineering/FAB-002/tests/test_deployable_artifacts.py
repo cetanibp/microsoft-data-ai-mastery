@@ -102,6 +102,15 @@ class NotebookArtifactTests(unittest.TestCase):
         self.assertIn("column_names_json", notebook)
         self.assertNotIn("rejected_payload", notebook)
 
+    def test_additive_drift_evidence_is_idempotent_by_object_run(self) -> None:
+        notebook = (NOTEBOOK_ROOT / "notebook-content.py").read_text("utf-8")
+        self.assertIn("drift_event_frame", notebook)
+        self.assertIn(
+            '"target.object_run_id = source.object_run_id"', notebook
+        )
+        self.assertIn('drift_target.alias("target")', notebook)
+        self.assertNotIn('mode(\n        "append"\n    ).saveAsTable(drift_table)', notebook)
+
     def test_notebook_has_required_parameter_and_exit_contract(self) -> None:
         notebook = (NOTEBOOK_ROOT / "notebook-content.py").read_text("utf-8")
         self.assertIn("# PARAMETERS CELL", notebook)
