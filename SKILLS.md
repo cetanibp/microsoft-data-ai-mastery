@@ -20,7 +20,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Fabric workspace and domain architecture | 1 | 2 | 5 | [OPS-001 architecture](02-dataops-devops/OPS-001/architecture.md) |
 | Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform/FAB-001/README.md) |
+| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform-engineering/FAB-001/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
@@ -30,11 +30,11 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Agent tools and orchestration | 1 | 1 | 5 | |
 | Agent evaluation and tracing | 1 | 1 | 5 | |
 | Agent security and human oversight | 1 | 1 | 5 | |
-| AI-ready data and metadata design | 1 | 2 | 5 | [FAB-001 logical model](01-fabric-platform/FAB-001/metadata-model.md) |
+| AI-ready data and metadata design | 1 | 2 | 5 | [FAB-001 logical model](01-fabric-platform-engineering/FAB-001/metadata-model.md) |
 | Purview governance, lineage, and policy | 1 | 1 | 4 | |
 | Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
 | Identity, networking, and platform security | 1 | 2 | 4 | [OPS-001 identity boundaries](02-dataops-devops/OPS-001/architecture.md) |
-| Resiliency, recovery, and continuity | 1 | 2 | 4 | [FAB-001 lifecycle and validation](01-fabric-platform/FAB-001/ownership-and-lifecycle.md) |
+| Resiliency, recovery, and continuity | 1 | 2 | 4 | [FAB-001 lifecycle and validation](01-fabric-platform-engineering/FAB-001/ownership-and-lifecycle.md) |
 | Cost estimation and FinOps | 1 | 1 | 4 | |
 | Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
