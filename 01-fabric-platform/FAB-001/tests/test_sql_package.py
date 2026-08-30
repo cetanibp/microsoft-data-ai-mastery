@@ -22,6 +22,9 @@ class SqlPackageTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.text = sql_text()
         cls.seed = (SQL_ROOT / "100_seed_northstar.sql").read_text(encoding="utf-8")
+        cls.live_validation = (
+            SQL_ROOT / "110_validate_watermark_protocol.sql"
+        ).read_text(encoding="utf-8")
         cls.fixture = json.loads(FIXTURE_PATH.read_text(encoding="utf-8"))
 
     def test_expected_execution_files_exist(self) -> None:
@@ -32,6 +35,7 @@ class SqlPackageTests(unittest.TestCase):
                 "020_create_runtime_tables.sql",
                 "030_create_views.sql",
                 "100_seed_northstar.sql",
+                "110_validate_watermark_protocol.sql",
             ],
             [path.name for path in sorted(SQL_ROOT.glob("*.sql"))],
         )
@@ -57,6 +61,11 @@ class SqlPackageTests(unittest.TestCase):
         self.assertIn("observed_state_version", self.text)
         self.assertIn("WATERMARK_ABANDONED", self.text)
         self.assertIn("WATERMARK_COMMITTED", self.text)
+        self.assertIn("BEGIN TRANSACTION", self.live_validation)
+        self.assertIn("ROLLBACK TRANSACTION", self.live_validation)
+        self.assertIn("@@ROWCOUNT", self.live_validation)
+        self.assertIn("Stale candidate rejected", self.live_validation)
+        self.assertIn("Audit evidence appended", self.live_validation)
 
     def test_resolution_and_validation_views_exist(self) -> None:
         self.assertIn(
