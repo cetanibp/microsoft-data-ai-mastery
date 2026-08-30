@@ -17,12 +17,12 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 
 | Competency | Baseline | Current | Target | Evidence |
 |---|---:|---:|---:|---|
-| Fabric workspace and domain architecture | 1 | 1 | 5 | |
+| Fabric workspace and domain architecture | 1 | 2 | 5 | [OPS-001 architecture](02-dataops-devops/OPS-001/architecture.md) |
 | Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 1 | 5 | |
+| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform/FAB-001/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
-| CI/CD and environment promotion | 1 | 1 | 5 | |
+| CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
 | Real-Time Intelligence | 1 | 1 | 4 | |
 | Foundry application engineering | 1 | 1 | 4 | |
@@ -30,11 +30,11 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Agent tools and orchestration | 1 | 1 | 5 | |
 | Agent evaluation and tracing | 1 | 1 | 5 | |
 | Agent security and human oversight | 1 | 1 | 5 | |
-| AI-ready data and metadata design | 1 | 1 | 5 | |
+| AI-ready data and metadata design | 1 | 2 | 5 | [FAB-001 logical model](01-fabric-platform/FAB-001/metadata-model.md) |
 | Purview governance, lineage, and policy | 1 | 1 | 4 | |
 | Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
-| Identity, networking, and platform security | 1 | 1 | 4 | |
-| Resiliency, recovery, and continuity | 1 | 1 | 4 | |
+| Identity, networking, and platform security | 1 | 2 | 4 | [OPS-001 identity boundaries](02-dataops-devops/OPS-001/architecture.md) |
+| Resiliency, recovery, and continuity | 1 | 2 | 4 | [FAB-001 lifecycle and validation](01-fabric-platform/FAB-001/ownership-and-lifecycle.md) |
 | Cost estimation and FinOps | 1 | 1 | 4 | |
 | Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
@@ -66,6 +66,16 @@ Complete [#1](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/1) an
 - The roadmap will favor end-to-end builds, failure testing, security, governance, operational evidence, and documented tradeoffs over course completion alone.
 - Each completed work item should link its evidence back to this scorecard and record whether the associated competency score changed.
 - Reassess the scorecard monthly and only raise a score when the evidence threshold is satisfied.
+
+## August 2026 evidence reassessment
+
+The scorecard remains conservative and credits demonstrated repository evidence rather than certifications or professional experience alone.
+
+- **CI/CD and environment promotion reached level 3.** OPS-001 includes a working multi-environment Fabric lifecycle, required validation, OIDC authentication, Test promotion, Production approval/preflight, rollback, and retained evidence.
+- **Metadata-driven ingestion reached level 2.** FAB-001 independently validates the control-plane model and state contract, but the shared ingestion runtime remains Issue #6.
+- **Fabric workspace architecture, AI-ready metadata design, platform security, and recovery reached level 2.** The repository now contains guided working designs and live validation; broader scenarios, enforced production permissions, and operational scale evidence are still required for level 3.
+
+The next score increase should come from FAB-002 only after the runtime demonstrates restartability, idempotency, dependency handling, partial-failure recovery, and concurrency behavior.
 
 ## Monthly assessment questions
 
