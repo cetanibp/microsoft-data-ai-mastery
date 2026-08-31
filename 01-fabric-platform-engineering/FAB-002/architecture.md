@@ -1,6 +1,6 @@
 # FAB-002 — Incremental-ingestion runtime architecture
 
-**Status:** In progress
+**Status:** Complete
 
 **Related issue:** [#6 — FAB-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6)
 
@@ -155,7 +155,7 @@ Issue #9 may project this evidence into SLOs and alerts, but it must retain thes
 | Crash after target write, before commit | Required | Passed |
 | Retry without duplicate accepted records | Required | Passed |
 | Failed attempt preserves watermark | Required | Passed |
-| Stale candidate rejected | Required | Required |
+| Stale candidate rejected | Required | Passed |
 | Breaking schema drift blocked | Planned | Passed |
 | Additive drift quarantined | Planned | Passed |
 | Counts, duration, status, and correlation trace | Required | Passed |

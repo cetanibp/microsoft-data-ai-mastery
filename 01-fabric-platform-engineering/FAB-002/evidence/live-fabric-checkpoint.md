@@ -2,11 +2,10 @@
 
 **Checkpoint date:** 2026-08-30
 
-**Status:** In progress
+**Status:** Complete
 
 This checkpoint records sanitized notebook-level validation and transactional
-pipeline success, failure, and recovery. Stale-candidate validation and final
-evidence are not yet complete.
+pipeline success, failure, recovery, and stale-candidate rejection.
 
 ## Fabric items
 
@@ -94,13 +93,27 @@ The pipeline must map `correlation_id` to `@pipeline().RunId`; mapping the
 pipeline name instead caused a uniqueness failure during authoring and was
 corrected before the successful run.
 
-## Resume point
+## Concurrent stale-candidate validation
 
-Validate concurrent candidates against the next fixed window so exactly one
-candidate commits and the stale candidate becomes `RECOVERY_REQUIRED` without
-overwriting the winning state.
+Two pipeline runs claimed the same fixed window from
+`2026-08-30T12:17:00Z` exclusive through `2026-08-30T12:18:00Z` inclusive.
+The runs were launched from separate browser tabs because the Fabric authoring
+surface did not expose a second run action while the first run was active.
 
-## Outstanding scope
+| Check | Winning run | Stale run |
+|---|---|---|
+| Execution status | `SUCCEEDED` | `FAILED` |
+| Object-run status | `SUCCEEDED` | `RECOVERY_REQUIRED` |
+| Candidate status | `COMMITTED` | `ABANDONED` |
+| Error classification | None | `STALE_WATERMARK_CANDIDATE` |
+| Resolution | Commit accepted | `STALE_STATE_VERSION` |
 
-- live stale-candidate rejection;
-- sanitized final run evidence.
+The final committed watermark is `2026-08-30T12:18:00Z` at state version `4`.
+The Bronze target remains at four business keys and the drift-evidence table
+remains at one row. This proves that a stale completion cannot overwrite a
+newer state even when both attempts use the same starting version and window.
+
+## Completion
+
+All FAB-002 acceptance scenarios are complete. The evidence contains only
+synthetic names, sanitized counts, timestamps, statuses, and state versions.

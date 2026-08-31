@@ -22,7 +22,7 @@ The Fabric Data Pipeline for the first vertical slice must execute these activit
 7. On success, call `ops.usp_CompleteWatermarkAttempt` with the returned counts.
 8. On failure, call `ops.usp_FailWatermarkAttempt`; retry according to the active execution policy.
 
-The live Pipeline is configured, its first transactional success run passed, and its Fabric-generated definition is committed through Fabric Git integration. The generated definition is validated in the credential-free test suite rather than hand-authored with opaque item identifiers or unsupported pipeline JSON.
+The live Pipeline is configured and its Fabric-generated definition is committed through Fabric Git integration. Transactional success, post-write failure, idempotent recovery, and concurrent stale-candidate rejection all passed. The generated definition is validated in the credential-free test suite rather than hand-authored with opaque item identifiers or unsupported pipeline JSON.
 
 ## Notebook parameters
 

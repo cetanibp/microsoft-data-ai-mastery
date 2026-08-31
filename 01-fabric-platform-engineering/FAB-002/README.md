@@ -4,7 +4,7 @@ FAB-002 implements the first shared ingestion runtime that consumes the FAB-001 
 
 ## Status
 
-In progress. The runtime architecture, credential-free executable contract, transactional SQL state procedures, Fabric encounter notebook, and captured live Fabric pipeline are implemented. All planned notebook-level scenarios pass. The pipeline has completed a successful transactional load plus a post-write failure and recovery replay: the failed candidate preserved state version `1`, and recovery committed `2026-08-30T12:16:00Z` as state version `2` without duplicating the durable target row. Live stale-candidate validation and final evidence remain outstanding.
+Complete. The runtime architecture, credential-free executable contract, transactional SQL state procedures, Fabric encounter notebook, and captured live Fabric pipeline are implemented and validated. The live pipeline passed successful loading, post-write failure, idempotent recovery, and concurrent stale-candidate rejection. The final concurrency test advanced the watermark exactly once to `2026-08-30T12:18:00Z` at state version `4`; the losing object run became `RECOVERY_REQUIRED` and its candidate was abandoned without overwriting the winner.
 
 ## Issue acceptance criteria
 
@@ -14,7 +14,7 @@ In progress. The runtime architecture, credential-free executable contract, tran
 | Restart, duplicate handling, and idempotent reprocessing | Crash-after-write replay test and business-key upsert contract | Live pipeline failure and recovery replay passed |
 | Detect and route schema changes | Notebook blocks missing required columns and writes schema-only additive-drift evidence before publishing the approved projection | Live routes and additive replay remediation passed |
 | Capture row counts, duration, status, and correlation identifiers | Run result and object-run evidence contract | Live pipeline persisted counts, status, timestamps, and run correlation |
-| Pass intentional failure and recovery tests | Credential-free failure tests plus live notebook and pipeline recovery tests | Pipeline post-write failure and recovery passed; stale candidate pending |
+| Pass intentional failure and recovery tests | Credential-free failure tests plus live notebook and pipeline recovery tests | Live failure, recovery, and stale-candidate tests passed |
 
 ## First vertical slice
 
@@ -38,6 +38,7 @@ The first live implementation will use the synthetic `ingest-clinical-encounter`
 | [Fabric workspace artifacts](workspace/README.md) | Parameterized encounter notebook and pipeline orchestration contract |
 | [tests](tests/README.md) | Happy-path, replay, failure, duplicate, telemetry, and concurrency tests |
 | [evidence](evidence/README.md) | Evidence index and sanitization rules |
+| [RETRO.md](RETRO.md) | Outcome, lessons, limitations, and downstream handoff |
 
 ## Contract boundary
 

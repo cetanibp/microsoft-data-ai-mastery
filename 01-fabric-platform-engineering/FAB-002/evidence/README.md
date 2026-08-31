@@ -5,12 +5,13 @@
 | Evidence | Purpose | Status |
 |---|---|---|
 | `ci-contract-test-results.json` workflow artifact | Credential-free runtime safety contract | Passed on feature branch |
-| [Live Fabric checkpoint](live-fabric-checkpoint.md) | Sanitized Lakehouse binding, baseline, and replay results | Baseline and replay passed |
+| [Live Fabric checkpoint](live-fabric-checkpoint.md) | Sanitized end-to-end Fabric validation results | Complete |
 | Live configuration resolution | Prove FAB-001 release/object resolution | Passed for Development release `1.0.0` |
 | Live successful incremental load | Prove extraction, target publication, and watermark commit | Passed end to end through the Fabric pipeline |
 | Live intentional failure and replay | Prove state preservation and idempotent recovery | Pipeline post-write failure and recovery passed |
 | Live schema drift routes | Prove blocking and quarantine behavior | Notebook routes and additive replay passed |
 | Live telemetry trace | Prove counts, duration, status, and correlation continuity | Durable success and failure pipeline traces passed |
+| Live concurrent candidates | Prove optimistic concurrency and stale-state recovery routing | One candidate committed; the stale object run became `RECOVERY_REQUIRED` |
 
 Generated local and CI result JSON files are intentionally ignored. CI uploads them as retained workflow artifacts so transient run identity does not create repository churn.
 
