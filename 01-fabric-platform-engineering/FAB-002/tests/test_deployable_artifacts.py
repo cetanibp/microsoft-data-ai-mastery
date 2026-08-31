@@ -20,6 +20,9 @@ SQL_ROOT = (
 NOTEBOOK_ROOT = (
     FAB002_ROOT / "workspace" / "NB_FAB002_IncrementalEncounter.Notebook"
 )
+PIPELINE_ROOT = (
+    FAB002_ROOT / "workspace" / "PL_FAB002_IncrementalEncounter.DataPipeline"
+)
 
 
 class SqlRuntimeProcedureTests(unittest.TestCase):
@@ -124,6 +127,99 @@ class NotebookArtifactTests(unittest.TestCase):
         ):
             self.assertRegex(notebook, rf"(?m)^{name} = ")
         self.assertIn("notebookutils.notebook.exit(result_json)", notebook)
+
+
+class PipelineArtifactTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.platform = json.loads((PIPELINE_ROOT / ".platform").read_text("utf-8"))
+        self.pipeline = json.loads(
+            (PIPELINE_ROOT / "pipeline-content.json").read_text("utf-8")
+        )
+        self.activities = {
+            activity["name"]: activity
+            for activity in self.pipeline["properties"]["activities"]
+        }
+
+    def test_platform_metadata_and_required_activity_graph(self) -> None:
+        self.assertEqual("DataPipeline", self.platform["metadata"]["type"])
+        self.assertEqual(
+            "PL_FAB002_IncrementalEncounter",
+            self.platform["metadata"]["displayName"],
+        )
+        self.assertEqual(
+            {
+                "Resolve_Context",
+                "Set_ObjectRunId",
+                "Set_CandidateId",
+                "Compute_BoundaryHash",
+                "Begin_Attempt",
+                "Run_IncrementalNotebook",
+                "Complete_Attempt",
+                "Fail_Attempt",
+            },
+            set(self.activities),
+        )
+        self.assertEqual(
+            ["Succeeded"],
+            self.activities["Complete_Attempt"]["dependsOn"][0][
+                "dependencyConditions"
+            ],
+        )
+        self.assertEqual(
+            ["Failed"],
+            self.activities["Fail_Attempt"]["dependsOn"][0][
+                "dependencyConditions"
+            ],
+        )
+
+    def test_pipeline_uses_unique_run_identity_on_all_sql_paths(self) -> None:
+        for activity_name in ("Begin_Attempt", "Complete_Attempt", "Fail_Attempt"):
+            parameters = self.activities[activity_name]["typeProperties"][
+                "storedProcedureParameters"
+            ]
+            correlation = parameters["correlation_id"]["value"]
+            self.assertEqual("Expression", correlation["type"])
+            self.assertEqual("@pipeline().RunId", correlation["value"])
+
+        begin_parameters = self.activities["Begin_Attempt"]["typeProperties"][
+            "storedProcedureParameters"
+        ]
+        self.assertEqual(
+            "@pipeline().PipelineName",
+            begin_parameters["trigger_reference"]["value"]["value"],
+        )
+        fail_parameters = self.activities["Fail_Attempt"]["typeProperties"][
+            "storedProcedureParameters"
+        ]
+        self.assertEqual(
+            "Expression", fail_parameters["actor_identity"]["value"]["type"]
+        )
+
+    def test_pipeline_pins_boundaries_and_parses_notebook_counts(self) -> None:
+        notebook = self.activities["Run_IncrementalNotebook"]
+        self.assertEqual(3, notebook["policy"]["retry"])
+        self.assertEqual(120, notebook["policy"]["retryIntervalInSeconds"])
+        notebook_parameters = notebook["typeProperties"]["parameters"]
+        self.assertEqual(
+            "@activity('Resolve_Context').output.firstRow.committed_value",
+            notebook_parameters["lower_bound"]["value"]["value"],
+        )
+        self.assertEqual(
+            "@pipeline().parameters.upper_bound",
+            notebook_parameters["upper_bound"]["value"]["value"],
+        )
+        complete_parameters = self.activities["Complete_Attempt"]["typeProperties"][
+            "storedProcedureParameters"
+        ]
+        for count_name in (
+            "extracted_row_count",
+            "accepted_row_count",
+            "rejected_row_count",
+        ):
+            self.assertIn(
+                ".output.result.exitValue",
+                complete_parameters[count_name]["value"]["value"],
+            )
 
 
 if __name__ == "__main__":

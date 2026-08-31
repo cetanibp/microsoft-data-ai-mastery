@@ -14,8 +14,8 @@ final evidence are not yet complete.
   `FAB-002` workspace folder.
 - `lh_northstar_fab002` is attached as the default Lakehouse for
   `NB_FAB002_IncrementalEncounter`.
-- `PL_FAB002_IncrementalEncounter` is configured in the `FAB-002` folder; its
-  Fabric-generated source definition has not yet been committed back to Git.
+- `PL_FAB002_IncrementalEncounter` is configured in the `FAB-002` folder and
+  its Fabric-generated source definition is committed to the feature branch.
 - The Bronze target resolves to `dbo.bronze_clinical_encounter`.
 - Additive-drift evidence will resolve to
   `dbo.fab002_schema_drift_events` when that scenario is first run.
@@ -83,15 +83,13 @@ corrected before the successful run.
 
 ## Resume point
 
-Commit `PL_FAB002_IncrementalEncounter` from the Fabric Source control panel to
-the connected feature branch, then validate the pipeline failure path using the
-next window ending at `2026-08-30T12:16:00Z`. The injected post-write failure
+Validate the pipeline failure path using the next window ending at
+`2026-08-30T12:16:00Z`. The injected post-write failure
 must abandon its candidate without advancing state version `1`; a recovery run
 over the same window must then commit state version `2` without duplicate target
 rows.
 
 ## Outstanding scope
 
-- Fabric Git capture of the pipeline definition;
 - live pipeline failure, retry, and recovery routes;
 - sanitized final run evidence.
