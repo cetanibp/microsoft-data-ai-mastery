@@ -4,9 +4,9 @@
 
 **Status:** In progress
 
-This checkpoint records sanitized notebook-level validation and the first
-successful transactional pipeline run. Pipeline failure/retry validation and
-final evidence are not yet complete.
+This checkpoint records sanitized notebook-level validation and transactional
+pipeline success, failure, and recovery. Stale-candidate validation and final
+evidence are not yet complete.
 
 ## Fabric items
 
@@ -63,8 +63,8 @@ Resolve_Context
   -> Complete_Attempt
 ```
 
-`Fail_Attempt` is connected to the notebook failure path and remains to be
-validated with an injected pipeline failure.
+`Fail_Attempt` is connected to the notebook failure path and was validated after
+the Notebook activity exhausted its configured retries.
 
 | Check | Observed result |
 |---|---|
@@ -77,19 +77,30 @@ validated with an injected pipeline failure.
 | Committed watermark | `2026-08-30T12:15:00Z` |
 | State version | `1` |
 
+The next fixed window, from `2026-08-30T12:15:00Z` exclusive through
+`2026-08-30T12:16:00Z` inclusive, was used for failure and recovery validation:
+
+| Check | Injected post-write failure | Recovery replay |
+|---|---|---|
+| Notebook outcome | Failed after configured retries | Succeeded without retry |
+| Target effect | Fourth business key durable | 0 inserts; 1 update; 4 total rows |
+| Execution status | `FAILED` | `SUCCEEDED` |
+| Object-run status | `FAILED` | `SUCCEEDED` |
+| Candidate status | `ABANDONED` | `COMMITTED` |
+| Committed watermark | Remained `2026-08-30T12:15:00Z` | Advanced to `2026-08-30T12:16:00Z` |
+| State version | Remained `1` | Advanced to `2` |
+
 The pipeline must map `correlation_id` to `@pipeline().RunId`; mapping the
 pipeline name instead caused a uniqueness failure during authoring and was
 corrected before the successful run.
 
 ## Resume point
 
-Validate the pipeline failure path using the next window ending at
-`2026-08-30T12:16:00Z`. The injected post-write failure
-must abandon its candidate without advancing state version `1`; a recovery run
-over the same window must then commit state version `2` without duplicate target
-rows.
+Validate concurrent candidates against the next fixed window so exactly one
+candidate commits and the stale candidate becomes `RECOVERY_REQUIRED` without
+overwriting the winning state.
 
 ## Outstanding scope
 
-- live pipeline failure, retry, and recovery routes;
+- live stale-candidate rejection;
 - sanitized final run evidence.

@@ -152,9 +152,9 @@ Issue #9 may project this evidence into SLOs and alerts, but it must retain thes
 | First successful watermark window | Required | Passed |
 | Empty subsequent window | Required | Passed |
 | Duplicate rows in one source window | Required | Passed |
-| Crash after target write, before commit | Required | Notebook passed; pipeline pending |
+| Crash after target write, before commit | Required | Passed |
 | Retry without duplicate accepted records | Required | Passed |
-| Failed attempt preserves watermark | Required | Required |
+| Failed attempt preserves watermark | Required | Passed |
 | Stale candidate rejected | Required | Required |
 | Breaking schema drift blocked | Planned | Passed |
 | Additive drift quarantined | Planned | Passed |
