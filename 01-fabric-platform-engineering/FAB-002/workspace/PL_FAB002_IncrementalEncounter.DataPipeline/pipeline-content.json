@@ -1,0 +1,640 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "FabricSqlDatabaseSource",
+            "sqlReaderStoredProcedureName": "[ops].[usp_ResolveWatermarkContext]",
+            "storedProcedureParameters": {
+              "environment_code": {
+                "value": {
+                  "value": "@pipeline().parameters.environment_name",
+                  "type": "Expression"
+                },
+                "type": "String"
+              },
+              "ingestion_object_key": {
+                "value": {
+                  "value": "@pipeline().parameters.ingestion_object_key",
+                  "type": "Expression"
+                },
+                "type": "String"
+              }
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "FabricSqlDatabaseTable",
+            "schema": [],
+            "connectionSettings": {
+              "name": "sqldb_northstar_control",
+              "properties": {
+                "type": "FabricSqlDatabase",
+                "typeProperties": {
+                  "artifactId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000"
+                },
+                "externalReferences": {
+                  "connection": "f58baba9-df90-4ca1-a6f5-fe5a15e92673"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Resolve_Context",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "object_run_id",
+          "value": {
+            "value": "@guid()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set_ObjectRunId",
+        "dependsOn": [
+          {
+            "activity": "Resolve_Context",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "candidate_id",
+          "value": {
+            "value": "@guid()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set_CandidateId",
+        "dependsOn": [
+          {
+            "activity": "Set_ObjectRunId",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "FabricSqlDatabaseSource",
+            "sqlReaderQuery": {
+              "value": "@concat('SELECT CONVERT(varchar(64), HASHBYTES(''SHA2_256'', CONCAT(''', activity('Resolve_Context').output.firstRow.committed_value, ''', ''|'', ''', pipeline().parameters.upper_bound, ''')), 2) AS input_boundary_hash;')",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "FabricSqlDatabaseTable",
+            "schema": [],
+            "connectionSettings": {
+              "name": "sqldb_northstar_control",
+              "properties": {
+                "type": "FabricSqlDatabase",
+                "typeProperties": {
+                  "artifactId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000"
+                },
+                "externalReferences": {
+                  "connection": "f58baba9-df90-4ca1-a6f5-fe5a15e92673"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Compute_BoundaryHash",
+        "dependsOn": [
+          {
+            "activity": "Set_CandidateId",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "ops.usp_BeginWatermarkAttempt",
+          "storedProcedureParameters": {
+            "actor_identity": {
+              "value": {
+                "value": "@pipeline().parameters.actor_identity",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "attempt_number": {
+              "value": {
+                "value": "@pipeline().parameters.attempt_number",
+                "type": "Expression"
+              },
+              "type": "Int16"
+            },
+            "candidate_id": {
+              "value": {
+                "value": "@variables('candidate_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "configuration_hash": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.release_content_hash",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "correlation_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "environment_code": {
+              "value": {
+                "value": "@pipeline().parameters.environment_name",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "from_value": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.committed_value",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "ingestion_object_key": {
+              "value": {
+                "value": "@pipeline().parameters.ingestion_object_key",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "input_boundary_hash": {
+              "value": {
+                "value": "@activity('Compute_BoundaryHash').output.firstRow.input_boundary_hash",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "logical_value_type": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.watermark_data_type",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "object_run_id": {
+              "value": {
+                "value": "@variables('object_run_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "observed_state_version": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.state_version",
+                "type": "Expression"
+              },
+              "type": "Int64"
+            },
+            "release_id": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.release_id",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "requested_scope": {
+              "value": {
+                "value": "@concat('{\"ingestion_object_key\":\"', pipeline().parameters.ingestion_object_key, '\"}')",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "to_value": {
+              "value": {
+                "value": "@pipeline().parameters.upper_bound",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "trigger_reference": {
+              "value": {
+                "value": "@pipeline().PipelineName",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "trigger_type": {
+              "value": {
+                "value": "@pipeline().parameters.trigger_type",
+                "type": "Expression"
+              },
+              "type": "String"
+            }
+          }
+        },
+        "connectionSettings": {
+          "name": "sqldb_northstar_control",
+          "properties": {
+            "type": "FabricSqlDatabase",
+            "typeProperties": {
+              "artifactId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "f58baba9-df90-4ca1-a6f5-fe5a15e92673"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Begin_Attempt",
+        "dependsOn": [
+          {
+            "activity": "Compute_BoundaryHash",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "e7e4e7a3-94d2-48be-a8ef-cc0c09c2f002",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "environment_name": {
+              "value": {
+                "value": "@pipeline().parameters.environment_name",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "release_id": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.release_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "object_run_id": {
+              "value": {
+                "value": "@variables('object_run_id')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "correlation_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "lower_bound": {
+              "value": {
+                "value": "@activity('Resolve_Context').output.firstRow.committed_value",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "upper_bound": {
+              "value": {
+                "value": "@pipeline().parameters.upper_bound",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "scenario": {
+              "value": {
+                "value": "@pipeline().parameters.scenario",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "failure_stage": {
+              "value": {
+                "value": "@coalesce(pipeline().parameters.failure_stage,'')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "target_table": {
+              "value": "bronze_clinical_encounter",
+              "type": "string"
+            },
+            "drift_table": {
+              "value": "fab002_schema_drift_events",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 120,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Run_IncrementalNotebook",
+        "dependsOn": [
+          {
+            "activity": "Begin_Attempt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "ops.usp_CompleteWatermarkAttempt",
+          "storedProcedureParameters": {
+            "accepted_row_count": {
+              "value": {
+                "value": "@json(activity('Run_IncrementalNotebook').output.result.exitValue).accepted_row_count",
+                "type": "Expression"
+              },
+              "type": "Int64"
+            },
+            "actor_identity": {
+              "value": {
+                "value": "@pipeline().parameters.actor_identity",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "candidate_id": {
+              "value": {
+                "value": "@variables('candidate_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "correlation_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "extracted_row_count": {
+              "value": {
+                "value": "@json(activity('Run_IncrementalNotebook').output.result.exitValue).extracted_row_count",
+                "type": "Expression"
+              },
+              "type": "Int64"
+            },
+            "object_run_id": {
+              "value": {
+                "value": "@variables('object_run_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "rejected_row_count": {
+              "value": {
+                "value": "@json(activity('Run_IncrementalNotebook').output.result.exitValue).rejected_row_count",
+                "type": "Expression"
+              },
+              "type": "Int64"
+            }
+          }
+        },
+        "connectionSettings": {
+          "name": "sqldb_northstar_control",
+          "properties": {
+            "type": "FabricSqlDatabase",
+            "typeProperties": {
+              "artifactId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "f58baba9-df90-4ca1-a6f5-fe5a15e92673"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Complete_Attempt",
+        "dependsOn": [
+          {
+            "activity": "Run_IncrementalNotebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "ops.usp_FailWatermarkAttempt",
+          "storedProcedureParameters": {
+            "accepted_row_count": {
+              "value": "0",
+              "type": "Int64"
+            },
+            "actor_identity": {
+              "value": {
+                "value": "@pipeline().parameters.actor_identity",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "candidate_id": {
+              "value": {
+                "value": "@variables('candidate_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "correlation_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "error_classification": {
+              "value": {
+                "value": "@if(equals(pipeline().parameters.scenario,'breaking_drift'),'BREAKING_SCHEMA_DRIFT',if(equals(pipeline().parameters.failure_stage,''),'TARGET_WRITE_FAILURE','INJECTED_FAILURE'))",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "error_summary": {
+              "value": {
+                "value": "@concat('Notebook activity failed. scenario=',pipeline().parameters.scenario,'; failure_stage=',pipeline().parameters.failure_stage)",
+                "type": "Expression"
+              },
+              "type": "String"
+            },
+            "extracted_row_count": {
+              "value": "0",
+              "type": "Int64"
+            },
+            "is_terminal_run": {
+              "value": "true",
+              "type": "Boolean"
+            },
+            "object_run_id": {
+              "value": {
+                "value": "@variables('object_run_id')",
+                "type": "Expression"
+              },
+              "type": "Guid"
+            },
+            "rejected_row_count": {
+              "value": "0",
+              "type": "Int64"
+            }
+          }
+        },
+        "connectionSettings": {
+          "name": "sqldb_northstar_control",
+          "properties": {
+            "type": "FabricSqlDatabase",
+            "typeProperties": {
+              "artifactId": "147752ec-eef0-8e27-4e62-b66bb0ee6f3d",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "f58baba9-df90-4ca1-a6f5-fe5a15e92673"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fail_Attempt",
+        "dependsOn": [
+          {
+            "activity": "Run_IncrementalNotebook",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "environment_name": {
+        "type": "string",
+        "defaultValue": "development"
+      },
+      "ingestion_object_key": {
+        "type": "string",
+        "defaultValue": "ingest-clinical-encounter"
+      },
+      "upper_bound": {
+        "type": "string",
+        "defaultValue": "2026-08-30T12:15:00Z"
+      },
+      "scenario": {
+        "type": "string",
+        "defaultValue": "baseline"
+      },
+      "failure_stage": {
+        "type": "string"
+      },
+      "attempt_number": {
+        "type": "int",
+        "defaultValue": 1
+      },
+      "trigger_type": {
+        "type": "string",
+        "defaultValue": "MANUAL"
+      },
+      "actor_identity": {
+        "type": "string",
+        "defaultValue": "fabric:PL_FAB002_IncrementalEncounter"
+      }
+    },
+    "variables": {
+      "object_run_id": {
+        "type": "string"
+      },
+      "candidate_id": {
+        "type": "string"
+      }
+    }
+  }
+}

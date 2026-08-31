@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_FAB002_IncrementalEncounter"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c9eab94f-125b-a1f0-4c20-fc546b1ca013"
+  }
+}
