@@ -508,8 +508,11 @@
               "type": "Int64"
             },
             "actor_identity": {
-              "value": "@pipeline().parameters.actor_identity",
-              "type": "String"
+              "value": {
+                "value": "@pipeline().parameters.actor_identity",
+                "type": "Expression"
+              },
+              "type": "Expression"
             },
             "candidate_id": {
               "value": {
@@ -519,8 +522,11 @@
               "type": "Guid"
             },
             "correlation_id": {
-              "value": "@pipeline().RunId",
-              "type": "String"
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "Expression"
             },
             "error_classification": {
               "value": {
