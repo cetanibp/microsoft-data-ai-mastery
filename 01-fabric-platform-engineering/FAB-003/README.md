@@ -4,7 +4,7 @@ FAB-003 adds policy-driven acceptance checks between FAB-002 target publication 
 
 ## Status
 
-In progress. The initial design is being established on issue [#7](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7).
+In progress. The initial architecture and credential-free executable contract are implemented. Seventeen automated tests cover policy validation, absolute and percentage count reconciliation, aggregate evaluation, warning and blocking decisions, quarantine identity, replay idempotency, and watermark-commit eligibility. Live Fabric implementation remains planned.
 
 ## Objective
 
@@ -44,10 +44,19 @@ The first implementation targets the synthetic `ingest-clinical-encounter` objec
 | Path | Purpose |
 |---|---|
 | [architecture.md](architecture.md) | Boundaries, invariants, decision flow, and evidence contract |
-| [runtime](runtime/README.md) | Planned credential-free executable contract |
-| [tests](tests/README.md) | Planned acceptance, threshold, quarantine, and recovery scenarios |
+| [runtime](runtime/README.md) | Credential-free executable contract |
+| [tests](tests/README.md) | Acceptance, threshold, quarantine, replay, and state-protection scenarios |
 | [evidence](evidence/README.md) | Evidence index and sanitization rules |
 
 ## Safety boundary
 
 Repository evidence uses only synthetic Northstar data. It must not include credentials, endpoints, workspace or item identifiers, patient data, proprietary metadata, or source payload samples.
+
+## Local validation
+
+From the repository root:
+
+```bash
+python 01-fabric-platform-engineering/FAB-003/tests/run_contract_tests.py \\
+  --output 01-fabric-platform-engineering/FAB-003/evidence/local-contract-test-results.json
+```
