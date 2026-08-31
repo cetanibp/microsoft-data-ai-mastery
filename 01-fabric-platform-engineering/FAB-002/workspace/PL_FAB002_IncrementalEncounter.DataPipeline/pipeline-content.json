@@ -512,7 +512,7 @@
                 "value": "@pipeline().parameters.actor_identity",
                 "type": "Expression"
               },
-              "type": "Expression"
+              "type": "String"
             },
             "candidate_id": {
               "value": {
@@ -526,7 +526,7 @@
                 "value": "@pipeline().RunId",
                 "type": "Expression"
               },
-              "type": "Expression"
+              "type": "String"
             },
             "error_classification": {
               "value": {
