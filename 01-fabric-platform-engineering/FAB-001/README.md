@@ -51,7 +51,7 @@ The live validation used the isolated `Northstar Data Platform - FAB-001` worksp
 ## Relationship to other work
 
 - [Issue #8](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) supplies the accepted Git, environment, deployment, identity, and credential boundaries.
-- [Issue #6](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6) is the recommended next issue and will implement resilient ingestion using this contract.
+- [Issue #6](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6) consumed this contract in the completed [FAB-002 resilient ingestion runtime](../FAB-002/README.md).
 - [Issue #7](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7) will consume quality-policy and publication-gate references.
 - [Issue #9](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) will consume SLO, ownership, schedule, event, and correlation metadata.
 

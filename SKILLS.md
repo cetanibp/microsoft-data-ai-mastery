@@ -20,7 +20,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Fabric workspace and domain architecture | 1 | 2 | 5 | [OPS-001 architecture](02-dataops-devops/OPS-001/architecture.md) |
 | Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform-engineering/FAB-001/README.md) |
+| Metadata-driven ingestion | 1 | 3 | 5 | [FAB-001 control-plane evidence](01-fabric-platform-engineering/FAB-001/README.md) and [FAB-002 runtime evidence](01-fabric-platform-engineering/FAB-002/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
@@ -102,9 +102,28 @@ FAB-001 adds guided implementation and live validation evidence across several c
 
 These competencies remain below Level 3 because the complete ingestion runtime, enforced database roles, operational scale, and broader recovery scenarios have not yet been implemented.
 
+## FAB-002 reassessment — August 30, 2026
+
+### Metadata-driven ingestion: 1 → 3
+
+FAB-001 and FAB-002 now provide independent design, implementation, troubleshooting, and live operational evidence across the control plane and its first runtime consumer:
+
+- one active environment and release configuration is resolved without object-specific orchestration code;
+- fixed lower-exclusive and upper-inclusive watermark windows are claimed transactionally;
+- target publication is idempotent by declared business key;
+- additive and breaking schema drift follow explicit routes without retaining source payloads in evidence;
+- run, object-run, candidate, correlation, count, status, and timing identities remain traceable;
+- an injected post-write failure preserves the prior watermark;
+- recovery replay commits the original window without duplicating the durable target row;
+- concurrent candidates produce one winner while the stale completion is routed to `RECOVERY_REQUIRED`.
+
+This satisfies Level 3: the shared runtime was designed, built, tested, deliberately failed, troubleshot, recovered, concurrency-tested, and documented with durable repository and live Fabric evidence.
+
+**Why the score is not yet 4:** the implementation covers one synthetic timestamp-watermark object. Dependency scheduling, multiple source adapters, permanent-environment promotion, production-scale concurrency and performance, executable reconciliation and quality gates, automated incident response, and cross-pattern tradeoff evidence remain open.
+
 ### Next skill target
 
-The next evidence-producing priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6). Level 3 for **Metadata-driven ingestion** requires a working shared runtime with restartability, idempotency, dependency handling, partial-failure recovery, and concurrency evidence.
+The next evidence-producing priority is [#7 — reconciliation and data-quality gates](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7). It should strengthen Lakehouse, Delta, and Spark engineering while adding executable quality and publication controls to the metadata-driven runtime.
 
 ## Monthly assessment questions
 
