@@ -4,8 +4,9 @@
 
 **Status:** In progress
 
-This checkpoint records sanitized notebook-level validation. It does not claim
-that pipeline orchestration or transactional watermark commit is complete.
+This checkpoint records sanitized notebook-level validation and the first
+successful transactional pipeline run. Pipeline failure/retry validation and
+final evidence are not yet complete.
 
 ## Fabric items
 
@@ -13,6 +14,8 @@ that pipeline orchestration or transactional watermark commit is complete.
   `FAB-002` workspace folder.
 - `lh_northstar_fab002` is attached as the default Lakehouse for
   `NB_FAB002_IncrementalEncounter`.
+- `PL_FAB002_IncrementalEncounter` is configured in the `FAB-002` folder; its
+  Fabric-generated source definition has not yet been committed back to Git.
 - The Bronze target resolves to `dbo.bronze_clinical_encounter`.
 - Additive-drift evidence will resolve to
   `dbo.fab002_schema_drift_events` when that scenario is first run.
@@ -46,14 +49,49 @@ synchronization, replay retained exactly one event.
 | After target write | Failed with the expected injected error after an idempotent merge | Bronze 3; drift events 1 | Passed |
 | Recovery replay | Completed with 0 inserts and 3 updates | Bronze 3; drift events 1 | Passed |
 
+## Transactional pipeline validation
+
+The live pipeline executes this success path:
+
+```text
+Resolve_Context
+  -> Set_ObjectRunId
+  -> Set_CandidateId
+  -> Compute_BoundaryHash
+  -> Begin_Attempt
+  -> Run_IncrementalNotebook
+  -> Complete_Attempt
+```
+
+`Fail_Attempt` is connected to the notebook failure path and remains to be
+validated with an injected pipeline failure.
+
+| Check | Observed result |
+|---|---|
+| Active configuration | Development release `1.0.0`; one exact object match |
+| Fixed window | `2026-01-01T00:00:00Z` exclusive through `2026-08-30T12:15:00Z` inclusive |
+| Object counts | 4 extracted; 3 accepted; 0 rejected |
+| Execution status | `SUCCEEDED` |
+| Object-run status | `SUCCEEDED` |
+| Candidate status | `COMMITTED` |
+| Committed watermark | `2026-08-30T12:15:00Z` |
+| State version | `1` |
+
+The pipeline must map `correlation_id` to `@pipeline().RunId`; mapping the
+pipeline name instead caused a uniqueness failure during authoring and was
+corrected before the successful run.
+
 ## Resume point
 
-Create and configure the live Fabric pipeline that resolves the FAB-001 control
-plane, begins a watermark attempt, invokes the notebook, and routes success or
-failure to the matching transactional procedure.
+Commit `PL_FAB002_IncrementalEncounter` from the Fabric Source control panel to
+the connected feature branch, then validate the pipeline failure path using the
+next window ending at `2026-08-30T12:16:00Z`. The injected post-write failure
+must abandon its candidate without advancing state version `1`; a recovery run
+over the same window must then commit state version `2` without duplicate target
+rows.
 
 ## Outstanding scope
 
-- pipeline orchestration and retry routes;
-- FAB-001 SQL configuration resolution and transactional watermark calls;
+- Fabric Git capture of the pipeline definition;
+- live pipeline failure, retry, and recovery routes;
 - sanitized final run evidence.

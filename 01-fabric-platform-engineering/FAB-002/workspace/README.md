@@ -22,7 +22,7 @@ The Fabric Data Pipeline for the first vertical slice must execute these activit
 7. On success, call `ops.usp_CompleteWatermarkAttempt` with the returned counts.
 8. On failure, call `ops.usp_FailWatermarkAttempt`; retry according to the active execution policy.
 
-The pipeline definition will be captured from Fabric Git integration after the live activities and failure routes are configured and validated. This avoids hand-authoring opaque item identifiers or unsupported pipeline JSON.
+The live Pipeline is configured and its first transactional success run passed. Its Fabric-generated definition still must be committed through Fabric Git integration after the failure and recovery routes are validated. This avoids hand-authoring opaque item identifiers or unsupported pipeline JSON.
 
 ## Notebook parameters
 
@@ -44,5 +44,6 @@ The pipeline definition will be captured from Fabric Git integration after the l
 - Drift evidence records schema names and classifications, never rejected payloads.
 - Drift evidence merges by `object_run_id`, so replaying one attempt does not append a duplicate event.
 - The notebook cannot advance a watermark; only the SQL compare-and-commit procedure can.
+- Pipeline `correlation_id` is the unique `@pipeline().RunId`; the pipeline name is retained only as `trigger_reference`.
 - A target-write failure or injected crash leaves the candidate uncommitted.
 - Replaying the same window uses Delta `MERGE` on `encounter_id`.
