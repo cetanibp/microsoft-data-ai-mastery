@@ -1,12 +1,19 @@
 # FAB-003 Fabric workspace artifacts
 
-## Item
+## Items
 
 | Item | Purpose |
 |---|---|
 | `NB_FAB003_QualityGate` | Resolve an allowlisted quality contract, evaluate the fixed FAB-002 object-run boundary, persist idempotent Delta evidence, and return a publication decision |
+| `PL_FAB003_QualityGate` | Run FAB-002 ingestion, persist quality evidence, finalize the durable decision, and commit the watermark only through the quality-accepted wrapper |
 
 The notebook requires the same default Lakehouse used by FAB-002. Its Git definition contains no physical workspace, Lakehouse, connection, or tenant identifier.
+
+## Live binding checkpoint
+
+The isolated development workspace uses `lh_northstar_data` as the default Lakehouse for both notebooks. The live pipeline was created and validated in Fabric on 2026-09-01. Its Fabric-generated definition and the workspace bindings still need to be committed through Fabric Git integration after the remaining live scenarios pass.
+
+Fabric can pass an empty optional pipeline parameter as null. The live pipeline therefore maps `quality_test_mode` with `@coalesce(pipeline().parameters.quality_test_mode, '')` before invoking the quality notebook.
 
 ## Pipeline integration
 
