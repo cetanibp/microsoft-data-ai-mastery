@@ -14,6 +14,11 @@ CONTROL_ROOT = (
     / "sqldb_northstar_control.SQLDatabase"
 )
 FAB003_ROOT = REPO_ROOT / "01-fabric-platform-engineering" / "FAB-003"
+PIPELINE_ROOT = (
+    REPO_ROOT
+    / "01-fabric-platform-engineering"
+    / "PL_FAB003_QualityGate.DataPipeline"
+)
 
 
 class SqlArtifactTests(unittest.TestCase):
@@ -104,6 +109,63 @@ class SqlArtifactTests(unittest.TestCase):
         self.assertIn("contract_reference", text)
 
 
+class PipelineArtifactTests(unittest.TestCase):
+    def setUp(self):
+        self.pipeline_path = PIPELINE_ROOT / "pipeline-content.json"
+        self.pipeline = json.loads(self.pipeline_path.read_text(encoding="utf-8"))
+        self.source = json.dumps(self.pipeline, sort_keys=True)
+
+    def test_quality_pipeline_is_a_deployable_fabric_item(self):
+        platform = json.loads(
+            (PIPELINE_ROOT / ".platform").read_text(encoding="utf-8")
+        )
+        self.assertEqual("DataPipeline", platform["metadata"]["type"])
+        self.assertEqual(
+            "PL_FAB003_QualityGate", platform["metadata"]["displayName"]
+        )
+
+    def test_pipeline_enforces_quality_before_completion(self):
+        for token in (
+            "Resolve_QualityPolicy",
+            "Run_QualityGate",
+            "Persist_QualityResults",
+            "Persist_QuarantineEvidence",
+            "Finalize_QualityDecision",
+            "Commit_If_QualityAccepted",
+            "Complete_QualityAccepted",
+            "Stop_QualityBlocked",
+            "ops.usp_CompleteQualityAcceptedWatermarkAttempt",
+        ):
+            self.assertIn(token, self.source)
+        self.assertNotIn(
+            '"storedProcedureName": "ops.usp_CompleteWatermarkAttempt"',
+            self.source,
+        )
+        self.assertIn(
+            "@coalesce(pipeline().parameters.quality_test_mode, '')",
+            self.source,
+        )
+
+    def test_pipeline_workspace_identifiers_are_sanitized(self):
+        workspace_ids = []
+
+        def collect(value):
+            if isinstance(value, dict):
+                for key, item in value.items():
+                    if key == "workspaceId":
+                        workspace_ids.append(item)
+                    collect(item)
+            elif isinstance(value, list):
+                for item in value:
+                    collect(item)
+
+        collect(self.pipeline)
+        self.assertTrue(workspace_ids)
+        self.assertEqual(
+            {"00000000-0000-0000-0000-000000000000"}, set(workspace_ids)
+        )
+
+
 class NotebookArtifactTests(unittest.TestCase):
     def setUp(self):
         self.notebook_path = (
@@ -153,17 +215,29 @@ class NotebookArtifactTests(unittest.TestCase):
         self.assertIn('"REQUIRED_ERROR"', self.source)
 
     def test_no_physical_or_secret_values_are_committed(self):
-        lowered = self.source.lower()
-        for forbidden in (
-            "password=",
-            "client_secret",
-            "access_token",
-            "jdbc:",
-            "https://onelake",
-            "workspace_id",
-            "tenant_id",
-        ):
-            self.assertNotIn(forbidden, lowered)
+        upstream = (
+            REPO_ROOT
+            / "01-fabric-platform-engineering"
+            / "FAB-002"
+            / "workspace"
+            / "NB_FAB002_IncrementalEncounter.Notebook"
+            / "notebook-content.py"
+        )
+        sources = [self.source]
+        if upstream.exists():
+            sources.append(upstream.read_text(encoding="utf-8"))
+        for source in sources:
+            lowered = source.lower()
+            for forbidden in (
+                "password=",
+                "client_secret",
+                "access_token",
+                "jdbc:",
+                "https://onelake",
+                "workspace_id",
+                "tenant_id",
+            ):
+                self.assertNotIn(forbidden, lowered)
 
     def test_fab002_emits_only_hashed_duplicate_identities_when_available(self):
         upstream = (
