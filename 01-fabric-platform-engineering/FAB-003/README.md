@@ -4,7 +4,7 @@ FAB-003 adds policy-driven acceptance checks between FAB-002 target publication 
 
 ## Status
 
-In progress. The initial architecture and credential-free executable contract are implemented. Seventeen automated tests cover policy validation, absolute and percentage count reconciliation, aggregate evaluation, warning and blocking decisions, quarantine identity, replay idempotency, and watermark-commit eligibility. Live Fabric implementation remains planned.
+In progress. The architecture, credential-free executable contract, durable SQL control-plane extension, and Fabric quality-gate notebook are implemented. Thirty automated tests cover policy validation, reconciliation, decisions, quarantine, replay, transactional evidence, completion gating, deployable artifact structure, and secret boundaries. Live Fabric deployment and validation remain planned.
 
 ## Objective
 
@@ -20,7 +20,7 @@ FAB-003 reuses the activated `QualityPolicy` and `ObjectQualityPolicy` definitio
 
 ## Initial vertical slice
 
-The first implementation targets the synthetic `ingest-clinical-encounter` object and will:
+The deployable vertical slice targets the synthetic `ingest-clinical-encounter` object and will:
 
 1. reconcile source, accepted, rejected, and target counts;
 2. evaluate allowlisted aggregate checks;
@@ -34,10 +34,10 @@ The first implementation targets the synthetic `ingest-clinical-encounter` objec
 
 | Criterion | Planned evidence | Status |
 |---|---|---|
-| Source-to-target count and aggregate checks | Executable quality evaluator and test suite | Planned |
-| Blocking versus warning thresholds | Versioned policy evaluation and decision tests | Planned |
-| Quarantine with traceability | Synthetic quarantine records correlated to run and object run | Planned |
-| Operational quality results | Sanitized result contract and reporting projection | Planned |
+| Source-to-target count and aggregate checks | Executable evaluator, Fabric notebook, and tests | Implemented; live validation pending |
+| Blocking versus warning thresholds | Versioned allowlisted contracts and decision tests | Implemented; live validation pending |
+| Quarantine with traceability | Hashed, idempotent Delta and SQL evidence | Implemented; live validation pending |
+| Operational quality results | Durable tables and operational SQL view | Implemented; live validation pending |
 
 ## Repository contents
 
@@ -45,7 +45,8 @@ The first implementation targets the synthetic `ingest-clinical-encounter` objec
 |---|---|
 | [architecture.md](architecture.md) | Boundaries, invariants, decision flow, and evidence contract |
 | [runtime](runtime/README.md) | Credential-free executable contract |
-| [tests](tests/README.md) | Acceptance, threshold, quarantine, replay, and state-protection scenarios |
+| [workspace](workspace/README.md) | Fabric notebook and pipeline integration contract |
+| [tests](tests/README.md) | Acceptance, threshold, quarantine, replay, state-protection, and deployable-artifact scenarios |
 | [evidence](evidence/README.md) | Evidence index and sanitization rules |
 
 ## Safety boundary
