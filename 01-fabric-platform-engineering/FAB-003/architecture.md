@@ -1,6 +1,6 @@
 # FAB-003 — Reconciliation and quality-gate architecture
 
-**Status:** Live validation in progress; accepted path passed
+**Status:** Live validation in progress; accepted, blocked, and recovery paths passed
 
 **Related issue:** [#7 — FAB-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7)
 
