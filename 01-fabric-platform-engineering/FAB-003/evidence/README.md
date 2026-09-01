@@ -1,11 +1,15 @@
 # FAB-003 evidence
 
-This folder will contain sanitized, reproducible evidence for reconciliation, quality decisions, quarantine behavior, and watermark protection.
+This folder contains and will continue to collect sanitized, reproducible evidence for reconciliation, quality decisions, quarantine behavior, and watermark protection.
 
-## Planned evidence
+## Current evidence
 
-- credential-free contract-test output;
-- policy and threshold decision matrix;
+- [local contract-test output](local-contract-test-results.json): 30 tests passed with no failures or errors;
+- GitHub Actions contract evidence retained as a workflow artifact.
+
+## Planned live evidence
+
+-
 - failure-injection and replay results;
 - live Fabric validation checkpoint;
 - sanitized operational quality-result examples;
