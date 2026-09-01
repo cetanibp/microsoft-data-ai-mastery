@@ -178,9 +178,29 @@ if failure_stage == "AFTER_EXTRACT":
 dedupe_window = Window.partitionBy("encounter_id").orderBy(
     F.col("updated_at_utc").desc(), F.col("source_sequence").desc()
 )
+ranked = windowed.withColumn("_rank", F.row_number().over(dedupe_window))
+duplicate_identity_hashes = [
+    row["source_record_identity_hash"]
+    for row in (
+        ranked.where(F.col("_rank") > 1)
+        .select(
+            F.sha2(
+                F.concat_ws(
+                    "||",
+                    F.lit("fab003-duplicate-v1"),
+                    F.col("encounter_id"),
+                    F.date_format(F.col("updated_at_utc"), "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"),
+                    F.col("source_sequence").cast("string"),
+                ),
+                256,
+            ).alias("source_record_identity_hash")
+        )
+        .orderBy("source_record_identity_hash")
+        .collect()
+    )
+]
 accepted = (
-    windowed.withColumn("_rank", F.row_number().over(dedupe_window))
-    .where(F.col("_rank") == 1)
+    ranked.where(F.col("_rank") == 1)
     .drop("_rank")
     .withColumn("_fab002_run_id", F.lit(run_id))
     .withColumn("_fab002_object_run_id", F.lit(object_run_id))
@@ -225,6 +245,7 @@ result = {
     "accepted_row_count": accepted_row_count,
     "rejected_row_count": 0,
     "duplicate_row_count": duplicate_row_count,
+    "duplicate_identity_hashes": duplicate_identity_hashes,
     "inserted_row_count": inserted_row_count,
     "updated_row_count": updated_row_count,
     "schema_drift_event_count": drift_event_count,
