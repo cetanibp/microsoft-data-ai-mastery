@@ -2,12 +2,12 @@
   "contract": "FAB-003",
   "contract_version": "0.1.0",
   "status": "PASS",
-  "tests_run": 17,
+  "tests_run": 30,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
   "commit_sha": "local",
   "workflow_run_id": "local",
-  "validated_at_utc": "2026-08-31T22:00:52.032412+00:00",
+  "validated_at_utc": "2026-09-01T02:22:26.221501+00:00",
   "failure_details": []
 }
