@@ -1,6 +1,6 @@
 # FAB-003 — Reconciliation and quality-gate architecture
 
-**Status:** Proposed design
+**Status:** Implementation-ready; live validation pending
 
 **Related issue:** [#7 — FAB-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7)
 
@@ -76,3 +76,17 @@ Quarantine evidence additionally records a deterministic quarantine identity, re
 | Blocking check fails | Block | Unchanged | Correct data or policy, then replay fixed boundary |
 | Required check errors | Block | Unchanged | Repair evaluator/configuration, then replay |
 | Failure after target write | Not yet accepted | Unchanged | Idempotent replay and re-evaluation |
+
+## Deployable component mapping
+
+| Responsibility | Artifact |
+|---|---|
+| Resolve activated policy reference | `ops.usp_ResolveQualityPolicy` |
+| Execute allowlisted contract | `NB_FAB003_QualityGate` |
+| Preserve notebook evidence | Idempotent Delta quality-result and quarantine tables |
+| Persist transactional results | `ops.usp_RecordQualityCheckResult` and `ops.usp_RecordQuarantineEvidence` |
+| Derive and enforce decision | `ops.usp_FinalizeQualityDecision` |
+| Require acceptance before state advancement | `ops.usp_CompleteQualityAcceptedWatermarkAttempt` |
+| Publish operational review surface | `ops.vw_QualityResultOperational` |
+
+The FAB-001 policy rows remain unchanged. Their versioned `contract_reference` resolves to an allowlisted contract owned by FAB-003, so the approved metadata release is consumed rather than rewritten. Arbitrary SQL and executable metadata remain prohibited.
