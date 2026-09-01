@@ -17,7 +17,10 @@ The automated contract suite covers:
 13. completion requires a durable accepted quality decision;
 14. the Fabric notebook contains only allowlisted contracts and no physical or secret values;
 15. controlled failure injection is restricted to Development;
-16. FAB-002 emits hashed duplicate identities rather than raw payload values.
+16. FAB-002 emits hashed duplicate identities rather than raw payload values;
+17. the Fabric-generated quality pipeline is a deployable item;
+18. quality decision and accepted-wrapper activities precede watermark completion;
+19. generated pipeline workspace identifiers are sanitized.
 
 Tests must use only synthetic data and must require no Fabric resource, endpoint, secret, or external package.
 
