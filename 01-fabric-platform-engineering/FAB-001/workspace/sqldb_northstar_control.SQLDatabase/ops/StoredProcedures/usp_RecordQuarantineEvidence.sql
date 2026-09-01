@@ -12,6 +12,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
     SET XACT_ABORT ON;
+    SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
     IF NOT EXISTS
     (
@@ -26,6 +27,8 @@ BEGIN
           AND object_policy.quality_policy_key = @quality_policy_key
     )
         THROW 51110, 'Quarantine evidence does not match the active object run.', 1;
+
+    BEGIN TRANSACTION;
 
     UPDATE ops.QuarantineEvidence
     SET release_id = @release_id,
@@ -51,5 +54,7 @@ BEGIN
             @quality_rule_key, @reason_code, @source_record_identity_hash,
             @input_boundary_hash, @quarantined_at_utc
         );
+
+    COMMIT TRANSACTION;
 END;
 GO
