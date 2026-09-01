@@ -40,9 +40,22 @@ BEGIN
 
     BEGIN TRANSACTION;
 
+    IF EXISTS
+    (
+        SELECT 1
+        FROM ops.QualityCheckResult WITH (UPDLOCK, HOLDLOCK)
+        WHERE object_run_id = @object_run_id
+          AND quality_policy_key = @quality_policy_key
+          AND quality_rule_key = @quality_rule_key
+          AND quality_result_id <> @quality_result_id
+    )
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 51101, 'Quality result identity changed for an existing rule.', 1;
+    END;
+
     UPDATE ops.QualityCheckResult
-    SET quality_result_id = @quality_result_id,
-        policy_version = @policy_version,
+    SET policy_version = @policy_version,
         check_type = @check_type,
         observed_value = @observed_value,
         comparison_operator = @comparison_operator,
