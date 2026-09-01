@@ -8,6 +8,8 @@ on:
       - "01-fabric-platform-engineering/FAB-003/**"
       - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/QualityPolicy.sql"
       - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/ObjectQualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+      - "01-fabric-platform-engineering/FAB-002/workspace/NB_FAB002_IncrementalEncounter.Notebook/**"
       - "01-fabric-platform-engineering/FAB-002/runtime/**"
       - ".github/workflows/fab-003-quality-gate-contract.yml"
   push:
@@ -18,6 +20,8 @@ on:
       - "01-fabric-platform-engineering/FAB-003/**"
       - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/QualityPolicy.sql"
       - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/ObjectQualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+      - "01-fabric-platform-engineering/FAB-002/workspace/NB_FAB002_IncrementalEncounter.Notebook/**"
       - "01-fabric-platform-engineering/FAB-002/runtime/**"
       - ".github/workflows/fab-003-quality-gate-contract.yml"
   workflow_dispatch:
