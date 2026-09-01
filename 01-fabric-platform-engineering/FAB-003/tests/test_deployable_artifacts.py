@@ -37,6 +37,25 @@ class SqlArtifactTests(unittest.TestCase):
         for token in ("'PASS'", "'WARN'", "'FAIL'", "'ERROR'", "'BLOCK'"):
             self.assertIn(token, text)
 
+    def test_result_and_quarantine_writes_are_idempotent(self):
+        result_proc = (
+            CONTROL_ROOT
+            / "ops"
+            / "StoredProcedures"
+            / "usp_RecordQualityCheckResult.sql"
+        ).read_text(encoding="utf-8")
+        quarantine_proc = (
+            CONTROL_ROOT
+            / "ops"
+            / "StoredProcedures"
+            / "usp_RecordQuarantineEvidence.sql"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Quality result identity changed", result_proc)
+        self.assertIn("WITH (UPDLOCK, HOLDLOCK)", result_proc)
+        self.assertIn("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE", quarantine_proc)
+        self.assertIn("BEGIN TRANSACTION", quarantine_proc)
+        self.assertIn("COMMIT TRANSACTION", quarantine_proc)
+
     def test_quarantine_stores_hashes_not_payloads(self):
         text = (
             CONTROL_ROOT / "ops" / "Tables" / "QuarantineEvidence.sql"
