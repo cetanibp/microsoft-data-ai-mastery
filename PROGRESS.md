@@ -6,8 +6,8 @@
 |---|---:|
 | Milestones completed | 1 / 5 |
 | Epics completed | 0 / 4 |
-| Work items completed | 6 |
-| Competencies at level 3+ | 2 |
+| Work items completed | 7 |
+| Competencies at level 3+ | 3 |
 | Competencies at level 4+ | 0 |
 | Capstone status | Not started |
 
@@ -73,6 +73,42 @@
 - Implement [#7 — reconciliation and data-quality gates](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7) using the FAB-001 quality-policy contract and FAB-002 run identities.
 - Preserve publication-blocking decisions, quarantine evidence, and run/object-run correlation through quality execution.
 - Prepare [#9 — SLOs, observability, and incident response](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) to consume the durable execution traces created by FAB-002.
+
+### 2026-09 — Quality acceptance, quarantine, and recovery
+
+**Outcomes**
+
+- Completed FAB-003 with a policy-driven acceptance boundary between target publication and watermark commit.
+- Implemented allowlisted BLOCK and WARN contracts, durable SQL decisions/results, hashed quarantine evidence, and a quality-accepted completion wrapper.
+- Proved accepted, blocked, watermark-preservation, recovery-replay, duplicate quarantine, same-object-run idempotency, and live warning behavior.
+- Captured and sanitized Fabric-generated Pipeline, Notebook, and Lakehouse artifacts.
+- Expanded the FAB-003 suite to 33 tests, including generated-pipeline ordering and workspace-identifier sanitization.
+
+**Evidence shipped**
+
+- [FAB-003 reconciliation and data-quality gates](01-fabric-platform-engineering/FAB-003/README.md).
+- [FAB-003 live and automated evidence](01-fabric-platform-engineering/FAB-003/evidence/README.md).
+- [FAB-003 retrospective](01-fabric-platform-engineering/FAB-003/RETRO.md).
+- [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779) validating the generated pipeline.
+- [GitHub Actions run 33576595412](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33576595412) validating the synthetic duplicate quarantine window.
+
+**Skills improved**
+
+- Lakehouse, Delta, and Spark engineering: 1 → 2 — FAB-002 target merge plus [FAB-003 Delta quality and quarantine evidence](01-fabric-platform-engineering/FAB-003/README.md).
+- Metadata-driven ingestion: 2 → 3 — FAB-001 definitions, FAB-002 shared runtime, and [FAB-003 policy-driven acceptance](01-fabric-platform-engineering/FAB-003/RETRO.md).
+- Resiliency, recovery, and continuity: 2 → 3 — fixed-boundary block, state preservation, replay recovery, concurrency protection, and idempotent evidence across FAB-002 and FAB-003.
+
+**What failed or changed**
+
+- Fabric passed a blank optional Pipeline parameter to the notebook as null; the mapping now normalizes it with `coalesce`.
+- Notebook auto-binding wrote a physical workspace ID into generated source. CI rejected the commit, the repository definition was sanitized, and the pipeline suite now checks generated workspace identifiers.
+- The encounter object does not have the existing WARN policy assigned in immutable release `1.0.0`. WARN behavior was validated live in an isolated Delta table rather than mutating the approved release or writing a false SQL control-plane decision.
+- The original synthetic rows were behind the committed watermark; a later duplicate window produced genuine quarantine evidence without resetting runtime state.
+
+**Next focus**
+
+- Implement [#9 — SLOs, observability, and incident response](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) using the durable FAB-002 execution and FAB-003 quality evidence.
+- Project quality decisions, warning/block counts, rule durations, state outcomes, and owner/SLO metadata into operational monitoring and incident workflows.
 
 # YYYY-MM — Theme
 

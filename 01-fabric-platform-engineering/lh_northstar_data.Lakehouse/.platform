@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "NB_FAB002_IncrementalEncounter"
+    "type": "Lakehouse",
+    "displayName": "lh_northstar_data"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "e7e4e7a3-94d2-48be-a8ef-cc0c09c2f002"
+    "logicalId": "57ca2429-9709-ba5e-460d-d77c25ba06a6"
   }
 }

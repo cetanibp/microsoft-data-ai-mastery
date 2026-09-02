@@ -1,0 +1,69 @@
+name: FAB-003 quality-gate contract
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "01-fabric-platform-engineering/FAB-003/**"
+      - "01-fabric-platform-engineering/PL_FAB003_QualityGate.DataPipeline/**"
+      - "01-fabric-platform-engineering/lh_northstar_data.Lakehouse/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/QualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/ObjectQualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+      - "01-fabric-platform-engineering/FAB-002/workspace/NB_FAB002_IncrementalEncounter.Notebook/**"
+      - "01-fabric-platform-engineering/FAB-002/runtime/**"
+      - ".github/workflows/fab-003-quality-gate-contract.yml"
+  push:
+    branches:
+      - main
+      - "feature/fab-003-*"
+    paths:
+      - "01-fabric-platform-engineering/FAB-003/**"
+      - "01-fabric-platform-engineering/PL_FAB003_QualityGate.DataPipeline/**"
+      - "01-fabric-platform-engineering/lh_northstar_data.Lakehouse/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/QualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ctrl/Tables/ObjectQualityPolicy.sql"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+      - "01-fabric-platform-engineering/FAB-002/workspace/NB_FAB002_IncrementalEncounter.Notebook/**"
+      - "01-fabric-platform-engineering/FAB-002/runtime/**"
+      - ".github/workflows/fab-003-quality-gate-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fab-003-contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-quality-gate-contract:
+    name: Validate FAB-003 quality-gate contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run quality-gate contract tests
+        run: >-
+          python
+          01-fabric-platform-engineering/FAB-003/tests/run_contract_tests.py
+          --output
+          01-fabric-platform-engineering/FAB-003/evidence/ci-contract-test-results.json
+
+      - name: Upload contract evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fab-003-contract-${{ github.run_id }}
+          path: 01-fabric-platform-engineering/FAB-003/evidence/ci-contract-test-results.json
+          if-no-files-found: error
+          retention-days: 30
