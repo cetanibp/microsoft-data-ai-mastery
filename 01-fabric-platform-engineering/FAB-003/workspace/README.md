@@ -43,5 +43,5 @@ The notebook receives the existing FAB-002 identities and counts plus:
 
 - Delta tables preserve notebook-produced results even when SQL persistence or later pipeline activity fails.
 - `ops.QualityCheckResult`, `ops.QualityDecision`, and `ops.QuarantineEvidence` provide the transactional operational record.
-- `ops.vw_QualityResultOperational` publishes correlated results for review and later issue #9 observability work.
+- `ops.vw_QualityResultOperational` publishes correlated results consumed by the OPS-002 observability views and evaluations.
 - Quarantine evidence stores hashes and reason codes, never raw protected payloads.

@@ -67,7 +67,7 @@ Every Production-enabled ingestion object requires:
 - at least one `OPERATIONS` or `INCIDENT` owner;
 - at least one `DATA_PRODUCT` owner when the target crosses a governed publication boundary.
 
-The routing alias is later resolved by the observability implementation in Issue #9. It must not contain an email address, webhook, endpoint, token, or credential.
+The routing alias is resolved by the OPS-002 observability implementation. It must not contain an email address, webhook, endpoint, token, or credential.
 
 ## Release identity and versioning
 

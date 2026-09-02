@@ -23,7 +23,7 @@ A Proposed ADR must not be described as validated or accepted. An Accepted ADR s
 |---|---|---|---|---|
 | [ADR-000](ADR-000-template.md) | Reusable ADR template | Template | — | Standardizes decision context, options, tradeoffs, consequences, validation, and reconsideration |
 | [ADR-001](ADR-001-platform-and-workload-boundaries.md) | Platform and workload boundaries | Proposed | High | Defines workspace, domain, workload, and capacity-isolation strategy |
-| [ADR-002](ADR-002-environment-isolation-and-promotion.md) | Environment isolation and promotion | Proposed | High | Defines safe environment, validation, approval, deployment, and recovery boundaries |
+| [ADR-002](ADR-002-environment-isolation-and-promotion.md) | Environment isolation and promotion | Accepted | High | Validated by OPS-001 implementation, promotion, approval, and recovery evidence |
 | ADR-003 | Medallion and data-product organization | Planned | High | Defines layer, domain, ownership, contract, and publication boundaries |
 | ADR-004 | Batch versus event-driven integration | Planned | Medium | Determines which freshness requirements justify event-driven complexity |
 | ADR-005 | Identity, secrets, and least-privilege access | Planned | High | Defines identity, access, secret, separation-of-duties, and review controls |
@@ -39,8 +39,8 @@ A Proposed ADR must not be described as validated or accepted. An Accepted ADR s
 
 The register is a backlog, not a requirement to decide everything immediately. Create each ADR when the related implementation and evidence are close enough to support a credible decision.
 
-1. Complete [Issue #3](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/3) using ADR-001, ADR-002, the review checklist, and the Northstar review.
-2. Implement [Issue #8](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) and use its deployment evidence to validate ADR-002.
+1. [Issue #3](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/3) established ADR-001, ADR-002, the review checklist, and the Northstar review.
+2. [Issue #8](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) supplied the deployment, approval, and recovery evidence used to accept ADR-002.
 3. Create ADR-003 when designing the Fabric data and data-product organization.
 4. Create ADR-005 before implementing sensitive-data access.
 5. Create ADR-007 alongside operational monitoring and incident-response work.

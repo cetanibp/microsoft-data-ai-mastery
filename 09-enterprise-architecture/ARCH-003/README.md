@@ -18,7 +18,7 @@ ARCH-003 establishes a repeatable method for recording consequential architectur
 - [ADR-002 — Environment isolation and promotion](../decisions/ADR-002-environment-isolation-and-promotion.md)
 - [Architecture decision register and backlog](../decisions/README.md)
 
-ADR-001 and ADR-002 remain **Proposed** until their validation plans have adequate evidence and appropriate approval.
+ADR-001 remains **Proposed** pending workload, capacity, cost, security, and recovery evidence. ADR-002 is **Accepted** based on the implementation, promotion, approval, and recovery evidence produced by OPS-001.
 
 ### Architecture review
 
