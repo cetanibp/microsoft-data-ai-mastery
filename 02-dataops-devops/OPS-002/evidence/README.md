@@ -3,15 +3,11 @@
 ## Current evidence
 
 - `local-contract-test-results.json` — sanitized local execution report.
+- [Live Development checkpoint](live-development-checkpoint.md) — deployment, projection, SLO, and simulated routing results.
 - GitHub Actions will publish `ci-contract-test-results.json` as the `ops-002-contract-evidence` artifact.
 
 ## Live evidence still required
 
-- successful Fabric SQL project synchronization;
-- operational occurrence query output;
-- SLO evaluation persistence and idempotent replay;
-- simulated Development routing decision;
-- quality-enforcement integrity query;
 - injected failure, detection, triage, replay, and recovery timestamps;
 - final dashboard/query pack and retrospective.
 
