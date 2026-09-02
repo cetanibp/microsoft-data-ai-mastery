@@ -12,7 +12,10 @@ Coverage includes:
 6. alternating pair order;
 7. required runtime, capacity, cost-driver, and correctness metrics;
 8. decision and capacity-review thresholds;
-9. F256 allocated-cost calculation.
+9. F256 allocated-cost calculation;
+10. deployable worker and orchestrator notebook structure;
+11. synthetic scale, replay, concurrency, and telemetry safeguards;
+12. absence of committed physical identifiers and credentials.
 
 Run from the repository root:
 
