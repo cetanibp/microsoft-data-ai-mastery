@@ -56,6 +56,7 @@ Performance thresholds are decision rules, not reasons to discard an otherwise v
 | [benchmark-spec.md](benchmark-spec.md) | Experimental controls, execution order, measurements, formulas, and decision rules |
 | [config/workloads.json](config/workloads.json) | Machine-readable workload contract |
 | [runtime/benchmark_contract.py](runtime/benchmark_contract.py) | Dependency-free manifest validation and derived workload calculations |
+| [Fabric workspace artifacts](workspace/README.md) | Parameterized worker and orchestrator notebooks for `SEQ1` and `PAR4` |
 | [tests](tests/README.md) | Contract-test instructions and coverage |
 | `evidence/` | Sanitized local and live benchmark results |
 
