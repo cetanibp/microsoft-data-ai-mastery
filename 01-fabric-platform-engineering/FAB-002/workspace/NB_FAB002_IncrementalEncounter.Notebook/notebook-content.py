@@ -80,6 +80,8 @@ synthetic_rows = [
     ("enc-002", "fac-001", "complete", "2026-08-30T12:05:00Z", 3),
     ("enc-003", "fac-002", "complete", "2026-08-30T12:15:00Z", 4),
     ("enc-004", "fac-002", "future", "2026-08-30T12:16:00Z", 5),
+    ("enc-005", "fac-003", "arrived", "2026-08-30T12:22:00Z", 6),
+    ("enc-005", "fac-003", "complete", "2026-08-30T12:23:00Z", 7),
 ]
 
 source_schema = T.StructType(
