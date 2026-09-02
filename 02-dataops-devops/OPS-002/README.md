@@ -23,8 +23,8 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | Capability | Planned evidence | Status |
 |---|---|---|
 | Freshness, reliability, duration, and quality SLOs | [SLO contract](slo-contract.md) with explicit calculation rules | Approved |
-| Operational telemetry | Correlated SQL projections and tests | Planned |
-| Alert routing | Severity, owner alias, deduplication, and environment rules | Planned |
+| Operational telemetry | [Telemetry architecture](architecture.md) with correlated projections and durable evaluation | Designed |
+| Alert routing | [Routing contract](alert-routing.md) with severity, ownership, deduplication, and environment rules | Designed |
 | Incident response | Triage, replay, escalation, and recovery runbooks | Planned |
 | Failure-recovery exercise | Injected failure with detection and recovery evidence | Planned |
 
@@ -33,7 +33,7 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 1. Approve measurable SLO and error-budget contracts.
 2. Add operational evaluation tables and views without mutating metadata release 1.0.0.
 3. Evaluate synthetic run and quality evidence with credential-free tests.
-4. add environment-aware routing decisions; Development and Test record notifications but do not page.
+4. Add environment-aware routing decisions; Development and Test record notifications but do not page.
 5. Build an operational dashboard/query pack.
 6. Write runbooks and perform a documented failure-recovery exercise.
 7. Publish evidence, retrospective, and issue closure links.
@@ -54,5 +54,7 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | Path | Purpose |
 |---|---|
 | [slo-contract.md](slo-contract.md) | Approved indicators, objectives, calculation rules, exclusions, and error budgets |
+| [architecture.md](architecture.md) | Operational evidence flow, durable records, projections, and safety boundaries |
+| [alert-routing.md](alert-routing.md) | Severity, ownership, suppression, deduplication, and environment behavior |
 
 Additional implementation, tests, evidence, runbooks, and retrospective files will be added as the work progresses.
