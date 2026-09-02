@@ -22,17 +22,14 @@ This folder contains and will continue to collect sanitized, reproducible eviden
 - Replaying the same `12:20` to `12:21` boundary without failure injection succeeded, committed the recovered candidate, and advanced state exactly once to version `6`.
 - A `12:21` to `12:23` synthetic window extracted two versions of one business key, accepted the latest row, persisted one `DUPLICATE_BUSINESS_KEY` quarantine record containing only 64-character hashes, and committed state version `7`.
 - Replaying the identical quarantine write for the same object run retained one row and one distinct deterministic quarantine ID.
+- The existing `reference-count-warning` contract was evaluated live in an isolated Delta evidence table: observed target variance `50`, threshold `LE 1`, result `WARN`, decision `ACCEPTED_WITH_WARNING`, zero blocking failures, and watermark eligibility retained. It was intentionally not persisted as a SQL decision because release `1.0.0` does not assign that policy to the encounter object.
 - Fabric Git captured the generated pipeline and Lakehouse items. Notebook auto-binding initially exposed a physical workspace identifier; the repository definitions were sanitized, pipeline contract coverage was added, and CI passed with 33 tests.
 
-## Remaining live evidence
+## Completion summary
 
-- governed live warning decision;
-- final acceptance matrix and retrospective links.
-
-## Resume point
-
-1. Validate warning behavior without mutating the approved FAB-001 release; use a new governed metadata release or record the current watermark vertical-slice limitation explicitly.
-2. Complete final evidence, retrospective, issue updates, and branch review.
+- Accepted, blocked, recovery-replay, hashed quarantine, same-object-run idempotency, operational review, and isolated warning behavior are validated.
+- The generated Pipeline and Lakehouse definitions are committed, notebook physical bindings are sanitized, and 33 automated tests pass.
+- Final decisions, lessons, limitations, and the Issue #9 handoff are recorded in [RETRO.md](../RETRO.md).
 
 ## Sanitization
 
