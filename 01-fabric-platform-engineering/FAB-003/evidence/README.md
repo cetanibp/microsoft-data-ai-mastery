@@ -6,7 +6,8 @@ This folder contains and will continue to collect sanitized, reproducible eviden
 
 - [local contract-test output](local-contract-test-results.json): 30 tests passed with no failures or errors;
 - [GitHub Actions run 33462357520](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33462357520): 30 tests passed and sanitized evidence was retained as a workflow artifact;
-- [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779): 33 tests passed, including generated-pipeline ordering and workspace-identifier sanitization.
+- [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779): 33 tests passed, including generated-pipeline ordering and workspace-identifier sanitization;
+- [GitHub Actions run 33576595412](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33576595412): 33 tests passed after adding the sanitized synthetic duplicate window.
 
 ## Live Fabric checkpoint — 2026-09-01
 
@@ -19,20 +20,19 @@ This folder contains and will continue to collect sanitized, reproducible eviden
 - The corrected baseline run to the synthetic upper boundary `2026-08-30T12:20:00Z` completed successfully through the quality-enabled pipeline. Durable evidence showed `ACCEPTED`, four passing blocking rules, a committed candidate, and state version `5`.
 - The controlled `BLOCK_TARGET_COUNT` run produced one failed `TARGET_COUNT` rule, a durable `BLOCKED` decision, an abandoned candidate with `QUALITY_GATE_BLOCKED`, and no watermark advancement.
 - Replaying the same `12:20` to `12:21` boundary without failure injection succeeded, committed the recovered candidate, and advanced state exactly once to version `6`.
+- A `12:21` to `12:23` synthetic window extracted two versions of one business key, accepted the latest row, persisted one `DUPLICATE_BUSINESS_KEY` quarantine record containing only 64-character hashes, and committed state version `7`.
+- Replaying the identical quarantine write for the same object run retained one row and one distinct deterministic quarantine ID.
 - Fabric Git captured the generated pipeline and Lakehouse items. Notebook auto-binding initially exposed a physical workspace identifier; the repository definitions were sanitized, pipeline contract coverage was added, and CI passed with 33 tests.
 
 ## Remaining live evidence
 
-- controlled warning decision;
-- hashed quarantine and same-object-run idempotency results;
+- governed live warning decision;
 - final acceptance matrix and retrospective links.
 
 ## Resume point
 
-1. Add a governed Development-only warning scenario without mutating the approved FAB-001 release.
-2. Execute a synthetic duplicate window through a governed recovery/reset path, then verify hashed quarantine evidence in both Delta and SQL.
-3. Prove same-object-run result/quarantine idempotency.
-4. Complete final evidence, retrospective, issue updates, and branch review.
+1. Validate warning behavior without mutating the approved FAB-001 release; use a new governed metadata release or record the current watermark vertical-slice limitation explicitly.
+2. Complete final evidence, retrospective, issue updates, and branch review.
 
 ## Sanitization
 
