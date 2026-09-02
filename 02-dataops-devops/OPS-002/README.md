@@ -1,6 +1,6 @@
 # OPS-002 — SLOs, observability, and incident response
 
-**Status:** In progress  
+**Status:** Complete
 **Related issue:** [#9 — OPS-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9)  
 **Milestone:** Fabric Platform & DataOps
 
@@ -26,7 +26,7 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | Operational telemetry | [Telemetry architecture](architecture.md), deployable SQL objects, contract tests, and [live evidence](evidence/live-development-checkpoint.md) | Live validated |
 | Alert routing | [Routing contract](alert-routing.md), environment-aware persistence, deduplication tests, and [live evidence](evidence/live-development-checkpoint.md) | Live validated |
 | Incident response | [Triage, replay, escalation, and recovery runbooks](runbooks/README.md) with read-only query pack and incident template | Implemented and contract tested |
-| Failure-recovery exercise | Injected failure with detection and recovery evidence | Planned |
+| Failure-recovery exercise | [Stale-candidate detection, triage, terminal handling, and state-safe recovery](evidence/failure-recovery-exercise.md) | Live validated |
 
 ## Implementation sequence
 
@@ -60,6 +60,7 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | [tests](tests/README.md) | Functional and deployable-artifact contract tests |
 | [evidence](evidence/README.md) | Sanitized automated and live evidence index |
 | [runbooks](runbooks/README.md) | Triage, replay, escalation, recovery, query, and incident-record procedures |
+| [RETRO.md](RETRO.md) | Outcomes, corrections, limitations, improvements, and skill reassessment |
 
 ## Implemented SQL surface
 
@@ -68,4 +69,4 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 - Procedures: `ops.usp_RecordTelemetryExclusion`, `ops.usp_RecordSloEvaluation`, and `ops.usp_RecordAlertRoutingDecision`.
 - Automation: `.github/workflows/ops-002-observability-contract.yml`.
 
-Additional implementation, tests, evidence, runbooks, and retrospective files will be added as the work progresses.
+The implementation is complete. Future productionization priorities are scheduled evaluation, external delivery acknowledgement, and a governed monitoring experience.

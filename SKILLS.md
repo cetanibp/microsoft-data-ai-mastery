@@ -23,7 +23,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Metadata-driven ingestion | 1 | 3 | 5 | [FAB-001 control plane](01-fabric-platform-engineering/FAB-001/README.md), [FAB-002 runtime](01-fabric-platform-engineering/FAB-002/README.md), and [FAB-003 acceptance gates](01-fabric-platform-engineering/FAB-003/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
-| Observability, SLOs, and incident response | 1 | 1 | 5 | |
+| Observability, SLOs, and incident response | 1 | 3 | 5 | [OPS-002 evidence](02-dataops-devops/OPS-002/README.md) |
 | Real-Time Intelligence | 1 | 1 | 4 | |
 | Foundry application engineering | 1 | 1 | 4 | |
 | Retrieval and grounding | 1 | 1 | 5 | |
@@ -104,7 +104,7 @@ These competencies remain below Level 3 because the complete ingestion runtime, 
 
 ### Next skill target
 
-The next evidence-producing priority is [#9 — SLOs, observability, and incident response](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9). It should use the correlated FAB-001 through FAB-003 telemetry to define measurable service objectives, operational views, alert routing, and tested incident-response workflows.
+The next evidence-producing priority is [#10 — performance, capacity, and cost benchmarking](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10). It should establish representative workloads, compare design alternatives, and turn runtime and capacity observations into defensible optimization decisions.
 
 ## Progress reassessment — September 2, 2026
 
@@ -136,6 +136,21 @@ FAB-002 and FAB-003 demonstrate fixed replayable boundaries, post-write recovery
 This satisfies Level 3 because failure and recovery behavior is executable and was verified in the live Fabric control plane rather than described only in architecture documents.
 
 **Why the score is not yet 4:** regional recovery, backup/restore, state migration, capacity failure, disaster simulations, and measured recovery objectives remain future evidence.
+
+### Observability, SLOs, and incident response: 1 → 3
+
+OPS-002 provides an independently implemented operational path across measurable objectives, idempotent evaluations, dashboard projections, deterministic routing, runbooks, and live failure recovery:
+
+- freshness, reliability, duration, quality acceptance, quality enforcement, and alert-latency contracts;
+- correlated logical-occurrence telemetry that avoids retry inflation;
+- durable evaluation and simulated routing decisions with replay-safe deduplication;
+- live reliability-breach detection and deterministic owner/severity routing;
+- triage, replay, escalation, recovery, query, and incident-record procedures; and
+- a stale-candidate exercise that preserved the accepted watermark and audit history.
+
+This satisfies Level 3 because the solution was designed, built, tested, troubleshot, recovered, and documented with live evidence.
+
+**Why the score is not yet 4:** external delivery integration, scheduled evaluation, multi-scenario threshold optimization, a governed monitoring product, and broader incident simulations remain future evidence.
 
 ## Monthly assessment questions
 

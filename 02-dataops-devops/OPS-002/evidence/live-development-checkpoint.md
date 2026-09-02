@@ -78,8 +78,6 @@ The first routing verification query referenced an `evaluation_status` column th
 
 The open-breach view now exposes its explicit `BREACH` status, and the automated suite checks that contract.
 
-## Remaining work
+## Completion link
 
-- triage, replay, escalation, and recovery runbooks;
-- a documented failure-recovery exercise;
-- final dashboard/query pack, evidence index, and retrospective.
+The final [failure-recovery exercise](failure-recovery-exercise.md) used the operational query pack and runbooks to resolve a real orphaned candidate without changing the accepted watermark.
