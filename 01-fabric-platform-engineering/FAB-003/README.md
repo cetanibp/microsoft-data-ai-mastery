@@ -4,7 +4,7 @@ FAB-003 adds policy-driven acceptance checks between FAB-002 target publication 
 
 ## Status
 
-In progress. The architecture, credential-free executable contract, durable SQL control-plane extension, Fabric quality-gate notebook, and live quality-enabled pipeline are implemented. Thirty-three automated tests cover policy validation, reconciliation, decisions, quarantine, replay, transactional evidence, completion gating, deployable artifact structure, and secret boundaries. Live accepted, blocked, watermark-preservation, and recovery-replay paths passed. Warning, quarantine, idempotent-evidence, and final operational validation remain open.
+In progress. The architecture, credential-free executable contract, durable SQL control-plane extension, Fabric quality-gate notebook, and live quality-enabled pipeline are implemented. Thirty-three automated tests cover policy validation, reconciliation, decisions, quarantine, replay, transactional evidence, completion gating, deployable artifact structure, and secret boundaries. Live accepted, blocked, watermark-preservation, recovery-replay, hashed quarantine, and same-object-run idempotency paths passed. Governed live warning validation and final evidence remain open.
 
 ## Objective
 
@@ -36,7 +36,7 @@ The deployable vertical slice targets the synthetic `ingest-clinical-encounter` 
 |---|---|---|
 | Source-to-target count and aggregate checks | Executable evaluator, Fabric notebook, and tests | Live accepted and blocked paths passed |
 | Blocking versus warning thresholds | Versioned allowlisted contracts and decision tests | Live block passed; warning pending |
-| Quarantine with traceability | Hashed, idempotent Delta and SQL evidence | Implemented; live quarantine and replay pending |
+| Quarantine with traceability | Hashed, idempotent Delta and SQL evidence | Live quarantine and idempotent replay passed |
 | Operational quality results | Durable tables and operational SQL view | Accepted and blocked results verified live |
 
 ## Repository contents
