@@ -76,6 +76,30 @@ class SqlArtifactTests(unittest.TestCase):
         self.assertNotIn("https://", text)
         self.assertNotIn("@northstar", text.lower())
 
+    def test_candidate_and_persistence_share_deduplication_contract(self):
+        candidate = (
+            CONTROL_ROOT / "ops" / "Views" / "vw_AlertRoutingCandidate.sql"
+        ).read_text()
+        procedure = (
+            CONTROL_ROOT
+            / "ops"
+            / "StoredProcedures"
+            / "usp_RecordAlertRoutingDecision.sql"
+        ).read_text()
+        for token in (
+            "CONVERT(varchar(36), breach.environment_id)",
+            "breach.objective_key",
+            "breach.window_end_utc",
+            "HASHBYTES('SHA2_256'",
+        ):
+            self.assertIn(token, candidate)
+        for token in (
+            "CONVERT(varchar(36), @environment_id)",
+            "@deduplication_scope",
+            "HASHBYTES('SHA2_256'",
+        ):
+            self.assertIn(token, procedure)
+
     def test_quality_integrity_checks_state_and_accepted_status(self):
         occurrence = (
             CONTROL_ROOT / "ops" / "Views" / "vw_OperationalOccurrence.sql"

@@ -49,6 +49,7 @@ environment_id
 + ingestion_object_key or platform scope
 + detection_category
 + severity
++ objective key
 + evaluation window end or object_run_id
 + routing_alias
 ```

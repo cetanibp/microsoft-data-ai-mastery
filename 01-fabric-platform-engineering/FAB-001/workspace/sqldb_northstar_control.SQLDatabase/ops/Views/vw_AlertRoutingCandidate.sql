@@ -27,7 +27,16 @@ SELECT
     CONVERT(varchar(64), HASHBYTES('SHA2_256', CONCAT(
         CONVERT(varchar(36), breach.environment_id), '|',
         COALESCE(breach.ingestion_object_key, 'platform'), '|',
-        breach.objective_key, '|', breach.alert_severity, '|',
+        CASE breach.objective_key
+            WHEN 'critical-freshness' THEN 'FRESHNESS'
+            WHEN 'standard-freshness' THEN 'FRESHNESS'
+            WHEN 'ingestion-reliability' THEN 'RELIABILITY'
+            WHEN 'duration-compliance' THEN 'DURATION'
+            WHEN 'quality-acceptance' THEN 'QUALITY'
+            WHEN 'quality-enforcement' THEN 'QUALITY_ENFORCEMENT'
+            WHEN 'critical-alert-latency' THEN 'ALERT_LATENCY'
+        END, '|', breach.alert_severity, '|',
+        breach.objective_key, '|',
         CONVERT(varchar(33), breach.window_end_utc, 126), '|',
         COALESCE(owner_assignment.routing_alias, 'no-route'))), 2) AS deduplication_key,
     breach.detected_at_utc,
