@@ -23,8 +23,8 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | Capability | Planned evidence | Status |
 |---|---|---|
 | Freshness, reliability, duration, and quality SLOs | [SLO contract](slo-contract.md) with explicit calculation rules | Approved |
-| Operational telemetry | [Telemetry architecture](architecture.md) with correlated projections and durable evaluation | Designed |
-| Alert routing | [Routing contract](alert-routing.md) with severity, ownership, deduplication, and environment rules | Designed |
+| Operational telemetry | [Telemetry architecture](architecture.md), deployable SQL objects, and contract tests | Implemented; live validation pending |
+| Alert routing | [Routing contract](alert-routing.md), environment-aware persistence, and deduplication tests | Implemented; live validation pending |
 | Incident response | Triage, replay, escalation, and recovery runbooks | Planned |
 | Failure-recovery exercise | Injected failure with detection and recovery evidence | Planned |
 
@@ -56,5 +56,15 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | [slo-contract.md](slo-contract.md) | Approved indicators, objectives, calculation rules, exclusions, and error budgets |
 | [architecture.md](architecture.md) | Operational evidence flow, durable records, projections, and safety boundaries |
 | [alert-routing.md](alert-routing.md) | Severity, ownership, suppression, deduplication, and environment behavior |
+| [runtime](runtime/README.md) | Credential-free executable SLO and routing contract |
+| [tests](tests/README.md) | Functional and deployable-artifact contract tests |
+| [evidence](evidence/README.md) | Sanitized automated and live evidence index |
+
+## Implemented SQL surface
+
+- Tables: `ops.TelemetryExclusion`, `ops.SloEvaluation`, and `ops.AlertRoutingDecision`.
+- Views: `ops.vw_OperationalOccurrence`, `ops.vw_QualityEnforcementIntegrity`, `ops.vw_SloEvaluationLatest`, `ops.vw_OpenSloBreach`, `ops.vw_AlertRoutingCandidate`, and `ops.vw_OperationsDashboard`.
+- Procedures: `ops.usp_RecordTelemetryExclusion`, `ops.usp_RecordSloEvaluation`, and `ops.usp_RecordAlertRoutingDecision`.
+- Automation: `.github/workflows/ops-002-observability-contract.yml`.
 
 Additional implementation, tests, evidence, runbooks, and retrospective files will be added as the work progresses.
