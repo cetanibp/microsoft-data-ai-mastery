@@ -53,6 +53,6 @@ The live validation used the isolated `Northstar Data Platform - FAB-001` worksp
 - [Issue #8](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8) supplies the accepted Git, environment, deployment, identity, and credential boundaries.
 - [Issue #6](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6) consumed this contract in the completed [FAB-002 resilient ingestion runtime](../FAB-002/README.md).
 - [Issue #7](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7) consumed the quality-policy and publication-gate references in the completed [FAB-003 quality-gate runtime](../FAB-003/README.md).
-- [Issue #9](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) will consume SLO, ownership, schedule, event, and correlation metadata.
+- [Issue #9](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) consumed the SLO, ownership, schedule, event, and correlation metadata in the completed [OPS-002 operations layer](../../02-dataops-devops/OPS-002/README.md).
 
 No real organizational credentials, endpoints, patient data, or proprietary metadata are used.

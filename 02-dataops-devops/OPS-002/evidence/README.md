@@ -5,7 +5,7 @@
 - `local-contract-test-results.json` — sanitized local execution report.
 - [Live Development checkpoint](live-development-checkpoint.md) — deployment, projection, SLO, and simulated routing results.
 - [Failure-recovery exercise](failure-recovery-exercise.md) — stale-candidate detection, triage, terminal handling, and state-safe recovery.
-- GitHub Actions will publish `ci-contract-test-results.json` as the `ops-002-contract-evidence` artifact.
+- [GitHub Actions run 33592632908](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33592632908) passed and published `ci-contract-test-results.json` as the `ops-002-contract-evidence` artifact.
 
 ## Evidence boundaries
 

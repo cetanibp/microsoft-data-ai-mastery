@@ -1,6 +1,6 @@
 # FAB-001 — Logical metadata model
 
-**Status:** Proposed design  
+**Status:** Implemented and validated
 **Related issue:** [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5)  
 **Requirements:** [Control-plane architecture requirements and principles](architecture.md)  
 **Diagram source:** [metadata-model.mmd](metadata-model.mmd)
@@ -110,7 +110,7 @@ Only WATERMARK load policies may reference a WatermarkPolicy. APPEND may use imm
 | WatermarkCandidate | `candidate_id` | Proposed from/to boundary for one object run; observed state version and PROPOSED, COMMITTED, or ABANDONED status |
 | StateEvent | `state_event_id` | Append-only evidence for activation, claim, transition, commit, abandonment, correction, or recovery; actor, reason, correlation, before hash, and after hash |
 
-ExecutionRun and ObjectRun define the correlation contract required by later implementation. Issue #6 may extend their operational columns without changing stable identifiers or release semantics. Issue #9 may project StateEvent and run history into an analytical operations store.
+ExecutionRun and ObjectRun define the correlation contract used by downstream implementation. FAB-002 extended their operational evidence without changing stable identifiers or release semantics. OPS-002 projects StateEvent and run history through the operational occurrence and dashboard views.
 
 ## Cardinality and relationship rules
 
@@ -225,7 +225,7 @@ Every production-enabled ingestion object requires:
 - one OPERATIONS or INCIDENT owner;
 - one DATA_PRODUCT owner when the target is published for consumption.
 
-An owner record contains a group key and routing alias, not a personal email address or credential. Issue #9 will map the routing alias to the approved alerting destination.
+An owner record contains a group key and routing alias, not a personal email address or credential. OPS-002 maps the routing alias to an environment-appropriate delivery decision while preserving the external destination boundary.
 
 ## Validation invariants
 

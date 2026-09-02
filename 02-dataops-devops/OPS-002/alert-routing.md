@@ -1,6 +1,6 @@
 # OPS-002 — Alert-routing contract
 
-**Status:** Proposed for implementation
+**Status:** Implemented and live validated
 
 ## Purpose
 

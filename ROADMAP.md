@@ -21,14 +21,14 @@ Exit evidence: a prioritized backlog, baseline skill scores, defined capstone sc
 **Status:** In progress  
 Target: October–December 2026
 
-- [ ] Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
+- [x] Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
 - [x] Implement the initial governed CI/CD and environment-promotion foundation through OPS-001.
-- [ ] Add production observability and automated quality gates beyond the deployment validation already implemented.
+- [x] Add tested operational observability and automated quality gates beyond deployment validation.
 - [ ] Benchmark performance and document capacity/cost tradeoffs.
 
 Exit evidence: a repeatable framework, failure-injection tests, operational dashboard, runbook, ADRs, and benchmark report.
 
-**Progress to date:** OPS-001 established the governed Fabric delivery foundation and ADR-002 is Accepted. FAB-001 completed the versioned ingestion control-plane contract, and FAB-002 completed its first resilient runtime consumer with live success, failure, recovery, drift, telemetry, and concurrency evidence. Reconciliation remains open, so the current priority is [#7 — reconciliation and data-quality gates](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7).
+**Progress to date:** OPS-001 established governed Fabric delivery and supported acceptance of ADR-002. FAB-001 through FAB-003 completed the versioned control plane, resilient ingestion runtime, reconciliation, quality gates, quarantine, and recovery evidence. OPS-002 added measurable SLOs, correlated operational telemetry, deterministic simulated routing, runbooks, and a live stale-candidate recovery exercise. The current priority is [#10 — performance, capacity, and cost benchmarking](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10); [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) remains the final planned Phase 1 work item.
 
 ## Phase 2 — Production AI and agent engineering
 

@@ -135,7 +135,7 @@ Each object attempt records:
 - candidate and committed state versions;
 - schema fingerprint and drift classification.
 
-Issue #9 may project this evidence into SLOs and alerts, but it must retain these identities.
+OPS-002 projects this evidence into SLOs and alert-routing decisions while retaining these identities.
 
 ## Security and cost boundaries
 

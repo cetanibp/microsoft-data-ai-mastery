@@ -1,6 +1,6 @@
 # FAB-001 — Control-plane architecture requirements and principles
 
-**Status:** In progress  
+**Status:** Complete
 **Related issue:** [#5 — FAB-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/5)  
 **Reference scenario:** [Northstar Health System](../../09-enterprise-architecture/ARCH-001/README.md)
 
@@ -51,7 +51,7 @@ The quality runtime must be able to resolve:
 - the SLO or publication decision affected by a failed check;
 - ownership and escalation routing.
 
-FAB-001 defines policy references and lifecycle boundaries. Issue #7 will implement the check engine and result processing.
+FAB-001 defines policy references and lifecycle boundaries. Issue #7 implemented the check engine and result processing through the completed [FAB-003 quality-gate runtime](../FAB-003/README.md).
 
 ### Issue #9 — SLOs, observability, and incident response
 
@@ -63,7 +63,7 @@ The operations layer must be able to resolve:
 - schedule and expected-completion context;
 - correlation keys that connect object, metadata version, run, quality result, and release evidence.
 
-FAB-001 defines objectives and identifiers. Issue #9 will implement telemetry, evaluation, alert routing, and runbooks.
+FAB-001 defines objectives and identifiers. Issue #9 implemented telemetry, evaluation, alert routing, and runbooks through the completed [OPS-002 operations layer](../../02-dataops-devops/OPS-002/README.md).
 
 ## Functional requirements
 

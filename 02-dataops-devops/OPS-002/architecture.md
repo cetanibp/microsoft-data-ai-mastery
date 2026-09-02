@@ -1,10 +1,10 @@
 # OPS-002 — Operational telemetry architecture
 
-**Status:** Proposed for implementation
+**Status:** Implemented and live validated
 
 ## Decision summary
 
-OPS-002 will add a small operational evaluation layer to the existing Northstar control database. Existing FAB-002 and FAB-003 tables remain the authoritative execution, quality, and watermark evidence. OPS-002 adds reproducible projections, durable SLO evaluations, explicit exclusions, and idempotent alert-routing decisions.
+OPS-002 adds a small operational evaluation layer to the existing Northstar control database. Existing FAB-002 and FAB-003 tables remain the authoritative execution, quality, and watermark evidence. OPS-002 provides reproducible projections, durable SLO evaluations, explicit exclusions, and idempotent alert-routing decisions.
 
 It does not copy source payloads, replace runtime state, or alter immutable metadata release 1.0.0.
 
