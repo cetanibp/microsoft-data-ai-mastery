@@ -6,8 +6,8 @@
 |---|---:|
 | Milestones completed | 1 / 5 |
 | Epics completed | 0 / 4 |
-| Work items completed | 7 |
-| Competencies at level 3+ | 3 |
+| Work items completed | 8 |
+| Competencies at level 3+ | 4 |
 | Competencies at level 4+ | 0 |
 | Capstone status | Not started |
 
@@ -83,12 +83,16 @@
 - Proved accepted, blocked, watermark-preservation, recovery-replay, duplicate quarantine, same-object-run idempotency, and live warning behavior.
 - Captured and sanitized Fabric-generated Pipeline, Notebook, and Lakehouse artifacts.
 - Expanded the FAB-003 suite to 33 tests, including generated-pipeline ordering and workspace-identifier sanitization.
+- Completed OPS-002 with measurable SLOs, correlated operational telemetry, idempotent evaluation and routing persistence, operational runbooks, and a live stale-candidate recovery exercise.
+- Proved a reliability breach, deterministic simulated routing, replay-safe persistence, quality-enforcement integrity, and state-safe orphan recovery in Development.
 
 **Evidence shipped**
 
 - [FAB-003 reconciliation and data-quality gates](01-fabric-platform-engineering/FAB-003/README.md).
 - [FAB-003 live and automated evidence](01-fabric-platform-engineering/FAB-003/evidence/README.md).
 - [FAB-003 retrospective](01-fabric-platform-engineering/FAB-003/RETRO.md).
+- [OPS-002 SLOs, observability, and incident response](02-dataops-devops/OPS-002/README.md).
+- [OPS-002 live telemetry and routing checkpoint](02-dataops-devops/OPS-002/evidence/live-development-checkpoint.md), [failure-recovery exercise](02-dataops-devops/OPS-002/evidence/failure-recovery-exercise.md), and [retrospective](02-dataops-devops/OPS-002/RETRO.md).
 - [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779) validating the generated pipeline.
 - [GitHub Actions run 33576595412](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33576595412) validating the synthetic duplicate quarantine window.
 
@@ -97,6 +101,7 @@
 - Lakehouse, Delta, and Spark engineering: 1 → 2 — FAB-002 target merge plus [FAB-003 Delta quality and quarantine evidence](01-fabric-platform-engineering/FAB-003/README.md).
 - Metadata-driven ingestion: 2 → 3 — FAB-001 definitions, FAB-002 shared runtime, and [FAB-003 policy-driven acceptance](01-fabric-platform-engineering/FAB-003/RETRO.md).
 - Resiliency, recovery, and continuity: 2 → 3 — fixed-boundary block, state preservation, replay recovery, concurrency protection, and idempotent evidence across FAB-002 and FAB-003.
+- Observability, SLOs, and incident response: 1 → 3 — [OPS-002 measurable objectives, live routing, runbooks, and recovery evidence](02-dataops-devops/OPS-002/README.md).
 
 **What failed or changed**
 
@@ -104,11 +109,14 @@
 - Notebook auto-binding wrote a physical workspace ID into generated source. CI rejected the commit, the repository definition was sanitized, and the pipeline suite now checks generated workspace identifiers.
 - The encounter object does not have the existing WARN policy assigned in immutable release `1.0.0`. WARN behavior was validated live in an isolated Delta table rather than mutating the approved release or writing a false SQL control-plane decision.
 - The original synthetic rows were behind the committed watermark; a later duplicate window produced genuine quarantine evidence without resetting runtime state.
+- OPS-002's first routing candidate and persistence logic derived different deduplication keys; live validation exposed the mismatch and the contract was unified.
+- A verification query expected `evaluation_status` from the open-breach view; SQL compilation prevented the write, the view contract was corrected, and routing then persisted idempotently.
+- Failure-exercise precheck found a genuine orphaned candidate, so the exercise preserved the later accepted winner and abandoned the obsolete attempt instead of injecting another failure or replaying an already-covered boundary.
 
 **Next focus**
 
-- Implement [#9 — SLOs, observability, and incident response](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9) using the durable FAB-002 execution and FAB-003 quality evidence.
-- Project quality decisions, warning/block counts, rule durations, state outcomes, and owner/SLO metadata into operational monitoring and incident workflows.
+- Implement [#10 — performance, capacity, and cost benchmarking](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10) using representative Fabric workloads and data volumes.
+- Compare at least two design alternatives and quantify runtime, concurrency, resource, and cost tradeoffs.
 
 # YYYY-MM — Theme
 

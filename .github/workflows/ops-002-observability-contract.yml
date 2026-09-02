@@ -1,0 +1,42 @@
+name: OPS-002 Observability Contract
+
+on:
+  pull_request:
+    paths:
+      - "02-dataops-devops/OPS-002/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+      - ".github/workflows/ops-002-observability-contract.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "02-dataops-devops/OPS-002/**"
+      - "01-fabric-platform-engineering/FAB-001/workspace/sqldb_northstar_control.SQLDatabase/ops/**"
+
+permissions:
+  contents: read
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run OPS-002 contract tests
+        run: |
+          python 02-dataops-devops/OPS-002/tests/run_contract_tests.py \
+            --output 02-dataops-devops/OPS-002/evidence/ci-contract-test-results.json
+
+      - name: Upload contract evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ops-002-contract-evidence
+          path: 02-dataops-devops/OPS-002/evidence/ci-contract-test-results.json
+          if-no-files-found: error
