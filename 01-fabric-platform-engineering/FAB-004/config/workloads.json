@@ -1,0 +1,91 @@
+{
+  "contract_version": "1.0.0",
+  "tracking_id": "FAB-004",
+  "environment": "development",
+  "data_classification": "synthetic",
+  "capacity": {
+    "sku": "F256",
+    "capacity_units": 256,
+    "hourly_price_usd": null
+  },
+  "alternatives": [
+    {
+      "alternative_id": "SEQ1",
+      "max_parallelism": 1
+    },
+    {
+      "alternative_id": "PAR4",
+      "max_parallelism": 4
+    }
+  ],
+  "scale_tiers": {
+    "smoke": {
+      "object_count": 1,
+      "rows_per_object": 10000
+    },
+    "standard": {
+      "object_count": 4,
+      "rows_per_object": 1000000
+    },
+    "large": {
+      "object_count": 8,
+      "rows_per_object": 10000000
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "SMOKE",
+      "workload_type": "incremental",
+      "scale_tier": "smoke",
+      "alternatives": ["SEQ1"],
+      "measured_repetitions": 0,
+      "comparison_included": false
+    },
+    {
+      "scenario_id": "STEADY",
+      "workload_type": "incremental",
+      "scale_tier": "standard",
+      "alternatives": ["SEQ1", "PAR4"],
+      "measured_repetitions": 3,
+      "comparison_included": true
+    },
+    {
+      "scenario_id": "PEAK",
+      "workload_type": "incremental",
+      "scale_tier": "large",
+      "alternatives": ["SEQ1", "PAR4"],
+      "measured_repetitions": 3,
+      "comparison_included": true
+    },
+    {
+      "scenario_id": "REPLAY",
+      "workload_type": "idempotent_replay",
+      "scale_tier": "standard",
+      "alternatives": ["SEQ1", "PAR4"],
+      "measured_repetitions": 3,
+      "comparison_included": true
+    }
+  ],
+  "pair_order": [
+    ["SEQ1", "PAR4"],
+    ["PAR4", "SEQ1"],
+    ["SEQ1", "PAR4"]
+  ],
+  "required_metrics": [
+    "elapsed_seconds",
+    "queue_seconds",
+    "throughput_rows_per_second",
+    "cu_seconds",
+    "cu_seconds_per_million_rows",
+    "peak_utilization_pct",
+    "throttling_count",
+    "correctness_status"
+  ],
+  "decision_thresholds": {
+    "minimum_elapsed_improvement_pct": 15,
+    "maximum_normalized_cu_increase_pct": 25,
+    "capacity_review_utilization_pct": 80,
+    "capacity_review_consecutive_samples": 3,
+    "critical_workload_max_degradation_pct": 20
+  }
+}
