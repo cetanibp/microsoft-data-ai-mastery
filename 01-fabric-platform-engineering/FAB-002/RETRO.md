@@ -2,6 +2,7 @@
 
 **Status:** Complete  
 **Issue:** [#6 — FAB-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6)  
+**Pull request:** [#35](https://github.com/cetanibp/microsoft-data-ai-mastery/pull/35)  
 **Completed:** 2026-08-30
 
 ## Outcome

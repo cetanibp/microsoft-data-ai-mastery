@@ -104,7 +104,7 @@ These competencies remain below Level 3 because the complete ingestion runtime, 
 
 ### Next skill target
 
-The next evidence-producing priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6). Level 3 for **Metadata-driven ingestion** requires a working shared runtime with restartability, idempotency, dependency handling, partial-failure recovery, and concurrency evidence.
+The next evidence-producing priority is [#9 — SLOs, observability, and incident response](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9). It should use the correlated FAB-001 through FAB-003 telemetry to define measurable service objectives, operational views, alert routing, and tested incident-response workflows.
 
 ## Progress reassessment — September 2, 2026
 
