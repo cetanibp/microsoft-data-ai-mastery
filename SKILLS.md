@@ -18,9 +18,9 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Competency | Baseline | Current | Target | Evidence |
 |---|---:|---:|---:|---|
 | Fabric workspace and domain architecture | 1 | 2 | 5 | [OPS-001 architecture](02-dataops-devops/OPS-001/architecture.md) |
-| Lakehouse, Delta, and Spark engineering | 1 | 1 | 4 | |
+| Lakehouse, Delta, and Spark engineering | 1 | 2 | 4 | [FAB-002 runtime](01-fabric-platform-engineering/FAB-002/README.md) and [FAB-003 quality evidence](01-fabric-platform-engineering/FAB-003/README.md) |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
-| Metadata-driven ingestion | 1 | 2 | 5 | [FAB-001 evidence](01-fabric-platform-engineering/FAB-001/README.md) |
+| Metadata-driven ingestion | 1 | 3 | 5 | [FAB-001 control plane](01-fabric-platform-engineering/FAB-001/README.md), [FAB-002 runtime](01-fabric-platform-engineering/FAB-002/README.md), and [FAB-003 acceptance gates](01-fabric-platform-engineering/FAB-003/README.md) |
 | Performance and capacity optimization | 1 | 1 | 4 | |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 1 | 5 | |
@@ -34,7 +34,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Purview governance, lineage, and policy | 1 | 1 | 4 | |
 | Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
 | Identity, networking, and platform security | 1 | 2 | 4 | [OPS-001 identity boundaries](02-dataops-devops/OPS-001/architecture.md) |
-| Resiliency, recovery, and continuity | 1 | 2 | 4 | [FAB-001 lifecycle and validation](01-fabric-platform-engineering/FAB-001/ownership-and-lifecycle.md) |
+| Resiliency, recovery, and continuity | 1 | 3 | 4 | [FAB-002 recovery](01-fabric-platform-engineering/FAB-002/RETRO.md) and [FAB-003 block/replay evidence](01-fabric-platform-engineering/FAB-003/RETRO.md) |
 | Cost estimation and FinOps | 1 | 1 | 4 | |
 | Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
@@ -105,6 +105,37 @@ These competencies remain below Level 3 because the complete ingestion runtime, 
 ### Next skill target
 
 The next evidence-producing priority is [#6 — resilient incremental ingestion](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/6). Level 3 for **Metadata-driven ingestion** requires a working shared runtime with restartability, idempotency, dependency handling, partial-failure recovery, and concurrency evidence.
+
+## Progress reassessment — September 2, 2026
+
+### Lakehouse, Delta, and Spark engineering: 1 → 2
+
+FAB-002 and FAB-003 provide working guided implementations of parameterized PySpark notebooks, Delta business-key merge, object-run-scoped observations, deterministic Delta evidence, duplicate hashing, and Lakehouse-backed pipeline execution.
+
+**Why the score is not yet 3:** the repository does not yet demonstrate independent performance tuning, partition/file optimization, production-scale Spark diagnostics, or multiple Lakehouse patterns.
+
+### Metadata-driven ingestion: 2 → 3
+
+FAB-001, FAB-002, and FAB-003 now form an end-to-end metadata-driven path:
+
+- immutable environment/release/object/policy definitions;
+- shared configuration resolution and fixed-boundary ingestion;
+- transactional candidate claim, failure, and compare-and-commit;
+- idempotent target publication and drift handling;
+- policy-driven reconciliation, blocking, warning, quarantine, and operational evidence;
+- deliberate failure, troubleshooting, recovery replay, and concurrency validation.
+
+This satisfies Level 3 because the repository contains a complete shared runtime that was designed, built, tested, deliberately broken, troubleshot, recovered, and documented with live evidence.
+
+**Why the score is not yet 4:** dependency scheduling, production-scale performance, multiple source/target adapters, automated deployment binding, and cross-scenario governance remain open.
+
+### Resiliency, recovery, and continuity: 2 → 3
+
+FAB-002 and FAB-003 demonstrate fixed replayable boundaries, post-write recovery, stale-candidate rejection, exactly-once state advancement, quality-blocked state preservation, recovered-boundary commit, and idempotent evidence.
+
+This satisfies Level 3 because failure and recovery behavior is executable and was verified in the live Fabric control plane rather than described only in architecture documents.
+
+**Why the score is not yet 4:** regional recovery, backup/restore, state migration, capacity failure, disaster simulations, and measured recovery objectives remain future evidence.
 
 ## Monthly assessment questions
 
