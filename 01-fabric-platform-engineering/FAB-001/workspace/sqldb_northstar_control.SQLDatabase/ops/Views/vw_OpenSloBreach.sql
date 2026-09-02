@@ -16,6 +16,7 @@ SELECT
     evaluation.target_value,
     evaluation.comparison_operator,
     evaluation.target_unit,
+    evaluation.evaluation_status,
     evaluation.alert_severity,
     evaluation.error_budget_consumption,
     evaluation.detected_at_utc,

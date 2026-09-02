@@ -31,6 +31,13 @@ class SqlArtifactTests(unittest.TestCase):
         for name in names:
             self.assertTrue((CONTROL_ROOT / "ops" / "Views" / f"{name}.sql").is_file())
 
+    def test_open_breach_exposes_explicit_status(self):
+        text = (
+            CONTROL_ROOT / "ops" / "Views" / "vw_OpenSloBreach.sql"
+        ).read_text()
+        self.assertIn("evaluation.evaluation_status", text)
+        self.assertIn("evaluation.evaluation_status = 'BREACH'", text)
+
     def test_evaluations_are_versioned_and_evidence_hashed(self):
         text = (CONTROL_ROOT / "ops" / "Tables" / "SloEvaluation.sql").read_text()
         for token in (

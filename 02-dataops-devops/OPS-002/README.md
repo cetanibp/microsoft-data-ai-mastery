@@ -23,8 +23,8 @@ OPS-002 consumes the existing environment, release, run, object-run, correlation
 | Capability | Planned evidence | Status |
 |---|---|---|
 | Freshness, reliability, duration, and quality SLOs | [SLO contract](slo-contract.md) with explicit calculation rules | Approved |
-| Operational telemetry | [Telemetry architecture](architecture.md), deployable SQL objects, and contract tests | Implemented; live validation pending |
-| Alert routing | [Routing contract](alert-routing.md), environment-aware persistence, and deduplication tests | Implemented; live validation pending |
+| Operational telemetry | [Telemetry architecture](architecture.md), deployable SQL objects, contract tests, and [live evidence](evidence/live-development-checkpoint.md) | Live validated |
+| Alert routing | [Routing contract](alert-routing.md), environment-aware persistence, deduplication tests, and [live evidence](evidence/live-development-checkpoint.md) | Live validated |
 | Incident response | Triage, replay, escalation, and recovery runbooks | Planned |
 | Failure-recovery exercise | Injected failure with detection and recovery evidence | Planned |
 
