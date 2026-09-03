@@ -42,6 +42,19 @@
       "workspace_timepoint_cu_seconds": 10.9956,
       "workspace_pct_base_capacity": 0.14,
       "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_PEAK_R2_PAR4_PRE_SEQ1",
+      "timepoint_start_local": "2026-09-03T16:04:30-07:00",
+      "timepoint_end_local": "2026-09-03T16:05:00-07:00",
+      "notebook_operation_count": 10,
+      "notebook_duration_seconds": 3554,
+      "notebook_total_cu_seconds": 32181.04,
+      "workspace_total_operation_count": 710,
+      "workspace_total_cu_seconds": 33868.27,
+      "workspace_timepoint_cu_seconds": 11.7598,
+      "workspace_pct_base_capacity": 0.15,
+      "throttling_seconds": 0
     }
   ],
   "derived_peak_r1_seq1": {
@@ -86,5 +99,19 @@
     "throttling_seconds": 0,
     "status": "PASS",
     "caveat": "SEQ1 capacity includes a validation-only failed attempt in the same session, so the capacity reduction is directional; runtime and correctness comparisons are unaffected."
-  }
+  },
+  "derived_peak_r2_par4": {
+    "benchmark_run_group_id": "7e4da831-cd0e-4391-8635-6056f47b3751",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 153.91438,
+    "notebook_cu_seconds": 1824.89,
+    "workspace_total_cu_seconds": 2201.02,
+    "notebook_cu_seconds_per_million_rows": 22.811125,
+    "workspace_total_cu_seconds_per_million_rows": 27.51275,
+    "notebook_duration_delta_seconds": 182,
+    "workspace_operation_count_delta": 71,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS"
+  },
+  "peak_r2_seq1_status": "PENDING"
 }
