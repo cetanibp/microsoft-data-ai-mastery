@@ -29,6 +29,19 @@
       "workspace_timepoint_cu_seconds": 10.327,
       "workspace_pct_base_capacity": 0.13,
       "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_PEAK_R1_PAR4",
+      "timepoint_start_local": "2026-09-03T15:33:30-07:00",
+      "timepoint_end_local": "2026-09-03T15:34:00-07:00",
+      "notebook_operation_count": 9,
+      "notebook_duration_seconds": 3372,
+      "notebook_total_cu_seconds": 30356.15,
+      "workspace_total_operation_count": 639,
+      "workspace_total_cu_seconds": 31667.25,
+      "workspace_timepoint_cu_seconds": 10.9956,
+      "workspace_pct_base_capacity": 0.14,
+      "throttling_seconds": 0
     }
   ],
   "derived_peak_r1_seq1": {
@@ -45,5 +58,33 @@
     "correctness_status": "PASS",
     "caveat": "The session also contained a validation-only failed attempt before compute began. Capacity Metrics reported a single new Notebook Run operation, so its small validation/session-idle cost cannot be separated from this checkpoint."
   },
-  "peak_r1_par4_status": "PENDING"
+  "peak_r1_par4_status": "CAPTURED",
+  "derived_peak_r1_par4": {
+    "benchmark_run_group_id": "16b5b97e-269e-4908-aab8-2aee3cab0849",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 142.64732,
+    "notebook_cu_seconds": 1549.47,
+    "workspace_total_cu_seconds": 1925.49,
+    "notebook_cu_seconds_per_million_rows": 19.368375,
+    "workspace_total_cu_seconds_per_million_rows": 24.068625,
+    "notebook_duration_delta_seconds": 175,
+    "workspace_operation_count_delta": 77,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS"
+  },
+  "derived_peak_r1_pair": {
+    "execution_order": [
+      "SEQ1",
+      "PAR4"
+    ],
+    "elapsed_improvement_pct": 35.922387,
+    "throughput_increase_pct": 56.060744,
+    "queue_reduction_pct": 42.159406,
+    "notebook_cu_reduction_pct": 66.79368,
+    "workspace_total_cu_reduction_pct": 61.79788,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0,
+    "status": "PASS",
+    "caveat": "SEQ1 capacity includes a validation-only failed attempt in the same session, so the capacity reduction is directional; runtime and correctness comparisons are unaffected."
+  }
 }
