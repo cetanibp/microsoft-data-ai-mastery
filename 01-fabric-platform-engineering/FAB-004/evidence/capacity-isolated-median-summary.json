@@ -1,0 +1,72 @@
+{
+  "tracking_id": "FAB-004",
+  "capacity_sku": "F256",
+  "scenario_id": "STEADY",
+  "accepted_rows_per_run": 4000000,
+  "isolated_pairs": [
+    {
+      "repetition": 1,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_elapsed_seconds": 76.868737,
+      "par4_elapsed_seconds": 44.037647,
+      "seq1_notebook_cu_seconds": 3750.98,
+      "par4_notebook_cu_seconds": 526.14,
+      "seq1_workspace_total_cu_seconds": 3776.92,
+      "par4_workspace_total_cu_seconds": 596.55,
+      "note": "SEQ1 includes a cold-start outlier."
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "PAR4",
+        "SEQ1"
+      ],
+      "seq1_elapsed_seconds": 73.89749,
+      "par4_elapsed_seconds": 39.099377,
+      "seq1_notebook_cu_seconds": 405.94,
+      "par4_notebook_cu_seconds": 579.02,
+      "seq1_workspace_total_cu_seconds": 465.39,
+      "par4_workspace_total_cu_seconds": 597.44
+    },
+    {
+      "repetition": 3,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_elapsed_seconds": 80.100818,
+      "par4_elapsed_seconds": 41.42498,
+      "seq1_notebook_cu_seconds": 1042.02,
+      "par4_notebook_cu_seconds": 776.46,
+      "seq1_workspace_total_cu_seconds": 1090.77,
+      "par4_workspace_total_cu_seconds": 676.27,
+      "note": "Workspace operation count changed because of report-window churn; notebook-item CU remains directly attributable."
+    }
+  ],
+  "medians": {
+    "seq1_elapsed_seconds": 76.868737,
+    "par4_elapsed_seconds": 41.42498,
+    "elapsed_improvement_pct": 46.109457,
+    "speedup": 1.855613,
+    "seq1_notebook_cu_seconds": 1042.02,
+    "par4_notebook_cu_seconds": 579.02,
+    "par4_notebook_cu_change_pct": -44.432928,
+    "seq1_workspace_total_cu_seconds": 1090.77,
+    "par4_workspace_total_cu_seconds": 597.44,
+    "par4_workspace_total_cu_change_pct": -45.227683
+  },
+  "thresholds": {
+    "minimum_elapsed_improvement_pct": 15,
+    "maximum_normalized_cu_increase_pct": 25
+  },
+  "validation": {
+    "correctness": "PASS",
+    "throttling_seconds": 0,
+    "runtime_threshold": "PASS",
+    "normalized_cu_threshold": "PASS"
+  },
+  "recommendation": "PAR4"
+}
