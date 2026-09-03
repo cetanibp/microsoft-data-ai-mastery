@@ -56,6 +56,19 @@
       "workspace_timepoint_cu_seconds": 7.8018,
       "workspace_pct_base_capacity": 0.1,
       "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_REVERSED_SEQ1",
+      "timepoint_start_local": "2026-09-03T11:28:30-07:00",
+      "timepoint_end_local": "2026-09-03T11:29:00-07:00",
+      "notebook_operation_count": 5,
+      "notebook_duration_seconds": 2599,
+      "notebook_total_cu_seconds": 22322.01,
+      "workspace_total_operation_count": 670,
+      "workspace_total_cu_seconds": 22934.45,
+      "workspace_timepoint_cu_seconds": 7.9634,
+      "workspace_pct_base_capacity": 0.1,
+      "throttling_seconds": 0
     }
   ],
   "derived_seq1": {
@@ -91,5 +104,26 @@
     "difference_from_first_par4_total_cu_pct": 0.149191,
     "throttling_seconds": 0
   },
-  "reversed_seq1_status": "PENDING"
+  "reversed_seq1_status": "CAPTURED",
+  "derived_reversed_seq1": {
+    "benchmark_run_group_id": "da2e933c-f761-4cc0-a6b2-313daf563201",
+    "accepted_rows": 4000000,
+    "notebook_cu_seconds": 405.94,
+    "workspace_total_cu_seconds": 465.39,
+    "notebook_cu_seconds_per_million_rows": 101.485,
+    "workspace_total_cu_seconds_per_million_rows": 116.3475,
+    "throttling_seconds": 0
+  },
+  "derived_reversed_pair": {
+    "execution_order": [
+      "PAR4",
+      "SEQ1"
+    ],
+    "par4_workspace_total_cu_seconds": 597.44,
+    "seq1_workspace_total_cu_seconds": 465.39,
+    "par4_workspace_total_cu_change_pct": 28.374052,
+    "par4_notebook_cu_change_pct": 42.636843,
+    "elapsed_improvement_pct": 47.089709,
+    "status": "PENDING_THIRD_ISOLATED_PAIR"
+  }
 }
