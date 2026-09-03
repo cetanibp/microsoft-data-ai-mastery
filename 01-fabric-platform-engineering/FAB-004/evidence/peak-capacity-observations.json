@@ -113,5 +113,74 @@
     "throttling_seconds": 0,
     "correctness_status": "PASS"
   },
-  "peak_r2_seq1_status": "PENDING"
+  "peak_r2_seq1_status": "PENDING",
+  "authoritative_measurement_method": "Fabric Capacity Metrics Timepoint Item Detail: one row per stopped Notebook Run",
+  "item_detail_captured_at_local": "2026-09-03T16:31:30-07:00/2026-09-03T16:32:00-07:00",
+  "item_detail_operations": [
+    {
+      "start_local": "2026-09-03T14:56:24-07:00",
+      "end_local": "2026-09-03T15:03:22-07:00",
+      "duration_seconds": 418,
+      "total_cu_seconds": 4666.19,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "SEQ1",
+      "repetition": 1
+    },
+    {
+      "start_local": "2026-09-03T15:24:48-07:00",
+      "end_local": "2026-09-03T15:27:43-07:00",
+      "duration_seconds": 175,
+      "total_cu_seconds": 1549.47,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "PAR4",
+      "repetition": 1
+    },
+    {
+      "start_local": "2026-09-03T15:49:24-07:00",
+      "end_local": "2026-09-03T15:52:25-07:00",
+      "duration_seconds": 181,
+      "total_cu_seconds": 1824.89,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "PAR4",
+      "repetition": 2
+    },
+    {
+      "start_local": "2026-09-03T16:23:13-07:00",
+      "end_local": "2026-09-03T16:27:44-07:00",
+      "duration_seconds": 271,
+      "total_cu_seconds": 2910.6,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "SEQ1",
+      "repetition": 2
+    }
+  ],
+  "derived_peak_r2_seq1": {
+    "benchmark_run_group_id": "7e4da831-cd0e-4391-8635-6056f47b3751",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 219.907556,
+    "notebook_cu_seconds": 2910.6,
+    "notebook_cu_seconds_per_million_rows": 36.3825,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS"
+  },
+  "derived_peak_r2_pair": {
+    "execution_order": [
+      "PAR4",
+      "SEQ1"
+    ],
+    "seq1_notebook_cu_seconds": 2910.6,
+    "par4_notebook_cu_seconds": 1824.89,
+    "par4_notebook_cu_reduction_pct": 37.301931,
+    "elapsed_improvement_pct": 30.009508,
+    "throughput_increase_pct": 42.87655,
+    "queue_reduction_pct": 37.318248,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0,
+    "status": "PASS"
+  },
+  "peak_r2_status": "COMPLETE"
 }
