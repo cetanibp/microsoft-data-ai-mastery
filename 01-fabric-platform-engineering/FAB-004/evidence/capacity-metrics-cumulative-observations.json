@@ -82,6 +82,19 @@
       "workspace_timepoint_cu_seconds": 8.3421,
       "workspace_pct_base_capacity": 0.11,
       "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_THIRD_PAR4",
+      "timepoint_start_local": "2026-09-03T14:44:30-07:00",
+      "timepoint_end_local": "2026-09-03T14:45:00-07:00",
+      "notebook_operation_count": 7,
+      "notebook_duration_seconds": 2779,
+      "notebook_total_cu_seconds": 24140.49,
+      "workspace_total_operation_count": 482,
+      "workspace_total_cu_seconds": 24701.49,
+      "workspace_timepoint_cu_seconds": 8.5769,
+      "workspace_pct_base_capacity": 0.11,
+      "throttling_seconds": 0
     }
   ],
   "derived_seq1": {
@@ -150,5 +163,47 @@
     "workspace_operation_count_delta": 34,
     "throttling_seconds": 0
   },
-  "third_pair_status": "SEQ1_CAPTURED_PAR4_PENDING"
+  "third_pair_status": "COMPLETE",
+  "derived_third_par4": {
+    "benchmark_run_group_id": "f16c06c7-57a9-4df0-a850-6dc2b8e5d431",
+    "accepted_rows": 4000000,
+    "notebook_cu_seconds": 776.46,
+    "workspace_total_cu_seconds": 676.27,
+    "notebook_cu_seconds_per_million_rows": 194.115,
+    "workspace_total_cu_seconds_per_million_rows": 169.0675,
+    "notebook_duration_delta_seconds": 72,
+    "throttling_seconds": 0,
+    "note": "Workspace operation count fell from 704 to 482 between checkpoints, indicating report-window churn; notebook-item CU delta is the more attributable measure for this pair."
+  },
+  "derived_third_pair": {
+    "execution_order": [
+      "SEQ1",
+      "PAR4"
+    ],
+    "seq1_workspace_total_cu_seconds": 1090.77,
+    "par4_workspace_total_cu_seconds": 676.27,
+    "par4_workspace_total_cu_change_pct": -37.999028,
+    "seq1_notebook_cu_seconds": 1042.02,
+    "par4_notebook_cu_seconds": 776.46,
+    "par4_notebook_cu_change_pct": -25.485115,
+    "elapsed_improvement_pct": 48.283939,
+    "status": "CAPTURED"
+  },
+  "capacity_median_decision": {
+    "seq1_notebook_cu_seconds_median": 1042.02,
+    "par4_notebook_cu_seconds_median": 579.02,
+    "par4_notebook_cu_change_pct": -44.432928,
+    "seq1_workspace_total_cu_seconds_median": 1090.77,
+    "par4_workspace_total_cu_seconds_median": 597.44,
+    "par4_workspace_total_cu_change_pct": -45.227683,
+    "seq1_elapsed_seconds_median": 76.868737,
+    "par4_elapsed_seconds_median": 41.42498,
+    "elapsed_improvement_pct": 46.109457,
+    "speedup": 1.855613,
+    "required_elapsed_improvement_pct": 15,
+    "allowed_normalized_cu_increase_pct": 25,
+    "runtime_threshold_pass": true,
+    "normalized_cu_threshold_pass": true,
+    "recommendation": "PAR4"
+  }
 }
