@@ -1,0 +1,49 @@
+{
+  "tracking_id": "FAB-004",
+  "capacity_sku": "F256",
+  "scenario_id": "PEAK",
+  "measurement_method": "Cumulative Timepoint Summary delta across notebook-operation checkpoints",
+  "timezone": "America/Los_Angeles",
+  "observations": [
+    {
+      "observation_id": "PRE_PEAK_R1_SEQ1",
+      "timepoint_start_local": "2026-09-03T14:44:30-07:00",
+      "timepoint_end_local": "2026-09-03T14:45:00-07:00",
+      "notebook_operation_count": 7,
+      "notebook_duration_seconds": 2779,
+      "notebook_total_cu_seconds": 24140.49,
+      "workspace_total_operation_count": 482,
+      "workspace_total_cu_seconds": 24701.49,
+      "workspace_timepoint_cu_seconds": 8.5769,
+      "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_PEAK_R1_SEQ1_PRE_PAR4",
+      "timepoint_start_local": "2026-09-03T15:12:30-07:00",
+      "timepoint_end_local": "2026-09-03T15:13:00-07:00",
+      "notebook_operation_count": 8,
+      "notebook_duration_seconds": 3197,
+      "notebook_total_cu_seconds": 28806.68,
+      "workspace_total_operation_count": 562,
+      "workspace_total_cu_seconds": 29741.76,
+      "workspace_timepoint_cu_seconds": 10.327,
+      "workspace_pct_base_capacity": 0.13,
+      "throttling_seconds": 0
+    }
+  ],
+  "derived_peak_r1_seq1": {
+    "benchmark_run_group_id": "16b5b97e-269e-4908-aab8-2aee3cab0849",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 222.616469,
+    "notebook_cu_seconds": 4666.19,
+    "workspace_total_cu_seconds": 5040.27,
+    "notebook_cu_seconds_per_million_rows": 58.327375,
+    "workspace_total_cu_seconds_per_million_rows": 63.003375,
+    "notebook_duration_delta_seconds": 418,
+    "workspace_operation_count_delta": 80,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS",
+    "caveat": "The session also contained a validation-only failed attempt before compute began. Capacity Metrics reported a single new Notebook Run operation, so its small validation/session-idle cost cannot be separated from this checkpoint."
+  },
+  "peak_r1_par4_status": "PENDING"
+}
