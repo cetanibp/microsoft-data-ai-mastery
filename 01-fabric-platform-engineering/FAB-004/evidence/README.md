@@ -13,3 +13,8 @@ This folder contains sanitized contract-test and live benchmark evidence.
 - declared limitations and anomalous-run explanations.
 
 Do not commit tenant, workspace, capacity, item, connection, user, or endpoint identifiers; credentials; patient data; proprietary metadata; or source payload samples.
+
+## Live Development evidence
+
+- [Live Fabric checkpoint](live-fabric-checkpoint.md) — F256 workspace readiness and smoke-gate interpretation.
+- [Smoke result](live-smoke-result.json) — sanitized correlated output for the successful 10,000-row `SMOKE` / `SEQ1` run.
