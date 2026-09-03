@@ -182,11 +182,11 @@
     ],
     "seq1_workspace_total_cu_seconds": 1090.77,
     "par4_workspace_total_cu_seconds": 676.27,
-    "par4_workspace_total_cu_change_pct": -37.999028,
+    "par4_workspace_total_cu_change_pct": -38.000678,
     "seq1_notebook_cu_seconds": 1042.02,
     "par4_notebook_cu_seconds": 776.46,
     "par4_notebook_cu_change_pct": -25.485115,
-    "elapsed_improvement_pct": 48.283939,
+    "elapsed_improvement_pct": 48.283949,
     "status": "CAPTURED"
   },
   "capacity_median_decision": {
