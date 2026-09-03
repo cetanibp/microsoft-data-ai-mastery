@@ -1,0 +1,33 @@
+{
+  "tracking_id": "FAB-004",
+  "purpose": "reversed-order isolated capacity attribution pair",
+  "scenario_id": "STEADY",
+  "scale_tier": "standard",
+  "benchmark_run_group_id": "da2e933c-f761-4cc0-a6b2-313daf563201",
+  "execution_order": ["PAR4", "SEQ1"],
+  "correctness_status": "PASS",
+  "par4": {
+    "elapsed_seconds": 39.099377,
+    "throughput_rows_per_second": 102303.421,
+    "workspace_total_cu_seconds": 597.44,
+    "workspace_total_cu_seconds_per_million_rows": 149.36,
+    "throttling_seconds": 0
+  },
+  "seq1": {
+    "elapsed_seconds": 73.89749,
+    "throughput_rows_per_second": 54129.037,
+    "workspace_total_cu_seconds": 465.39,
+    "workspace_total_cu_seconds_per_million_rows": 116.3475,
+    "throttling_seconds": 0
+  },
+  "paired_deltas": {
+    "elapsed_improvement_pct": 47.089709,
+    "throughput_increase_pct": 88.999152,
+    "par4_workspace_total_cu_change_pct": 28.374052
+  },
+  "threshold_status": {
+    "elapsed_improvement": "PASS",
+    "normalized_cu_increase": "FAIL_BY_3.374052_PERCENTAGE_POINTS",
+    "overall": "PENDING_THIRD_ISOLATED_PAIR"
+  }
+}
