@@ -69,6 +69,19 @@
       "workspace_timepoint_cu_seconds": 7.9634,
       "workspace_pct_base_capacity": 0.1,
       "throttling_seconds": 0
+    },
+    {
+      "observation_id": "POST_THIRD_SEQ1_PRE_PAR4",
+      "timepoint_start_local": "2026-09-03T12:00:00-07:00",
+      "timepoint_end_local": "2026-09-03T12:00:30-07:00",
+      "notebook_operation_count": 6,
+      "notebook_duration_seconds": 2707,
+      "notebook_total_cu_seconds": 23364.03,
+      "workspace_total_operation_count": 704,
+      "workspace_total_cu_seconds": 24025.22,
+      "workspace_timepoint_cu_seconds": 8.3421,
+      "workspace_pct_base_capacity": 0.11,
+      "throttling_seconds": 0
     }
   ],
   "derived_seq1": {
@@ -125,5 +138,17 @@
     "par4_notebook_cu_change_pct": 42.636843,
     "elapsed_improvement_pct": 47.089709,
     "status": "PENDING_THIRD_ISOLATED_PAIR"
-  }
+  },
+  "derived_third_seq1": {
+    "benchmark_run_group_id": "f16c06c7-57a9-4df0-a850-6dc2b8e5d431",
+    "accepted_rows": 4000000,
+    "notebook_cu_seconds": 1042.02,
+    "workspace_total_cu_seconds": 1090.77,
+    "notebook_cu_seconds_per_million_rows": 260.505,
+    "workspace_total_cu_seconds_per_million_rows": 272.6925,
+    "notebook_duration_delta_seconds": 108,
+    "workspace_operation_count_delta": 34,
+    "throttling_seconds": 0
+  },
+  "third_pair_status": "SEQ1_CAPTURED_PAR4_PENDING"
 }
