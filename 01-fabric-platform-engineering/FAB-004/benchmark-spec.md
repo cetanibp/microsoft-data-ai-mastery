@@ -59,7 +59,7 @@ The large tier is gated: run it only after smoke and standard correctness pass a
 | Elapsed time | seconds | Runtime telemetry | completion UTC minus start UTC |
 | Queue time | seconds | Runtime telemetry | execution start minus submitted UTC |
 | Throughput | rows/second | Derived | accepted rows divided by elapsed seconds |
-| CU consumption | CU seconds | Capacity Metrics | sum for correlated operations in the run window |
+| CU consumption | CU seconds | Capacity Metrics Timepoint Item Detail | per-operation `Total CU (s)` for the stopped notebook session |
 | Normalized CU | CU seconds/million rows | Derived | CU seconds divided by accepted rows in millions |
 | Peak utilization | percent | Capacity Metrics | maximum observed utilization sample in the run window |
 | Throttling | count/state | Capacity Metrics | observed delay, rejection, or throttling indicators |
@@ -100,4 +100,5 @@ Initiate a capacity-isolation review when any of these occur:
 - Shared-capacity cost is allocated, not directly metered as an incremental per-run charge.
 - Workspace separation does not provide capacity isolation.
 - Three repetitions characterize this exercise but are not a production forecasting model.
+- Capacity Metrics Timepoint Item Detail is the authoritative CU source because it provides one row per stopped notebook session. Cumulative Timepoint Summary subtraction is investigation evidence only and can be distorted by refresh timing or report-window churn.
 - Capacity Metrics attribution can span multiple Fabric operations; correlation and exact UTC windows are required.
