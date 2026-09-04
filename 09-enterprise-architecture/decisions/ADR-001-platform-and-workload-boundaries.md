@@ -2,6 +2,7 @@
 
 **Status:** Proposed  
 **Date:** 2026-08-23  
+**Evidence review:** 2026-09-04  
 **Decision owner:** Bryan Cetani  
 **Reviewers:** To be assigned  
 **Related issue:** [#3 — ARCH-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/3)  
@@ -223,21 +224,21 @@ Workspace, capacity, security, deployment, and monitoring configuration should b
 
 | Validation | Success measure | Evidence | Status |
 |---|---|---|---|
-| Representative workload benchmark | Critical and standard workloads meet defined freshness and processing-window targets under expected concurrency | Benchmark results and capacity telemetry | Planned |
-| Contention and throttling test | Critical workloads remain within agreed SLOs or produce evidence supporting isolation | Load-test results and throttling metrics | Planned |
-| Security and access review | Environment and workspace access demonstrate least privilege and separation of duties | Role matrix, access-review evidence, and audit records | Planned |
-| Cost comparison | Shared, selective-isolation, and full-isolation scenarios have documented cost and utilization estimates | Capacity and FinOps analysis | Planned |
-| Recovery exercise | Workspace and capacity boundaries do not prevent documented replay, recovery, or rollback | Recovery test evidence | Planned |
-| Operational review | Every workspace and capacity has ownership, monitoring, alerting, and escalation coverage | Operations checklist and runbook links | Planned |
+| Representative workload benchmark | Critical and standard workloads meet defined freshness and processing-window targets under expected concurrency | [FAB-004 F256 benchmark](../../01-fabric-platform-engineering/FAB-004/benchmark-results.md) | Partial — data-engineering steady, peak, and replay workloads validated; analytics, real-time, and AI remain open |
+| Contention and throttling test | Critical workloads remain within agreed SLOs or produce evidence supporting isolation | [FAB-004 decision and limitations](../../01-fabric-platform-engineering/FAB-004/benchmark-results.md#limitations) | Partial — no throttling observed, but no controlled companion critical workload was exercised |
+| Security and access review | Environment and workspace access demonstrate least privilege and separation of duties | [OPS-001 architecture](../../02-dataops-devops/OPS-001/architecture.md) and [ADR-002](ADR-002-environment-isolation-and-promotion.md) | Partial — environment and delivery identities validated; comprehensive role and access review remains open |
+| Cost comparison | Shared, selective-isolation, and full-isolation scenarios have documented cost and utilization estimates | [FAB-004 allocated-cost model](../../01-fabric-platform-engineering/FAB-004/benchmark-results.md#capacity-and-allocated-cost-model) | Partial — normalized CU and cost coefficients captured; actual price and isolation alternatives remain open |
+| Recovery exercise | Workspace and capacity boundaries do not prevent documented replay, recovery, or rollback | [OPS-001 recovery](../../02-dataops-devops/OPS-001/evidence/README.md), [FAB-002 recovery](../../01-fabric-platform-engineering/FAB-002/evidence/README.md), and [OPS-002 exercise](../../02-dataops-devops/OPS-002/evidence/failure-recovery-exercise.md) | Validated for current scope — capacity exhaustion, regional outage, and control-store restoration remain open |
+| Operational review | Every workspace and capacity has ownership, monitoring, alerting, and escalation coverage | [OPS-002 observability and runbooks](../../02-dataops-devops/OPS-002/README.md) | Partial — Northstar ingestion coverage validated; broader workspace and capacity coverage remains open |
 
 ## Follow-up actions
 
-- [ ] Define workspace naming, ownership, and lifecycle standards.
-- [ ] Establish measurable criteria for moving a workload to dedicated capacity.
-- [ ] Benchmark representative data engineering, analytics, real-time, and AI workloads.
-- [ ] Produce a capacity cost and utilization model.
+- [ ] Define workspace naming, ownership, and lifecycle standards. OPS-001 and ADR-002 establish the environment and promotion foundation; broader domain standards remain open.
+- [x] Establish measurable criteria for moving a workload to dedicated capacity. FAB-004 defined review triggers for throttling, sustained utilization, and companion-workload degradation.
+- [ ] Benchmark representative data engineering, analytics, real-time, and AI workloads. FAB-004 completed the data-engineering slice; [#11 — RTI-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) is the next planned workload.
+- [ ] Produce a capacity cost and utilization model. FAB-004 provides normalized-CU allocation coefficients; contracted pricing and isolation-scenario costs remain open.
 - [ ] Define approved cross-workspace sharing and access patterns.
-- [ ] Validate deployment and environment-promotion design through [#8 — OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8).
+- [x] Validate deployment and environment-promotion design through [#8 — OPS-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8).
 - [ ] Record regional resiliency as a separate architecture decision.
 
 ## Reconsideration triggers
