@@ -148,12 +148,12 @@
       "PAR4",
       "SEQ1"
     ],
-    "elapsed_improvement_pct": 39.557539,
-    "throughput_increase_pct": 65.451254,
+    "elapsed_improvement_pct": 39.557606,
+    "throughput_increase_pct": 65.446793,
     "queue_reduction_pct": 82.530357,
     "seq1_total_session_cu_seconds": 2187.98,
     "par4_total_session_cu_seconds": 1286.03,
-    "par4_cu_reduction_pct": 41.223869,
+    "par4_cu_reduction_pct": 41.222955,
     "idempotence_status": "PASS",
     "throttling_seconds": 0
   },
@@ -184,12 +184,12 @@
       "SEQ1",
       "PAR4"
     ],
-    "elapsed_improvement_pct": 29.130987,
-    "throughput_increase_pct": 41.107001,
-    "queue_reduction_pct": 81.639841,
+    "elapsed_improvement_pct": 29.131038,
+    "throughput_increase_pct": 41.105494,
+    "queue_reduction_pct": 81.639822,
     "seq1_total_session_cu_seconds": 2321.79,
     "par4_total_session_cu_seconds": 1652.92,
-    "par4_cu_reduction_pct": 28.808381,
+    "par4_cu_reduction_pct": 28.808376,
     "idempotence_status": "PASS",
     "throttling_seconds": 0
   },
