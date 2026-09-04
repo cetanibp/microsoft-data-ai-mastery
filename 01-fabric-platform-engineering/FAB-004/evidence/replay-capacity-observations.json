@@ -18,6 +18,18 @@
       "alternative_id": "SEQ1",
       "repetition": 1,
       "benchmark_run_group_id": "a125553a-cd38-4843-b623-ea1bbfda40ef"
+    },
+    {
+      "start_local": "2026-09-03T17:58:51-07:00",
+      "end_local": "2026-09-03T18:01:56-07:00",
+      "duration_seconds": 185,
+      "total_cu_seconds": 1594.69,
+      "timepoint_cu_seconds": 0.55,
+      "pct_base_capacity": 0.01,
+      "throttling_seconds": 0,
+      "alternative_id": "PAR4",
+      "repetition": 1,
+      "benchmark_run_group_id": "a125553a-cd38-4843-b623-ea1bbfda40ef"
     }
   ],
   "derived_replay_r1_seq1": {
@@ -32,5 +44,33 @@
     "correctness_status": "PASS",
     "throttling_seconds": 0
   },
-  "replay_r1_par4_status": "PENDING"
+  "replay_r1_par4_status": "PENDING",
+  "derived_replay_r1_par4": {
+    "accepted_rows": 4000000,
+    "inserted_rows": 0,
+    "updated_rows": 4000000,
+    "duplicate_rows": 0,
+    "rejected_rows": 0,
+    "replay_elapsed_seconds": 94.979655,
+    "total_session_cu_seconds": 1594.69,
+    "total_session_cu_seconds_per_million_rows": 398.6725,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0
+  },
+  "derived_replay_r1_pair": {
+    "execution_order": [
+      "SEQ1",
+      "PAR4"
+    ],
+    "elapsed_improvement_pct": 21.924782,
+    "throughput_increase_pct": 28.081613,
+    "queue_reduction_pct": 82.937853,
+    "seq1_total_session_cu_seconds": 2857.49,
+    "par4_total_session_cu_seconds": 1594.69,
+    "par4_cu_reduction_pct": 44.192631,
+    "idempotence_status": "PASS",
+    "correctness_status": "PASS",
+    "throttling_seconds": 0
+  },
+  "replay_r1_status": "COMPLETE"
 }
