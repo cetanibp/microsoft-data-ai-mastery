@@ -1,0 +1,36 @@
+{
+  "tracking_id": "FAB-004",
+  "capacity_sku": "F256",
+  "scenario_id": "REPLAY",
+  "scale_tier": "standard",
+  "rows_per_run": 4000000,
+  "measurement_source": "Fabric Capacity Metrics Timepoint Item Detail",
+  "note": "Total CU covers both seed and measured replay phases; elapsed_seconds in runtime JSON covers the replay phase.",
+  "item_detail_operations": [
+    {
+      "start_local": "2026-09-03T17:37:06-07:00",
+      "end_local": "2026-09-03T17:41:26-07:00",
+      "duration_seconds": 260,
+      "total_cu_seconds": 2857.49,
+      "timepoint_cu_seconds": 0.99,
+      "pct_base_capacity": 0.01,
+      "throttling_seconds": 0,
+      "alternative_id": "SEQ1",
+      "repetition": 1,
+      "benchmark_run_group_id": "a125553a-cd38-4843-b623-ea1bbfda40ef"
+    }
+  ],
+  "derived_replay_r1_seq1": {
+    "accepted_rows": 4000000,
+    "inserted_rows": 0,
+    "updated_rows": 4000000,
+    "duplicate_rows": 0,
+    "rejected_rows": 0,
+    "replay_elapsed_seconds": 121.651476,
+    "total_session_cu_seconds": 2857.49,
+    "total_session_cu_seconds_per_million_rows": 714.3725,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0
+  },
+  "replay_r1_par4_status": "PENDING"
+}
