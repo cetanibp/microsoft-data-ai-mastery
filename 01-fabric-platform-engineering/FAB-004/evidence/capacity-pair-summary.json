@@ -1,0 +1,40 @@
+{
+  "tracking_id": "FAB-004",
+  "purpose": "isolated capacity attribution pair",
+  "scenario_id": "STEADY",
+  "scale_tier": "standard",
+  "benchmark_run_group_id": "cb1832d9-4052-4d0e-b7ae-9b980c6ed3bf",
+  "expected_rows_per_alternative": 4000000,
+  "correctness_status": "PASS",
+  "session_boundary": "fresh session per alternative; stopped immediately after result",
+  "execution_order": ["SEQ1", "PAR4"],
+  "seq1": {
+    "started_at_utc": "2026-09-03T04:27:53.240801+00:00",
+    "completed_at_utc": "2026-09-03T04:29:10.109935+00:00",
+    "elapsed_seconds": 76.868737,
+    "throughput_rows_per_second": 52036.76,
+    "maximum_worker_queue_seconds": 66.111003,
+    "notebook_cu_seconds": 3750.98,
+    "workspace_total_cu_seconds": 3776.92,
+    "workspace_total_cu_seconds_per_million_rows": 944.23
+  },
+  "par4": {
+    "started_at_utc": "2026-09-03T04:31:10.187614+00:00",
+    "completed_at_utc": "2026-09-03T04:31:54.225496+00:00",
+    "elapsed_seconds": 44.037647,
+    "throughput_rows_per_second": 90831.375,
+    "maximum_worker_queue_seconds": 20.133939,
+    "notebook_cu_seconds": 526.14,
+    "workspace_total_cu_seconds": 596.55,
+    "workspace_total_cu_seconds_per_million_rows": 149.1375
+  },
+  "paired_deltas": {
+    "elapsed_improvement_pct": 42.710589,
+    "throughput_increase_pct": 74.552326,
+    "maximum_queue_reduction_pct": 69.545253,
+    "speedup_ratio": 1.745523,
+    "workspace_total_cu_change_pct": -84.205384
+  },
+  "capacity_metrics_status": "PROVISIONAL_ORDER_REVERSAL_REQUIRED",
+  "interpretation": "PAR4 passes runtime and normalized-CU thresholds in this pair, but the magnitude may include cold-start or order effects. A reversed-order isolated pair is required before accepting the CU conclusion."
+}

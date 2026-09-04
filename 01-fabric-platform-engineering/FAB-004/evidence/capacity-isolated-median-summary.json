@@ -1,0 +1,65 @@
+{
+  "tracking_id": "FAB-004",
+  "capacity_sku": "F256",
+  "scenario_id": "STEADY",
+  "accepted_rows_per_run": 4000000,
+  "measurement_source": "Fabric Capacity Metrics Timepoint Item Detail",
+  "isolated_pairs": [
+    {
+      "repetition": 1,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_elapsed_seconds": 76.868737,
+      "par4_elapsed_seconds": 44.037647,
+      "seq1_notebook_cu_seconds": 1224.61,
+      "par4_notebook_cu_seconds": 526.14
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "PAR4",
+        "SEQ1"
+      ],
+      "seq1_elapsed_seconds": 73.89749,
+      "par4_elapsed_seconds": 39.099377,
+      "seq1_notebook_cu_seconds": 405.94,
+      "par4_notebook_cu_seconds": 579.02
+    },
+    {
+      "repetition": 3,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_elapsed_seconds": 80.100818,
+      "par4_elapsed_seconds": 41.42498,
+      "seq1_notebook_cu_seconds": 1042.02,
+      "par4_notebook_cu_seconds": 776.46
+    }
+  ],
+  "medians": {
+    "seq1_elapsed_seconds": 76.868737,
+    "par4_elapsed_seconds": 41.42498,
+    "elapsed_improvement_pct": 46.109457,
+    "speedup": 1.855613,
+    "seq1_notebook_cu_seconds": 1042.02,
+    "par4_notebook_cu_seconds": 579.02,
+    "seq1_notebook_cu_seconds_per_million_rows": 260.505,
+    "par4_notebook_cu_seconds_per_million_rows": 144.755,
+    "par4_notebook_cu_reduction_pct": 44.432928
+  },
+  "thresholds": {
+    "minimum_elapsed_improvement_pct": 15,
+    "maximum_normalized_cu_increase_pct": 25
+  },
+  "validation": {
+    "correctness": "PASS",
+    "throttling_seconds": 0,
+    "runtime_threshold": "PASS",
+    "normalized_cu_threshold": "PASS"
+  },
+  "recommendation": "PAR4",
+  "correction_note": "Timepoint Item Detail supersedes cumulative Timepoint Summary subtraction. The correction changed repetition-1 SEQ1 CU from a contaminated cumulative delta to 1224.61 CU(s); the median and recommendation did not change."
+}

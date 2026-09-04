@@ -1,0 +1,31 @@
+{
+  "tracking_id": "FAB-004",
+  "scenario_id": "STEADY",
+  "scale_tier": "standard",
+  "repetition": 1,
+  "benchmark_run_group_id": "6b4bdf90-98fc-46af-a1cf-84f075a67b11",
+  "expected_rows_per_alternative": 4000000,
+  "correctness_status": "PASS",
+  "seq1": {
+    "elapsed_seconds": 76.648708,
+    "throughput_rows_per_second": 52186.138,
+    "maximum_worker_queue_seconds": 66.813413
+  },
+  "par4": {
+    "elapsed_seconds": 29.773362,
+    "throughput_rows_per_second": 134348.281,
+    "maximum_worker_queue_seconds": 19.792902
+  },
+  "paired_deltas": {
+    "elapsed_improvement_pct": 61.156081,
+    "throughput_increase_pct": 157.440551,
+    "maximum_queue_reduction_pct": 70.375856,
+    "speedup_ratio": 2.574406
+  },
+  "provisional_threshold_result": {
+    "minimum_elapsed_improvement_pct": 15,
+    "observed_elapsed_improvement_pct": 61.156081,
+    "elapsed_threshold_status": "PASS",
+    "decision_status": "PENDING_CU_AND_REPETITIONS"
+  }
+}

@@ -1,0 +1,27 @@
+name: FAB-004 benchmark contract
+
+on:
+  pull_request:
+    paths:
+      - "01-fabric-platform-engineering/FAB-004/**"
+      - ".github/workflows/fab-004-benchmark-contract.yml"
+  push:
+    paths:
+      - "01-fabric-platform-engineering/FAB-004/**"
+      - ".github/workflows/fab-004-benchmark-contract.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate benchmark contract
+        run: |
+          python 01-fabric-platform-engineering/FAB-004/tests/run_contract_tests.py \
+            --output 01-fabric-platform-engineering/FAB-004/evidence/local-contract-test-results.json

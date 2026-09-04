@@ -1,0 +1,74 @@
+{
+  "tracking_id": "FAB-004",
+  "scenario_id": "STEADY",
+  "capacity_sku": "F256",
+  "scale_tier": "standard",
+  "rows_per_run": 4000000,
+  "measurement_source": "Fabric Capacity Metrics Timepoint Item Detail",
+  "authoritative": true,
+  "operations": [
+    {
+      "repetition": 1,
+      "alternative_id": "SEQ1",
+      "start_local": "2026-09-02T21:27:38-07:00",
+      "end_local": "2026-09-02T21:29:31-07:00",
+      "duration_seconds": 113,
+      "total_cu_seconds": 1224.61,
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 1,
+      "alternative_id": "PAR4",
+      "start_local": "2026-09-02T21:30:54-07:00",
+      "end_local": "2026-09-02T21:32:03-07:00",
+      "duration_seconds": 69,
+      "total_cu_seconds": 526.14,
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 2,
+      "alternative_id": "PAR4",
+      "start_local": "2026-09-03T10:57:47-07:00",
+      "end_local": "2026-09-03T10:58:49-07:00",
+      "duration_seconds": 62,
+      "total_cu_seconds": 579.02,
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 2,
+      "alternative_id": "SEQ1",
+      "start_local": "2026-09-03T11:12:27-07:00",
+      "end_local": "2026-09-03T11:14:08-07:00",
+      "duration_seconds": 101,
+      "total_cu_seconds": 405.94,
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 3,
+      "alternative_id": "SEQ1",
+      "start_local": "2026-09-03T11:42:42-07:00",
+      "end_local": "2026-09-03T11:44:29-07:00",
+      "duration_seconds": 107,
+      "total_cu_seconds": 1042.02,
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 3,
+      "alternative_id": "PAR4",
+      "start_local": "2026-09-03T14:31:20-07:00",
+      "end_local": "2026-09-03T14:32:31-07:00",
+      "duration_seconds": 71,
+      "total_cu_seconds": 776.46,
+      "throttling_seconds": 0
+    }
+  ],
+  "medians": {
+    "seq1_total_cu_seconds": 1042.02,
+    "par4_total_cu_seconds": 579.02,
+    "seq1_cu_seconds_per_million_rows": 260.505,
+    "par4_cu_seconds_per_million_rows": 144.755,
+    "par4_cu_reduction_pct": 44.432928,
+    "throttling_seconds": 0
+  },
+  "note": "This item-level export supersedes provisional cumulative Timepoint Summary subtraction for CU attribution."
+}

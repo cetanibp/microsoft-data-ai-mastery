@@ -1,0 +1,75 @@
+{
+  "tracking_id": "FAB-004",
+  "scenario_id": "REPLAY",
+  "capacity_sku": "F256",
+  "scale_tier": "standard",
+  "rows_per_run": 4000000,
+  "measured_repetitions": 3,
+  "measurement_source": "Fabric Capacity Metrics Timepoint Item Detail",
+  "cu_scope": "Complete seed-plus-replay notebook session",
+  "repetitions": [
+    {
+      "repetition": 1,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_replay_elapsed_seconds": 121.651476,
+      "par4_replay_elapsed_seconds": 94.979655,
+      "seq1_total_session_cu_seconds": 2857.49,
+      "par4_total_session_cu_seconds": 1594.69,
+      "idempotence_status": "PASS",
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "PAR4",
+        "SEQ1"
+      ],
+      "seq1_replay_elapsed_seconds": 118.703269,
+      "par4_replay_elapsed_seconds": 71.747097,
+      "seq1_total_session_cu_seconds": 2187.98,
+      "par4_total_session_cu_seconds": 1286.03,
+      "idempotence_status": "PASS",
+      "throttling_seconds": 0
+    },
+    {
+      "repetition": 3,
+      "order": [
+        "SEQ1",
+        "PAR4"
+      ],
+      "seq1_replay_elapsed_seconds": 116.536144,
+      "par4_replay_elapsed_seconds": 82.587956,
+      "seq1_total_session_cu_seconds": 2321.79,
+      "par4_total_session_cu_seconds": 1652.92,
+      "idempotence_status": "PASS",
+      "throttling_seconds": 0
+    }
+  ],
+  "medians": {
+    "seq1_replay_elapsed_seconds": 118.703269,
+    "par4_replay_elapsed_seconds": 82.587956,
+    "elapsed_improvement_pct": 30.424868,
+    "seq1_throughput_rows_per_second": 33697.471,
+    "par4_throughput_rows_per_second": 48433.212,
+    "throughput_increase_pct": 43.729516,
+    "seq1_maximum_worker_queue_seconds": 105.849719,
+    "par4_maximum_worker_queue_seconds": 18.491568,
+    "queue_reduction_pct": 82.530357,
+    "seq1_total_session_cu_seconds": 2321.79,
+    "par4_total_session_cu_seconds": 1594.69,
+    "par4_cu_reduction_pct": 31.316355,
+    "seq1_cu_seconds_per_million_rows": 580.4475,
+    "par4_cu_seconds_per_million_rows": 398.6725,
+    "required_elapsed_improvement_pct": 15,
+    "allowed_normalized_cu_increase_pct": 25,
+    "runtime_threshold_pass": true,
+    "normalized_cu_threshold_pass": true,
+    "idempotence_status": "PASS",
+    "throttling_seconds": 0,
+    "recommendation": "PAR4"
+  },
+  "recommendation": "PAR4"
+}
