@@ -156,6 +156,18 @@
       "scenario_id": "PEAK",
       "alternative_id": "SEQ1",
       "repetition": 2
+    },
+    {
+      "start_local": "2026-09-03T16:43:18-07:00",
+      "end_local": "2026-09-03T16:47:45-07:00",
+      "duration_seconds": 267,
+      "total_cu_seconds": 2962.2,
+      "timepoint_cu_seconds": 1.03,
+      "pct_base_capacity": 0.01,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "SEQ1",
+      "repetition": 3
     }
   ],
   "derived_peak_r2_seq1": {
@@ -182,5 +194,15 @@
     "throttling_seconds": 0,
     "status": "PASS"
   },
-  "peak_r2_status": "COMPLETE"
+  "peak_r2_status": "COMPLETE",
+  "derived_peak_r3_seq1": {
+    "benchmark_run_group_id": "7874e7ca-ddb5-41bc-adcb-276677a1fa8b",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 233.056874,
+    "notebook_cu_seconds": 2962.2,
+    "notebook_cu_seconds_per_million_rows": 37.0275,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS"
+  },
+  "peak_r3_par4_status": "PENDING"
 }
