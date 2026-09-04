@@ -205,5 +205,8 @@
     "runtime_threshold_pass": true,
     "normalized_cu_threshold_pass": true,
     "recommendation": "PAR4"
-  }
+  },
+  "status": "SUPERSEDED_FOR_FINAL_CU_DECISION",
+  "superseded_by": "capacity-item-detail-observations.json",
+  "interpretation_note": "Cumulative Timepoint Summary deltas are retained as investigation history. Refresh timing and report-window churn distorted some individual deltas; use Timepoint Item Detail for authoritative operation-level CU."
 }
