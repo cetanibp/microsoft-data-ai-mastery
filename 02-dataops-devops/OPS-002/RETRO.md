@@ -42,7 +42,7 @@ The planned exercise assumed a newly injected failure. Precheck found a genuine 
 3. Publish the operations projection through a governed semantic model and dashboard.
 4. Measure detection, acknowledgement, and recovery latency automatically from audit events.
 5. Exercise capacity exhaustion and control-store restoration as part of broader continuity testing.
-6. Revisit thresholds after FAB-004 establishes representative performance and capacity baselines.
+6. Apply the FAB-004 F256 `PAR4` performance and capacity baselines to [#11 — RTI-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) monitoring thresholds; keep SLO and routing thresholds scenario-specific until analytics, real-time, AI, and controlled companion-workload evidence is available.
 
 ## Skill result
 
