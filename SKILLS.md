@@ -21,7 +21,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Lakehouse, Delta, and Spark engineering | 1 | 2 | 4 | [FAB-002 runtime](01-fabric-platform-engineering/FAB-002/README.md) and [FAB-003 quality evidence](01-fabric-platform-engineering/FAB-003/README.md) |
 | Warehouse and semantic model engineering | 1 | 1 | 4 | |
 | Metadata-driven ingestion | 1 | 3 | 5 | [FAB-001 control plane](01-fabric-platform-engineering/FAB-001/README.md), [FAB-002 runtime](01-fabric-platform-engineering/FAB-002/README.md), and [FAB-003 acceptance gates](01-fabric-platform-engineering/FAB-003/README.md) |
-| Performance and capacity optimization | 1 | 1 | 4 | |
+| Performance and capacity optimization | 1 | 3 | 4 | [FAB-004 benchmark decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md) |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 3 | 5 | [OPS-002 evidence](02-dataops-devops/OPS-002/README.md) |
 | Real-Time Intelligence | 1 | 1 | 4 | |
@@ -35,8 +35,8 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Data products, contracts, APIs, and GraphQL | 1 | 1 | 4 | |
 | Identity, networking, and platform security | 1 | 2 | 4 | [OPS-001 identity boundaries](02-dataops-devops/OPS-001/architecture.md) |
 | Resiliency, recovery, and continuity | 1 | 3 | 4 | [FAB-002 recovery](01-fabric-platform-engineering/FAB-002/RETRO.md) and [FAB-003 block/replay evidence](01-fabric-platform-engineering/FAB-003/RETRO.md) |
-| Cost estimation and FinOps | 1 | 1 | 4 | |
-| Architecture decisions and tradeoff analysis | 1 | 2 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) |
+| Cost estimation and FinOps | 1 | 2 | 4 | [FAB-004 cost model](01-fabric-platform-engineering/FAB-004/benchmark-results.md#capacity-and-allocated-cost-model) |
+| Architecture decisions and tradeoff analysis | 1 | 3 | 5 | [ARCH-003 evidence](09-enterprise-architecture/ARCH-003/README.md) and [FAB-004 quantified decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md) |
 | Executive and engineering communication | 1 | 1 | 5 | |
 
 ## Baseline assessment — August 2026
@@ -151,6 +151,26 @@ OPS-002 provides an independently implemented operational path across measurable
 This satisfies Level 3 because the solution was designed, built, tested, troubleshot, recovered, and documented with live evidence.
 
 **Why the score is not yet 4:** external delivery integration, scheduled evaluation, multi-scenario threshold optimization, a governed monitoring product, and broader incident simulations remain future evidence.
+
+## Progress reassessment — September 4, 2026
+
+### Performance and capacity optimization: 1 → 3
+
+FAB-004 independently designed, implemented, troubleshot, and documented a reproducible F256 benchmark across steady, peak, and replay workloads. It used alternating paired order, fixed synthetic inputs, operation-level Capacity Metrics evidence, normalized CU, queue and throughput metrics, correctness gates, explicit decision thresholds, and limitations.
+
+**Why the score is not yet 4:** the evidence covers one capacity SKU and workload shape. Level 4 requires tuning across multiple SKUs or data layouts, controlled companion-workload contention, and broader production forecasting.
+
+### Cost estimation and FinOps: 1 → 2
+
+FAB-004 converts operation CU into normalized CU per million rows and an allocated F256 cost coefficient while distinguishing allocated share from incremental billing.
+
+**Why the score is not yet 3:** the environment-specific hourly price was not supplied, so actual dollar allocation, budget variance, and an operational FinOps feedback loop remain unvalidated.
+
+### Architecture decisions and tradeoff analysis: 2 → 3
+
+ARCH-003 established the decision discipline, and FAB-004 applied it to a live implementation choice. The repository now contains declared alternatives, controlled variables, thresholds, multiple scenarios, anomalous-result correction, quantified tradeoffs, a selected design, and explicit limitations.
+
+**Why the score is not yet 4:** broader stakeholder review and cross-platform, security, resiliency, and multi-SKU decisions remain future evidence.
 
 ## Monthly assessment questions
 
