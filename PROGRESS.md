@@ -6,8 +6,8 @@
 |---|---:|
 | Milestones completed | 1 / 5 |
 | Epics completed | 0 / 4 |
-| Work items completed | 8 |
-| Competencies at level 3+ | 4 |
+| Work items completed | 9 |
+| Competencies at level 3+ | 6 |
 | Competencies at level 4+ | 0 |
 | Capstone status | Not started |
 
@@ -85,6 +85,8 @@
 - Expanded the FAB-003 suite to 33 tests, including generated-pipeline ordering and workspace-identifier sanitization.
 - Completed OPS-002 with measurable SLOs, correlated operational telemetry, idempotent evaluation and routing persistence, operational runbooks, and a live stale-candidate recovery exercise.
 - Proved a reliability breach, deterministic simulated routing, replay-safe persistence, quality-enforcement integrity, and state-safe orphan recovery in Development.
+- Completed FAB-004 with reproducible smoke, steady, 80-million-row peak, and idempotent-replay benchmarks on F256.
+- Selected bounded parallelism `PAR4` after it improved median elapsed time by 30.4%–53.6%, reduced median CU by 31.3%–47.7%, preserved correctness, and recorded zero throttling.
 
 **Evidence shipped**
 
@@ -95,6 +97,7 @@
 - [OPS-002 live telemetry and routing checkpoint](02-dataops-devops/OPS-002/evidence/live-development-checkpoint.md), [failure-recovery exercise](02-dataops-devops/OPS-002/evidence/failure-recovery-exercise.md), and [retrospective](02-dataops-devops/OPS-002/RETRO.md).
 - [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779) validating the generated pipeline.
 - [GitHub Actions run 33576595412](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33576595412) validating the synthetic duplicate quarantine window.
+- [FAB-004 benchmark decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md), [operation-level evidence](01-fabric-platform-engineering/FAB-004/evidence/README.md), and [retrospective](01-fabric-platform-engineering/FAB-004/RETRO.md).
 
 **Skills improved**
 
@@ -102,6 +105,9 @@
 - Metadata-driven ingestion: 2 → 3 — FAB-001 definitions, FAB-002 shared runtime, and [FAB-003 policy-driven acceptance](01-fabric-platform-engineering/FAB-003/RETRO.md).
 - Resiliency, recovery, and continuity: 2 → 3 — fixed-boundary block, state preservation, replay recovery, concurrency protection, and idempotent evidence across FAB-002 and FAB-003.
 - Observability, SLOs, and incident response: 1 → 3 — [OPS-002 measurable objectives, live routing, runbooks, and recovery evidence](02-dataops-devops/OPS-002/README.md).
+- Performance and capacity optimization: 1 → 3 — [FAB-004 controlled workload, concurrency, queue, CU, and threshold evidence](01-fabric-platform-engineering/FAB-004/benchmark-results.md).
+- Cost estimation and FinOps: 1 → 2 — [FAB-004 normalized-CU and allocated-cost model](01-fabric-platform-engineering/FAB-004/benchmark-results.md#capacity-and-allocated-cost-model).
+- Architecture decisions and tradeoff analysis: 2 → 3 — [FAB-004 evidence-backed `SEQ1` versus `PAR4` decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md).
 
 **What failed or changed**
 
@@ -112,11 +118,13 @@
 - OPS-002's first routing candidate and persistence logic derived different deduplication keys; live validation exposed the mismatch and the contract was unified.
 - A verification query expected `evaluation_status` from the open-breach view; SQL compilation prevented the write, the view contract was corrected, and routing then persisted idempotently.
 - Failure-exercise precheck found a genuine orphaned candidate, so the exercise preserved the later accepted winner and abandoned the obsolete attempt instead of injecting another failure or replaying an already-covered boundary.
+- Cumulative Capacity Metrics subtraction produced misleading individual CU deltas because of refresh timing and report-window churn; Timepoint Item Detail became the authoritative per-session CU source.
+- The first PEAK attempt correctly failed its tier assertion because large-tier parameters were not set explicitly. The corrected run passed, and the validation-only attempt was retained as a documented measurement limitation.
 
 **Next focus**
 
-- Implement [#10 — performance, capacity, and cost benchmarking](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10) using representative Fabric workloads and data volumes.
-- Compare at least two design alternatives and quantify runtime, concurrency, resource, and cost tradeoffs.
+- Implement [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) as the final planned Phase 1 work item.
+- Reuse FAB-002 through FAB-004 run identities, SLOs, quality decisions, and performance thresholds in the operational monitoring design.
 
 # YYYY-MM — Theme
 
