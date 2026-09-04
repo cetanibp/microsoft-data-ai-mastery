@@ -4,7 +4,7 @@ FAB-004 establishes a reproducible benchmark for the Northstar Fabric ingestion 
 
 ## Status
 
-In progress. The initial workload and measurement contract targets the isolated FAB-004 Development workspace on an F256 capacity. Live results have not yet been collected.
+Complete. Live F256 validation covered smoke, three paired steady-state repetitions, three paired 80-million-row peak repetitions, and three paired idempotent-replay repetitions. `PAR4` passed every decision threshold and is the recommended bounded-parallel configuration.
 
 ## Benchmark question
 
@@ -49,11 +49,19 @@ Performance thresholds are decision rules, not reasons to discard an otherwise v
 - Allocated cost is reported as a model, not as incremental billing: `CU seconds / (256 × 3600) × F256 hourly price`.
 - Actual hourly pricing is an environment input and is never hard-coded into the benchmark contract.
 
+## Result
+
+`PAR4` improved median elapsed time by 53.6% for steady state, 35.9% for peak, and 30.4% for replay. Median operation CU was 31.3% to 47.7% lower, correctness passed for every measured run, replay inserted zero duplicate rows, and Capacity Metrics recorded zero throttling.
+
+See [benchmark-results.md](benchmark-results.md) for the decision, allocated-cost coefficients, evidence interpretation, and limitations.
+
 ## Repository contents
 
 | Path | Purpose |
 |---|---|
 | [benchmark-spec.md](benchmark-spec.md) | Experimental controls, execution order, measurements, formulas, and decision rules |
+| [benchmark-results.md](benchmark-results.md) | Median results, cost model, optimization decision, and limitations |
+| [RETRO.md](RETRO.md) | Lessons, measurement correction, decision, and follow-up |
 | [config/workloads.json](config/workloads.json) | Machine-readable workload contract |
 | [runtime/benchmark_contract.py](runtime/benchmark_contract.py) | Dependency-free manifest validation and derived workload calculations |
 | [Fabric workspace artifacts](workspace/README.md) | Parameterized worker and orchestrator notebooks for `SEQ1` and `PAR4` |
