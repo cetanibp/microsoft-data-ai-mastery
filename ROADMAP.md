@@ -24,11 +24,11 @@ Target: October–December 2026
 - [x] Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
 - [x] Implement the initial governed CI/CD and environment-promotion foundation through OPS-001.
 - [x] Add tested operational observability and automated quality gates beyond deployment validation.
-- [ ] Benchmark performance and document capacity/cost tradeoffs.
+- [x] Benchmark performance and document capacity/cost tradeoffs.
 
 Exit evidence: a repeatable framework, failure-injection tests, operational dashboard, runbook, ADRs, and benchmark report.
 
-**Progress to date:** OPS-001 established governed Fabric delivery and supported acceptance of ADR-002. FAB-001 through FAB-003 completed the versioned control plane, resilient ingestion runtime, reconciliation, quality gates, quarantine, and recovery evidence. OPS-002 added measurable SLOs, correlated operational telemetry, deterministic simulated routing, runbooks, and a live stale-candidate recovery exercise. The current priority is [#10 — performance, capacity, and cost benchmarking](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10); [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) remains the final planned Phase 1 work item.
+**Progress to date:** OPS-001 established governed Fabric delivery and supported acceptance of ADR-002. FAB-001 through FAB-003 completed the versioned control plane, resilient ingestion runtime, reconciliation, quality gates, quarantine, and recovery evidence. OPS-002 added measurable SLOs, correlated operational telemetry, deterministic simulated routing, runbooks, and a live stale-candidate recovery exercise. FAB-004 completed reproducible steady, peak, and replay benchmarking and selected bounded parallelism `PAR4` with quantified runtime, queue, CU, correctness, throttling, cost-allocation, and limitation evidence. [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) is now the final planned Phase 1 work item.
 
 ## Phase 2 — Production AI and agent engineering
 
