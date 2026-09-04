@@ -168,6 +168,18 @@
       "scenario_id": "PEAK",
       "alternative_id": "SEQ1",
       "repetition": 3
+    },
+    {
+      "start_local": "2026-09-03T17:06:51-07:00",
+      "end_local": "2026-09-03T17:09:35-07:00",
+      "duration_seconds": 164,
+      "total_cu_seconds": 1507.6,
+      "timepoint_cu_seconds": 0.52,
+      "pct_base_capacity": 0.01,
+      "throttling_seconds": 0,
+      "scenario_id": "PEAK",
+      "alternative_id": "PAR4",
+      "repetition": 3
     }
   ],
   "derived_peak_r2_seq1": {
@@ -204,5 +216,54 @@
     "throttling_seconds": 0,
     "correctness_status": "PASS"
   },
-  "peak_r3_par4_status": "PENDING"
+  "peak_r3_par4_status": "PENDING",
+  "derived_peak_r3_par4": {
+    "benchmark_run_group_id": "7874e7ca-ddb5-41bc-adcb-276677a1fa8b",
+    "accepted_rows": 80000000,
+    "elapsed_seconds": 138.813221,
+    "notebook_cu_seconds": 1507.6,
+    "notebook_cu_seconds_per_million_rows": 18.845,
+    "throttling_seconds": 0,
+    "correctness_status": "PASS"
+  },
+  "derived_peak_r3_pair": {
+    "execution_order": [
+      "SEQ1",
+      "PAR4"
+    ],
+    "seq1_notebook_cu_seconds": 2962.2,
+    "par4_notebook_cu_seconds": 1507.6,
+    "par4_notebook_cu_reduction_pct": 49.105395,
+    "elapsed_improvement_pct": 40.438049,
+    "throughput_increase_pct": 67.892419,
+    "queue_reduction_pct": 48.304751,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0,
+    "status": "PASS"
+  },
+  "peak_r3_status": "COMPLETE",
+  "peak_median_decision": {
+    "seq1_elapsed_seconds": 222.616469,
+    "par4_elapsed_seconds": 142.64732,
+    "elapsed_improvement_pct": 35.922387,
+    "speedup": 1.560607,
+    "seq1_throughput_rows_per_second": 359362.451,
+    "par4_throughput_rows_per_second": 560823.714,
+    "throughput_increase_pct": 56.060744,
+    "seq1_maximum_worker_queue_seconds": 205.170808,
+    "par4_maximum_worker_queue_seconds": 117.195715,
+    "queue_reduction_pct": 42.878952,
+    "seq1_notebook_cu_seconds": 2962.2,
+    "par4_notebook_cu_seconds": 1549.47,
+    "par4_notebook_cu_reduction_pct": 47.691918,
+    "seq1_cu_seconds_per_million_rows": 37.0275,
+    "par4_cu_seconds_per_million_rows": 19.368375,
+    "required_elapsed_improvement_pct": 15,
+    "allowed_normalized_cu_increase_pct": 25,
+    "runtime_threshold_pass": true,
+    "normalized_cu_threshold_pass": true,
+    "correctness_status": "PASS",
+    "throttling_seconds": 0,
+    "recommendation": "PAR4"
+  }
 }
