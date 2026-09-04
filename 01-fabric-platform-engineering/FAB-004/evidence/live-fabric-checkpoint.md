@@ -28,6 +28,8 @@ The smoke gate passed all correctness invariants and proved that the orchestrato
 
 The smoke timing is not used for the `SEQ1` / `PAR4` decision. Queueing and fixed orchestration/session overhead are large relative to a 10,000-row workload, which is precisely why the contract reserves performance conclusions for the standard and peak tiers.
 
-## Next checkpoint
+## Final live outcome
 
-Run the standard `STEADY` workload for three paired repetitions in the declared alternating order. Capture the exact JSON output and Capacity Metrics observations for each run window.
+The subsequent standard, peak, and replay scenarios each completed three paired repetitions. All measured runs passed row-count and duplicate invariants and recorded zero Capacity Metrics throttling.
+
+`PAR4` is the selected bounded-parallel design. See [the final benchmark report](../benchmark-results.md) and [the evidence index](README.md).
