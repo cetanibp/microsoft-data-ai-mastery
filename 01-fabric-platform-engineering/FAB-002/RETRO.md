@@ -71,3 +71,7 @@ Issue #9 should project the durable execution and object-run telemetry into oper
 ## Evidence
 
 See the [evidence index](evidence/README.md) and [live Fabric checkpoint](evidence/live-fabric-checkpoint.md) for the completed scenario results.
+
+## Tracked follow-up — September 5, 2026
+
+The original downstream reconciliation/quality and observability work completed through #7 and #9. [OPS-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49) now tracks deployment/state-migration depth, [RTI-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47) tracks producer telemetry integration, and [CAP-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/24) tracks whole-solution restoration. Optional [FAB-005](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/52) adds a second source-change scenario with CDC/deletes/replay; it does not reopen this completed vertical slice.

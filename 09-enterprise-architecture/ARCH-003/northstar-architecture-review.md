@@ -199,3 +199,7 @@ A **Pass** means current planning evidence adequately addresses the question. A 
 | Governance reviewer | To be assigned | Pending | |
 | Operations reviewer | To be assigned | Pending | |
 | Independent architecture reviewer | To be assigned | Pending | |
+
+## September 5, 2026 tracking note
+
+The findings and sign-off above are the August 23 planning-baseline review and retain their original meaning. Later Phase 1 implementation evidence is recorded in PROGRESS.md and the completed work items. [ARCH-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50) now owns a dated reassessment and explicit remaining-condition review; no condition is closed by this planning update. The [decision-register follow-up map](../decisions/README.md#evidence-follow-up--september-5-2026) links all six original conditions and the planned ADRs to current issue owners.

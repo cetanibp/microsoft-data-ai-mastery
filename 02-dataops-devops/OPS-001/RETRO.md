@@ -48,3 +48,7 @@ Workflow artifacts have finite retention. Durable manifests therefore retain run
 
 Implementation evidence supports accepting ADR-002 Option C: separate workspaces with automated, approved promotion. The evidence also confirms ADR-002's warning that automation must be paired with validation, approvals, configuration boundaries, and tested recovery.
 
+
+## Tracked follow-up — September 5, 2026
+
+The improvements above are now tracked in [OPS-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49): automated notebook execution/polling, drift comparison, selective deployment, environment identity handling, stateful migration/forward recovery, emergency-access testing, and durable evidence retention. [AI-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45) owns the separate Azure/AI application deployment path. These are planned follow-ups; OPS-001's original completion and limitations remain unchanged.

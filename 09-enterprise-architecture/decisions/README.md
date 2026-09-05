@@ -65,3 +65,34 @@ The register is a backlog, not a requirement to decide everything immediately. C
 - [ARCH-001 decision backlog](../ARCH-001/RETRO.md#decisions-to-address-through-adrs)
 - [Enterprise architecture review checklist](../ARCH-003/architecture-review-checklist.md)
 - [Northstar architecture review](../ARCH-003/northstar-architecture-review.md)
+
+## Evidence follow-up — September 5, 2026
+
+The learning-gap review linked each remaining decision to implementation and review owners. Existing statuses above remain unchanged pending decision records and required validation. In particular, quality, observability and capacity evidence is available to support drafting, but a completed implementation issue does not automatically accept an ADR. [ARCH-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50) owns the dated reassessment and condition reconciliation.
+
+| Decision | Evidence or required validation | Follow-up owner issues |
+|---|---|---|
+| ADR-001 platform/workload boundaries | Workspace and F256 evidence exists; wider contention/isolation claims remain unvalidated | [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50), optional [#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) |
+| ADR-003 data-product organization | Implemented analytical grain, ownership, publication and semantic contracts | [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#46](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/46) |
+| ADR-004 batch versus events | Actual pipeline event integration and measured freshness/complexity tradeoffs | [#47](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47) |
+| ADR-005 identity/secrets/access | User/workload identity, network boundaries, authorization and denial tests | [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20), [#45](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45), [#49](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49) |
+| ADR-006 quality blocking/warning | FAB-003 provides live gates, warning and quarantine evidence for a draft | [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50) using [#7](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/7) |
+| ADR-007 observability/audit | OPS-002/RTI-001 provide evidence; producer integration and governed routing remain | [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50), [#47](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47) |
+| ADR-008 recovery/regional resilience | Restore data and control state, measure RTO/RPO, distinguish lab simulation from regional readiness | [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23), [#24](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/24), [#49](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49) |
+| ADR-009 grounding/access enforcement | Corpus lifecycle, retrieval comparison, citations, access/revocation and traces | [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20) |
+| ADR-010 approval/execution | Typed tools, action binding, state recheck, least privilege and replay protection | [#14](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/14), [#17](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/17) |
+| ADR-011 capacity/cost | FAB-004 supports a bounded decision draft; actual cost model and optional contention evidence deepen it | [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50), [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23), optional [#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) |
+| ADR-012 governance authority | Product ownership, stewardship, exceptions, retention and policy enforcement | [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20) |
+
+### Original approval-condition follow-up
+
+This is a tracking map, not a replacement for the August 23 architecture review or a new approval. Reassess each condition against actual evidence in #50 and the final #24 review.
+
+| Original condition | Follow-up issues |
+|---|---|
+| COND-01 security/AI authorization | [#14](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/14), [#17](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/17), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20), [#45](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45) |
+| COND-02 recovery scope and objectives | [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23), [#24](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/24), [#49](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49) |
+| COND-03 capacity/performance | Completed [#10](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/10) evidence; [#46](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/46) and optional [#53](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/53), [#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) for wider scenarios |
+| COND-04 cost ceiling and controls | [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23) baseline; optional [#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) feedback loop |
+| COND-05 governance ownership/policy | [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20), [#21](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/21) |
+| COND-06 delivery/operations | Completed [#8](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/8), [#9](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/9), [#11](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) evidence; [#45](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45), [#47](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47), [#49](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49), [#51](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/51) remaining depth |

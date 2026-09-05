@@ -35,3 +35,7 @@ RTI-001 established the repository's first end-to-end Fabric Real-Time Intellige
 - Add sustained-load and failure-injection tests before production use.
 - Evaluate update policies or materialized views when event volume makes query-time projection materially expensive.
 
+
+## Tracked follow-up — September 5, 2026
+
+[RTI-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47) owns actual FAB producer integration, governed recipients/escalation, delivery recovery, sustained-load measurements, and a measured decision on projection optimization. [OPS-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/51) owns RTI CI and executable KQL regression coverage. RTI-001 remains complete within its synthetic-producer Development scope.
