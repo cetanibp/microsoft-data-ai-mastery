@@ -4,8 +4,8 @@
 
 | Measure | Current |
 |---|---:|
-| Milestones completed | 1 / 5 |
-| Epics completed | 0 / 4 |
+| Milestones completed | 2 / 5 |
+| Epics completed | 1 / 4 |
 | Work items completed | 10 |
 | Competencies at level 3+ | 7 |
 | Competencies at level 4+ | 0 |
@@ -89,6 +89,7 @@
 - Selected bounded parallelism `PAR4` after it improved median elapsed time by 30.4%–53.6%, reduced median CU by 31.3%–47.7%, preserved correctness, and recorded zero throttling.
 - Completed RTI-001 with Eventstream ingestion, Eventhouse contract validation and deduplication, sequence-aware current state, 60-second actionable-condition evaluation, contextual notification, and a four-tile Real-Time Dashboard.
 - Proved late, duplicate, malformed, and out-of-order handling plus 59-second query detection and 79-second final notification latency.
+- Closed EPIC-FAB-001 and the Fabric Platform & DataOps milestone after all seven child work items and Phase 1 exit evidence were completed.
 
 **Evidence shipped**
 
@@ -130,8 +131,8 @@
 
 **Next focus**
 
-- Close Phase 1 after review and merge of [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11).
 - Begin Phase 2 with [#12 — Production-grade Data Operations Agent](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/12), reusing the governed operational telemetry produced in Phase 1.
+- Start with [#13 — grounded Foundry application](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) to establish the retrieval, deployment, and evaluation foundation for the later agent work.
 
 # YYYY-MM — Theme
 
