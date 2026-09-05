@@ -29,3 +29,7 @@ Use `PAR4` for this workload on F256. It improved median elapsed time by 30.4% t
 - Add a controlled companion workload before making shared-capacity isolation claims.
 - Revalidate after material runtime, layout, workload-shape, or SKU changes.
 - Use the same item-detail evidence method in future capacity benchmarks.
+
+## Tracked follow-up — September 5, 2026
+
+[CAP-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23) owns the baseline dated cost model. Optional [FIN-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) tracks applicable price inputs, shared-capacity companion workload, cost attribution, and a budget/anomaly feedback loop. Optional [FAB-006](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/53) tracks a second workload and Spark/Delta layout experiments. [ARCH-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50) owns drafting ADR-011 using available evidence while retaining pricing and isolation limitations. No broader optimization or actual cash savings are claimed by this planning update.

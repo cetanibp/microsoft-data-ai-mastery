@@ -40,3 +40,18 @@ body:
       label: Retrospective
       description: Complete before closing—what worked, what failed, and what changes next.
 
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and increments
+      description: Link one parent epic and milestone; distinguish prerequisite increments, shared integration gates, and optional extensions. Split work that exceeds two weeks.
+  - type: textarea
+    id: validation_design
+    attributes:
+      label: Validation and learning depth
+      description: Define expected behavior, failure scenarios, metrics and thresholds before tuning. For AI, include versioned datasets and held-out cases. State the evidence needed for any proposed score change.
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Evidence boundaries and limitations
+      description: Distinguish planned work, artifact checks, live lab behavior, simulations and independent review. Record platform/version/access limitations and open follow-ups.

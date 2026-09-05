@@ -28,3 +28,15 @@
 - Prefer diagrams-as-code or source-editable diagrams.
 - Make demos repeatable from documented prerequisites.
 
+
+## Learning-depth and dependency rules
+
+- Specify prerequisite **increments** when the full upstream issue is not needed. The #19/#20 corpus/access slice enables #13; full governance follows later.
+- Define AI datasets, expected behavior, held-out cases, thresholds, and version capture before implementation tuning. Add agent-specific evaluation as the workflow becomes executable.
+- Separate core epic exit gates from optional advanced extensions. Optional issues may remain open after core delivery; milestone closure still requires its assigned issues to be completed or explicitly replanned.
+- Link retrospective follow-ups to owned issues and point historical documents to current tracking without rewriting original results.
+- Label evidence as planned, artifact-only validation, lab behavior, simulation, or independently reviewed as appropriate. Do not substitute one for another.
+- Preserve skill scores during planning updates. Level 4 needs a second scenario, independent troubleshooting, and quantified tradeoffs; level 5 also needs standards, mentoring/handoff, and defended decisions with feedback.
+- Record product/SDK versions and current support limitations when choosing implementation details. Use synthetic or approved public data throughout.
+
+See [the September review](tracking/LEARNING_GAP_REVIEW_2026-09.md) for the current expanded backlog.

@@ -43,4 +43,8 @@ Completion means more than producing code. A work item is complete only when its
 
 Strong evidence includes runnable code, automated tests, architecture diagrams, decision records, operational telemetry, cost or capacity analysis, security controls, demos, and concise explanations of tradeoffs.
 
+## Current learning focus
 
+Phase 0 and Phase 1 are complete. Begin [AI-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) after the minimum corpus and access-policy slice of [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19) and [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20), with evaluation cases from [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16) defined before tuning. Full governance implementation follows later.
+
+See the [September learning-gap review](tracking/LEARNING_GAP_REVIEW_2026-09.md) for expanded issue scope, new builds, dependencies, and optional advanced exercises. The [issue catalog](tracking/STARTER_ISSUES.md) links the live backlog; planning updates do not change skill scores.

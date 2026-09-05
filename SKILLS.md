@@ -198,3 +198,27 @@ This satisfies Level 3 because the solution was designed, built, deliberately st
 3. What tradeoffs can I quantify rather than describe abstractly?
 4. Which evidence would withstand an architecture review?
 5. What is the smallest next build that closes the most important gap?
+
+## Learning-depth plan — September 5, 2026
+
+This review expands the evidence backlog; every baseline/current/target score above is unchanged. The August prioritization is historical. The current next build is #13 after a minimum #19/#20 corpus/access slice and early #16 evaluation design.
+
+| Competency or gap | Next evidence-producing work |
+|---|---|
+| Foundry application engineering; identity/network/security | [AI-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45) infrastructure, hosted deployment, allow/deny tests, and rollback |
+| Retrieval and grounding | [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) retrieval/chunking comparison, lifecycle, permission and unanswerable-case tests |
+| Tools, orchestration, evaluation, and oversight | [#14](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/14), [#15](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/15), [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16), [#17](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/17) typed/MCP tools, bounded diagnosis, held-out gates, exact-action authorization |
+| Warehouse and semantic model engineering | [DATA-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/46) schema, history, measures, storage-mode and access tests |
+| AI-ready metadata; Purview governance and lineage | [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20) discoverable products, policy enforcement and revocation; record a Purview-specific evidence gap if unavailable |
+| Data products, APIs and GraphQL | [#21](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/21) implemented API, consumer compatibility and identity tests; document unimplemented interface alternatives |
+| CI/CD and operational reliability | [OPS-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49), [OPS-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/51), [RTI-002](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/47) automated live gates, drift/migration, real producer telemetry |
+| Recovery and continuity | [#24](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/24) data/control-state restoration, RTO/RPO and migration rehearsal on [#48](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/48) |
+| Architecture and communication | [ARCH-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50), [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23), [#25](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/25) decisions, measured value, independent handoff and feedback |
+| Additional ingestion/Spark depth | Optional [FAB-005](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/52) and [FAB-006](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/53) second-source/workload evidence |
+| FinOps | [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23) baseline dated cost model; optional [FIN-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) contention, allocation and feedback loop |
+
+### Advancement beyond level 3
+
+For level 4, require a second materially different scenario, independent diagnosis of a failure or regression, and quantified alternatives with limits and reconsideration triggers. Record what was accomplished without a guide. A repeated guided exercise alone does not prove transfer.
+
+For level 5, additionally publish reusable standards, demonstrate mentoring or an operating handoff, and defend enterprise decisions with reviewer feedback. If an independent reviewer is unavailable, keep that gap explicit. [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50) owns the cross-track reassessment; issue completion never automatically changes a score.

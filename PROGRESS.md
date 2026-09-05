@@ -134,6 +134,35 @@
 - Begin Phase 2 with [#12 — Production-grade Data Operations Agent](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/12), reusing the governed operational telemetry produced in Phase 1.
 - Start with [#13 — grounded Foundry application](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) to establish the retrieval, deployment, and evaluation foundation for the later agent work.
 
+### 2026-09-05 — Learning-gap review and backlog expansion
+
+**Planning outcomes**
+
+- Expanded all 14 previously open issues (#12–#25) with implementation depth, dependencies, evidence expectations, and clear early governance/evaluation increments.
+- Created [#45](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45)–[#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) with labels, milestones, and parent-epic links: four principal builds, three hardening/review/maintenance follow-ups, and three optional advanced extensions.
+- Added an explicit capstone implementation owner ([#48](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/48)) and analytical/semantic-model exercise ([#46](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/46)).
+- Linked retrospective follow-ups for producer telemetry, deployment automation/drift/state migration, cost experiments, and architecture decisions to executable backlog items.
+- Updated roadmap, track indexes, issue catalog, milestone scope, working agreement, and skill advancement expectations.
+
+**Status and evidence boundary**
+
+There are 24 open issues in this dated snapshot: 3 epics and 21 work items, including 3 optional P2 extensions. The completion dashboard above is unchanged: the review produced planning artifacts, not completed implementations or new skill scores. Phase 0 and Phase 1 remain complete. Repository hygiene/CI corrections are tracked in #51 and remain unimplemented by this documentation change.
+
+**Evidence**
+
+- [September learning-gap review and recommendation coverage](tracking/LEARNING_GAP_REVIEW_2026-09.md)
+- [Current issue catalog](tracking/STARTER_ISSUES.md)
+- [Expanded AI epic](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/12), [expanded governed-data epic](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/18), [expanded capstone epic](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/22)
+
+**Next focus**
+
+1. Publish the minimum #19/#20 corpus, terminology, ownership and access-policy slice.
+2. Begin #13 with the initial #16 dataset, rubric, held-out cases, and thresholds before tuning.
+3. Queue #45/#47/#49/#51 as bounded delivery/integration increments; keep work in progress at two or fewer issues.
+4. Begin #50's Phase 1 reassessment when ready. Keep #52–#54 optional and deferred until the next skill gap warrants them.
+
+The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it recommends changes for review and does not modify the repository automatically.
+
 # YYYY-MM — Theme
 
 **Outcomes**
