@@ -16,4 +16,4 @@ Implementation evidence will be added under each planning ID as work is complete
 
 ## Corpus walkthrough started
 
-[DATA-001 first corpus manifest](DATA-001/README.md) selects three revision-pinned operational documents and explains each inventory field. This is a draft prerequisite artifact; glossary, approval, access mapping and runtime enforcement remain open.
+[DATA-001 first corpus manifest](DATA-001/README.md) selects three revision-pinned operational documents and explains each inventory field. The [draft operational glossary](DATA-001/operational-glossary.md) adds eight source-linked terms and five clarification cases. Glossary review, approval, access mapping and runtime enforcement remain open.

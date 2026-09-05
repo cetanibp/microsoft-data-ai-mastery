@@ -63,4 +63,4 @@ Resources checked September 5, 2026. This JSON format and its proposed 30-day re
 
 Artifact validation checks JSON parsing, three unique document IDs, source paths/blob SHAs against the pinned Git tree, revision-pinned URLs, shared policy references, pending approval and runtime_ready=false. These checks do not prove retrieval, freshness or access behavior.
 
-Next walkthrough: define the operational glossary and the requesting-user/workload-identity/access matrix. Then prepare representative evaluation questions and pass thresholds before retrieval tuning. The broader #19/#20 work and #13 acceptance criteria remain open. No skill scores change.
+Step 3 adds the [operational glossary](operational-glossary.md) and [machine-readable definitions](operational-glossary.json), with eight terms and five proposed clarification cases. Next walkthrough: define the requesting-user/workload-identity/access matrix. Then prepare representative evaluation questions and pass thresholds before retrieval tuning. The broader #19/#20 work and #13 acceptance criteria remain open. No skill scores change.

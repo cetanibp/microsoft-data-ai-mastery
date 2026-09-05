@@ -171,6 +171,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Evidence level: artifact-only validation. No AI deployment, access-enforcement demonstration, issue completion or competency-score change is claimed.
 - Next guided step: operational glossary and identity/access matrix, followed by evaluation design before retrieval tuning.
 
+### 2026-09-05 — AI-001 corpus walkthrough, step 3
+
+- Added a [draft operational glossary](06-ai-ready-data/DATA-001/operational-glossary.md) with eight source-informed definitions, conservative aliases, distinctions and revision-pinned evidence.
+- Recorded five ambiguity/interpretation examples as development evaluation seeds; these are not executed semantic tests or held-out cases.
+- Verified artifact structure and source traceability. The three-source corpus remains unchanged; the glossary is supporting draft metadata with its own version.
+- Next guided step: requesting-user versus workload identity and the access matrix. Approval, runtime enforcement, retrieval and full evaluation remain open; no issue closure or skill-score change.
+
 # YYYY-MM — Theme
 
 **Outcomes**

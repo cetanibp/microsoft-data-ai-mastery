@@ -1,0 +1,337 @@
+{
+  "schema_version": "0.1.0",
+  "glossary_id": "northstar-operational-terms",
+  "glossary_version": "0.1.0",
+  "status": "draft",
+  "created_on": "2026-09-05",
+  "owner": "cetanibp",
+  "domain": "Northstar lab data operations",
+  "definition_basis": "Source-informed paraphrases scoped to the selected corpus; clarification rules are proposed application behavior.",
+  "corpus_id": "northstar-operations",
+  "corpus_version": "0.1.0",
+  "approval": {
+    "status": "pending_review",
+    "approved_by": null,
+    "approved_on": null
+  },
+  "runtime_status": "not_integrated",
+  "terms": [
+    {
+      "term_id": "quality-block",
+      "preferred_name": "Quality block",
+      "definition": "A quality outcome that prevents acceptance when a required blocking check fails.",
+      "aliases": [
+        "blocking quality failure"
+      ],
+      "not_equivalent_to": [
+        "quality warning",
+        "every execution failure"
+      ],
+      "operational_implication": "Do not bypass, downgrade or delete the block. Correct data or contract implementation and use the documented recovery procedure; watermark commit requires acceptance.",
+      "sources": [
+        {
+          "document_id": "northstar-quality-gates",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+          "sections": [
+            "Initial vertical slice"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "Select a pattern",
+            "State"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "quality-warning",
+      "preferred_name": "Quality warning",
+      "definition": "A warning-level quality result, distinguished from a blocking quality failure by the activated policy.",
+      "aliases": [
+        "warning-level quality result"
+      ],
+      "not_equivalent_to": [
+        "quality block",
+        "proof that all acceptance requirements passed"
+      ],
+      "operational_implication": "A warning is not itself proof of an accepted run. Inspect the full quality and acceptance evidence; do not convert a blocking rule to WARN to bypass recovery requirements.",
+      "sources": [
+        {
+          "document_id": "northstar-quality-gates",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+          "sections": [
+            "Initial vertical slice",
+            "Issue acceptance criteria"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "Select a pattern"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "committed-watermark",
+      "preferred_name": "Committed watermark",
+      "definition": "The accepted progress state tracked by the watermark protocol; this glossary uses the term for committed state rather than a proposed candidate.",
+      "aliases": [
+        "committed ingestion watermark"
+      ],
+      "not_equivalent_to": [
+        "proposed watermark candidate",
+        "latest source timestamp",
+        "target write completion"
+      ],
+      "operational_implication": "Verify the committed version and committing object run. A candidate commits only after acceptance; normal replay must follow the compare-and-commit protocol.",
+      "sources": [
+        {
+          "document_id": "northstar-quality-gates",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+          "sections": [
+            "Binding upstream contracts"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "State",
+            "Corrective state action"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "fixed-input-boundary",
+      "preferred_name": "Fixed input boundary",
+      "definition": "The identified input scope retained for an ingestion attempt and its recovery replay.",
+      "aliases": [
+        "fixed ingestion input boundary"
+      ],
+      "not_equivalent_to": [
+        "new input scope",
+        "unbounded latest data"
+      ],
+      "operational_implication": "After a durable target write followed by failure, the recovery runbook specifies replaying the same boundary rather than creating a new one. Exact interval endpoints and predicates are outside this initial corpus.",
+      "sources": [
+        {
+          "document_id": "northstar-triage",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "c3fcb0b5a70ef2ff7749ce355f7bef24109fa432",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+          "sections": [
+            "Procedure"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "Select a pattern"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "replay",
+      "preferred_name": "Replay",
+      "definition": "Reprocessing under the documented recovery pattern; data replay after a durable target write uses the same fixed boundary and an idempotent merge.",
+      "aliases": [
+        "recovery replay"
+      ],
+      "not_equivalent_to": [
+        "blind rerun",
+        "full reload",
+        "manual watermark advancement"
+      ],
+      "operational_implication": "Establish run state and ownership first. Do not replay an active ingestion occurrence. Telemetry-only recovery may require replaying the evaluator/router rather than ingestion.",
+      "sources": [
+        {
+          "document_id": "northstar-triage",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "c3fcb0b5a70ef2ff7749ce355f7bef24109fa432",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+          "sections": [
+            "Procedure",
+            "Stop conditions"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "Select a pattern"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "idempotency",
+      "preferred_name": "Idempotency",
+      "definition": "For the documented data replay, repeating the operation preserves the intended target result without accumulating duplicate effects.",
+      "aliases": [
+        "repeat-safe target result"
+      ],
+      "not_equivalent_to": [
+        "exactly one execution",
+        "all external side effects are repeat-safe"
+      ],
+      "operational_implication": "Verify the target result, deduplicated quarantine evidence and at-most-once watermark advancement. A repeat-safe target merge does not by itself prove repeat-safe notifications or every other system effect.",
+      "sources": [
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "Select a pattern",
+            "Data and quality",
+            "State",
+            "Observability"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "object-run",
+      "preferred_name": "Object run",
+      "definition": "The identified execution occurrence for an ingested object, used to connect quality, state and operational evidence.",
+      "aliases": [
+        "object execution occurrence"
+      ],
+      "not_equivalent_to": [
+        "object name",
+        "correlation ID",
+        "pipeline run ID"
+      ],
+      "operational_implication": "Keep the occurrence identity when selecting evidence and verify that the committing object run matches the accepted occurrence. Do not infer cardinality or identifier equality from this glossary.",
+      "sources": [
+        {
+          "document_id": "northstar-quality-gates",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+          "sections": [
+            "Objective",
+            "Binding upstream contracts"
+          ]
+        },
+        {
+          "document_id": "northstar-recovery",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+          "sections": [
+            "State"
+          ]
+        }
+      ]
+    },
+    {
+      "term_id": "correlation-id",
+      "preferred_name": "Correlation ID",
+      "definition": "An identifier usable as a starting point to locate related operational evidence during triage.",
+      "aliases": [
+        "correlation identifier"
+      ],
+      "not_equivalent_to": [
+        "authorization credential",
+        "guaranteed unique object-run ID"
+      ],
+      "operational_implication": "Use it to find evidence, then establish environment, release, occurrence and fixed boundary. Possessing an identifier does not grant access to that evidence.",
+      "sources": [
+        {
+          "document_id": "northstar-triage",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "source_blob_sha": "c3fcb0b5a70ef2ff7749ce355f7bef24109fa432",
+          "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+          "sections": [
+            "Required starting evidence",
+            "Procedure",
+            "Completion criteria"
+          ]
+        }
+      ]
+    }
+  ],
+  "clarification_cases": [
+    {
+      "case_id": "GLOSS-001",
+      "question": "The quality check failed. Is the load blocked?",
+      "term_ids": [
+        "quality-block",
+        "quality-warning"
+      ],
+      "expected_behavior": "Clarify enforcement level and inspect the complete decision; do not equate every failed check with BLOCK.",
+      "forbidden_assumption": "Any failed check proves a blocked or accepted run."
+    },
+    {
+      "case_id": "GLOSS-002",
+      "question": "The target write finished. Can we move the watermark?",
+      "term_ids": [
+        "committed-watermark"
+      ],
+      "expected_behavior": "Require acceptance and the normal compare-and-commit protocol; target write completion is insufficient.",
+      "forbidden_assumption": "A durable target write proves acceptance."
+    },
+    {
+      "case_id": "GLOSS-003",
+      "question": "Can I rerun it?",
+      "term_ids": [
+        "replay",
+        "fixed-input-boundary"
+      ],
+      "expected_behavior": "Clarify the occurrence and failure category, check active ownership, and distinguish ingestion replay from evaluator/router replay.",
+      "forbidden_assumption": "A generic rerun is always the correct recovery."
+    },
+    {
+      "case_id": "GLOSS-004",
+      "question": "Does idempotent mean it only ran once?",
+      "term_ids": [
+        "idempotency"
+      ],
+      "expected_behavior": "Explain that repeated execution can preserve the intended result; execution count and effect count differ.",
+      "forbidden_assumption": "Idempotency proves exactly one execution or repeat-safe external effects."
+    },
+    {
+      "case_id": "GLOSS-005",
+      "question": "I have the correlation ID; is that the object-run ID?",
+      "term_ids": [
+        "correlation-id",
+        "object-run"
+      ],
+      "expected_behavior": "Treat them as different identifier concepts and inspect the evidence mapping rather than assuming equality.",
+      "forbidden_assumption": "The identifiers are interchangeable."
+    }
+  ],
+  "consumer_rules": [
+    "Use aliases only within the stated domain and preserve negation and status qualifiers.",
+    "Do not treat not_equivalent_to entries as synonyms.",
+    "Clarify ambiguous terms before suggesting a scenario-specific procedure.",
+    "If definitions conflict or a source revision is outdated, surface the conflict for owner review; do not silently choose one.",
+    "Apply current source access and freshness rules before exposing derived definitions or their citations.",
+    "The glossary is a draft metadata artifact, not an additional approved corpus document."
+  ]
+}
