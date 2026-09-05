@@ -163,6 +163,14 @@ There are 24 open issues in this dated snapshot: 3 epics and 21 work items, incl
 
 The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it recommends changes for review and does not modify the repository automatically.
 
+### 2026-09-05 — AI-001 corpus walkthrough, step 2
+
+- Started the minimum DATA-001/GOV-001 prerequisite for AI-001 with a [draft corpus manifest and field guide](06-ai-ready-data/DATA-001/README.md).
+- Selected three existing Northstar operational documents, each pinned to the inspected source commit and file blob SHA.
+- Documented proposed ownership, allowed use, access, freshness and update/deletion rules; approval and runtime enforcement remain pending.
+- Evidence level: artifact-only validation. No AI deployment, access-enforcement demonstration, issue completion or competency-score change is claimed.
+- Next guided step: operational glossary and identity/access matrix, followed by evaluation design before retrieval tuning.
+
 # YYYY-MM — Theme
 
 **Outcomes**

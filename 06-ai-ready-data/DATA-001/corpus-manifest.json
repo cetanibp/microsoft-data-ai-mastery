@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "corpus_id": "northstar-operations",
+  "corpus_version": "0.1.0",
+  "status": "draft",
+  "created_on": "2026-09-05",
+  "repository": "cetanibp/microsoft-data-ai-mastery",
+  "purpose": "Read-only answers about documented Northstar lab operations, with source citations.",
+  "scope_exclusions": [
+    "Live incident diagnosis without runtime evidence",
+    "Executing recovery or changing platform state",
+    "Patient data, credentials, proprietary production data",
+    "Automatically following links to documents outside this manifest"
+  ],
+  "approval": {
+    "status": "pending_review",
+    "approved_by": null,
+    "approved_on": null
+  },
+  "policy_status": "proposed_not_enforced",
+  "runtime_ready": false,
+  "default_policy": {
+    "owner": "cetanibp",
+    "owner_scope": "Northstar lab repository maintainer",
+    "classification": "synthetic_lab_documentation",
+    "approved_use": "read_only_documentation_qa",
+    "access": {
+      "policy_id": "northstar-corpus-read-v0.1",
+      "allowed_reader_roles": [
+        "northstar-reader",
+        "northstar-operator"
+      ],
+      "default_decision": "deny",
+      "role_bindings_status": "not_implemented",
+      "enforcement_status": "not_implemented"
+    },
+    "freshness": {
+      "review_interval_days": 30,
+      "check_source_before_each_index_build": true,
+      "on_source_revision_change": "hold_until_reviewed_and_version_bumped",
+      "on_review_overdue": "exclude_until_reviewed"
+    },
+    "lifecycle": {
+      "update": "review_new_revision_and_rebuild_affected_chunks",
+      "delete_or_revoke": "deny_retrieval_then_remove_chunks_embeddings_and_cached_answers",
+      "retention": "retain_sanitized_manifest_and_experiment_metadata_only_subject_to_source_policy"
+    },
+    "citation": {
+      "use_revision_pinned_url": true,
+      "include_document_id": true,
+      "include_section": true
+    }
+  },
+  "documents": [
+    {
+      "document_id": "northstar-quality-gates",
+      "title": "FAB-003 — Reconciliation and data-quality gates",
+      "source_path": "01-fabric-platform-engineering/FAB-003/README.md",
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+      "content_type": "text/markdown",
+      "language": "en",
+      "coverage": "quality-gate concepts and documented implementation scope",
+      "inherits_policy": "default_policy",
+      "source_inspected_on": "2026-09-05",
+      "content_approved_on": null,
+      "next_review_due_on": null
+    },
+    {
+      "document_id": "northstar-triage",
+      "title": "Runbook — Triage",
+      "source_path": "02-dataops-devops/OPS-002/runbooks/triage.md",
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_blob_sha": "c3fcb0b5a70ef2ff7749ce355f7bef24109fa432",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+      "content_type": "text/markdown",
+      "language": "en",
+      "coverage": "incident evidence requirements, classification, and stop conditions",
+      "inherits_policy": "default_policy",
+      "source_inspected_on": "2026-09-05",
+      "content_approved_on": null,
+      "next_review_due_on": null
+    },
+    {
+      "document_id": "northstar-recovery",
+      "title": "Runbook — Recovery selection and verification",
+      "source_path": "02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "content_type": "text/markdown",
+      "language": "en",
+      "coverage": "documented recovery selection and verification",
+      "inherits_policy": "default_policy",
+      "source_inspected_on": "2026-09-05",
+      "content_approved_on": null,
+      "next_review_due_on": null
+    }
+  ]
+}
