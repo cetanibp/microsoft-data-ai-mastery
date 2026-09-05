@@ -1,0 +1,71 @@
+[
+  {
+    "uniqueIdentifier": "0290d1ba-b7ee-4d70-8447-5a76eba92ae9",
+    "payload": {
+      "name": "qs_northstar_operational_monitoring",
+      "description": "Container Description",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "b9fbca00-b3bb-4ba8-81d2-7d6b4e66971e",
+    "payload": {
+      "name": "kqldb_northstar_operations event",
+      "runSettings": {
+        "isStopped": false,
+        "executionIntervalInSeconds": 60
+      },
+      "query": {
+        "queryString": "OperationalEventAccepted()\n| where IngestedAtUtc > ago(2m)\n| where\n    Status in (\"FAILED\", \"QUALITY_BLOCKED\", \"RECOVERY_REQUIRED\")\n    or Severity in (\"ERROR\", \"CRITICAL\")\n| extend\n    AlertDetectedAtUtc = now(),\n    IngestionLatencySeconds =\n        datetime_diff(\"second\", IngestedAtUtc, EmittedAtUtc),\n    DetectionLatencySeconds =\n        datetime_diff(\"second\", now(), EmittedAtUtc)\n| project\n    AlertDetectedAtUtc,\n    EventId,\n    ObjectRunId,\n    CorrelationId,\n    Environment,\n    PipelineName,\n    ObjectName,\n    EventType,\n    Status,\n    Severity,\n    ErrorClassification,\n    EmittedAtUtc,\n    IngestedAtUtc,\n    IngestionLatencySeconds,\n    DetectionLatencySeconds\n| order by IngestedAtUtc desc"
+      },
+      "eventhouseItem": {
+        "itemId": "10d7fa62-f65d-90d8-438a-8a681b313cc9",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "b9fb14c5-67a2-40c0-9571-f482ba4143fa",
+        "querySetId": "5d9bde8f-21f6-444d-8b0f-67d8701a36f4",
+        "queryId": "356f9803-cc55-4ca7-bb51-f6a889703633"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "0290d1ba-b7ee-4d70-8447-5a76eba92ae9"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "3d44b592-76f3-449e-a44e-535899567fcb",
+    "payload": {
+      "name": "kqldb_northstar_operations event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "0290d1ba-b7ee-4d70-8447-5a76eba92ae9"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"5a22e777-266b-4975-8f93-74ea6ec1b33f\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"b9fbca00-b3bb-4ba8-81d2-7d6b4e66971e\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "2ade97d4-9a52-4c9e-b60f-0822e33ccff7",
+    "payload": {
+      "name": "RTI001_ActionableFailure",
+      "parentContainer": {
+        "targetUniqueIdentifier": "0290d1ba-b7ee-4d70-8447-5a76eba92ae9"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"EventTrigger\",\"templateVersion\":\"1.3.0\",\"steps\":[{\"name\":\"FieldsDefaultsStep\",\"id\":\"8417d5d4-883d-404d-8fec-b2ee52e9a9ed\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3d44b592-76f3-449e-a44e-535899567fcb\"}],\"name\":\"event\"}]}]},{\"name\":\"EventDetectStep\",\"id\":\"4e4a8e88-6e20-41eb-8e34-22d7c485bc55\",\"rows\":[{\"name\":\"OnEveryValue\",\"kind\":\"OnEveryValue\",\"arguments\":[]}]},{\"name\":\"ActStep\",\"id\":\"429993d4-d6ea-4c80-b2a5-9d2d794d4bf9\",\"rows\":[{\"name\":\"TeamsBinding\",\"kind\":\"TeamsMessage\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"recipients\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"CetaniBP@ah.org\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Actionable ingestion condition detected\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Review the pipeline, object, status, error classification, and correlation ID included in this alert.\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"EventId\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"EventId\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"CorrelationId\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"CorrelationId\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"PipelineName\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"PipelineName\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"ObjectName\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"ObjectName\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Status\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Status\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"Severity\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Severity\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"ErrorClassification\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"ErrorClassification\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"EmittedAtUtc\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"EmittedAtUtc\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"IngestedAtUtc\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"IngestedAtUtc\"}],\"name\":\"reference\"}]},{\"kind\":\"NameReferencePair\",\"type\":\"complex\",\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"DetectionLatencySeconds\"},{\"kind\":\"EventFieldReference\",\"type\":\"complexReference\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"DetectionLatencySeconds\"}],\"name\":\"reference\"}]}]}]}]}]}",
+        "settings": {
+          "shouldRun": false,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

@@ -18,7 +18,7 @@ Exit evidence: a prioritized backlog, baseline skill scores, defined capstone sc
 
 ## Phase 1 — Fabric platform engineering and DataOps
 
-**Status:** In progress  
+**Status:** Complete — September 2026  
 Target: October–December 2026
 
 - [x] Build metadata-driven ingestion with incremental processing, restartability, schema-drift handling, reconciliation, and reprocessing.
@@ -28,7 +28,7 @@ Target: October–December 2026
 
 Exit evidence: a repeatable framework, failure-injection tests, operational dashboard, runbook, ADRs, and benchmark report.
 
-**Progress to date:** OPS-001 established governed Fabric delivery and supported acceptance of ADR-002. FAB-001 through FAB-003 completed the versioned control plane, resilient ingestion runtime, reconciliation, quality gates, quarantine, and recovery evidence. OPS-002 added measurable SLOs, correlated operational telemetry, deterministic simulated routing, runbooks, and a live stale-candidate recovery exercise. FAB-004 completed reproducible steady, peak, and replay benchmarking and selected bounded parallelism `PAR4` with quantified runtime, queue, CU, correctness, throttling, cost-allocation, and limitation evidence. [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) is now the final planned Phase 1 work item.
+**Progress to date:** OPS-001 established governed Fabric delivery and supported acceptance of ADR-002. FAB-001 through FAB-003 completed the versioned control plane, resilient ingestion runtime, reconciliation, quality gates, quarantine, and recovery evidence. OPS-002 added measurable SLOs, correlated operational telemetry, deterministic simulated routing, runbooks, and a live stale-candidate recovery exercise. FAB-004 completed reproducible steady, peak, and replay benchmarking and selected bounded parallelism `PAR4` with quantified runtime, queue, CU, correctness, throttling, cost-allocation, and limitation evidence. RTI-001 completed the phase with versioned operational-event ingestion, edge-condition handling, low-latency detection and notification, and a live current-state/history dashboard.
 
 ## Phase 2 — Production AI and agent engineering
 

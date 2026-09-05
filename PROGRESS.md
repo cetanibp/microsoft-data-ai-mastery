@@ -6,8 +6,8 @@
 |---|---:|
 | Milestones completed | 1 / 5 |
 | Epics completed | 0 / 4 |
-| Work items completed | 9 |
-| Competencies at level 3+ | 6 |
+| Work items completed | 10 |
+| Competencies at level 3+ | 7 |
 | Competencies at level 4+ | 0 |
 | Capstone status | Not started |
 
@@ -87,6 +87,8 @@
 - Proved a reliability breach, deterministic simulated routing, replay-safe persistence, quality-enforcement integrity, and state-safe orphan recovery in Development.
 - Completed FAB-004 with reproducible smoke, steady, 80-million-row peak, and idempotent-replay benchmarks on F256.
 - Selected bounded parallelism `PAR4` after it improved median elapsed time by 30.4%–53.6%, reduced median CU by 31.3%–47.7%, preserved correctness, and recorded zero throttling.
+- Completed RTI-001 with Eventstream ingestion, Eventhouse contract validation and deduplication, sequence-aware current state, 60-second actionable-condition evaluation, contextual notification, and a four-tile Real-Time Dashboard.
+- Proved late, duplicate, malformed, and out-of-order handling plus 59-second query detection and 79-second final notification latency.
 
 **Evidence shipped**
 
@@ -98,6 +100,7 @@
 - [GitHub Actions run 33568120779](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33568120779) validating the generated pipeline.
 - [GitHub Actions run 33576595412](https://github.com/cetanibp/microsoft-data-ai-mastery/actions/runs/33576595412) validating the synthetic duplicate quarantine window.
 - [FAB-004 benchmark decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md), [operation-level evidence](01-fabric-platform-engineering/FAB-004/evidence/README.md), and [retrospective](01-fabric-platform-engineering/FAB-004/RETRO.md).
+- [RTI-001 real-time operational monitoring](03-real-time-intelligence/RTI-001/README.md), [live validation](03-real-time-intelligence/RTI-001/evidence/live-development-validation.md), [dashboard and alert evidence](03-real-time-intelligence/RTI-001/evidence/README.md), and [retrospective](03-real-time-intelligence/RTI-001/RETRO.md).
 
 **Skills improved**
 
@@ -108,6 +111,7 @@
 - Performance and capacity optimization: 1 → 3 — [FAB-004 controlled workload, concurrency, queue, CU, and threshold evidence](01-fabric-platform-engineering/FAB-004/benchmark-results.md).
 - Cost estimation and FinOps: 1 → 2 — [FAB-004 normalized-CU and allocated-cost model](01-fabric-platform-engineering/FAB-004/benchmark-results.md#capacity-and-allocated-cost-model).
 - Architecture decisions and tradeoff analysis: 2 → 3 — [FAB-004 evidence-backed `SEQ1` versus `PAR4` decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md).
+- Real-Time Intelligence: 1 → 3 — [RTI-001 end-to-end implementation, edge-case tests, notification, and dashboard evidence](03-real-time-intelligence/RTI-001/README.md).
 
 **What failed or changed**
 
@@ -120,11 +124,14 @@
 - Failure-exercise precheck found a genuine orphaned candidate, so the exercise preserved the later accepted winner and abandoned the obsolete attempt instead of injecting another failure or replaying an already-covered boundary.
 - Cumulative Capacity Metrics subtraction produced misleading individual CU deltas because of refresh timing and report-window churn; Timepoint Item Detail became the authoritative per-session CU source.
 - The first PEAK attempt correctly failed its tier assertion because large-tier parameters were not set explicitly. The corrected run passed, and the validation-only attempt was retained as a documented measurement limitation.
+- Interactive `getpass` did not prompt in the Fabric PySpark notebook, so RTI-001 moved Eventstream secret retrieval to Azure Key Vault.
+- RTI-001 query authoring exposed an undefined projected scalar and a malformed formatting transfer; both were corrected and the final committed definitions passed seven contract tests.
+- Activator was stopped after the live notification test to prevent repeated synthetic alerts.
 
 **Next focus**
 
-- Implement [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11) as the final planned Phase 1 work item.
-- Reuse FAB-002 through FAB-004 run identities, SLOs, quality decisions, and performance thresholds in the operational monitoring design.
+- Close Phase 1 after review and merge of [#11 — real-time operational monitoring](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/11).
+- Begin Phase 2 with [#12 — Production-grade Data Operations Agent](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/12), reusing the governed operational telemetry produced in Phase 1.
 
 # YYYY-MM — Theme
 

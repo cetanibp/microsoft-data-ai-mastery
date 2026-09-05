@@ -24,7 +24,7 @@ Update scores monthly. Every score of 3 or higher must link to repository eviden
 | Performance and capacity optimization | 1 | 3 | 4 | [FAB-004 benchmark decision](01-fabric-platform-engineering/FAB-004/benchmark-results.md) |
 | CI/CD and environment promotion | 1 | 3 | 5 | [OPS-001 evidence](02-dataops-devops/OPS-001/README.md) |
 | Observability, SLOs, and incident response | 1 | 3 | 5 | [OPS-002 evidence](02-dataops-devops/OPS-002/README.md) |
-| Real-Time Intelligence | 1 | 1 | 4 | |
+| Real-Time Intelligence | 1 | 3 | 4 | [RTI-001 end-to-end implementation](03-real-time-intelligence/RTI-001/README.md) |
 | Foundry application engineering | 1 | 1 | 4 | |
 | Retrieval and grounding | 1 | 1 | 5 | |
 | Agent tools and orchestration | 1 | 1 | 5 | |
@@ -171,6 +171,25 @@ FAB-004 converts operation CU into normalized CU per million rows and an allocat
 ARCH-003 established the decision discipline, and FAB-004 applied it to a live implementation choice. The repository now contains declared alternatives, controlled variables, thresholds, multiple scenarios, anomalous-result correction, quantified tradeoffs, a selected design, and explicit limitations.
 
 **Why the score is not yet 4:** broader stakeholder review and cross-platform, security, resiliency, and multi-SKU decisions remain future evidence.
+
+## Progress reassessment — September 5, 2026
+
+### Real-Time Intelligence: 1 → 3
+
+RTI-001 provides an independently implemented and troubleshot real-time operational path:
+
+- custom-endpoint Eventstream ingestion into an Eventhouse;
+- a versioned KQL event contract with retention and hot-cache policies;
+- contract validation, logical-event deduplication, late-event classification, and sequence-aware current state;
+- a low-latency actionable-condition query and 60-second Activator evaluation;
+- a four-tile Real-Time Dashboard for state, active conditions, latency, and recent history;
+- deliberate late, duplicate, malformed, and out-of-order tests;
+- Key Vault–backed secret retrieval with no committed Eventstream connection string; and
+- seven passing repository contract tests plus live notification and dashboard evidence.
+
+This satisfies Level 3 because the solution was designed, built, deliberately stressed with edge conditions, troubleshot across notebook, KQL, Activator, and dashboard behavior, and documented with durable evidence.
+
+**Why the score is not yet 4:** the evidence covers one Development workspace, one F256 capacity, synthetic producers, query-time projections, and one notification route. Level 4 requires sustained-load optimization, multiple producers or scenarios, governed production routing, and broader operational ownership.
 
 ## Monthly assessment questions
 

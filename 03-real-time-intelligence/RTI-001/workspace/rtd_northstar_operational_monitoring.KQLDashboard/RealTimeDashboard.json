@@ -1,0 +1,298 @@
+{
+  "schema_version": 82,
+  "changeDetection": {
+    "kind": "liveUpdates",
+    "fallbackRefreshRate": "5m",
+    "minRefreshRate": "1m"
+  },
+  "tiles": [
+    {
+      "id": "9dddd5b0-7086-4da0-b13c-cd6aab7e0d9c",
+      "title": "Current object-run state",
+      "visualType": "pie",
+      "pageId": "eb3c3283-53b5-4192-a8c4-3e00651935c8",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "a9cfa80e-6d8e-4edb-8e90-d44f2bb286b9"
+      },
+      "visualOptions": {
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "labelDisabled": false,
+        "pie__label": [
+          "name",
+          "percentage"
+        ],
+        "tooltipDisabled": false,
+        "pie__tooltip": [
+          "name",
+          "percentage",
+          "value"
+        ],
+        "pie__orderBy": "size",
+        "pie__kind": "pie",
+        "pie__topNSlices": null,
+        "seriesColors": {},
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "ccba1729-2860-4d48-8b87-b07f3cbdb3fe",
+      "title": "Active actionable conditions",
+      "visualType": "card",
+      "pageId": "eb3c3283-53b5-4192-a8c4-3e00651935c8",
+      "layout": {
+        "x": 18,
+        "y": 0,
+        "width": 5,
+        "height": 3
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "0101c3fd-9310-4415-b69e-da9a834bede1"
+      },
+      "visualOptions": {
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "colorRules": [
+          {
+            "id": "975364dd-da6e-421a-bf10-8b13cbdf8528",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": ">",
+                "column": "ActiveConditionCount",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "bold",
+            "color": "red",
+            "tag": "",
+            "icon": null,
+            "ruleName": "",
+            "visualType": "card"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9de9b8c5-3e75-40bc-8c4d-3aa95d165c51",
+      "title": "Event ingestion latency",
+      "visualType": "timechart",
+      "pageId": "eb3c3283-53b5-4192-a8c4-3e00651935c8",
+      "layout": {
+        "x": 9,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "60113035-a159-4bcf-b6c3-730e2f87a2fe"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "Seconds",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "seriesColors": {},
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": "TimeBucket",
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "4f999ea4-3f04-45f7-b4da-338e059a92e5",
+      "title": "Recent operational events",
+      "visualType": "table",
+      "pageId": "eb3c3283-53b5-4192-a8c4-3e00651935c8",
+      "layout": {
+        "x": 0,
+        "y": 7,
+        "width": 24,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "f82842d7-ad0d-4b48-9a60-44d654fdeef0"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": false,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": [
+          {
+            "id": "c50982f7-82c0-4108-8fd3-5b181dbe716a",
+            "ruleType": "colorByCondition",
+            "ruleName": "",
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "==",
+                "column": "Status",
+                "values": [
+                  "FAILED"
+                ]
+              },
+              {
+                "operator": "==",
+                "column": "Status",
+                "values": [
+                  "QUALITY_BLOCKED"
+                ]
+              }
+            ],
+            "chainingOperator": "or",
+            "colorStyle": "bold",
+            "applyToColumn": null,
+            "hideText": false,
+            "color": "red",
+            "tag": "",
+            "icon": null,
+            "visualType": "table"
+          },
+          {
+            "id": "ca3a5045-620c-4272-87c0-2842c261edcb",
+            "ruleType": "colorByCondition",
+            "applyToColumn": null,
+            "hideText": false,
+            "applyTo": "cells",
+            "conditions": [
+              {
+                "operator": "==",
+                "column": "Status",
+                "values": [
+                  "RECOVERY_REQUIRED"
+                ]
+              }
+            ],
+            "chainingOperator": "and",
+            "colorStyle": "bold",
+            "color": null,
+            "tag": "",
+            "icon": null,
+            "ruleName": "",
+            "visualType": "table"
+          }
+        ]
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "0a7d9da4-a7da-435b-b45f-3bdba725965c",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "kind": "kusto-trident",
+      "clusterUri": "",
+      "name": "NorthstarOperations",
+      "databaseArtifactId": "1b313cc9-8a68-438a-90d8-f65d10d7fa62",
+      "database": "10d7fa62-f65d-90d8-438a-8a681b313cc9",
+      "workspace": "00000000-0000-0000-0000-000000000000",
+      "id": "b78f3f8a-8137-479b-a8bd-c595388e9a6d"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "eb3c3283-53b5-4192-a8c4-3e00651935c8"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b78f3f8a-8137-479b-a8bd-c595388e9a6d"
+      },
+      "text": "OperationalObjectCurrent()\r\n| summarize ObjectRunCount = count() by Status\r\n| order by ObjectRunCount desc",
+      "id": "a9cfa80e-6d8e-4edb-8e90-d44f2bb286b9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b78f3f8a-8137-479b-a8bd-c595388e9a6d"
+      },
+      "text": "OperationalObjectCurrent()\r\n| where\r\n    Status in (\"FAILED\", \"QUALITY_BLOCKED\", \"RECOVERY_REQUIRED\")\r\n    or Severity in (\"ERROR\", \"CRITICAL\")\r\n| summarize ActiveConditionCount = count()",
+      "id": "0101c3fd-9310-4415-b69e-da9a834bede1",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b78f3f8a-8137-479b-a8bd-c595388e9a6d"
+      },
+      "text": "OperationalEventAccepted()\r\n| where IngestedAtUtc > ago(24h)\r\n| extend IngestionLatencySeconds =\r\n    datetime_diff(\"second\", IngestedAtUtc, EmittedAtUtc)\r\n| summarize\r\n    P50 = percentile(IngestionLatencySeconds, 50),\r\n    P95 = percentile(IngestionLatencySeconds, 95),\r\n    Maximum = max(IngestionLatencySeconds)\r\n    by TimeBucket = bin(IngestedAtUtc, 1m)\r\n| order by TimeBucket asc",
+      "id": "60113035-a159-4bcf-b6c3-730e2f87a2fe",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b78f3f8a-8137-479b-a8bd-c595388e9a6d"
+      },
+      "text": "OperationalEventValidated()\r\n| where IngestedAtUtc > ago(24h)\r\n| extend\r\n    Scenario = tostring(Details.scenario),\r\n    IngestionLatencySeconds =\r\n        datetime_diff(\"second\", IngestedAtUtc, EmittedAtUtc)\r\n| project\r\n    IngestedAtUtc,\r\n    EventTimeUtc,\r\n    PipelineName,\r\n    ObjectName,\r\n    EventType,\r\n    Status,\r\n    Severity,\r\n    ValidationStatus,\r\n    RejectionReason,\r\n    IsLate,\r\n    IngestionLatencySeconds,\r\n    Scenario,\r\n    CorrelationId\r\n| top 100 by IngestedAtUtc desc",
+      "id": "f82842d7-ad0d-4b48-9a60-44d654fdeef0",
+      "usedVariables": []
+    }
+  ],
+  "embeddedApps": []
+}

@@ -1,0 +1,37 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table OperationalEventRaw (EventId:string, SchemaVersion:string, EventType:string, EventTimeUtc:datetime, EmittedAtUtc:datetime, SequenceNumber:long, Environment:string, PipelineName:string, ObjectName:string, RunId:string, ObjectRunId:string, CorrelationId:string, Status:string, Severity:string, ErrorClassification:string, AcceptedRowCount:long, RejectedRowCount:long, ElapsedSeconds:real, MaximumWorkerQueueSeconds:real, Details:dynamic) 
+.create-merge table OperationalEventRejected (RejectionId:string, ReceivedAtUtc:datetime, RejectionReason:string, SourceEventId:string, RawPayload:string, Details:dynamic) 
+.create-or-alter function with (folder = "RTI-001", docstring = "Validates the RTI-001 operational event contract.", skipvalidation = "true") OperationalEventValidated() {
+    OperationalEventRaw
+    | extend IngestedAtUtc = ingestion_time()
+    | extend RejectionReason = case(
+        isempty(EventId), "MISSING_EVENT_ID",
+        SchemaVersion != "1.0.0", "UNSUPPORTED_SCHEMA_VERSION",
+        isempty(EventType), "MISSING_EVENT_TYPE",
+        isnull(EventTimeUtc), "MISSING_EVENT_TIME",
+        SequenceNumber < 1, "INVALID_SEQUENCE_NUMBER",
+        isempty(Environment), "MISSING_ENVIRONMENT",
+        ""
+    )
+    | extend ValidationStatus =
+        iff(isempty(RejectionReason), "ACCEPTED", "REJECTED")
+    | extend IsLate =
+        EventTimeUtc < (IngestedAtUtc - 5m)
+}
+.create-or-alter function with (folder = "RTI-001", docstring = "Returns one accepted record per EventId.", skipvalidation = "true") OperationalEventAccepted() {
+    OperationalEventValidated()
+    | where ValidationStatus == "ACCEPTED"
+    | summarize arg_max(IngestedAtUtc, *) by EventId
+}
+.create-or-alter function with (folder = "RTI-001", docstring = "Returns the highest accepted sequence for each object run.", skipvalidation = "true") OperationalObjectCurrent() {
+    OperationalEventAccepted()
+    | where isnotempty(ObjectRunId)
+    | summarize arg_max(SequenceNumber, *) by ObjectRunId
+}
+.alter table OperationalEventRaw policy retention @'{"SoftDeletePeriod":"30.00:00:00","Recoverability":"Disabled"}'
+.alter table OperationalEventRaw policy caching hotdata = time(7.00:00:00) hotindex = time(7.00:00:00)
+.alter table OperationalEventRejected policy retention @'{"SoftDeletePeriod":"30.00:00:00","Recoverability":"Disabled"}'
+.alter table OperationalEventRejected policy caching hotdata = time(7.00:00:00) hotindex = time(7.00:00:00)

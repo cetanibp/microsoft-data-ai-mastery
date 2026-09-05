@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLQueryset",
+    "displayName": "qs_northstar_operational_monitoring",
+    "description": "qs_northstar_operational_monitoring"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "701a36f4-67d8-8b0f-444d-21f65d9bde8f"
+  }
+}
