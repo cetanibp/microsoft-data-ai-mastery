@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "c7a830c9-e8df-4382-8580-a0cdb7cc096f",
+        "clusterUri": "https://trd-edv6mq4put3w32m9b9.z5.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "1b313cc9-8a68-438a-90d8-f65d10d7fa62"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "9e77dd48-53ad-4431-976d-19797b3f0b36",
+        "content": "OperationalObjectCurrent()\n| where CorrelationId ==\n    \"RTI-001-EDGE-59c1ee68-35f1-4791-ad1a-a5fcaa1f6108\"\n| where tostring(Details.scenario) startswith \"OUT_OF_ORDER\"\n| project\n    ObjectRunId,\n    SequenceNumber,\n    Status,\n    EventType,\n    Scenario = tostring(Details.scenario)",
+        "title": "Tab",
+        "dataSourceId": "c7a830c9-e8df-4382-8580-a0cdb7cc096f"
+      }
+    ],
+    "querysetType": "Embedded"
+  }
+}

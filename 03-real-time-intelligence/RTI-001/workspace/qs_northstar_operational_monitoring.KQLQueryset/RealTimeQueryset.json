@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "833e5580-d92f-4b84-8b1f-a51024809e97",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "10d7fa62-f65d-90d8-438a-8a681b313cc9"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "356f9803-cc55-4ca7-bb51-f6a889703633",
+        "content": "OperationalEventAccepted()\n| where IngestedAtUtc > ago(2m)\n| where\n    Status in (\"FAILED\", \"QUALITY_BLOCKED\", \"RECOVERY_REQUIRED\")\n    or Severity in (\"ERROR\", \"CRITICAL\")\n| extend\n    AlertDetectedAtUtc = now(),\n    IngestionLatencySeconds =\n        datetime_diff(\"second\", IngestedAtUtc, EmittedAtUtc),\n    DetectionLatencySeconds =\n        datetime_diff(\"second\", now(), EmittedAtUtc)\n| project\n    AlertDetectedAtUtc,\n    EventId,\n    ObjectRunId,\n    CorrelationId,\n    Environment,\n    PipelineName,\n    ObjectName,\n    EventType,\n    Status,\n    Severity,\n    ErrorClassification,\n    EmittedAtUtc,\n    IngestedAtUtc,\n    IngestionLatencySeconds,\n    DetectionLatencySeconds\n| order by IngestedAtUtc desc",
+        "title": "ActionableFailures",
+        "dataSourceId": "833e5580-d92f-4b84-8b1f-a51024809e97"
+      }
+    ],
+    "querysetType": "Standalone"
+  }
+}

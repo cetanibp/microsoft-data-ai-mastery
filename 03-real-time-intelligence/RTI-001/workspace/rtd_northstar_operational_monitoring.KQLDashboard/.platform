@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "rtd_northstar_operational_monitoring",
+    "description": "rtd_northstar_operational_monitoring"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a2a1d63a-a983-af45-4e41-b5bb8a14acf8"
+  }
+}

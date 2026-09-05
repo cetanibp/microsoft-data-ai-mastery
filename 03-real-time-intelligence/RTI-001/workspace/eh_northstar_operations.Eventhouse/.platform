@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventhouse",
+    "displayName": "eh_northstar_operations",
+    "description": "eh_northstar_operations"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0973c789-b905-a943-4a51-ffe577f29c78"
+  }
+}

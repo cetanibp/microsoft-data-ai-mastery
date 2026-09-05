@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "es_northstar_operational_events"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2668d4d2-4631-8f5d-44d9-74fc0a757156"
+  }
+}
