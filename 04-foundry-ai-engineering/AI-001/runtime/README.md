@@ -66,4 +66,4 @@ Read [Microsoft: Chunk large documents for RAG](https://learn.microsoft.com/en-u
 
 Compare the saved markdown_section and fixed_window samples in the [evidence JSON](../evidence/local-chunk-preparation.json). Find text, source_sections and source_url. Ask which context a future retriever must return to explain a recovery decision completely.
 
-Next: implement a local keyword-retrieval baseline over both chunk sets and inspect development-question evidence matches. Vector/hybrid retrieval and model answers follow after the local contract is understood. An actual retrieval/answer application must enforce approval, freshness and user/workload authorization; this local-study program is not that application.
+Updated next step: use [Azure AI Search for the keyword baseline](../azure-search/README.md), starting with learning-service discovery, and inspect development-question evidence matches over both chunk sets. Vector/hybrid retrieval and model answers follow after the local contract is understood. An actual retrieval/answer application must enforce approval, freshness and user/workload authorization; this local-study program is not that application.

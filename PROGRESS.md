@@ -203,6 +203,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Outputs are explicitly offline draft study, not runtime eligible. Content/policy approval and live authorization/freshness remain open; no cloud resources, model calls, reserved evaluation use, issue closure or score change.
 - Next: local keyword retrieval over both passage sets using development questions.
 
+### 2026-09-06 — AI-001 Azure AI Search direction selected
+
+- User selected Azure AI Search as the next retrieval platform after comparing managed processing with the local loader/chunking approach.
+- Added the [service-discovery walkthrough](04-foundry-ai-engineering/AI-001/azure-search/README.md): inspect a learning service first, then configure access, review the synthetic lab import contract, create indexes and query the prepared passages.
+- Retain local source/hash/chunk evidence and plan an Azure-managed preprocessing comparison later. Development/reserved evaluation separation remains unchanged.
+- No Azure resources, indexes, uploads or permission changes have been performed. Service tier/region/access are pending; local runtime-ineligible artifacts are not automatically promoted to approved serving content.
+
 # YYYY-MM — Theme
 
 **Outcomes**
