@@ -1,4 +1,6 @@
-# Azure AI Search walkthrough — steps 7–10
+# Azure AI Search walkthrough — steps 7–12
+
+Latest checkpoint: user reported zero existing indexes and then confirmed creating both proposed indexes empty through the portal. These are user-reported lab results; live schemas and document counts have not been independently read back. Local upload preparation is now implemented and tested; no documents have been sent to Azure.
 
 Status: user reports an existing Free service in West US, role-based authentication, and completion of the service-scoped Search Service Contributor / Search Index Data Contributor assignment step. These are user-reported setup checkpoints; no successful Azure API request has been observed. Index capacity remains unknown. No index has been created or uploaded by this implementation.
 
@@ -10,7 +12,7 @@ Initial design: two separate lab indexes, one for each chunk strategy, on a suit
 
 Do not automatically promote local artifacts labeled runtime_eligible=false. Before upload, define and review a bounded synthetic lab import contract and keep it separate from authorization to serve users. Content/policy approval, user/workload identity checks and current freshness enforcement remain open.
 
-## Current user step: check index capacity
+## Completed user checkpoint: check index capacity
 
 In the selected service, open **Search management > Indexes** and report the number of existing indexes. Free supports at most three indexes. Our proposed two-index comparison fits if zero or one index already exists. If more exist, decide the next approach without deleting unrelated indexes or upgrading the service automatically.
 
@@ -19,7 +21,7 @@ In the selected service, open **Search management > Indexes** and report the num
 - [sections.index.json](sections.index.json): `northstar-ops-sections-v1`, for the 24 Markdown-section chunks.
 - [windows.index.json](windows.index.json): `northstar-ops-windows-v1`, for the 15 fixed-window chunks.
 
-The schemas have identical fields and analyzers; only the index name differs. Each indexed document represents one chunk. These are draft create-index request bodies, not deployed resources. API version selection and live schema acceptance will be checked at the creation step.
+The schemas have identical fields and analyzers; only the index name differs. Each indexed document represents one chunk. These are versioned create-index request bodies. The user reports creating the corresponding indexes; live schema equivalence remains unchecked. API version selection and live schema acceptance will be checked at the creation step.
 
 | Field setting | Meaning in this experiment |
 | --- | --- |
@@ -28,12 +30,12 @@ The schemas have identical fields and analyzers; only the index name differs. Ea
 | filterable | Exact restrictions can use document/version/strategy metadata and draft-state flags. |
 | retrievable | Returned text and pinned source URLs let us inspect passages and cite their originals. |
 
-Future upload projection contract:
+Upload projection contract:
 - Copy same-named scalar fields and declared reader roles from each prepared chunk, retaining all false readiness/verification flags and the original mode.
 - Map `chunking.strategy` to `chunk_strategy`; serialize the entire `chunking` object into `chunking_json`.
 - Map distinct `source_sections[*].section` values to `section_names`; serialize the full original `source_sections` array into `source_sections_json` so heading ancestry and offsets survive.
 - Do not upload the original nested properties alongside these projected fields. The JSONL files are not direct Azure upload payloads.
-- This describes a prospective mapping only; no uploader or cloud-import approval is implemented. Review the bounded lab import contract before sending content.
+- This mapping is implemented locally by `prepare_upload.py`. There is no network uploader. The intended cloud exercise is restricted to these synthetic/public passages, these two lab indexes, and developer inspection with the signed-in user's RBAC identity. Draft mode and all false readiness flags must remain intact. This does not authorize application serving or establish application access/freshness enforcement.
 
 Filterable role labels are ordinary metadata, not automatic authorization. Hiding a field with retrievable=false does not enforce document access. Azure service roles grant our developer account operations on the service; the proposed application reader/operator policy still needs its own enforcement.
 
@@ -58,3 +60,35 @@ Resources checked September 6, 2026. Follow the current walkthrough checkpoint r
 
 - [Index limits](https://learn.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits) — Free index capacity.
 - [Create a search index](https://learn.microsoft.com/en-us/azure/search/search-how-to-create-search-index) — field attributes and schema design.
+
+## Current step: prepare upload bodies locally
+
+[prepare_upload.py](prepare_upload.py) uses the existing source-hash checks and regenerates both chunk sets. It projects them into the index fields, validates field names/types, checks unique keys and batch limits, and writes Azure REST request bodies. No Azure library, credentials or network calls are used.
+
+From the repository root on the PR branch, using Python 3.10 or later:
+
+```bash
+python 04-foundry-ai-engineering/AI-001/azure-search/prepare_upload.py --repo-root . --allow-draft-local
+```
+
+Outputs under ignored `AI-001/generated/azure-search/`:
+- `sections.upload.json`: 24 records, 40,937 UTF-8 bytes in the checked snapshot.
+- `windows.upload.json`: 15 records, 34,793 UTF-8 bytes.
+- `summary.json`: source verification, counts, schema/payload SHA-256 hashes and explicit local-only evidence.
+
+The command refuses to reuse an existing output directory. Preserve earlier evidence and use a fresh checkout to reproduce it. The input draft-local flag authorizes local preparation only.
+
+Azure expects a JSON object with a `value` array, with `@search.action: "upload"` on each record. Upload inserts a new key or replaces an existing record with that key; it does not delete obsolete records from older source versions. Future live verification must examine every per-document result and query the resulting index, not assume HTTP success proves all records loaded.
+
+### Local evidence
+
+Python 3.12.13: all 17 tests passed (13 existing corpus tests plus four projection tests). Projection tests check exact preservation of original fields and nested metadata, deterministic payloads, required draft-local opt-in, rejection of promoted flags/wrong strategy, and rejection of schema field/type drift. The run produced 24/15 records with source blob verification PASS. Live upload and retrieval evaluation remain pending; reserved questions were not used.
+
+```bash
+python -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -v
+```
+
+Next guided action: open Azure Cloud Shell in Bash, using an existing setup or an ephemeral session, then obtain the PR branch and run this local preparation command. Review the output before the subsequent RBAC upload step.
+
+- [Load an index](https://learn.microsoft.com/en-us/azure/search/search-how-to-load-search-index) explains the request envelope, upload action and per-document results.
+- [Cloud Shell quickstart](https://learn.microsoft.com/en-us/azure/cloud-shell/quickstart) explains opening an authenticated browser shell.
