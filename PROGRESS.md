@@ -194,6 +194,15 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Verified artifact structure and source references only. Runtime fixtures, model evaluation, performance measurement and approval remain unimplemented/pending; no pass results, issue closure or score change.
 - Next: review/freeze prerequisites and evaluation targets, then local corpus loading and chunking.
 
+### 2026-09-06 — AI-001 corpus walkthrough, step 6
+
+- Implemented the [local corpus loader and chunking comparison](04-foundry-ai-engineering/AI-001/runtime/README.md) with Python standard library only.
+- Verified all three source blob hashes; produced 24 Markdown-section and 15 fixed-window chunks (800 characters with 120 overlap), retaining exact offsets, source sections, pinned citations and deterministic identities.
+- [Local evidence](04-foundry-ai-engineering/AI-001/evidence/local-chunk-preparation.json): 13 contract tests passed, including changed-source rejection, path/source safeguards, complete content coverage, fence handling and replay-table preservation.
+- Measured preparation tradeoffs only: section chunks preserve the recovery table but can exceed 800 characters; fixed windows duplicate overlap and can split rows. No retrieval-quality winner is claimed.
+- Outputs are explicitly offline draft study, not runtime eligible. Content/policy approval and live authorization/freshness remain open; no cloud resources, model calls, reserved evaluation use, issue closure or score change.
+- Next: local keyword retrieval over both passage sets using development questions.
+
 # YYYY-MM — Theme
 
 **Outcomes**

@@ -96,4 +96,4 @@ Resources checked September 6, 2026. The JSON schema and thresholds here are cus
 
 Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. No retrieval, model, access test or performance benchmark has run.
 
-For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Next: review and freeze the prerequisite definitions and evaluation targets, then prepare the first local corpus-loading and chunking implementation. Full #13/#16 completion and deployed security remain open.
+For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. No retrieval/model evaluation or reserved-case use has occurred. Next: keyword retrieval and development evidence inspection. Full #13/#16 completion and deployed security remain open.
