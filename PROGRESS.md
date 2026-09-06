@@ -178,6 +178,14 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Verified artifact structure and source traceability. The three-source corpus remains unchanged; the glossary is supporting draft metadata with its own version.
 - Next guided step: requesting-user versus workload identity and the access matrix. Approval, runtime enforcement, retrieval and full evaluation remain open; no issue closure or skill-score change.
 
+### 2026-09-06 — AI-001 corpus walkthrough, step 4
+
+- Added the [GOV-001 identity/access matrix](07-governance-security/GOV-001/README.md) and JSON policy matching the corpus manifest's existing policy ID.
+- Separated requesting-user entitlement, serving-workload access, index-building permissions and corpus-maintainer responsibility; consequential actions remain denied in this baseline.
+- Specified cache/revocation checks, sanitized audit fields and eleven unexecuted development scenarios. Documented the public-source limitation and need for a protected synthetic fixture for confidentiality evidence.
+- Evidence level: artifact-only structural validation. No identity bindings, resource assignments, enforced authorization, issue closure or skill-score change.
+- Next guided step: initial evaluation questions and expected behavior before retrieval tuning. Content/policy review and runtime enforcement remain open.
+
 # YYYY-MM — Theme
 
 **Outcomes**

@@ -127,7 +127,7 @@ A source change triggers definition review. Update affected definitions and case
 
 Read [Microsoft Purview: Glossary terms in Unified Catalog](https://learn.microsoft.com/en-us/purview/unified-catalog-glossary-terms), especially “What is a glossary term?” It explains shared definitions, domain context and links to data assets. This repository exercise teaches those concepts; it does not deploy or demonstrate Purview. Resource checked September 5, 2026.
 
-For this step, compare Quality block with Quality warning, and read Replay and Idempotency. Try explaining why a repeat-safe operation can execute more than once. Next step: distinguish the requesting user's identity from the application's workload identity and define the access matrix.
+For this step, compare Quality block with Quality warning, and read Replay and Idempotency. Try explaining why a repeat-safe operation can execute more than once. Step 4 now provides the [draft identity/access matrix](../../07-governance-security/GOV-001/README.md), including authorization of derived glossary content. Next: initial evaluation design.
 
 ## Artifact verification
 
