@@ -77,4 +77,4 @@ Resources checked September 6, 2026. This is a proposed application policy, not 
 
 Artifact checks validate JSON, policy-ID agreement with the manifest, matching corpus/document/classification scope, reader-role consistency, operation references, deny defaults, unique scenario IDs and documentation links. Those checks establish structural consistency, not effective authorization.
 
-Review the matrix and explain why an application with index access must still check the person asking the question. Next walkthrough: design the initial evaluation questions and expected behavior before choosing or tuning retrieval. Approval and runtime readiness remain explicitly open.
+Review the matrix and explain why an application with index access must still check the person asking the question. Step 5 now provides [evaluation questions and targets](../../04-foundry-ai-engineering/AI-001/evaluation/README.md), including access and freshness scenarios. Next: review/freeze before implementation. Approval and runtime readiness remain explicitly open.

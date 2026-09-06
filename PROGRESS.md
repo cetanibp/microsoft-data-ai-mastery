@@ -186,6 +186,14 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Evidence level: artifact-only structural validation. No identity bindings, resource assignments, enforced authorization, issue closure or skill-score change.
 - Next guided step: initial evaluation questions and expected behavior before retrieval tuning. Content/policy review and runtime enforcement remain open.
 
+### 2026-09-06 — AI-001 corpus walkthrough, step 5
+
+- Added [30 evaluation questions and a versioned rubric](04-foundry-ai-engineering/AI-001/evaluation/README.md) before retrieval tuning: supported, ambiguous, stale/ineligible, unauthorized, unanswerable and adversarial cases.
+- Allocated 20 development and 10 reserved-from-tuning cases; documented public/author visibility and prior-topic overlap rather than claiming a blind independent holdout.
+- Defined source-section retrieval, answer grounding, citation, behavior, latency and variable-cost targets; critical violations override aggregate scores.
+- Verified artifact structure and source references only. Runtime fixtures, model evaluation, performance measurement and approval remain unimplemented/pending; no pass results, issue closure or score change.
+- Next: review/freeze prerequisites and evaluation targets, then local corpus loading and chunking.
+
 # YYYY-MM — Theme
 
 **Outcomes**

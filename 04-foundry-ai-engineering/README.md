@@ -15,4 +15,4 @@ Implementation evidence will be added under each planning ID as work is complete
 
 ## Current prerequisite increment
 
-The [DATA-001 corpus walkthrough](../06-ai-ready-data/DATA-001/README.md) now provides a draft manifest for three Northstar operational documents. The source-linked glossary and [draft identity/access matrix](../07-governance-security/GOV-001/README.md) are also available. Initial evaluation design is next; approval, retrieval implementation and the #19/#20 runtime readiness gate remain open.
+The [DATA-001 corpus walkthrough](../06-ai-ready-data/DATA-001/README.md) now provides a draft manifest for three Northstar operational documents. The source-linked glossary and [draft identity/access matrix](../07-governance-security/GOV-001/README.md) are also available. [AI-001 evaluation design](AI-001/evaluation/README.md) now supplies 30 questions and proposed targets before tuning. Review/freeze is next; approval, retrieval implementation and the #19/#20 runtime readiness gate remain open.
