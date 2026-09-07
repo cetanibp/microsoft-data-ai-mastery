@@ -1,8 +1,6 @@
-# Azure AI Search walkthrough — steps 7–12
+# Azure AI Search walkthrough
 
-Latest checkpoint: user reported zero existing indexes and then confirmed creating both proposed indexes empty through the portal. These are user-reported lab results; live schemas and document counts have not been independently read back. Local upload preparation is now implemented and tested; no documents have been sent to Azure.
-
-Status: user reports an existing Free service in West US, role-based authentication, and completion of the service-scoped Search Service Contributor / Search Index Data Contributor assignment step. These are user-reported setup checkpoints; no successful Azure API request has been observed. Index capacity remains unknown. No index has been created or uploaded by this implementation.
+Current status: user reports successful preparation and uploads, with final counts of 24 section documents and 15 window documents. Four user-supplied keyword search responses are summarized in [the first retrieval comparison](../evidence/azure-keyword-comparison-01.md). Live schema equivalence, application authorization/freshness enforcement and formal evaluation remain pending.
 
 ## Why use Azure AI Search next?
 
@@ -61,7 +59,7 @@ Resources checked September 6, 2026. Follow the current walkthrough checkpoint r
 - [Index limits](https://learn.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits) — Free index capacity.
 - [Create a search index](https://learn.microsoft.com/en-us/azure/search/search-how-to-create-search-index) — field attributes and schema design.
 
-## Current step: prepare upload bodies locally
+## Reproduce upload preparation locally
 
 [prepare_upload.py](prepare_upload.py) uses the existing source-hash checks and regenerates both chunk sets. It projects them into the index fields, validates field names/types, checks unique keys and batch limits, and writes Azure REST request bodies. No Azure library, credentials or network calls are used.
 
@@ -92,3 +90,7 @@ Next guided action: open Azure Cloud Shell in Bash, using an existing setup or a
 
 - [Load an index](https://learn.microsoft.com/en-us/azure/search/search-how-to-load-search-index) explains the request envelope, upload action and per-document results.
 - [Cloud Shell quickstart](https://learn.microsoft.com/en-us/azure/cloud-shell/quickstart) explains opening an authenticated browser shell.
+
+## Current next step
+
+Broaden evaluation beyond the first keyword example using supported development questions and fixed settings. The four-run exploratory comparison is preserved in the evidence link above. No overall chunking winner has been selected.
