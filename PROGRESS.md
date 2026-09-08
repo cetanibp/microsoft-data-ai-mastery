@@ -210,6 +210,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Retain local source/hash/chunk evidence and plan an Azure-managed preprocessing comparison later. Development/reserved evaluation separation remains unchanged.
 - No Azure resources, indexes, uploads or permission changes have been performed. Service tier/region/access are pending; local runtime-ineligible artifacts are not automatically promoted to approved serving content.
 
+### 2026-09-08 — AI-001 Azure retrieval checkpoint
+
+- User-reported RBAC lab setup and final index counts: 24 Markdown-section chunks and 15 fixed windows. User preparation hashes match local evidence.
+- Completed manual retrieval review of five supported development questions against both indexes with fixed text-only keyword settings. [Evidence and limitations](04-foundry-ai-engineering/AI-001/evidence/azure-development-retrieval-02.md).
+- Found a window result missing the table heading that identifies a prohibited action, truncated closure wording, and heading-only section results. Relevant-section hits alone do not prove sufficient answer context.
+- Proposed a structure-aware local chunking experiment. No model evaluation, reserved-case execution, issue closure, skill-score change or serving-readiness claim.
+
 # YYYY-MM — Theme
 
 **Outcomes**

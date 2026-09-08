@@ -94,3 +94,7 @@ Next guided action: open Azure Cloud Shell in Bash, using an existing setup or a
 ## Current next step
 
 Broaden evaluation beyond the first keyword example using supported development questions and fixed settings. The four-run exploratory comparison is preserved in the evidence link above. No overall chunking winner has been selected.
+
+## Supported development checkpoint (2026-09-08)
+
+[Five-case comparison](../evidence/azure-development-retrieval-02.md) records user-supplied results for AI001-002 through AI001-006. Both indexes retrieve the expected source sections, but the fixed-window routing result loses the prohibition heading. Heading-only sections and truncated closure context are also documented. Next: prepare and inspect a structure-aware candidate locally before a new index comparison. Full evaluation and generated-answer behavior remain pending.
