@@ -232,6 +232,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Prepared the [heading-search experiment specification](04-foundry-ai-engineering/AI-001/azure-search/heading-search-experiment.md), using a separate combined field and declared comparison gates. It is not deployed or executed.
 - No model answers, reserved evaluation, serving enforcement, issue closure or skill-score changes.
 
+### 2026-09-09 — AI-001 heading-search experiment completed
+
+- Recorded [checkpoint 05](04-foundry-ai-engineering/AI-001/evidence/azure-heading-search-05.md): user executed an ETag-conditional field addition, 18 successful merges and full document-value readback. Original identities/fields and all false eligibility flags were preserved.
+- Captured four reported snapshot/payload hashes and five A/B query cases. Baseline A ranks reproduced; B improved target-write evidence 3→2 and starting identifiers 2→1, with three unchanged and no required-passage regressions. Both arms retain complete required context within top five for 5/5 cases.
+- Provisionally prefer text_with_headings_v1 for development under the predeclared gate. No generated-answer or full evaluation pass is claimed.
+- Next: [derived-field ingestion maintenance](04-foundry-ai-engineering/AI-001/azure-search/heading-field-maintenance.md). Current population is a one-time merge and is not maintained by the indexer. Full serving/security/lifecycle evidence and ADR-009 remain open; no issue closure or skill-score change.
+
 # YYYY-MM — Theme
 
 **Outcomes**

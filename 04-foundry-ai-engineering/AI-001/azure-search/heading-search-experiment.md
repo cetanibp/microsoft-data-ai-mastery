@@ -1,6 +1,6 @@
 # Controlled heading-search experiment
 
-Status: prepared specification, not deployed or executed. Baseline: [aligned-API checkpoint 04](../evidence/azure-aligned-api-comparison-04.md).
+Status: executed in the guided lab; [checkpoint 05](../evidence/azure-heading-search-05.md) records two rank improvements, three unchanged and no regressions. The original specification and decision criteria below are retained. Baseline: [aligned-API checkpoint 04](../evidence/azure-aligned-api-comparison-04.md).
 
 ## Question and scope
 
@@ -12,7 +12,7 @@ Compare two fields on northstar-ops-markdown-h2-v1:
 
 Use one combined field per arm. Searching both original text and its duplicated combined field would introduce another factor. Do not change the original headings' searchable attributes.
 
-## Proposed field and transformation
+## Field and transformation
 
 ```json
 {
@@ -37,7 +37,7 @@ This is derived search text with ancestry from three fields, not an exact contig
 
 Microsoft documents that adding a field can be done without rebuilding; changing existing searchable attributes requires a rebuild. Existing documents initially have null values for a new field, so population and readback are required. See [update/rebuild guidance](https://learn.microsoft.com/en-us/azure/search/search-howto-reindex), checked 2026-09-09.
 
-## Guided implementation checkpoints
+## Guided implementation checkpoints (executed lab procedure)
 
 1. Read the full current index schema and all 18 chunks locally in Cloud Shell. Keep generated keys and full infrastructure definitions out of public evidence. Inspect indexer schedule/status to ensure source updates will not change the corpus during the experiment. Capture UTC time, CLI version and sanitized configuration hashes.
 2. Prepare a full schema update from that readback, adding only the proposed field. Preserve all existing definitions. Use the current ETag for concurrency checking; stop on drift. An existing candidate field must match the specification exactly before reuse.
@@ -58,3 +58,7 @@ The addition needs no fourth index. All three existing indexes and their origina
 - This tests adding both h1 and h2 together; it does not isolate each heading level or establish overall answer quality.
 
 Rollback of query behavior is to search text explicitly. The added field remains until a future planned rebuild; physical field removal requires a rebuild. No index deletion, rebuild, tier change, model deployment or source-policy promotion is part of this experiment.
+
+## Current follow-up
+
+Prefer text_with_headings_v1 provisionally for development. Complete [derived-field ingestion maintenance](heading-field-maintenance.md); the current indexer does not maintain this manually populated field.

@@ -10,7 +10,7 @@ The private container's custom metadata was populated with document_id, source_u
 
 ## Submitted schema
 
-All fields are retrievable. Only text is searchable, with en.lucene. All fields are nonfacetable.
+The original schema below made only text searchable, with en.lucene; all fields are retrievable and nonfacetable. [Checkpoint 05](../evidence/azure-heading-search-05.md) added the searchable/retrievable text_with_headings_v1 string field using en.lucene. The original fields and values remain intact.
 
 | Field | Type | Additional attributes |
 |---|---|---|
@@ -24,7 +24,7 @@ All fields are retrievable. Only text is searchable, with en.lucene. All fields 
 
 The generated one-to-many key mapping was left implicit. These generated keys differ from the local loader's content/configuration-derived hashes and can encode source locations; avoid publishing them as sanitized evidence.
 
-## Indexer body
+## Indexer body (does not maintain the new derived field)
 
 ```json
 {
@@ -86,3 +86,7 @@ The skill creates a Boolean output rather than relying on conversion of string-v
 6. Capture pristine sanitized query responses, execution timestamps, full schema snapshots for the next experiment. Selected live configuration and provenance readbacks are now recorded in checkpoint 04. Renew expired source credentials only when further ingestion is needed.
 
 Future changes to source content, parser depth or mappings require update/deletion lifecycle validation; this initial ingestion did not test that behavior. The false flag is metadata, not enforced serving authorization.
+
+## Current maintenance boundary
+
+text_with_headings_v1 was populated by merge-only updates after schema addition. The indexer/skillset above still handles the original mappings and lab flag. Complete [derived-field maintenance](heading-field-maintenance.md) before relying on the candidate following source refreshes. Explicitly choose text or text_with_headings_v1 in development queries.

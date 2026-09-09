@@ -15,6 +15,8 @@ Status: draft prerequisites, local preparation, and three-way Azure keyword retr
 
 8. Record [live configuration, provenance and aligned-API results](evidence/azure-aligned-api-comparison-04.md): all 15 required-passage ranks reproduced.
 
-Next: implement the [controlled heading-search experiment](azure-search/heading-search-experiment.md) through guided checkpoints; the specification is prepared, not deployed. The Azure h2 candidate is provisional. Approval, fixtures, vector/hybrid comparison, permission/revocation evidence, model answers, performance, ADR-009 and deployment handoff remain open.
+9. Complete [heading-search A/B checkpoint 05](evidence/azure-heading-search-05.md): two rank improvements, three unchanged, no regressions, with all 18 original records preserved. Prefer text_with_headings_v1 provisionally for development.
+
+Next: [maintain the derived field during ingestion](azure-search/heading-field-maintenance.md); its current population is a one-time merge. The Azure h2 candidate is provisional. Approval, fixtures, vector/hybrid comparison, permission/revocation evidence, model answers, performance, ADR-009 and deployment handoff remain open.
 
 Related: [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13), [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16), [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20). Evidence includes local executable loader/chunking tests; manual development retrieval checks have run; full application and answer evaluation remain unrun. Draft content/policy approval is unchanged; no issue is complete and no competency scores change.
