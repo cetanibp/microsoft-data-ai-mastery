@@ -41,8 +41,12 @@ Continue with Azure-managed h2 as a **provisional development candidate** for pr
 
 The comparison measures implemented approaches, not chunk size alone: API versions and searchable heading content differ, and live analyzer/schema equivalence has not been verified. Corpus size is small and these five supported cases were already used during development.
 
-Full index, indexer and skillset exports, exact parser configuration, execution dates, CLI version, latency and cost were not captured in the supplied evidence. No vector/hybrid retrieval, generated-answer evaluation, reserved-case execution, approval, access/revocation/freshness enforcement or serving deployment is established. A false eligibility field records draft status; it does not enforce authorization. Existing dataset end-to-end execution statuses remain unchanged.
+The [submitted configuration record](../azure-search/managed-markdown.md) now documents parser settings and field mappings from the guided setup. Full live index/indexer/skillset exports, execution dates, CLI version, latency and cost remain uncaptured. No vector/hybrid retrieval, generated-answer evaluation, reserved-case execution, approval, access/revocation/freshness enforcement or serving deployment is established. A false eligibility field records draft status; it does not enforce authorization. Existing dataset end-to-end execution statuses remain unchanged.
 
 ## Next checkpoint
 
 Capture sanitized live index/indexer/skillset definitions and document analyzer/field differences. Align query API versions and define a controlled searchable-heading comparison before changing retrieval behavior. Then repeat the fixed development questions, reporting ranking regressions as well as content preservation. Preserve both original baseline indexes and results. Vector/hybrid and answer-generation comparisons remain later work.
+
+## Ingestion checkpoint supplement
+
+The user supplied indexer status success with 18 processed, zero failed, null error, and empty errors/warnings. The subsequent index query confirmed 18 stored records. Local source files were hash-verified before upload; cloud blob bytes were not independently downloaded and hash-checked. The submitted source used a short-lived HTTPS read/list user-delegation SAS, with developer-to-Search access through RBAC. No credentials or live resource endpoints are included in the configuration record.
