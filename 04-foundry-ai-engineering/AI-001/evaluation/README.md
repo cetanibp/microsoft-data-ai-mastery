@@ -1,6 +1,6 @@
 # AI-001 — Evaluation design, step 5
 
-**Status: draft specification, no AI evaluation executed.** Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
+**Status: draft specification; manual development retrieval checks recorded, full application/answer evaluation unrun.** Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
 
 - [Dataset](dataset.json): 30 questions, expected behaviors, required assertions, original source sections and synthetic fixture conditions.
 - [Rubric](rubric.json): scoring definitions, proposed thresholds, critical gates and experiment-version requirements.
@@ -94,6 +94,6 @@ Resources checked September 6, 2026. The JSON schema and thresholds here are cus
 
 ## Verification and next checkpoint
 
-Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. No retrieval, model, access test or performance benchmark has run.
+Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. Manual five-case retrieval checks are recorded in the [three-way comparison](../evidence/azure-markdown-h2-comparison-03.md); model, access and performance tests remain unrun.
 
-For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. No retrieval/model evaluation or reserved-case use has occurred. Next: keyword retrieval and development evidence inspection. Full #13/#16 completion and deployed security remain open.
+For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. Manual retrieval-component checks have occurred; no model evaluation or reserved-case use is reported. Next: align comparison controls and inspect sanitized live configuration. Full #13/#16 completion and deployed security remain open.

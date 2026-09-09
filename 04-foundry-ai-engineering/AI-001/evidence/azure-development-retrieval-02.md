@@ -23,7 +23,9 @@ Both strategies retrieved text overlapping the required source section in all fi
 3. Overlap does not ensure the needed adjacent chunk is retrieved. In case 005 none of the five returned passages supplies the recovery table header. In case 006 the full header-bearing chunk is first and a partial duplicate appears fourth.
 4. A high-ranked related condition is not automatically applicable. Case 006 section rank 1 concerns an active competing attempt, whereas rank 2 addresses a stale candidate after another winner.
 
-## Proposed next increment
+## Proposed next increment (historical)
+
+Superseded by the observed [Azure-managed h2 checkpoint](azure-markdown-h2-comparison-03.md). The custom structure-aware implementation below was a proposal, not completed work.
 
 Prepare a structure-aware candidate locally: retain table rows with column headers; avoid standalone heading-only passages by combining appropriate parent/child content; retain sentence boundaries, source offsets and pinned citations. Preserve the two baseline indexes. A third lab index is a later candidate, subject to checking that the remaining slot is still free. No new chunker, index, paid resource or source-policy approval was created in this checkpoint.
 

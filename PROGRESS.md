@@ -217,6 +217,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Found a window result missing the table heading that identifies a prohibited action, truncated closure wording, and heading-only section results. Relevant-section hits alone do not prove sufficient answer context.
 - Proposed a structure-aware local chunking experiment. No model evaluation, reserved-case execution, issue closure, skill-score change or serving-readiness claim.
 
+### 2026-09-09 — AI-001 managed Markdown comparison recorded
+
+- Recorded [Azure-managed h2 setup and five-case comparison](04-foundry-ai-engineering/AI-001/evidence/azure-markdown-h2-comparison-03.md), with structured observations, from user-supplied lab responses; execution timestamps were not captured.
+- Compared 24 custom sections, 15 fixed windows and 18 managed chunks. Managed h2 retains complete required context within the top five for 5/5 inspected development queries, including table prohibitions, nested verification checks and complete closure wording.
+- Ranking remains mixed. Documented the five-layer question ambiguity, different heading placement and REST API versions, and missing live configuration readback.
+- Continue with h2 provisionally; capture sanitized configuration and align comparison controls before retrieval changes. No full evaluation pass, reserved-case run, model-answer evidence, serving-readiness claim, issue closure or competency-score change.
+
 # YYYY-MM — Theme
 
 **Outcomes**

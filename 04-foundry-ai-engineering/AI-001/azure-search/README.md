@@ -1,6 +1,6 @@
 # Azure AI Search walkthrough
 
-Current status: user reports successful preparation and uploads, with final counts of 24 section documents and 15 window documents. Four user-supplied keyword search responses are summarized in [the first retrieval comparison](../evidence/azure-keyword-comparison-01.md). Live schema equivalence, application authorization/freshness enforcement and formal evaluation remain pending.
+Current status: three-way keyword retrieval comparison recorded for five development questions. The Azure-managed h2 candidate has 18 chunks and preserves complete required context within the top five for all five inspected cases. See [current evidence and limitations](../evidence/azure-markdown-h2-comparison-03.md). Live configuration equivalence, application authorization/freshness enforcement and full evaluation remain pending.
 
 ## Why use Azure AI Search next?
 
@@ -37,7 +37,7 @@ Upload projection contract:
 
 Filterable role labels are ordinary metadata, not automatic authorization. Hiding a field with retrievable=false does not enforce document access. Azure service roles grant our developer account operations on the service; the proposed application reader/operator policy still needs its own enforcement.
 
-## Upcoming checkpoints
+## Original setup sequence (historical; see current next step)
 
 - Select or create the learning search service with explicit region/tier choices.
 - Configure suitable Microsoft Entra access for index administration, document loading and querying; map each operation to its required role.
@@ -46,7 +46,7 @@ Filterable role labels are ordinary metadata, not automatic authorization. Hidin
 - Evaluate managed Markdown/Text Split processing as an alternative; introduce embeddings and vector/hybrid comparisons afterward.
 - Implement and demonstrate actual user-level access, freshness, deletion/revocation and cache behavior before claiming a serving-ready assistant.
 
-The existing 13 local tests and 24/15 chunk counts remain valid preparation evidence. No retrieval results exist yet. Reserved cases remain reserved from tuning.
+The existing 13 local tests and 24/15 chunk counts remain valid preparation evidence. Manual retrieval results are now recorded in the evidence links; no model-answer results exist. Reserved cases remain reserved from tuning.
 
 ## Learning resources
 
@@ -80,21 +80,19 @@ Azure expects a JSON object with a `value` array, with `@search.action: "upload"
 
 ### Local evidence
 
-Python 3.12.13: all 17 tests passed (13 existing corpus tests plus four projection tests). Projection tests check exact preservation of original fields and nested metadata, deterministic payloads, required draft-local opt-in, rejection of promoted flags/wrong strategy, and rejection of schema field/type drift. The run produced 24/15 records with source blob verification PASS. Live upload and retrieval evaluation remain pending; reserved questions were not used.
+Python 3.12.13: all 17 tests passed (13 existing corpus tests plus four projection tests). Projection tests check exact preservation of original fields and nested metadata, deterministic payloads, required draft-local opt-in, rejection of promoted flags/wrong strategy, and rejection of schema field/type drift. The run produced 24/15 records with source blob verification PASS. Subsequent user-supplied upload counts and manual keyword results are linked above; full evaluation remains pending and reserved questions were not used.
 
 ```bash
 python -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -v
 ```
 
-Next guided action: open Azure Cloud Shell in Bash, using an existing setup or an ephemeral session, then obtain the PR branch and run this local preparation command. Review the output before the subsequent RBAC upload step.
+The preparation commands above document the earlier setup checkpoint. Follow the current next step below.
 
 - [Load an index](https://learn.microsoft.com/en-us/azure/search/search-how-to-load-search-index) explains the request envelope, upload action and per-document results.
 - [Cloud Shell quickstart](https://learn.microsoft.com/en-us/azure/cloud-shell/quickstart) explains opening an authenticated browser shell.
 
 ## Current next step
 
-Broaden evaluation beyond the first keyword example using supported development questions and fixed settings. The four-run exploratory comparison is preserved in the evidence link above. No overall chunking winner has been selected.
+[Azure-managed Markdown h2 comparison](../evidence/azure-markdown-h2-comparison-03.md) supersedes the proposed local structure-aware experiment. Capture sanitized live index/indexer/skillset configuration, align API versions, and document analyzer and searchable-heading differences before changing retrieval behavior. Preserve the three baseline results and original development questions. Azure h2 is a provisional development candidate, not a final retrieval selection.
 
-## Supported development checkpoint (2026-09-08)
-
-[Five-case comparison](../evidence/azure-development-retrieval-02.md) records user-supplied results for AI001-002 through AI001-006. Both indexes retrieve the expected source sections, but the fixed-window routing result loses the prohibition heading. Heading-only sections and truncated closure context are also documented. Next: prepare and inspect a structure-aware candidate locally before a new index comparison. Full evaluation and generated-answer behavior remain pending.
+The [earlier five-case comparison](../evidence/azure-development-retrieval-02.md) remains historical evidence. Full application evaluation and generated-answer behavior remain pending.
