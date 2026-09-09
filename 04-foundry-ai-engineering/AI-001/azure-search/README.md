@@ -1,6 +1,6 @@
 # Azure AI Search walkthrough
 
-Current status: three-way keyword retrieval comparison recorded for five development questions. The Azure-managed h2 candidate has 18 chunks and preserves complete required context within the top five for all five inspected cases. See [current evidence and limitations](../evidence/azure-markdown-h2-comparison-03.md). Live configuration equivalence, application authorization/freshness enforcement and full evaluation remain pending.
+Current status: three-way keyword retrieval comparison recorded for five development questions. The Azure-managed h2 candidate has 18 chunks and preserves complete required context within the top five for all five inspected cases. See [current evidence and limitations](../evidence/azure-markdown-h2-comparison-03.md). Selected live ranking settings now match across the indexes, and all 15 required-passage ranks reproduced using one API version. See [checkpoint 04](../evidence/azure-aligned-api-comparison-04.md). Application authorization/freshness enforcement and full evaluation remain pending.
 
 ## Why use Azure AI Search next?
 
@@ -93,6 +93,6 @@ The preparation commands above document the earlier setup checkpoint. Follow the
 
 ## Current next step
 
-[Azure-managed Markdown h2 comparison](../evidence/azure-markdown-h2-comparison-03.md) supersedes the proposed local structure-aware experiment. Capture sanitized live index/indexer/skillset configuration, align API versions, and document analyzer and searchable-heading differences before changing retrieval behavior. Preserve the three baseline results and original development questions. Azure h2 is a provisional development candidate, not a final retrieval selection.
+[Azure-managed Markdown h2 comparison](../evidence/azure-markdown-h2-comparison-03.md) supersedes the proposed local structure-aware experiment. Those readback and API-alignment checks are now recorded in [checkpoint 04](../evidence/azure-aligned-api-comparison-04.md). Next: implement the prepared [heading-search experiment](heading-search-experiment.md) through guided checkpoints. Preserve the three baseline results and original development questions. Azure h2 is a provisional development candidate, not a final retrieval selection.
 
 The [earlier five-case comparison](../evidence/azure-development-retrieval-02.md) remains historical evidence. Full application evaluation and generated-answer behavior remain pending.

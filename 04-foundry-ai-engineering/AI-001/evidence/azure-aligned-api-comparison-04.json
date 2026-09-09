@@ -1,0 +1,378 @@
+{
+  "schema_version": "0.1.0",
+  "recorded_date": "2026-09-09",
+  "execution_timestamp": null,
+  "evidence_level": "user_supplied_live_readbacks_and_query_responses_manually_reviewed",
+  "raw_responses_archived": false,
+  "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+  "query_settings": {
+    "api_version": "2026-04-01",
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "text",
+    "top": 5,
+    "count": true,
+    "select": "document_id,text,runtime_eligible",
+    "question_rewriting": false
+  },
+  "indexes": [
+    {
+      "name": "northstar-ops-sections-v1",
+      "text_analyzer": "en.lucene",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "scoringProfiles": [],
+      "defaultScoringProfile": null,
+      "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "b": null,
+        "k1": null
+      },
+      "searchable_fields": [
+        "title",
+        "text"
+      ]
+    },
+    {
+      "name": "northstar-ops-windows-v1",
+      "text_analyzer": "en.lucene",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "scoringProfiles": [],
+      "defaultScoringProfile": null,
+      "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "b": null,
+        "k1": null
+      },
+      "searchable_fields": [
+        "title",
+        "text"
+      ]
+    },
+    {
+      "name": "northstar-ops-markdown-h2-v1",
+      "text_analyzer": "en.lucene",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "scoringProfiles": [],
+      "defaultScoringProfile": null,
+      "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "b": null,
+        "k1": null
+      },
+      "searchable_fields": [
+        "text"
+      ]
+    }
+  ],
+  "managed_indexer": {
+    "name": "northstar-markdown-h2-indexer",
+    "targetIndexName": "northstar-ops-markdown-h2-v1",
+    "skillsetName": "northstar-markdown-lab-flags",
+    "parameters": {
+      "batchSize": null,
+      "maxFailedItems": 0,
+      "maxFailedItemsPerBatch": 0,
+      "configuration": {
+        "dataToExtract": "contentAndMetadata",
+        "indexedFileNameExtensions": ".md",
+        "markdownHeaderDepth": "h2",
+        "markdownParsingSubmode": "oneToMany",
+        "parsingMode": "markdown"
+      }
+    },
+    "fieldMappings": [
+      {
+        "sourceFieldName": "/content",
+        "targetFieldName": "text",
+        "mappingFunction": null
+      },
+      {
+        "sourceFieldName": "/sections/h1",
+        "targetFieldName": "heading_h1",
+        "mappingFunction": null
+      },
+      {
+        "sourceFieldName": "/sections/h2",
+        "targetFieldName": "heading_h2",
+        "mappingFunction": null
+      },
+      {
+        "sourceFieldName": "ordinal_position",
+        "targetFieldName": "ordinal_position",
+        "mappingFunction": null
+      }
+    ],
+    "outputFieldMappings": [
+      {
+        "sourceFieldName": "/document/lab_runtime_eligible",
+        "targetFieldName": "runtime_eligible",
+        "mappingFunction": null
+      }
+    ]
+  },
+  "managed_skillset": {
+    "name": "northstar-markdown-lab-flags",
+    "skills": [
+      {
+        "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+        "name": "set-lab-status",
+        "context": "/document",
+        "inputs": [
+          {
+            "name": "condition",
+            "source": "= true"
+          },
+          {
+            "name": "whenTrue",
+            "source": "= false"
+          },
+          {
+            "name": "whenFalse",
+            "source": "= false"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "output",
+            "targetName": "lab_runtime_eligible"
+          }
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "count": 18,
+    "corpus_id": "northstar-operations",
+    "corpus_version": "0.1.0",
+    "manifest_sha256": "8cfa8f75cc7cbbe505fd09d4ad1696b67b6b3d3c9ce2077568edb1628745ff6e",
+    "all_runtime_eligible_false": true,
+    "documents": [
+      {
+        "document_id": "northstar-quality-gates",
+        "chunk_count": 9,
+        "ordinals": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source_path": "01-fabric-platform-engineering/FAB-003/README.md",
+        "source_blob_sha": "8acdda9d27b2e9d4cf02867f99481150fcaddf84",
+        "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+        "distinct_source_url_count": 1
+      },
+      {
+        "document_id": "northstar-recovery",
+        "chunk_count": 4,
+        "ordinals": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "source_path": "02-dataops-devops/OPS-002/runbooks/recovery.md",
+        "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+        "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+        "distinct_source_url_count": 1
+      },
+      {
+        "document_id": "northstar-triage",
+        "chunk_count": 5,
+        "ordinals": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "source_path": "02-dataops-devops/OPS-002/runbooks/triage.md",
+        "source_blob_sha": "c3fcb0b5a70ef2ff7749ce355f7bef24109fa432",
+        "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+        "distinct_source_url_count": 1
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "AI001-002",
+      "question": "A target write completed and the run then failed. What recovery pattern is documented?",
+      "split": "development",
+      "results": [
+        {
+          "index": "northstar-ops-sections-v1",
+          "required_passage_rank": 3,
+          "match_count": 18,
+          "required_passage_score": 4.4719625,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-windows-v1",
+          "required_passage_rank": 2,
+          "match_count": 11,
+          "required_passage_score": 5.7162724,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-markdown-h2-v1",
+          "required_passage_rank": 3,
+          "match_count": 14,
+          "required_passage_score": 3.9209437,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-003",
+      "question": "Which five layers should I verify before calling recovery complete?",
+      "split": "development",
+      "results": [
+        {
+          "index": "northstar-ops-sections-v1",
+          "required_passage_rank": 2,
+          "match_count": 12,
+          "required_passage_score": 5.575822,
+          "rank_matches_previous": true,
+          "context_note": "Closure complete; verification rank 1 is heading/intro only. Full checklist absent from top five."
+        },
+        {
+          "index": "northstar-ops-windows-v1",
+          "required_passage_rank": 2,
+          "match_count": 11,
+          "required_passage_score": 3.6313179,
+          "rank_matches_previous": true,
+          "context_note": "Closure ends at work b; full checklist absent from top five."
+        },
+        {
+          "index": "northstar-ops-markdown-h2-v1",
+          "required_passage_rank": 1,
+          "match_count": 10,
+          "required_passage_score": 4.8681574,
+          "rank_matches_previous": true,
+          "context_note": "Closure complete at rank 1; full checklist at rank 2."
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-004",
+      "question": "Which identifiers can start incident triage?",
+      "split": "development",
+      "results": [
+        {
+          "index": "northstar-ops-sections-v1",
+          "required_passage_rank": 1,
+          "match_count": 6,
+          "required_passage_score": 6.8858137,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-windows-v1",
+          "required_passage_rank": 1,
+          "match_count": 6,
+          "required_passage_score": 5.8697486,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-markdown-h2-v1",
+          "required_passage_rank": 2,
+          "match_count": 5,
+          "required_passage_score": 3.970789,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-005",
+      "question": "Data and state succeeded, but alert routing failed. Should I rerun ingestion?",
+      "split": "development",
+      "results": [
+        {
+          "index": "northstar-ops-sections-v1",
+          "required_passage_rank": 1,
+          "match_count": 16,
+          "required_passage_score": 6.194999,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-windows-v1",
+          "required_passage_rank": 1,
+          "match_count": 13,
+          "required_passage_score": 7.5517445,
+          "rank_matches_previous": true,
+          "context_note": "Routing row at rank 1 lacks Do not do header; no top-five passage restores it."
+        },
+        {
+          "index": "northstar-ops-markdown-h2-v1",
+          "required_passage_rank": 1,
+          "match_count": 13,
+          "required_passage_score": 6.3448706,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-006",
+      "question": "What does the runbook require for a stale candidate when another attempt won?",
+      "split": "development",
+      "results": [
+        {
+          "index": "northstar-ops-sections-v1",
+          "required_passage_rank": 2,
+          "match_count": 15,
+          "required_passage_score": 6.169838,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-windows-v1",
+          "required_passage_rank": 1,
+          "match_count": 11,
+          "required_passage_score": 7.04116,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        },
+        {
+          "index": "northstar-ops-markdown-h2-v1",
+          "required_passage_rank": 2,
+          "match_count": 10,
+          "required_passage_score": 6.1679296,
+          "rank_matches_previous": true,
+          "context_note": "Required passage and qualifiers complete."
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "matching_required_passage_ranks": 15,
+    "total_required_passage_ranks": 15,
+    "managed_complete_required_context_cases": 5,
+    "total_cases": 5,
+    "final_strategy_selected": false
+  },
+  "limitations": [
+    "Readbacks are selected properties, not full deployable resource exports.",
+    "Source hashes are consistent stored metadata; no independent cloud-blob-byte verification.",
+    "No complete raw JSON archive, CLI version, execution timestamp, latency or cost.",
+    "Heading placement and chunk corpus differences remain; matching BM25 settings does not make scores comparable across indexes.",
+    "Question AI001-003 retains five-layer ambiguity: four checklist subsection headings and six closure evidence areas.",
+    "No generated answers, reserved cases, full rubric, runtime access/freshness/approval enforcement or production readiness established."
+  ]
+}

@@ -224,6 +224,14 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Ranking remains mixed. Documented the five-layer question ambiguity, different heading placement and REST API versions, and missing live configuration readback.
 - Continue with h2 provisionally; capture sanitized configuration and align comparison controls before retrieval changes. No full evaluation pass, reserved-case run, model-answer evidence, serving-readiness claim, issue closure or competency-score change.
 
+### 2026-09-09 — AI-001 live controls and aligned-API comparison
+
+- Recorded [selected live index/indexer/skillset settings, 18-chunk provenance and all 15 repeated queries](04-foundry-ai-engineering/AI-001/evidence/azure-aligned-api-comparison-04.md) from user-supplied lab responses.
+- All inspected text analyzers, BM25 settings, synonym maps and scoring profiles match. All 15 required-passage ranks reproduced with API 2026-04-01; context fragmentation persists in the custom baselines.
+- Complete pinned URLs and consistent metadata were verified in the readbacks; no independent cloud byte verification is claimed. Managed h2 remains a provisional candidate.
+- Prepared the [heading-search experiment specification](04-foundry-ai-engineering/AI-001/azure-search/heading-search-experiment.md), using a separate combined field and declared comparison gates. It is not deployed or executed.
+- No model answers, reserved evaluation, serving enforcement, issue closure or skill-score changes.
+
 # YYYY-MM — Theme
 
 **Outcomes**

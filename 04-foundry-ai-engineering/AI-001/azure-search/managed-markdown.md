@@ -6,7 +6,7 @@ This records the configuration used in the guided lab. See [observed results](..
 
 Three original Markdown blobs feed a one-to-many Markdown indexer, then a ConditionalSkill sets the false lab flag before output reaches the third comparison index. Developer-to-Search calls use Entra RBAC. Search-to-Storage uses a short-lived read/list container SAS. Those are different authorization paths. Neither implements the proposed application reader/operator policy.
 
-The private container's custom metadata was populated with document_id, source_url, source_path, source_commit, source_blob_sha, corpus_id, corpus_version and manifest_sha256. Same-named index fields were intended to receive implicit mappings. The live readback confirmed document_id and source_url, but not the other provenance fields.
+The private container's custom metadata was populated with document_id, source_url, source_path, source_commit, source_blob_sha, corpus_id, corpus_version and manifest_sha256. Same-named index fields were intended to receive implicit mappings. [Checkpoint 04](../evidence/azure-aligned-api-comparison-04.md) now records all 18 chunks' populated provenance values and one complete pinned URL per document. Values are consistent; cloud blob bytes were not independently verified.
 
 ## Submitted schema
 
@@ -83,6 +83,6 @@ The skill creates a Boolean output rather than relying on conversion of string-v
 3. Create the data source and submitted schema, then the skillset and indexer. All three comparison indexes already exist in the exercised lab; preserve the baselines.
 4. Inspect indexer status, then query actual count and metadata. Successful processing alone does not prove field correctness.
 5. Inspect the four recovery chunks in ordinal order before rerunning the exact five development questions in the structured evidence.
-6. Capture pristine sanitized query responses, execution timestamps, schema readback and remaining provenance fields for the next experiment. Renew expired source credentials only when further ingestion is needed.
+6. Capture pristine sanitized query responses, execution timestamps, full schema snapshots for the next experiment. Selected live configuration and provenance readbacks are now recorded in checkpoint 04. Renew expired source credentials only when further ingestion is needed.
 
 Future changes to source content, parser depth or mappings require update/deletion lifecycle validation; this initial ingestion did not test that behavior. The false flag is metadata, not enforced serving authorization.

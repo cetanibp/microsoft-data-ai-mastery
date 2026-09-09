@@ -43,7 +43,9 @@ The comparison measures implemented approaches, not chunk size alone: API versio
 
 The [submitted configuration record](../azure-search/managed-markdown.md) now documents parser settings and field mappings from the guided setup. Full live index/indexer/skillset exports, execution dates, CLI version, latency and cost remain uncaptured. No vector/hybrid retrieval, generated-answer evaluation, reserved-case execution, approval, access/revocation/freshness enforcement or serving deployment is established. A false eligibility field records draft status; it does not enforce authorization. Existing dataset end-to-end execution statuses remain unchanged.
 
-## Next checkpoint
+## Next checkpoint (historical)
+
+Completed selected configuration/provenance readbacks and the aligned-API rerun in [checkpoint 04](azure-aligned-api-comparison-04.md). The earlier limitations and proposal below describe the state at checkpoint 03.
 
 Capture sanitized live index/indexer/skillset definitions and document analyzer/field differences. Align query API versions and define a controlled searchable-heading comparison before changing retrieval behavior. Then repeat the fixed development questions, reporting ranking regressions as well as content preservation. Preserve both original baseline indexes and results. Vector/hybrid and answer-generation comparisons remain later work.
 
