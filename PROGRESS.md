@@ -280,3 +280,7 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 **Next focus**
 
 - 
+
+## Current checkpoint 09 — broader retrieval and corpus verification
+
+[Results](04-foundry-ai-engineering/AI-001/evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](04-foundry-ai-engineering/AI-001/evaluation/development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.

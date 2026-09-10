@@ -101,3 +101,7 @@ For this checkpoint, read development cases AI001-001 and AI001-024: one support
 ## Current checkpoint 08
 
 [Post-maintenance retrieval and scoring diagnostic](../evidence/azure-post-maintenance-retrieval-08.md) records primary ranks 1,1,2,1,2: identifiers regressed to second; four other primary ranks reproduced. Four repeated samples and a default/global scoring pair produced identical identifier ordering and scores. Cause remains unconfirmed. Keep separate headings/default scoring provisionally; automatic population is verified but rank parity is not. Next: the prepared broader development retrieval batch (AI001-001, 011, 012, 013, 025). No model or reserved evaluation is claimed.
+
+## Current checkpoint 09 — broader retrieval and corpus verification
+
+[Results](../evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
