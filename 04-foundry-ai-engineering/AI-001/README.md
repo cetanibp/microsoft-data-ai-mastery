@@ -32,3 +32,7 @@ Related: [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13),
 ## Current checkpoint 09 — broader retrieval and corpus verification
 
 [Results](evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](evaluation/development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
+
+## Current checkpoint 10 — clarification results
+
+[Clarification results](evidence/azure-clarification-retrieval-10.md): both synthetic variants retrieved all required passages; original gaps and force-commit control reproduced. Fixed Git Bash CRLF handling. [First answer evaluation](evaluation/answer-evaluation-01.md) defines context, prompt and per-case expectations before model execution. Existing model deployment details are the next dependency; no generation or reserved evaluation has run.
