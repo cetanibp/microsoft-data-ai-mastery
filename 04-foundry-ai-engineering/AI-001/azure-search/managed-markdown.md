@@ -90,3 +90,7 @@ Future changes to source content, parser depth or mappings require update/deleti
 ## Current maintenance boundary
 
 text_with_headings_v1 was populated by merge-only updates after schema addition. The indexer/skillset above still handles the original mappings and lab flag. Complete [derived-field maintenance](heading-field-maintenance.md) before relying on the candidate following source refreshes. Explicitly choose text or text_with_headings_v1 in development queries.
+
+## Separate-heading checkpoint 06
+
+[Checkpoint 06](../evidence/azure-separate-headings-06.md) added heading_h1_search_v1 and heading_h2_search_v1: searchable/retrievable Edm.String copies with en.lucene. All 18 values match the originals. The indexer body above remains the pre-maintenance configuration and does not populate these copies. Explicitly search heading_h1_search_v1,heading_h2_search_v1,text for the provisional separate arm; retain text_with_headings_v1 for the historical comparison only. Follow the updated [maintenance plan](heading-field-maintenance.md).

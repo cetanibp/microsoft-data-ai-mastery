@@ -1,6 +1,6 @@
 # Azure AI Search walkthrough
 
-Current status: [heading-search checkpoint 05](../evidence/azure-heading-search-05.md) completed in the guided lab. text_with_headings_v1 is provisionally preferred after two improvements and no regressions across five development questions; all 18 original records were preserved. The field is currently maintained by a one-time manual merge. The Azure-managed h2 candidate has 18 chunks and preserves complete required context within the top five for all five inspected cases. See [current evidence and limitations](../evidence/azure-markdown-h2-comparison-03.md). Selected live ranking settings now match across the indexes, and all 15 required-passage ranks reproduced using one API version. See [checkpoint 04](../evidence/azure-aligned-api-comparison-04.md). Application authorization/freshness enforcement and full evaluation remain pending.
+Current status: [separate-heading checkpoint 06](../evidence/azure-separate-headings-06.md) completed. Prefer separate searchable heading copies provisionally: one primary improvement, four unchanged, complete context for 5/5; the stale-case supporting checklist moved from rank 3 to 4. All 18 records retain false lab eligibility. Both heading candidates currently depend on manual merges; automated maintenance and full application evaluation remain pending.
 
 ## Why use Azure AI Search next?
 
@@ -93,6 +93,6 @@ The preparation commands above document the earlier setup checkpoint. Follow the
 
 ## Current next step
 
-[Azure-managed Markdown h2 comparison](../evidence/azure-markdown-h2-comparison-03.md) supersedes the proposed local structure-aware experiment. Those readback and API-alignment checks are now recorded in [checkpoint 04](../evidence/azure-aligned-api-comparison-04.md). The [heading-search experiment](heading-search-experiment.md) has now completed; see [checkpoint 05](../evidence/azure-heading-search-05.md). Next: [implement derived-field ingestion maintenance](heading-field-maintenance.md). Preserve the three baseline results and original development questions. Azure h2 is a provisional development candidate, not a final retrieval selection.
+[Azure-managed Markdown h2 comparison](../evidence/azure-markdown-h2-comparison-03.md) supersedes the proposed local structure-aware experiment. Those readback and API-alignment checks are now recorded in [checkpoint 04](../evidence/azure-aligned-api-comparison-04.md). The [heading-search experiment](heading-search-experiment.md) has now completed; see [checkpoint 05](../evidence/azure-heading-search-05.md). [Separate-heading checkpoint 06](../evidence/azure-separate-headings-06.md) now supersedes the combined preference. Next: [implement separate-heading ingestion maintenance](heading-field-maintenance.md). Preserve the three baseline results and original development questions. Azure h2 is a provisional development candidate, not a final retrieval selection.
 
 The [earlier five-case comparison](../evidence/azure-development-retrieval-02.md) remains historical evidence. Full application evaluation and generated-answer behavior remain pending.

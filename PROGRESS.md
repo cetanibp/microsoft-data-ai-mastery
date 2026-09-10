@@ -239,6 +239,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Provisionally prefer text_with_headings_v1 for development under the predeclared gate. No generated-answer or full evaluation pass is claimed.
 - Next: [derived-field ingestion maintenance](04-foundry-ai-engineering/AI-001/azure-search/heading-field-maintenance.md). Current population is a one-time merge and is not maintained by the indexer. Full serving/security/lifecycle evidence and ADR-009 remain open; no issue closure or skill-score change.
 
+### 2026-09-10 — AI-001 separate searchable headings
+
+- Recorded [checkpoint 06](04-foundry-ai-engineering/AI-001/evidence/azure-separate-headings-06.md) from user-supplied lab results. The separate arm improves target-write primary evidence 2→1 and matches four other primary ranks; both arms retain complete required context for 5/5.
+- Recorded the secondary stale-case checklist regression 3→4 and the persistent active-attempt versus completed-winner ranking problem.
+- Documented local Git Bash recovery, cp1252 decoding, matching merge-payload hash and 18-record exact readback with unchanged preexisting fields and false eligibility.
+- Provisionally prefer separate searchable headings; updated the maintenance plan accordingly. No automatic indexing maintenance, model answers, reserved evaluation, issue closure or skill-score change is claimed.
+
 # YYYY-MM — Theme
 
 **Outcomes**
