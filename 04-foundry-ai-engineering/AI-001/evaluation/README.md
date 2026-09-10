@@ -97,3 +97,7 @@ Resources checked September 6, 2026. The JSON schema and thresholds here are cus
 Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. Manual five-case retrieval checks are recorded in the [three-way comparison](../evidence/azure-markdown-h2-comparison-03.md); model, access and performance tests remain unrun.
 
 For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. Manual retrieval-component checks have occurred; no model evaluation or reserved-case use is reported. Next: align comparison controls and inspect sanitized live configuration. Full #13/#16 completion and deployed security remain open.
+
+## Current checkpoint 08
+
+[Post-maintenance retrieval and scoring diagnostic](../evidence/azure-post-maintenance-retrieval-08.md) records primary ranks 1,1,2,1,2: identifiers regressed to second; four other primary ranks reproduced. Four repeated samples and a default/global scoring pair produced identical identifier ordering and scores. Cause remains unconfirmed. Keep separate headings/default scoring provisionally; automatic population is verified but rank parity is not. Next: the prepared broader development retrieval batch (AI001-001, 011, 012, 013, 025). No model or reserved evaluation is claimed.

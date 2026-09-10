@@ -253,6 +253,12 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Combined values survived the observed runs; combined-field automatic maintenance is not claimed. Lab flags remain false.
 - Next: five-query batched regression check and changed/absent-source-heading fixtures. No model or reserved evaluation, issue closure or skill-score change.
 
+### 2026-09-10 — AI-001 post-maintenance retrieval diagnostic
+
+- [Checkpoint 08](04-foundry-ai-engineering/AI-001/evidence/azure-post-maintenance-retrieval-08.md): four primary ranks reproduced; identifiers regressed 1→2, retaining complete primary evidence in top five.
+- The original identifier batch plus three repeats had identical rankings/scores. A default/global scoring pair also matched exactly; cause of the historical change remains unconfirmed.
+- Retain separate headings/default scoring provisionally. Prepared five additional existing development cases for retrieval-only inspection; no reserved cases, model answers, issue closure or skill-score changes.
+
 # YYYY-MM — Theme
 
 **Outcomes**
