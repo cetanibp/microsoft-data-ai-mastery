@@ -1,14 +1,14 @@
 # Next increment: maintain separate searchable headings
 
-Status: planned, not implemented or executed. Owner: AI-001 #13. Depends on [checkpoint 06](../evidence/azure-separate-headings-06.md).
+Status: mappings implemented in the guided lab; missing-target restoration verified in [checkpoint 07](../evidence/azure-heading-maintenance-07.md). Changed-source fixtures and retrieval repeat remain pending. Owner: AI-001 #13. Depends on [checkpoint 06](../evidence/azure-separate-headings-06.md).
 
 ## Current decision and invariant
 
-Separate searchable headings supersede checkpoint 05's provisional combined-field preference. The copies currently come from an 18-record manual merge. Every indexed chunk must satisfy heading_h1_search_v1 == heading_h1 and heading_h2_search_v1 == heading_h2, preserving Unicode, empty/null values and original text/provenance. Keep runtime_eligible=false.
+Separate searchable headings supersede checkpoint 05's provisional combined-field preference. The copies were originally populated manually; current indexer mappings now populate them during indexing, demonstrated by restoration of two deliberately cleared values. Every indexed chunk must satisfy heading_h1_search_v1 == heading_h1 and heading_h2_search_v1 == heading_h2, preserving Unicode, empty/null values and original text/provenance. Keep runtime_eligible=false.
 
 The earlier combined transformation remains historical evidence; implementing automatic concatenation is deferred. Explicit searchFields must select the intended arm so additional searchable fields cannot accidentally change the comparison.
 
-## Guided implementation and validation
+## Reproduction procedure and remaining validation
 
 1. Capture current indexer, schema, skillset and all 18 records locally. Preserve raw response bytes and decode UTF-8 or the observed cp1252 without replacement. Keep credentials and generated source-location keys outside Git.
 2. Verify current Microsoft documentation and the live Markdown paths before preparing additional mappings from /sections/h1 and /sections/h2 to their searchable copies. These paths already supply original heading metadata; verify support for mapping each source to both targets. Preserve existing mappings, source settings and false-flag skill.
@@ -22,4 +22,4 @@ The earlier combined transformation remains historical evidence; implementing au
 
 Versioned configuration diff, exact readback for all 18 chunks, per-item outcomes, unchanged-input replay, versioned update/null/Unicode fixtures, failure handling and query comparison. Distinguish artifact checks from live user-executed evidence.
 
-This plan does not claim automatic maintenance exists. Broader development questions, model answers, held-out evaluation, serving authorization, latency/cost and ADR-009 remain open.
+Automatic target-field population has been demonstrated. The full lifecycle plan remains incomplete; absent/empty source headings and changed-source fixtures are untested. Broader development questions, model answers, held-out evaluation, serving authorization, latency/cost and ADR-009 remain open.

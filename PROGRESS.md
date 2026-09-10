@@ -246,6 +246,13 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Documented local Git Bash recovery, cp1252 decoding, matching merge-payload hash and 18-record exact readback with unchanged preexisting fields and false eligibility.
 - Provisionally prefer separate searchable headings; updated the maintenance plan accordingly. No automatic indexing maintenance, model answers, reserved evaluation, issue closure or skill-score change is claimed.
 
+### 2026-09-10 — AI-001 heading population demonstrated
+
+- Recorded [maintenance checkpoint 07](04-foundry-ai-engineering/AI-001/evidence/azure-heading-maintenance-07.md): source credential renewal, ETag conflict recovery and verified two-mapping indexer update.
+- First reprocessing preserved all 18 records. A subsequent deliberate two-field null probe proved automatic restoration during a fresh 18-item success, with zero failures/errors/warnings and all records equal to baseline.
+- Combined values survived the observed runs; combined-field automatic maintenance is not claimed. Lab flags remain false.
+- Next: five-query batched regression check and changed/absent-source-heading fixtures. No model or reserved evaluation, issue closure or skill-score change.
+
 # YYYY-MM — Theme
 
 **Outcomes**

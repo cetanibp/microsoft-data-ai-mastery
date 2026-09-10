@@ -24,7 +24,7 @@ The original schema below made only text searchable, with en.lucene; all fields 
 
 The generated one-to-many key mapping was left implicit. These generated keys differ from the local loader's content/configuration-derived hashes and can encode source locations; avoid publishing them as sanitized evidence.
 
-## Indexer body (does not maintain the new derived field)
+## Current indexer body (separate-heading mappings verified in checkpoint 07)
 
 ```json
 {
@@ -47,7 +47,9 @@ The generated one-to-many key mapping was left implicit. These generated keys di
     {"sourceFieldName": "/content", "targetFieldName": "text"},
     {"sourceFieldName": "/sections/h1", "targetFieldName": "heading_h1"},
     {"sourceFieldName": "/sections/h2", "targetFieldName": "heading_h2"},
-    {"sourceFieldName": "ordinal_position", "targetFieldName": "ordinal_position"}
+    {"sourceFieldName": "ordinal_position", "targetFieldName": "ordinal_position"},
+    {"sourceFieldName": "/sections/h1", "targetFieldName": "heading_h1_search_v1"},
+    {"sourceFieldName": "/sections/h2", "targetFieldName": "heading_h2_search_v1"}
   ],
   "outputFieldMappings": [
     {"sourceFieldName": "/document/lab_runtime_eligible", "targetFieldName": "runtime_eligible"}
@@ -89,8 +91,8 @@ Future changes to source content, parser depth or mappings require update/deleti
 
 ## Current maintenance boundary
 
-text_with_headings_v1 was populated by merge-only updates after schema addition. The indexer/skillset above still handles the original mappings and lab flag. Complete [derived-field maintenance](heading-field-maintenance.md) before relying on the candidate following source refreshes. Explicitly choose text or text_with_headings_v1 in development queries.
+text_with_headings_v1 was populated by merge-only updates after schema addition. The current indexer additionally populates the separate heading copies. [Checkpoint 07](../evidence/azure-heading-maintenance-07.md) proves restoration of missing target values. Combined values survived the observed runs, but automatic concatenation is not implemented. Explicitly select the intended searchFields; complete [changed-source lifecycle validation](heading-field-maintenance.md).
 
 ## Separate-heading checkpoint 06
 
-[Checkpoint 06](../evidence/azure-separate-headings-06.md) added heading_h1_search_v1 and heading_h2_search_v1: searchable/retrievable Edm.String copies with en.lucene. All 18 values match the originals. The indexer body above remains the pre-maintenance configuration and does not populate these copies. Explicitly search heading_h1_search_v1,heading_h2_search_v1,text for the provisional separate arm; retain text_with_headings_v1 for the historical comparison only. Follow the updated [maintenance plan](heading-field-maintenance.md).
+[Checkpoint 06](../evidence/azure-separate-headings-06.md) added heading_h1_search_v1 and heading_h2_search_v1: searchable/retrievable Edm.String copies with en.lucene. All 18 values match the originals. The indexer body above now includes the checkpoint 07 mappings that populate these copies; checkpoint 06 remains the historical manual-population experiment. Explicitly search heading_h1_search_v1,heading_h2_search_v1,text for the provisional separate arm; retain text_with_headings_v1 for the historical comparison only. Follow the updated [maintenance plan](heading-field-maintenance.md).
