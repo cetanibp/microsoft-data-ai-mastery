@@ -163,6 +163,102 @@ There are 24 open issues in this dated snapshot: 3 epics and 21 work items, incl
 
 The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it recommends changes for review and does not modify the repository automatically.
 
+### 2026-09-05 — AI-001 corpus walkthrough, step 2
+
+- Started the minimum DATA-001/GOV-001 prerequisite for AI-001 with a [draft corpus manifest and field guide](06-ai-ready-data/DATA-001/README.md).
+- Selected three existing Northstar operational documents, each pinned to the inspected source commit and file blob SHA.
+- Documented proposed ownership, allowed use, access, freshness and update/deletion rules; approval and runtime enforcement remain pending.
+- Evidence level: artifact-only validation. No AI deployment, access-enforcement demonstration, issue completion or competency-score change is claimed.
+- Next guided step: operational glossary and identity/access matrix, followed by evaluation design before retrieval tuning.
+
+### 2026-09-05 — AI-001 corpus walkthrough, step 3
+
+- Added a [draft operational glossary](06-ai-ready-data/DATA-001/operational-glossary.md) with eight source-informed definitions, conservative aliases, distinctions and revision-pinned evidence.
+- Recorded five ambiguity/interpretation examples as development evaluation seeds; these are not executed semantic tests or held-out cases.
+- Verified artifact structure and source traceability. The three-source corpus remains unchanged; the glossary is supporting draft metadata with its own version.
+- Next guided step: requesting-user versus workload identity and the access matrix. Approval, runtime enforcement, retrieval and full evaluation remain open; no issue closure or skill-score change.
+
+### 2026-09-06 — AI-001 corpus walkthrough, step 4
+
+- Added the [GOV-001 identity/access matrix](07-governance-security/GOV-001/README.md) and JSON policy matching the corpus manifest's existing policy ID.
+- Separated requesting-user entitlement, serving-workload access, index-building permissions and corpus-maintainer responsibility; consequential actions remain denied in this baseline.
+- Specified cache/revocation checks, sanitized audit fields and eleven unexecuted development scenarios. Documented the public-source limitation and need for a protected synthetic fixture for confidentiality evidence.
+- Evidence level: artifact-only structural validation. No identity bindings, resource assignments, enforced authorization, issue closure or skill-score change.
+- Next guided step: initial evaluation questions and expected behavior before retrieval tuning. Content/policy review and runtime enforcement remain open.
+
+### 2026-09-06 — AI-001 corpus walkthrough, step 5
+
+- Added [30 evaluation questions and a versioned rubric](04-foundry-ai-engineering/AI-001/evaluation/README.md) before retrieval tuning: supported, ambiguous, stale/ineligible, unauthorized, unanswerable and adversarial cases.
+- Allocated 20 development and 10 reserved-from-tuning cases; documented public/author visibility and prior-topic overlap rather than claiming a blind independent holdout.
+- Defined source-section retrieval, answer grounding, citation, behavior, latency and variable-cost targets; critical violations override aggregate scores.
+- Verified artifact structure and source references only. Runtime fixtures, model evaluation, performance measurement and approval remain unimplemented/pending; no pass results, issue closure or score change.
+- Next: review/freeze prerequisites and evaluation targets, then local corpus loading and chunking.
+
+### 2026-09-06 — AI-001 corpus walkthrough, step 6
+
+- Implemented the [local corpus loader and chunking comparison](04-foundry-ai-engineering/AI-001/runtime/README.md) with Python standard library only.
+- Verified all three source blob hashes; produced 24 Markdown-section and 15 fixed-window chunks (800 characters with 120 overlap), retaining exact offsets, source sections, pinned citations and deterministic identities.
+- [Local evidence](04-foundry-ai-engineering/AI-001/evidence/local-chunk-preparation.json): 13 contract tests passed, including changed-source rejection, path/source safeguards, complete content coverage, fence handling and replay-table preservation.
+- Measured preparation tradeoffs only: section chunks preserve the recovery table but can exceed 800 characters; fixed windows duplicate overlap and can split rows. No retrieval-quality winner is claimed.
+- Outputs are explicitly offline draft study, not runtime eligible. Content/policy approval and live authorization/freshness remain open; no cloud resources, model calls, reserved evaluation use, issue closure or score change.
+- Next: local keyword retrieval over both passage sets using development questions.
+
+### 2026-09-06 — AI-001 Azure AI Search direction selected
+
+- User selected Azure AI Search as the next retrieval platform after comparing managed processing with the local loader/chunking approach.
+- Added the [service-discovery walkthrough](04-foundry-ai-engineering/AI-001/azure-search/README.md): inspect a learning service first, then configure access, review the synthetic lab import contract, create indexes and query the prepared passages.
+- Retain local source/hash/chunk evidence and plan an Azure-managed preprocessing comparison later. Development/reserved evaluation separation remains unchanged.
+- No Azure resources, indexes, uploads or permission changes have been performed. Service tier/region/access are pending; local runtime-ineligible artifacts are not automatically promoted to approved serving content.
+
+### 2026-09-08 — AI-001 Azure retrieval checkpoint
+
+- User-reported RBAC lab setup and final index counts: 24 Markdown-section chunks and 15 fixed windows. User preparation hashes match local evidence.
+- Completed manual retrieval review of five supported development questions against both indexes with fixed text-only keyword settings. [Evidence and limitations](04-foundry-ai-engineering/AI-001/evidence/azure-development-retrieval-02.md).
+- Found a window result missing the table heading that identifies a prohibited action, truncated closure wording, and heading-only section results. Relevant-section hits alone do not prove sufficient answer context.
+- Proposed a structure-aware local chunking experiment. No model evaluation, reserved-case execution, issue closure, skill-score change or serving-readiness claim.
+
+### 2026-09-09 — AI-001 managed Markdown comparison recorded
+
+- Recorded [Azure-managed h2 setup and five-case comparison](04-foundry-ai-engineering/AI-001/evidence/azure-markdown-h2-comparison-03.md), with structured observations, from user-supplied lab responses; execution timestamps were not captured.
+- Compared 24 custom sections, 15 fixed windows and 18 managed chunks. Managed h2 retains complete required context within the top five for 5/5 inspected development queries, including table prohibitions, nested verification checks and complete closure wording.
+- Ranking remains mixed. Documented the five-layer question ambiguity, different heading placement and REST API versions, and missing live configuration readback.
+- Continue with h2 provisionally; capture sanitized configuration and align comparison controls before retrieval changes. No full evaluation pass, reserved-case run, model-answer evidence, serving-readiness claim, issue closure or competency-score change.
+
+### 2026-09-09 — AI-001 live controls and aligned-API comparison
+
+- Recorded [selected live index/indexer/skillset settings, 18-chunk provenance and all 15 repeated queries](04-foundry-ai-engineering/AI-001/evidence/azure-aligned-api-comparison-04.md) from user-supplied lab responses.
+- All inspected text analyzers, BM25 settings, synonym maps and scoring profiles match. All 15 required-passage ranks reproduced with API 2026-04-01; context fragmentation persists in the custom baselines.
+- Complete pinned URLs and consistent metadata were verified in the readbacks; no independent cloud byte verification is claimed. Managed h2 remains a provisional candidate.
+- Prepared the [heading-search experiment specification](04-foundry-ai-engineering/AI-001/azure-search/heading-search-experiment.md), using a separate combined field and declared comparison gates. It is not deployed or executed.
+- No model answers, reserved evaluation, serving enforcement, issue closure or skill-score changes.
+
+### 2026-09-09 — AI-001 heading-search experiment completed
+
+- Recorded [checkpoint 05](04-foundry-ai-engineering/AI-001/evidence/azure-heading-search-05.md): user executed an ETag-conditional field addition, 18 successful merges and full document-value readback. Original identities/fields and all false eligibility flags were preserved.
+- Captured four reported snapshot/payload hashes and five A/B query cases. Baseline A ranks reproduced; B improved target-write evidence 3→2 and starting identifiers 2→1, with three unchanged and no required-passage regressions. Both arms retain complete required context within top five for 5/5 cases.
+- Provisionally prefer text_with_headings_v1 for development under the predeclared gate. No generated-answer or full evaluation pass is claimed.
+- Next: [derived-field ingestion maintenance](04-foundry-ai-engineering/AI-001/azure-search/heading-field-maintenance.md). Current population is a one-time merge and is not maintained by the indexer. Full serving/security/lifecycle evidence and ADR-009 remain open; no issue closure or skill-score change.
+
+### 2026-09-10 — AI-001 separate searchable headings
+
+- Recorded [checkpoint 06](04-foundry-ai-engineering/AI-001/evidence/azure-separate-headings-06.md) from user-supplied lab results. The separate arm improves target-write primary evidence 2→1 and matches four other primary ranks; both arms retain complete required context for 5/5.
+- Recorded the secondary stale-case checklist regression 3→4 and the persistent active-attempt versus completed-winner ranking problem.
+- Documented local Git Bash recovery, cp1252 decoding, matching merge-payload hash and 18-record exact readback with unchanged preexisting fields and false eligibility.
+- Provisionally prefer separate searchable headings; updated the maintenance plan accordingly. No automatic indexing maintenance, model answers, reserved evaluation, issue closure or skill-score change is claimed.
+
+### 2026-09-10 — AI-001 heading population demonstrated
+
+- Recorded [maintenance checkpoint 07](04-foundry-ai-engineering/AI-001/evidence/azure-heading-maintenance-07.md): source credential renewal, ETag conflict recovery and verified two-mapping indexer update.
+- First reprocessing preserved all 18 records. A subsequent deliberate two-field null probe proved automatic restoration during a fresh 18-item success, with zero failures/errors/warnings and all records equal to baseline.
+- Combined values survived the observed runs; combined-field automatic maintenance is not claimed. Lab flags remain false.
+- Next: five-query batched regression check and changed/absent-source-heading fixtures. No model or reserved evaluation, issue closure or skill-score change.
+
+### 2026-09-10 — AI-001 post-maintenance retrieval diagnostic
+
+- [Checkpoint 08](04-foundry-ai-engineering/AI-001/evidence/azure-post-maintenance-retrieval-08.md): four primary ranks reproduced; identifiers regressed 1→2, retaining complete primary evidence in top five.
+- The original identifier batch plus three repeats had identical rankings/scores. A default/global scoring pair also matched exactly; cause of the historical change remains unconfirmed.
+- Retain separate headings/default scoring provisionally. Prepared five additional existing development cases for retrieval-only inspection; no reserved cases, model answers, issue closure or skill-score changes.
+
 # YYYY-MM — Theme
 
 **Outcomes**
@@ -184,3 +280,15 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 **Next focus**
 
 - 
+
+## Current checkpoint 09 — broader retrieval and corpus verification
+
+[Results](04-foundry-ai-engineering/AI-001/evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](04-foundry-ai-engineering/AI-001/evaluation/development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
+
+### 2026-09-12 — AI-001 model evaluations and guard failures documented
+
+- Recorded [checkpoint 11](04-foundry-ai-engineering/AI-001/evidence/azure-answer-guards-11.md), with selected machine-readable outcomes and hashes for local evidence.
+- Executed bounded answer and reformulation experiments using the existing deployment. Automatic rewriting improves required-evidence coverage 3/5 to 4/5 but still misses the force-commit corrective passage. Manual diagnostic success is kept separate.
+- Implemented and exercised local clarification/citation/quote guards and semantic diagnostics. V2/v3 route 5/5 known cases correctly; generated procedure answers remain 0/2 accepted in each. V3 confirms schema support but quote and splitting failures prevent semantic review.
+- Preserved reviewer overacceptance of the actual compound force-commit answer as an unresolved failure. No retries or per-case retuning within the recorded bounded batches.
+- Next: select precomputed source spans, preserve assertion boundaries and run reviewer diagnostics independently. No reserved cases, runtime deployment, issue closure, ADR acceptance or skill-score change.

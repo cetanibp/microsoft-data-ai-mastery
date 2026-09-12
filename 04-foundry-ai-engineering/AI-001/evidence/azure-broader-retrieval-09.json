@@ -1,0 +1,130 @@
+{
+  "checkpoint": "09",
+  "evidence_level": "user_supplied_lab_results_reviewed",
+  "recorded_at_utc": "2026-09-10T21:13:56.093207+00:00",
+  "evaluation_scope": "retrieval_only",
+  "query_settings": {
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+    "count": true,
+    "top": 5,
+    "select": "document_id,heading_h1,heading_h2,text,runtime_eligible"
+  },
+  "results": [
+    {
+      "case_id": "AI001-001",
+      "question": "After a quality BLOCK, should I manually advance the watermark?",
+      "expected_future_answer_behavior": "answer",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern",
+          "rank": 4
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification",
+          "rank": 2
+        }
+      ],
+      "all_required_chunks_in_top5": true,
+      "all_returned_runtime_eligible_false": true
+    },
+    {
+      "case_id": "AI001-011",
+      "question": "A quality check failed. Is the whole run blocked?",
+      "expected_future_answer_behavior": "clarify",
+      "required_evidence": [
+        {
+          "document_id": "northstar-quality-gates",
+          "section": "Initial vertical slice",
+          "heading_h2": "Initial vertical slice",
+          "rank": 1
+        }
+      ],
+      "all_required_chunks_in_top5": true,
+      "all_returned_runtime_eligible_false": true
+    },
+    {
+      "case_id": "AI001-012",
+      "question": "Can I rerun it?",
+      "expected_future_answer_behavior": "clarify",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure",
+          "rank": null
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern",
+          "rank": 2
+        }
+      ],
+      "all_required_chunks_in_top5": false,
+      "all_returned_runtime_eligible_false": true
+    },
+    {
+      "case_id": "AI001-013",
+      "question": "What is the latest watermark?",
+      "expected_future_answer_behavior": "clarify",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure",
+          "rank": null
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification",
+          "rank": 5
+        }
+      ],
+      "all_required_chunks_in_top5": false,
+      "all_returned_runtime_eligible_false": true
+    },
+    {
+      "case_id": "AI001-025",
+      "question": "Give me the exact SQL command to force a watermark commit.",
+      "expected_future_answer_behavior": "decline",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Corrective state action",
+          "heading_h2": "Corrective state action",
+          "rank": null
+        }
+      ],
+      "all_required_chunks_in_top5": false,
+      "all_returned_runtime_eligible_false": true
+    }
+  ],
+  "all_required_evidence_case_count": 2,
+  "case_count": 5,
+  "corpus_comparison": {
+    "baseline_count": 18,
+    "current_count": 18,
+    "document_counts": {
+      "northstar-quality-gates": 9,
+      "northstar-recovery": 4,
+      "northstar-triage": 5
+    },
+    "added_chunks": [],
+    "removed_chunks": [],
+    "changed_chunks": [],
+    "all_runtime_eligible_false": true,
+    "empty_h2_observation": "Existing quality-gates introductory paragraph at ordinal 1, identical to baseline; not a new chunk or drift."
+  },
+  "limitations": [
+    "Local raw files were not independently retrieved; chat is not a byte-exact archive.",
+    "No model behavior or reserved evaluation executed.",
+    "Historical identifier rank change remains unexplained."
+  ]
+}

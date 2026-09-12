@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.1.0",
+  "recorded_date": "2026-09-09",
+  "execution_date": null,
+  "evidence_level": "user_supplied_lab_responses_manually_reviewed",
+  "raw_responses_archived": false,
+  "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+  "baseline_evidence": "azure-development-retrieval-02.json",
+  "index": "northstar-ops-markdown-h2-v1",
+  "chunking": {
+    "provider": "Azure-managed Markdown",
+    "heading_depth": "h2",
+    "chunk_count": 18,
+    "documents": {
+      "northstar-quality-gates": 9,
+      "northstar-recovery": 4,
+      "northstar-triage": 5
+    }
+  },
+  "runtime_eligible": false,
+  "query_settings": {
+    "api_version": "2026-04-01",
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "text",
+    "top": 5,
+    "count": true,
+    "question_rewriting": false,
+    "select": "document_id,heading_h2,text,runtime_eligible"
+  },
+  "cases": [
+    {
+      "case_id": "AI001-002",
+      "question": "A target write completed and the run then failed. What recovery pattern is documented?",
+      "split": "development",
+      "baseline_ranks": {
+        "sections": 3,
+        "windows": 2
+      },
+      "azure_markdown": {
+        "match_count": 14,
+        "required_passage_rank": 3,
+        "required_passage_score": 3.9209437,
+        "required_heading": "Select a pattern",
+        "complete_context_in_top_five": true
+      }
+    },
+    {
+      "case_id": "AI001-003",
+      "question": "Which five layers should I verify before calling recovery complete?",
+      "split": "development",
+      "baseline_ranks": {
+        "sections": 2,
+        "windows": 2
+      },
+      "azure_markdown": {
+        "match_count": 10,
+        "required_passage_rank": 1,
+        "required_passage_score": 4.8681574,
+        "required_heading": "Completion criteria",
+        "complete_context_in_top_five": true,
+        "verification_checklist_rank": 2
+      }
+    },
+    {
+      "case_id": "AI001-004",
+      "question": "Which identifiers can start incident triage?",
+      "split": "development",
+      "baseline_ranks": {
+        "sections": 1,
+        "windows": 1
+      },
+      "azure_markdown": {
+        "match_count": 5,
+        "required_passage_rank": 2,
+        "required_passage_score": 3.970789,
+        "required_heading": "Required starting evidence",
+        "complete_context_in_top_five": true
+      }
+    },
+    {
+      "case_id": "AI001-005",
+      "question": "Data and state succeeded, but alert routing failed. Should I rerun ingestion?",
+      "split": "development",
+      "baseline_ranks": {
+        "sections": 1,
+        "windows": 1
+      },
+      "azure_markdown": {
+        "match_count": 13,
+        "required_passage_rank": 1,
+        "required_passage_score": 6.3448706,
+        "required_heading": "Select a pattern",
+        "complete_context_in_top_five": true
+      }
+    },
+    {
+      "case_id": "AI001-006",
+      "question": "What does the runbook require for a stale candidate when another attempt won?",
+      "split": "development",
+      "baseline_ranks": {
+        "sections": 2,
+        "windows": 1
+      },
+      "azure_markdown": {
+        "match_count": 10,
+        "required_passage_rank": 2,
+        "required_passage_score": 6.1679296,
+        "required_heading": "Select a pattern",
+        "complete_context_in_top_five": true
+      }
+    }
+  ],
+  "limitations": [
+    "Five development retrieval checks only; no model answers or full rubric execution.",
+    "Earlier queries used API 2024-07-01; this candidate used 2026-04-01.",
+    "Azure headings are separate from text; custom sections include headings in text. Live analyzer/schema equivalence not verified.",
+    "No complete index/indexer/skillset configuration export, CLI version, execution timestamps, latency or cost captured.",
+    "Azure source URLs observed pinned to the source commit; independent blob-to-index byte verification not performed.",
+    "Question AI001-003 says five layers; source has four checklist subsection headings and six closure evidence areas.",
+    "No reserved-case evaluation, access/freshness enforcement or serving readiness established."
+  ],
+  "next_step": "Capture sanitized live configuration and align API/analyzer/searchable-content controls before changing retrieval behavior; retain original five questions for comparison. Azure h2 is a provisional development candidate only."
+}

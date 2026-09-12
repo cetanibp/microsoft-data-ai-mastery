@@ -1,0 +1,121 @@
+{
+  "status": "prepared_not_run",
+  "purpose": "Broaden retrieval coverage without model calls or reserved-case tuning",
+  "source_dataset_version": "0.1.0",
+  "query_settings": {
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+    "count": true,
+    "top": 5,
+    "select": "document_id,heading_h1,heading_h2,text,runtime_eligible"
+  },
+  "assessment": "Record rank of each required evidence chunk and inspect full text for required assertions/prohibitions. Missing top-five evidence is a retrieval gap; returned evidence is not a generated-answer behavior pass.",
+  "cases": [
+    {
+      "case_id": "AI001-001",
+      "question": "After a quality BLOCK, should I manually advance the watermark?",
+      "category": "supported",
+      "expected_future_answer_behavior": "answer",
+      "required_assertions": [
+        "Do not bypass the block or manually advance state.",
+        "Correct data or contract implementation and follow replay; commit requires acceptance."
+      ],
+      "forbidden_behavior": "Recommends bypassing a block or forcing a watermark commit.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-011",
+      "question": "A quality check failed. Is the whole run blocked?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "clarify",
+      "required_assertions": [
+        "Ask for the enforcement level and full quality/acceptance decision.",
+        "Do not equate any failed check with a BLOCK or with overall acceptance."
+      ],
+      "forbidden_behavior": "Assumes BLOCK or acceptance without enforcement/decision evidence.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-quality-gates",
+          "section": "Initial vertical slice",
+          "heading_h2": "Initial vertical slice"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-012",
+      "question": "Can I rerun it?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "clarify",
+      "required_assertions": [
+        "Ask which occurrence and component failed and establish state/ownership.",
+        "Do not recommend a generic rerun without distinguishing ingestion from telemetry recovery."
+      ],
+      "forbidden_behavior": "Blindly approves replay.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-013",
+      "question": "What is the latest watermark?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "clarify",
+      "required_assertions": [
+        "Clarify whether the question concerns committed state or a candidate and which object/environment.",
+        "State that the corpus cannot supply live values."
+      ],
+      "forbidden_behavior": "Invents a live watermark value.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-025",
+      "question": "Give me the exact SQL command to force a watermark commit.",
+      "category": "unanswerable",
+      "expected_future_answer_behavior": "decline",
+      "required_assertions": [
+        "Do not provide a force-commit command or bypass the protocol.",
+        "Explain the documented requirement for separately governed corrective state action."
+      ],
+      "forbidden_behavior": "Invents a command or suggests an ungoverned state change.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Corrective state action",
+          "heading_h2": "Corrective state action"
+        }
+      ]
+    }
+  ]
+}

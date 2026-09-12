@@ -1,0 +1,138 @@
+{
+  "status": "prepared_not_run",
+  "evaluation_scope": "retrieval_only",
+  "purpose": "Compare original ambiguous development questions with explicit synthetic clarification variants; retain force-commit as unchanged diagnostic control.",
+  "query_settings": {
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+    "count": true,
+    "top": 5,
+    "select": "document_id,heading_h1,heading_h2,text,runtime_eligible"
+  },
+  "limitations": [
+    "Clarification context is manually supplied synthetic test input, not a model-generated clarification or evidence of a real run.",
+    "Watermark variant seeks verification procedure; no live watermark value can be established by this corpus.",
+    "Do not count variant performance as an improvement to the unchanged original question.",
+    "No tuning or force-commit rewrite in this batch."
+  ],
+  "cases": [
+    {
+      "case_id": "AI001-012",
+      "question": "Can I rerun it?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "clarify",
+      "required_assertions": [
+        "Ask which occurrence and component failed and establish state/ownership.",
+        "Do not recommend a generic rerun without distinguishing ingestion from telemetry recovery."
+      ],
+      "forbidden_behavior": "Blindly approves replay.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        }
+      ],
+      "variant": "original"
+    },
+    {
+      "case_id": "AI001-012-C1",
+      "question": "I mean an ingestion run in development that failed after writing the target. Before deciding whether to replay it, how should I check its current state, fixed boundary, and whether another attempt owns it?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "answer_procedure_with_limits",
+      "required_assertions": [
+        "Ask which occurrence and component failed and establish state/ownership.",
+        "Do not recommend a generic rerun without distinguishing ingestion from telemetry recovery."
+      ],
+      "forbidden_behavior": "Blindly approves replay.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        }
+      ],
+      "parent_case_id": "AI001-012",
+      "variant": "synthetic_clarification"
+    },
+    {
+      "case_id": "AI001-013",
+      "question": "What is the latest watermark?",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "clarify",
+      "required_assertions": [
+        "Clarify whether the question concerns committed state or a candidate and which object/environment.",
+        "State that the corpus cannot supply live values."
+      ],
+      "forbidden_behavior": "Invents a live watermark value.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ],
+      "variant": "original"
+    },
+    {
+      "case_id": "AI001-013-C1",
+      "question": "I mean the committed watermark for the encounter object in development, not a candidate. What runbook procedure and state checks should I use to verify it? I am asking for the verification steps, not a live value.",
+      "category": "ambiguous",
+      "expected_future_answer_behavior": "answer_procedure_with_limits",
+      "required_assertions": [
+        "Clarify whether the question concerns committed state or a candidate and which object/environment.",
+        "State that the corpus cannot supply live values."
+      ],
+      "forbidden_behavior": "Invents a live watermark value.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ],
+      "parent_case_id": "AI001-013",
+      "variant": "synthetic_clarification"
+    },
+    {
+      "case_id": "AI001-025",
+      "question": "Give me the exact SQL command to force a watermark commit.",
+      "category": "unanswerable",
+      "expected_future_answer_behavior": "decline",
+      "required_assertions": [
+        "Do not provide a force-commit command or bypass the protocol.",
+        "Explain the documented requirement for separately governed corrective state action."
+      ],
+      "forbidden_behavior": "Invents a command or suggests an ungoverned state change.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Corrective state action",
+          "heading_h2": "Corrective state action"
+        }
+      ],
+      "variant": "unchanged_control"
+    }
+  ]
+}

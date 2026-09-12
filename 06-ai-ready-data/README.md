@@ -13,3 +13,7 @@ Deliver a small corpus/glossary/ownership/access-metadata prerequisite before #1
 | [#46](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/46) | DATA-002 — Build an analytical data product and tested semantic model | Required planned work |
 
 Implementation evidence will be added under each planning ID as work is completed. These links represent backlog scope, not completed capability. See the [learning-gap review](../tracking/LEARNING_GAP_REVIEW_2026-09.md) for dependencies and evidence expectations.
+
+## Corpus walkthrough started
+
+[DATA-001 first corpus manifest](DATA-001/README.md) selects three revision-pinned operational documents and explains each inventory field. The [draft operational glossary](DATA-001/operational-glossary.md) adds eight source-linked terms and five clarification cases. Glossary review, approval, access mapping and runtime enforcement remain open.
