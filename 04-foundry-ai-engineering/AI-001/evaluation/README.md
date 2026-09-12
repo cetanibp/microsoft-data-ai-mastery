@@ -1,6 +1,6 @@
 # AI-001 — Evaluation design, step 5
 
-**Status: draft specification; manual development retrieval checks recorded, full application/answer evaluation unrun.** Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
+**Status: draft rubric with executed development retrieval, answer/reformulation and guard experiments; full application evaluation remains incomplete.** See [checkpoint 11](../evidence/azure-answer-guards-11.md). Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
 
 - [Dataset](dataset.json): 30 questions, expected behaviors, required assertions, original source sections and synthetic fixture conditions.
 - [Rubric](rubric.json): scoring definitions, proposed thresholds, critical gates and experiment-version requirements.
@@ -94,14 +94,18 @@ Resources checked September 6, 2026. The JSON schema and thresholds here are cus
 
 ## Verification and next checkpoint
 
-Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. Manual five-case retrieval checks are recorded in the [three-way comparison](../evidence/azure-markdown-h2-comparison-03.md); model, access and performance tests remain unrun.
+Artifact checks validate 30 unique IDs/questions, the 20/10 split, category counts, source revisions/sections, fixture references and rubric consistency. Manual five-case retrieval checks are recorded in the [three-way comparison](../evidence/azure-markdown-h2-comparison-03.md); bounded model experiments are now recorded in checkpoint 11; full access and performance evaluation remains unrun.
 
-For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. Manual retrieval-component checks have occurred; no model evaluation or reserved-case use is reported. Next: align comparison controls and inspect sanitized live configuration. Full #13/#16 completion and deployed security remain open.
+For this checkpoint, read development cases AI001-001 and AI001-024: one supports a procedural answer and the other cannot establish a live failure cause. Step 6 now provides [local corpus loading and two chunking implementations](../runtime/README.md), verified with local contract tests. Manual retrieval-component checks have occurred; earlier checkpoints had no model evaluation; checkpoint 11 records subsequent model runs. Reserved cases remain unused. Next: align comparison controls and inspect sanitized live configuration. Full #13/#16 completion and deployed security remain open.
 
-## Current checkpoint 08
+## Historical checkpoint 08
 
 [Post-maintenance retrieval and scoring diagnostic](../evidence/azure-post-maintenance-retrieval-08.md) records primary ranks 1,1,2,1,2: identifiers regressed to second; four other primary ranks reproduced. Four repeated samples and a default/global scoring pair produced identical identifier ordering and scores. Cause remains unconfirmed. Keep separate headings/default scoring provisionally; automatic population is verified but rank parity is not. Next: the prepared broader development retrieval batch (AI001-001, 011, 012, 013, 025). No model or reserved evaluation is claimed.
 
-## Current checkpoint 09 — broader retrieval and corpus verification
+## Historical checkpoint 09 — broader retrieval and corpus verification
 
 [Results](../evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
+
+## Current checkpoint 11
+
+[Answer and guard results](../evidence/azure-answer-guards-11.md) separate retrieval coverage, gate routing, final behavior, citation format, quote identity and semantic support. The full 30-case dataset execution status and rubric remain unchanged: these five-case development slices do not pass the application gate. Prompts, scripts and raw evidence remain local; selected outcomes and source-file hashes are archived with checkpoint 11.

@@ -1,6 +1,6 @@
 # AI-001 — Grounded retrieval baseline
 
-Status: draft prerequisites, local preparation, and three-way Azure keyword retrieval comparison recorded; no serving application or model-answer evaluation deployed.
+Status: local preparation, Azure retrieval, bounded model-answer/reformulation evaluations and three guard iterations recorded. No serving application is deployed; no guard candidate is ready to adopt. See [current checkpoint 11](evidence/azure-answer-guards-11.md).
 
 ## Guided learning checkpoints
 
@@ -21,18 +21,24 @@ Status: draft prerequisites, local preparation, and three-way Azure keyword retr
 
 11. [Maintenance checkpoint 07](evidence/azure-heading-maintenance-07.md): indexer mappings restored two deliberately cleared heading copies; all 18 records matched baseline.
 
-Next: repeat the five retrieval queries in one batch, then complete [changed-source maintenance fixtures](azure-search/heading-field-maintenance.md). The Azure h2 candidate is provisional. Approval, fixtures, vector/hybrid comparison, permission/revocation evidence, model answers, performance, ADR-009 and deployment handoff remain open.
+At checkpoint 07, next work was to repeat the five retrieval queries in one batch, then complete [changed-source maintenance fixtures](azure-search/heading-field-maintenance.md). The Azure h2 candidate is provisional. Approval, fixtures, vector/hybrid comparison, permission/revocation evidence, model answers, performance, ADR-009 and deployment handoff remain open.
 
-Related: [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13), [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16), [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20). Evidence includes local executable loader/chunking tests; manual development retrieval checks have run; full application and answer evaluation remain unrun. Draft content/policy approval is unchanged; no issue is complete and no competency scores change.
+Related: [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13), [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16), [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20). Evidence includes local executable loader/chunking tests; manual development retrieval checks have run; bounded answer evaluation has now run; full application evaluation remains incomplete. Draft content/policy approval is unchanged; no issue is complete and no competency scores change.
 
-## Current checkpoint 08
+## Historical checkpoint 08
 
 [Post-maintenance retrieval and scoring diagnostic](evidence/azure-post-maintenance-retrieval-08.md) records primary ranks 1,1,2,1,2: identifiers regressed to second; four other primary ranks reproduced. Four repeated samples and a default/global scoring pair produced identical identifier ordering and scores. Cause remains unconfirmed. Keep separate headings/default scoring provisionally; automatic population is verified but rank parity is not. Next: the prepared broader development retrieval batch (AI001-001, 011, 012, 013, 025). No model or reserved evaluation is claimed.
 
-## Current checkpoint 09 — broader retrieval and corpus verification
+## Historical checkpoint 09 — broader retrieval and corpus verification
 
 [Results](evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](evaluation/development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
 
-## Current checkpoint 10 — clarification results
+## Historical checkpoint 10 — clarification results
 
 [Clarification results](evidence/azure-clarification-retrieval-10.md): both synthetic variants retrieved all required passages; original gaps and force-commit control reproduced. Fixed Git Bash CRLF handling. [First answer evaluation](evaluation/answer-evaluation-01.md) defines context, prompt and per-case expectations before model execution. Existing model deployment details are the next dependency; no generation or reserved evaluation has run.
+
+## Current checkpoint 11 — answer and guard evaluations
+
+[Consolidated results](evidence/azure-answer-guards-11.md) record clarification failures, limited automatic-reformulation gains, and local guard implementations through v3. V2/v3 route all five saved cases as intended, but neither accepts either generated procedure answer. V3 confirms schema support; quote and splitting failures block semantic review. The saved compound force-commit reviewer failure remains unresolved.
+
+Next: precomputed source-span selection, source-preserving assertion boundaries, and independently runnable reviewer diagnostics. No reserved evaluation, runtime readiness, issue closure or score change.

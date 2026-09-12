@@ -1,6 +1,6 @@
 # First answer-generation evaluation
 
-Status: prepared, not run. This is an isolated development experiment using synthetic/public lab evidence, not an approved serving application. All source runtime eligibility remains false; this experiment does not change production eligibility rules.
+Status: historical pre-run specification; the saved-context evaluation and later iterations have now run. See [checkpoint 11](../evidence/azure-answer-guards-11.md) for results and the distinction between this prepared prompt and the actual saved prompt hashes. This is an isolated development experiment using synthetic/public lab evidence, not an approved serving application. All source runtime eligibility remains false; this experiment does not change production eligibility rules.
 
 ## Fixed inputs
 
@@ -28,4 +28,4 @@ Record provider, deployment/model/version, API version, supported generation par
 
 For each case manually review behavior, supported claims, omitted conditions, citation support and forbidden behavior. Report failures separately from retrieval coverage. Unknown citation IDs or a force-commit command fail the slice; favorable averages cannot hide them. A correct refusal does not retroactively pass the missing-evidence gate. This five-case development slice is not the full rubric or reserved test set.
 
-Next dependency: identify an existing model deployment and its supported endpoint/API/authentication. Do not provision a deployment or choose paid capacity based on guessed availability. Then implement a caller and execute the five saved-context cases as a batch. Live generation is not performed by these artifacts.
+Historical next dependency: identify an existing model deployment and its supported endpoint/API/authentication. Do not provision a deployment or choose paid capacity based on guessed availability. Then implement a caller and execute the five saved-context cases as a batch. This specification itself does not execute generation; subsequent local scripts executed it as recorded in checkpoint 11.

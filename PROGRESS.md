@@ -284,3 +284,11 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 ## Current checkpoint 09 — broader retrieval and corpus verification
 
 [Results](04-foundry-ai-engineering/AI-001/evidence/azure-broader-retrieval-09.md): two of five broader development cases retrieved all declared evidence. Full readback reports all 18 chunks unchanged; the empty H2 is an existing introduction. Prepared original/clarified query pairs plus an unchanged force-commit control in [batch 03](04-foundry-ai-engineering/AI-001/evaluation/development-retrieval-batch-03.json). No model/reserved evaluation, issue closure or score change.
+
+### 2026-09-12 — AI-001 model evaluations and guard failures documented
+
+- Recorded [checkpoint 11](04-foundry-ai-engineering/AI-001/evidence/azure-answer-guards-11.md), with selected machine-readable outcomes and hashes for local evidence.
+- Executed bounded answer and reformulation experiments using the existing deployment. Automatic rewriting improves required-evidence coverage 3/5 to 4/5 but still misses the force-commit corrective passage. Manual diagnostic success is kept separate.
+- Implemented and exercised local clarification/citation/quote guards and semantic diagnostics. V2/v3 route 5/5 known cases correctly; generated procedure answers remain 0/2 accepted in each. V3 confirms schema support but quote and splitting failures prevent semantic review.
+- Preserved reviewer overacceptance of the actual compound force-commit answer as an unresolved failure. No retries or per-case retuning within the recorded bounded batches.
+- Next: select precomputed source spans, preserve assertion boundaries and run reviewer diagnostics independently. No reserved cases, runtime deployment, issue closure, ADR acceptance or skill-score change.
