@@ -72,7 +72,13 @@ def load_documents(repo_root, allow_draft_local=False):
             raise CorpusError("Citation URL does not match pinned source")
         data = contained(root, doc["source_path"]).read_bytes()
         if git_blob_sha(data) != doc["source_blob_sha"]:
-            raise CorpusError("Source hash mismatch: " + key)
+            # Git may materialize an LF blob as CRLF when core.autocrlf is
+            # enabled. Accept that checkout representation only when its
+            # canonical LF bytes reproduce the pinned blob exactly.
+            normalized = data.replace(b"\r\n", b"\n")
+            if normalized == data or git_blob_sha(normalized) != doc["source_blob_sha"]:
+                raise CorpusError("Source hash mismatch: " + key)
+            data = normalized
         text = data.decode("utf-8")
         if not text.strip():
             raise CorpusError("Empty source")

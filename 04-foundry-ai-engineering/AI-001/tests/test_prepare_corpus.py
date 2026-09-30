@@ -64,9 +64,28 @@ class CorpusTests(unittest.TestCase):
 
     def test_symlink_escape_rejected(self):
         with tempfile.TemporaryDirectory() as elsewhere:
-            (self.root / "outside").symlink_to(elsewhere, target_is_directory=True)
+            try:
+                (self.root / "outside").symlink_to(elsewhere, target_is_directory=True)
+            except OSError as exc:
+                if getattr(exc, "winerror", None) == 1314:
+                    self.skipTest("Windows symlink privilege is unavailable")
+                raise
             with self.assertRaises(pc.CorpusError):
                 pc.contained(self.root, "outside/file.md")
+
+    def test_crlf_checkout_reproduces_pinned_lf_blob(self):
+        doc = self.manifest["documents"][0]
+        path = self.root / doc["source_path"]
+        lf_data = path.read_bytes().replace(b"\r\n", b"\n")
+        doc["source_blob_sha"] = pc.git_blob_sha(lf_data)
+        path.write_bytes(lf_data.replace(b"\n", b"\r\n"))
+        self.write_manifest()
+
+        _, _, loaded = pc.load_documents(self.root, True)
+
+        loaded_text = next(text for loaded_doc, text in loaded
+                           if loaded_doc["document_id"] == doc["document_id"])
+        self.assertNotIn("\r\n", loaded_text)
 
     def test_unpinned_citation_rejected(self):
         self.manifest["documents"][0]["source_url"] = "https://github.com/example/blob/main/file.md"
@@ -79,7 +98,8 @@ class CorpusTests(unittest.TestCase):
         self.assertEqual(summary["document_count"], 3)
         for chunks in outputs.values():
             for doc in self.manifest["documents"]:
-                raw = (self.root / doc["source_path"]).read_bytes().decode("utf-8")
+                raw = ((self.root / doc["source_path"]).read_bytes()
+                       .replace(b"\r\n", b"\n").decode("utf-8"))
                 selected = [c for c in chunks if c["document_id"] == doc["document_id"]]
                 covered = [False] * len(raw)
                 for c in selected:
