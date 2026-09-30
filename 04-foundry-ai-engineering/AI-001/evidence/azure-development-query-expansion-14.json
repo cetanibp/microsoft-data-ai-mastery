@@ -1,0 +1,145 @@
+{
+  "checkpoint": "14",
+  "experiment_id": "development-query-expansion-01",
+  "status": "completed",
+  "executed_at_utc": {
+    "started": "2026-09-30T03:44:23.545647+00:00",
+    "finished": "2026-09-30T03:45:09.510165+00:00"
+  },
+  "scope": "retrieval_only_development_comparison",
+  "api_version": "2026-08-01-preview",
+  "case_count": 5,
+  "reserved_cases_run": false,
+  "model_generation_calls": 0,
+  "configuration_mutations": 0,
+  "candidate_limit_per_query": 10,
+  "final_context_limit": 5,
+  "request_counts": {
+    "query": 10,
+    "configuration_reads": 6,
+    "corpus_reads": 2,
+    "total": 18,
+    "succeeded": 18,
+    "failed": 0,
+    "retries": 0
+  },
+  "controls": {
+    "preflight_passed": true,
+    "configuration_unchanged": true,
+    "corpus_unchanged": true,
+    "corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+    "config_before_sha256": [
+      "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+      "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+      "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+    ],
+    "config_after_sha256": [
+      "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+      "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+      "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+    ]
+  },
+  "results": [
+    {
+      "case_id": "AI001-001",
+      "category": "supported",
+      "returned_candidates": {"original": 10, "expanded": 10},
+      "required_evidence_positions": {
+        "original_candidates": [1, 3],
+        "expanded_candidates": [1, 3],
+        "original_top5": [1, 3],
+        "expanded_top5": [1, 3],
+        "fused_top5": [1, 3]
+      },
+      "complete": {"original_top5": true, "expanded_top5": true, "fused_top5": true},
+      "regression": false
+    },
+    {
+      "case_id": "AI001-011",
+      "category": "ambiguous",
+      "returned_candidates": {"original": 10, "expanded": 10},
+      "required_evidence_positions": {
+        "original_candidates": [4],
+        "expanded_candidates": [3],
+        "original_top5": [4],
+        "expanded_top5": [3],
+        "fused_top5": [3]
+      },
+      "complete": {"original_top5": true, "expanded_top5": true, "fused_top5": true},
+      "regression": false
+    },
+    {
+      "case_id": "AI001-012",
+      "category": "ambiguous",
+      "returned_candidates": {"original": 2, "expanded": 10},
+      "required_evidence_positions": {
+        "original_candidates": [null, 1],
+        "expanded_candidates": [1, 6],
+        "original_top5": [null, 1],
+        "expanded_top5": [1, null],
+        "fused_top5": [3, 1]
+      },
+      "complete": {"original_top5": false, "expanded_top5": false, "fused_top5": true},
+      "regression": false
+    },
+    {
+      "case_id": "AI001-013",
+      "category": "ambiguous",
+      "returned_candidates": {"original": 7, "expanded": 10},
+      "required_evidence_positions": {
+        "original_candidates": [5, 4],
+        "expanded_candidates": [1, 2],
+        "original_top5": [5, 4],
+        "expanded_top5": [1, 2],
+        "fused_top5": [2, 3]
+      },
+      "complete": {"original_top5": true, "expanded_top5": true, "fused_top5": true},
+      "regression": false
+    },
+    {
+      "case_id": "AI001-025",
+      "category": "unanswerable",
+      "returned_candidates": {"original": 10, "expanded": 10},
+      "required_evidence_positions": {
+        "original_candidates": [9],
+        "expanded_candidates": [6],
+        "original_top5": [null],
+        "expanded_top5": [null],
+        "fused_top5": [null]
+      },
+      "diagnostic_fused_candidate_position": 8,
+      "complete": {"original_top5": false, "expanded_top5": false, "fused_top5": false},
+      "regression": false
+    }
+  ],
+  "summary": {
+    "original_top5_complete_cases": 3,
+    "expanded_top5_complete_cases": 3,
+    "fused_top5_complete_cases": 4,
+    "regression_cases": 0,
+    "newly_complete_with_fusion": ["AI001-012"],
+    "still_incomplete": ["AI001-025"]
+  },
+  "timing_seconds": {
+    "sum_of_calls": 45.939,
+    "minimum_call": 0.9553,
+    "median_call": 2.9593,
+    "maximum_call": 5.9003
+  },
+  "provenance": {
+    "canonical_spec_sha256": "9938af74d27d0378dd8ab7e11d7ba1133ed630cae9764f82a8963f28a7e1cf0e",
+    "spec_file_sha256": "0cb970c4bd162c4d14643e927b12c550b7233cc48061427d127dbfd5381523e4",
+    "runner_sha256": "2b52be9548e6bdaf8891ed48ecea5c5099e6d63d4e599d8550100ea61bb68a80",
+    "test_file_sha256": "87a72c5ef8a443fd6f9c5ef4bc020fea3737505097daa45e30b108e172648ad1",
+    "local_summary_sha256": "db1ebdc027f14424b1acff239fbeff73ee572eefa3720b94265f14e44ab90f6b",
+    "local_output_directory": "development-query-expansion-01-20260929",
+    "raw_service_bodies_archived": false
+  },
+  "limitations": [
+    "The expansions were manually authored for known development questions and are not evidence of automatic-query generalization.",
+    "The fused view uses two ten-candidate lists while preserving a five-passage final context budget.",
+    "Evidence completeness does not establish answer correctness, behavior routing, source approval or serving readiness.",
+    "The direct-semantic baseline is not directly comparable to the earlier keyword-only checkpoint as a single causal improvement.",
+    "Local request, ranking and metric files remain outside the repository; public evidence is a selected export with hashes."
+  ]
+}

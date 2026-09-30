@@ -1,6 +1,6 @@
 # AI-001 — Grounded retrieval baseline
 
-Status: local preparation, Azure retrieval, bounded model/guard experiments and a portable offline reference recorded. The force-commit gap now has controlled ranking/threshold evidence. No serving application is deployed; no guard candidate is ready to adopt. See [current checkpoint 13](evidence/azure-force-commit-diagnostic-13.md) and the [runnable reference](offline-reference/README.md).
+Status: local preparation, Azure retrieval, bounded model/guard experiments and a portable offline reference recorded. Fixed-budget development fusion improves exact evidence coverage to four of five cases; the force-commit gap remains. No serving application is deployed; no retrieval/guard candidate is ready to adopt. See [current checkpoint 14](evidence/azure-development-query-expansion-14.md) and the [runnable reference](offline-reference/README.md).
 
 ## Guided learning checkpoints
 
@@ -59,8 +59,14 @@ The [offline reference](offline-reference/README.md) replays all five saved case
 
 Next: expand independently reviewed development cases for complete relationships and investigate the force-commit retrieval gap under a declared comparison. No reserved-case run, deployment, issue closure or score change.
 
-## Current checkpoint 13 — force-commit ranking and threshold diagnostic
+## Historical checkpoint 13 — force-commit ranking and threshold diagnostic
 
 [Controlled results](evidence/azure-force-commit-diagnostic-13.md): the original and automatic queries place Corrective state action at keyword rank 8 and semantic rank 9; default knowledge-base output omits it even at an eighteen-document limit. A separately declared original-query follow-up restores it at rank 9 with an explicit zero threshold and rank 8 with reranking disabled. Both batches preserved the corpus and stored configuration; 31 read-only Azure requests completed and seven local diagnostic tests passed.
 
 This establishes low rank and request-threshold sensitivity, not a top-five fix. Keep the existing configuration and frozen reference. Next: compare intent-preserving query expansion or combined retrieval across development cases with a fixed total context budget. Source-informed manual success, semantic answer support, and reserved evaluation remain separate.
+
+## Current checkpoint 14 — fixed-budget query expansion and fusion
+
+[Controlled results](evidence/azure-development-query-expansion-14.md): original and manually expanded semantic queries were fused locally while every final context remained capped at five passages. Exact required-evidence completeness improved from three of five to four of five development cases with no regression among the three complete originals. Fusion combined complementary evidence for AI001-012; its original and expanded lists were each incomplete alone.
+
+AI001-025 remains unresolved: its target moved from candidate rank nine to six under expansion and fused to rank eight, still outside five. All eighteen read-only requests succeeded, corpus/configuration controls remained unchanged, and 38 local tests passed with one privilege-dependent skip. This supports further development evaluation, not adoption. Next: fix a query-generation rule independently of expected passages or add independently reviewed development cases before another retrieval run.

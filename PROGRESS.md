@@ -307,3 +307,11 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Corrective state action appears at keyword rank 8 and direct-semantic rank 9 for both original and saved automatic queries. Default knowledge-base retrieval omits it at limits five and eighteen; the source-informed manual control ranks it first.
 - A separately declared original-query follow-up restores the passage at rank 9 with `rerankerThreshold: 0` and rank 8 with reranking disabled. Threshold sensitivity is observed; the effective default value is not established and the top-five gap remains.
 - Seven local diagnostic tests passed. Retain the existing configuration and frozen offline reference; no model generation, reserved-case execution, issue closure or skill-score change. Next: a development-wide query-expansion or combined-retrieval comparison with a fixed context budget and regression checks.
+
+### 2026-09-29 — AI-001 fixed-budget query expansion and fusion
+
+- Froze and executed [development comparison 01](04-foundry-ai-engineering/AI-001/evaluation/development-query-expansion-01.md): five existing development cases, original plus manual intent-preserving semantic queries, ten candidates per query and five final passages per view.
+- All eighteen read-only Azure requests succeeded. The exact 18-record corpus fingerprint and index/knowledge-base/knowledge-source hashes remained unchanged; no retries, model calls, reserved questions or mutations occurred.
+- Original and expanded top-five views each contained all exact required evidence for three of five cases. Reciprocal-rank fusion reached four of five with no regression among complete originals by combining complementary AI001-012 evidence.
+- AI001-025 remains incomplete: the required passage moved from candidate rank nine to six under expansion and fused to rank eight, still outside five. No additional force-commit tuning is justified by this batch.
+- Thirty-eight local tests passed and one Windows symlink test was skipped for unavailable privilege. Retain fusion as a development candidate only; next fix a passage-independent query-generation rule or add independently reviewed development cases before another retrieval run.

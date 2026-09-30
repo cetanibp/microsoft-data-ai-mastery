@@ -1,6 +1,6 @@
 # AI-001 — Evaluation design, step 5
 
-**Status: draft rubric with executed development retrieval, answer/reformulation, guard and selection experiments plus portable offline replay; full application evaluation remains incomplete.** See [checkpoint 13](../evidence/azure-force-commit-diagnostic-13.md) for the latest retrieval diagnostic. Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
+**Status: draft rubric with executed development retrieval, answer/reformulation, guard, selection and fixed-budget fusion experiments plus portable offline replay; full application evaluation remains incomplete.** See [checkpoint 14](../evidence/azure-development-query-expansion-14.md) for the latest retrieval comparison. Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
 
 - [Dataset](dataset.json): 30 questions, expected behaviors, required assertions, original source sections and synthetic fixture conditions.
 - [Rubric](rubric.json): scoring definitions, proposed thresholds, critical gates and experiment-version requirements.
@@ -116,6 +116,10 @@ For this checkpoint, read development cases AI001-001 and AI001-024: one support
 
 The [portable reference](../offline-reference/README.md) and eight fresh contract tests reproduce the saved development views locally. They do not classify new questions or constitute another model evaluation. Focused user feedback supports the current navigation/wording; the rubric, full dataset execution status and reserved set remain unchanged. The force-commit context still lacks its required corrective passage.
 
-## Current checkpoint 13
+## Historical checkpoint 13
 
 [Diagnostic 01](force-commit-diagnostic-01.md) and its separately declared [follow-up](force-commit-diagnostic-02.md) executed on AI001-025 only. [Results](../evidence/azure-force-commit-diagnostic-13.md) establish that the target is indexed but ranks below five, and that request-level threshold/reranking overrides restore it only at lower ranks. No top-five improvement or answer-quality pass is claimed. All requests and selected observations are archived; the earlier offline-reference context, dataset, rubric and reserved set are unchanged.
+
+## Current checkpoint 14
+
+[Development comparison 01](development-query-expansion-01.md) froze original and manual intent-preserving queries for five existing development cases. [Results](../evidence/azure-development-query-expansion-14.md) show three of five original top-five views complete, three of five expanded views complete, and four of five fused views complete at an unchanged five-passage final context budget. AI001-012 becomes complete only through complementary fusion; AI001-025 remains outside five. No complete original case regressed. Manual development rewrites are not automatic-query generalization, and retrieval completeness is not an answer-behavior pass.
