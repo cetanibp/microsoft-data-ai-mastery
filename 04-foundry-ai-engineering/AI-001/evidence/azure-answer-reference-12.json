@@ -1,0 +1,468 @@
+{
+  "checkpoint": 12,
+  "recorded_date": "2026-09-21",
+  "scope": "selected historical export plus portable offline reference; no fresh inference",
+  "decision": "local_reference_only_not_ready_for_application_adoption",
+  "reserved_cases_run": false,
+  "runtime_eligible_changed": false,
+  "batches": [
+    {
+      "directory": "answer-span-v4-vo_55sbm",
+      "source_files": [
+        {
+          "file": "final-review.json",
+          "sha256": "c197877311d798d0c0f4ab9eb783f8c2d33bb99f9176ee0b6ec3de5d212869cd",
+          "bytes": 1495
+        },
+        {
+          "file": "run-manifest.json",
+          "sha256": "b72d41bde291db410b5c99426a02e04bc8dea5ee5ff0d54622b1d7cd571b87ce",
+          "bytes": 1300
+        }
+      ],
+      "review": {
+        "status": "blocked_authentication",
+        "decision": "no_model_quality_conclusion",
+        "auth_diagnostic": {
+          "code": "AADSTS50078",
+          "error": "invalid_grant",
+          "reason": "Existing MFA authentication expired under administrator policy",
+          "required_action": "interactive Azure login with MFA for the AI audience",
+          "token_disclosed_or_saved": false
+        },
+        "attempted_requests": 9,
+        "successful_requests": 0,
+        "model_usage": null,
+        "usage_note": "The runner summed absent usage as zero; no API usage was returned, so consumption is unknown.",
+        "tests_passed": 12,
+        "source_spans_verified": 95,
+        "prior_evidence_and_repository_preserved": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "inputs_unchanged": true,
+          "repo_unchanged": true,
+          "within_call_bound": true
+        },
+        "reserved_cases_run": false,
+        "implementation": [
+          "Deterministic source spans with IDs, original offsets and exact text; model selects IDs and application assembles quotes.",
+          "Deterministic punctuation/conjunction boundaries preserve original claim characters; atomicity is not proven.",
+          "Seven diagnostic requests prepared independently."
+        ],
+        "remaining": [
+          "Refresh Azure MFA interactively.",
+          "Run a separately identified recovery batch with these frozen prompts and cases; do not relabel failed attempts as successful or erase them.",
+          "Inspect semantic support, omissions and partial-claim context if inference succeeds; no readiness claim yet."
+        ]
+      },
+      "execution": {
+        "status": "completed",
+        "started_at_utc": "2026-09-12T23:42:18.709038+00:00",
+        "finished_at_utc": "2026-09-12T23:42:40.788640+00:00",
+        "max_model_calls": 11,
+        "max_output_tokens": {
+          "answer": 1200,
+          "review": 1600
+        },
+        "attempts_per_call": 1,
+        "reserved_cases_run": false,
+        "retrieval_calls": 0,
+        "cloud_configuration_calls": 0,
+        "runtime_serving": false,
+        "local_head": "2b51bd0d34306de259873f4e5f4e7e7d194f5029",
+        "gate_unchanged": true,
+        "model": "northstar-answer-dev",
+        "underlying_model_version_from_prior_evidence": "gpt-4.1-mini 2025-04-14",
+        "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+        "azure_cli": {
+          "azure-cli": "2.90.0",
+          "azure-cli-core": "2.90.0",
+          "azure-cli-telemetry": "1.1.0",
+          "extensions": {}
+        },
+        "calls": 9,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_tokens": 0
+        },
+        "checks": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "inputs_unchanged": true,
+          "repo_unchanged": true,
+          "within_call_bound": true
+        }
+      }
+    },
+    {
+      "directory": "answer-span-v4-vzs0ba65",
+      "source_files": [
+        {
+          "file": "final-review.json",
+          "sha256": "1b9f0d79cdc09b701ac0b5ca6c4a45f9e764bb6422cf9feffcd482c5880daf36",
+          "bytes": 3091
+        },
+        {
+          "file": "run-manifest.json",
+          "sha256": "55ba8acde93636edc8cd3abe23e842b89b8fbcdb337567555a8d4b215214fd07",
+          "bytes": 1312
+        }
+      ],
+      "review": {
+        "status": "completed_authentication_recovery",
+        "decision": "not_ready_for_adoption",
+        "recovery_of": "answer-span-v4-vo_55sbm",
+        "unchanged_planned_requests": 9,
+        "unchanged_script_prompts_schemas_cases": true,
+        "blocked_batch_preserved": true,
+        "tests_passed": 12,
+        "source_spans_verified": 95,
+        "assembled_quotes_verified": 29,
+        "automated_behavior_label_matches": {
+          "matched": 5,
+          "total": 5
+        },
+        "automated_procedure_answers_accepted": {
+          "accepted": 2,
+          "total": 2
+        },
+        "reviewer_diagnostic_matches": {
+          "matched": 6,
+          "total": 7
+        },
+        "manual_failures": [
+          {
+            "case_id": "AI001-012-C1",
+            "claim_index_zero_based": 5,
+            "disposition": "reject_answer_for_unsupported_relationship",
+            "claim": "Resolve the accountable owner from the run's release-scoped ownership metadata to determine if another attempt owns the same boundary.",
+            "reason": "The cited step identifies accountable ownership; it does not say this determines which execution attempt owns a boundary. Reviewer accepted only the supported prefix and missed the unsupported purpose clause.",
+            "completeness_note": "The answer also omits the explicit quality-enforcement-integrity-before-recovery check."
+          },
+          {
+            "case_id": "D07",
+            "assertion_index_zero_based": 2,
+            "disposition": "reviewer_false_acceptance",
+            "reason": "Even after separating the broad explicit-prohibition assertion, the reviewer generalizes condition-specific do-not-do entries into an explicit protocol-wide prohibition."
+          }
+        ],
+        "other_review": {
+          "AI001-013-C1": "State checks are linked to actual source text and do not assert observed live values. The final bullet bundles many procedures, so atomicity and full recovery-checklist completeness are not established."
+        },
+        "usage": {
+          "input_tokens": 25660,
+          "output_tokens": 1847,
+          "total_tokens": 27507
+        },
+        "calls": 11,
+        "quality_limits": [
+          "Exact spans solve copying fidelity, not selection relevance or entailment.",
+          "Deterministic clause boundaries preserve text but miss embedded purposes and other compound assertions.",
+          "Passing 5/5 behavior labels does not establish 5/5 fully correct responses.",
+          "Two positive and four of five negative diagnostics matched; the important saved negative still failed.",
+          "The same-model reviewer is not a sufficient release gate."
+        ],
+        "preservation": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "inputs_unchanged": true,
+          "repo_unchanged": true,
+          "within_call_bound": true
+        },
+        "next": [
+          "Keep the unsupported owner/attempt linkage as a new development negative example; do not silently repair this answer.",
+          "Require support checks for every relation and purpose clause, with quoted evidence for the complete assertion.",
+          "Consider a strictly extractive output baseline using selected source spans to measure utility without generated bridging claims.",
+          "Keep broader development validation and repository integration separate; reserved evaluation remains untouched."
+        ]
+      },
+      "execution": {
+        "status": "completed",
+        "started_at_utc": "2026-09-13T00:01:09.894106+00:00",
+        "finished_at_utc": "2026-09-13T00:02:00.578649+00:00",
+        "max_model_calls": 11,
+        "max_output_tokens": {
+          "answer": 1200,
+          "review": 1600
+        },
+        "attempts_per_call": 1,
+        "reserved_cases_run": false,
+        "retrieval_calls": 0,
+        "cloud_configuration_calls": 0,
+        "runtime_serving": false,
+        "local_head": "2b51bd0d34306de259873f4e5f4e7e7d194f5029",
+        "gate_unchanged": true,
+        "model": "northstar-answer-dev",
+        "underlying_model_version_from_prior_evidence": "gpt-4.1-mini 2025-04-14",
+        "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+        "azure_cli": {
+          "azure-cli": "2.90.0",
+          "azure-cli-core": "2.90.0",
+          "azure-cli-telemetry": "1.1.0",
+          "extensions": {}
+        },
+        "calls": 11,
+        "usage": {
+          "input_tokens": 25660,
+          "output_tokens": 1847,
+          "total_tokens": 27507
+        },
+        "checks": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "inputs_unchanged": true,
+          "repo_unchanged": true,
+          "within_call_bound": true
+        }
+      }
+    },
+    {
+      "directory": "extractive-v5-10fs_1ju",
+      "source_files": [
+        {
+          "file": "final-review.json",
+          "sha256": "bb1fd873b45b4482638eefc63197f0c642125c581b05597592a5738e742376ce",
+          "bytes": 2491
+        },
+        {
+          "file": "run-manifest.json",
+          "sha256": "c338d7ad99664841311c724fa377e0c07057629a95026aeb30a3c0128ee1b92a",
+          "bytes": 1164
+        }
+      ],
+      "review": {
+        "decision": "do_not_adopt_model_selection_or_reviewer",
+        "tests_passed": 8,
+        "calls": 10,
+        "usage": {
+          "input_tokens": 9961,
+          "output_tokens": 647,
+          "total_tokens": 10608
+        },
+        "selection_comparison": [
+          {
+            "case_id": "AI001-012-C1",
+            "selected_passages": 3,
+            "all_retrieved_passages": 5,
+            "selected_required": 1,
+            "all_retrieved_required": 2,
+            "required_count": 2,
+            "selected_text_characters": 1809,
+            "all_retrieved_text_characters": 3386
+          },
+          {
+            "case_id": "AI001-013-C1",
+            "selected_passages": 1,
+            "all_retrieved_passages": 5,
+            "selected_required": 1,
+            "all_retrieved_required": 2,
+            "required_count": 2,
+            "selected_text_characters": 977,
+            "all_retrieved_text_characters": 4257
+          }
+        ],
+        "exact_selected_passages": 4,
+        "model_selected_complete_required_coverage": {
+          "complete": 0,
+          "total": 2
+        },
+        "offline_all_retrieved_complete_required_coverage": {
+          "complete": 2,
+          "total": 2
+        },
+        "diagnostics": {
+          "matched": 6,
+          "total": 8,
+          "supported_controls_accepted": 2,
+          "supported_controls_total": 2,
+          "unsupported_rejected": 4,
+          "unsupported_total": 6
+        },
+        "known_false_acceptances": {
+          "D07": "Condition-specific stale-candidate prohibition overgeneralized into broad explicit prohibition.",
+          "D08": "Supported accountable-owner prefix accepted despite unsupported purpose linking it to execution-attempt ownership."
+        },
+        "manual_review": "Both selected outputs contain exact source evidence, not generated procedural claims. Ingestion selection excludes Select a pattern; watermark selection excludes Triage Procedure. The unchanged saved rubric therefore fails complete evidence coverage in both cases.",
+        "baseline_limitations": "All-five view is a post-run offline diagnostic over exactly the already-saved retrieval results, not a new model or retrieval score. It is longer and not an answer-quality or runtime-readiness pass. Corpus-wide recall and access enforcement remain unproven.",
+        "next": "Use the deterministic all-retrieved evidence view as a provisional local reference; stop treating this same-model reviewer as an approval gate. Expand independently reviewed development cases and separately evaluate usability/completeness before any deployment.",
+        "preservation": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "repo_unchanged": true,
+          "call_bound": true
+        },
+        "reserved_cases_run": false
+      },
+      "execution": {
+        "status": "completed",
+        "started_at_utc": "2026-09-13T00:07:06.358170+00:00",
+        "finished_at_utc": "2026-09-13T00:07:36.631145+00:00",
+        "max_model_calls": 10,
+        "max_output_tokens": {
+          "selection": 200,
+          "review": 600
+        },
+        "attempts_per_call": 1,
+        "reserved_cases_run": false,
+        "retrieval_calls": 0,
+        "cloud_configuration_calls": 0,
+        "runtime_serving": false,
+        "local_head": "2b51bd0d34306de259873f4e5f4e7e7d194f5029",
+        "gate_unchanged": true,
+        "model": "northstar-answer-dev",
+        "model_version_from_prior_evidence": "gpt-4.1-mini 2025-04-14",
+        "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+        "azure_cli": {
+          "azure-cli": "2.90.0",
+          "azure-cli-core": "2.90.0",
+          "azure-cli-telemetry": "1.1.0",
+          "extensions": {}
+        },
+        "calls": 10,
+        "usage": {
+          "input_tokens": 9961,
+          "output_tokens": 647,
+          "total_tokens": 10608
+        },
+        "checks": {
+          "prior_unchanged": true,
+          "frozen_unchanged": true,
+          "repo_unchanged": true,
+          "call_bound": true
+        }
+      }
+    }
+  ],
+  "offline_packages": [
+    {
+      "directory": "offline-reference-hdic09t6",
+      "historical_validation": [
+        {
+          "check": "AI001-012_replay_and_original_preservation",
+          "passed": true
+        },
+        {
+          "check": "AI001-012-C1_replay_and_original_preservation",
+          "passed": true
+        },
+        {
+          "check": "AI001-013_replay_and_original_preservation",
+          "passed": true
+        },
+        {
+          "check": "AI001-013-C1_replay_and_original_preservation",
+          "passed": true
+        },
+        {
+          "check": "AI001-025_replay_and_original_preservation",
+          "passed": true
+        },
+        {
+          "check": "unpackaged_case_rejected",
+          "passed": true
+        },
+        {
+          "check": "changed_input_rejected",
+          "passed": true
+        },
+        {
+          "check": "AI001-012-C1_required_passages_present",
+          "passed": true
+        },
+        {
+          "check": "AI001-013-C1_required_passages_present",
+          "passed": true
+        },
+        {
+          "check": "relocated_package_cli",
+          "passed": true
+        }
+      ],
+      "source_file": "validation.json",
+      "source_sha256": "f5fa3635412e8e005f3f8871ab29dd5febcaf9b1b725d564972c79d264018cae"
+    },
+    {
+      "directory": "offline-reference-v2-w609x6jv",
+      "historical_validation": {
+        "checks": [
+          {
+            "test": "AI001-012_unchanged_json_response",
+            "passed": true
+          },
+          {
+            "test": "AI001-012-C1_unchanged_json_response",
+            "passed": true
+          },
+          {
+            "test": "AI001-012-C1_all_excerpts_once_and_anchors_resolve",
+            "passed": true
+          },
+          {
+            "test": "AI001-013_unchanged_json_response",
+            "passed": true
+          },
+          {
+            "test": "AI001-013-C1_unchanged_json_response",
+            "passed": true
+          },
+          {
+            "test": "AI001-013-C1_all_excerpts_once_and_anchors_resolve",
+            "passed": true
+          },
+          {
+            "test": "AI001-025_unchanged_json_response",
+            "passed": true
+          },
+          {
+            "test": "relocated_cli_identical_output",
+            "passed": true
+          }
+        ],
+        "display_measurements": [
+          {
+            "case_id": "AI001-012-C1",
+            "passages": 5,
+            "previous_markdown_chars": 5208,
+            "new_markdown_chars": 5157,
+            "source_url_occurrences_before": 5,
+            "source_url_occurrences_after": 2
+          },
+          {
+            "case_id": "AI001-013-C1",
+            "passages": 5,
+            "previous_markdown_chars": 6184,
+            "new_markdown_chars": 6350,
+            "source_url_occurrences_before": 5,
+            "source_url_occurrences_after": 3
+          }
+        ],
+        "new_human_review_performed": false,
+        "model_calls": 0,
+        "network_calls": 0
+      },
+      "source_file": "validation.json",
+      "source_sha256": "31df06252e1d6b2362ef11e827a712edabfa45e3eeebd8577a613048aa928410"
+    }
+  ],
+  "raw_requests_and_live_callers_imported": false,
+  "repository_validation": {
+    "recorded_date": "2026-09-21",
+    "python": "3.14.2",
+    "interpreter_used": ".venv/Scripts/python.exe",
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -p test_offline_reference.py -v",
+    "tests_run": 8,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 10.809,
+    "relocated_cli_cases": 5,
+    "formats_per_case": 2,
+    "json_files_parsed": 14,
+    "relative_links_checked": 130,
+    "model_calls": 0,
+    "network_calls": 0,
+    "test_file_sha256": "0cbc95711d6eec65676069d16f92eacc5fec987463089a00edba46eff7de35e2",
+    "import_manifest_sha256": "2895c4c27a51b9cc55f1a4cc7693b3834df641e15db2479d2c6e483b1aa1cc1c",
+    "scope": "Local artifact validation; distinct from historical inference and focused user feedback"
+  }
+}

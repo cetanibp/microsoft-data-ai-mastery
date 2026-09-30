@@ -1,0 +1,8 @@
+{
+  "case_id": "AI001-013",
+  "original_question": "What is the latest watermark?",
+  "mode": "clarify",
+  "message": "These documents cannot establish a live operational value. Which data object are you asking about? Which environment is involved? Do you mean a candidate watermark or committed watermark state?",
+  "passages": [],
+  "generated_procedural_claims": false
+}

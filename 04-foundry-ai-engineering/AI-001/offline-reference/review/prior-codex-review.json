@@ -1,0 +1,148 @@
+{
+  "status": "completed_agent_review_pending_human_review",
+  "independent_review_performed": false,
+  "cases": [
+    {
+      "case_id": "AI001-012",
+      "variant": "original",
+      "reviewer": "Codex (AI assistant; not an independent human reviewer)",
+      "reviewed_at": "2026-09-13T04:19:42.545287+00:00",
+      "status": "passed",
+      "expected_behavior": "clarify",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        }
+      ],
+      "checks": {
+        "appropriately_scoped": true,
+        "required_evidence_usable": null,
+        "conditions_and_prohibitions_clear": null,
+        "owner_vs_attempt_distinction_clear": null,
+        "live_value_limitation_clear": null,
+        "reading_burden_acceptable": true
+      },
+      "notes": "Agent assessment of the clarification only: asks component, run/occurrence and failure stage without assuming a watermark topic or approving replay. No passages or procedural claims are displayed, so evidence usability, operational prohibitions, owner/attempt distinction and live-value disclosure are not applicable at this first clarification step (null). Subsequent state/ownership checks remain necessary before any action. The three short questions appear readable; this is an agent judgment, not measured user usability."
+    },
+    {
+      "case_id": "AI001-012-C1",
+      "variant": "synthetic_clarification",
+      "reviewer": "Codex (AI assistant; not an independent human reviewer)",
+      "reviewed_at": "2026-09-13T04:19:42.545287+00:00",
+      "status": "needs_changes",
+      "expected_behavior": "answer_procedure_with_limits",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "Select a pattern",
+          "heading_h2": "Select a pattern"
+        }
+      ],
+      "checks": {
+        "appropriately_scoped": true,
+        "required_evidence_usable": true,
+        "conditions_and_prohibitions_clear": true,
+        "owner_vs_attempt_distinction_clear": true,
+        "live_value_limitation_clear": true,
+        "reading_burden_acceptable": null
+      },
+      "notes": "The exact evidence view preserves the supplied fictional development scenario and both required passages: E1 Procedure and E2 Select a pattern. E1 includes current state, quality-enforcement integrity and fixed boundary; E2 retains idempotent replay and prohibited actions; E4 states active-attempt stop conditions. E1 accountable ownership and E4 execution-attempt ownership remain separate in source text, with no invented link between them. E5 retains corrective-state safeguards. The header explicitly disclaims live-state assessment and permission to act. This is a useful evidence reference, but not the concise procedural answer specified by expected_behavior. Reading burden is unmeasured (null): five full passages require scanning and repeated provenance adds length. Human usability review and explicit guidance distinguishing the two ownership concepts remain advisable; do not alter source quotations."
+    },
+    {
+      "case_id": "AI001-013",
+      "variant": "original",
+      "reviewer": "Codex (AI assistant; not an independent human reviewer)",
+      "reviewed_at": "2026-09-13T04:19:42.545287+00:00",
+      "status": "passed",
+      "expected_behavior": "clarify",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ],
+      "checks": {
+        "appropriately_scoped": true,
+        "required_evidence_usable": null,
+        "conditions_and_prohibitions_clear": null,
+        "owner_vs_attempt_distinction_clear": null,
+        "live_value_limitation_clear": true,
+        "reading_burden_acceptable": true
+      },
+      "notes": "Agent assessment of the clarification only: explicitly says documents cannot establish a live operational value and asks object, environment and candidate-versus-committed meaning. It supplies no invented value. No evidence or procedural advice is displayed, so evidence usability, operational conditions and owner/attempt distinction are not applicable here (null). The short message appears readable; this is not measured user usability."
+    },
+    {
+      "case_id": "AI001-013-C1",
+      "variant": "synthetic_clarification",
+      "reviewer": "Codex (AI assistant; not an independent human reviewer)",
+      "reviewed_at": "2026-09-13T04:19:42.545287+00:00",
+      "status": "needs_changes",
+      "expected_behavior": "answer_procedure_with_limits",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "section": "Procedure",
+          "heading_h2": "Procedure"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "section": "State",
+          "heading_h2": "Recovery verification"
+        }
+      ],
+      "checks": {
+        "appropriately_scoped": true,
+        "required_evidence_usable": true,
+        "conditions_and_prohibitions_clear": true,
+        "owner_vs_attempt_distinction_clear": true,
+        "live_value_limitation_clear": true,
+        "reading_burden_acceptable": null
+      },
+      "notes": "Both required passages are available: E1 Recovery verification includes all four layers and the State checks; E2 Procedure includes quality-enforcement integrity, fixed boundary and state identifiers. The committed-watermark, encounter-object, development and not-a-live-value constraints remain in the unchanged question. E1 competing attempts and E2 accountable owner are not equated. E4 retains scenario-specific prohibitions and E5 corrective-state governance. The header identifies documentation rather than a live assessment. The view is source evidence rather than a concise procedural answer. Reading burden is unmeasured (null): five passages include broader material such as E3 Initial vertical slice, whose necessity for this question is less direct. Keep it available, but evaluate navigation and relevance labeling before treating this as an acceptable final user experience."
+    },
+    {
+      "case_id": "AI001-025",
+      "variant": "unchanged_control",
+      "reviewer": "Codex (AI assistant; not an independent human reviewer)",
+      "reviewed_at": "2026-09-13T04:19:42.545287+00:00",
+      "status": "needs_changes",
+      "expected_behavior": "decline",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "section": "Corrective state action",
+          "heading_h2": "Corrective state action"
+        }
+      ],
+      "checks": {
+        "appropriately_scoped": true,
+        "required_evidence_usable": false,
+        "conditions_and_prohibitions_clear": true,
+        "owner_vs_attempt_distinction_clear": null,
+        "live_value_limitation_clear": null,
+        "reading_burden_acceptable": true
+      },
+      "notes": "The decline correctly states an application boundary, supplies no force-commit command and does not falsely attribute the boundary to retrieved evidence. It explicitly supplies no corrective procedure. Required Corrective state action evidence is therefore not usable in this displayed result (false); the original evidence/completeness requirement remains unmet despite appropriate decline behavior. Owner/attempt distinction and live-value limitation are not applicable (null). The short message appears readable, but that does not establish completeness or application readiness."
+    }
+  ],
+  "review_type": "agent_assessment",
+  "review_scope": "Saved outputs and source passages only; no new model calls, live-state inspection or user usability study. Case-level passed means agent-assessed suitability for the limited displayed response, not application approval."
+}

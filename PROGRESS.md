@@ -292,3 +292,18 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Implemented and exercised local clarification/citation/quote guards and semantic diagnostics. V2/v3 route 5/5 known cases correctly; generated procedure answers remain 0/2 accepted in each. V3 confirms schema support but quote and splitting failures prevent semantic review.
 - Preserved reviewer overacceptance of the actual compound force-commit answer as an unresolved failure. No retries or per-case retuning within the recorded bounded batches.
 - Next: select precomputed source spans, preserve assertion boundaries and run reviewer diagnostics independently. No reserved cases, runtime deployment, issue closure, ADR acceptance or skill-score change.
+
+### 2026-09-21 — AI-001 portable offline reference and later evidence
+
+- Recorded [checkpoint 12](04-foundry-ai-engineering/AI-001/evidence/azure-answer-reference-12.md), preserving the later v4 authentication failure/recovery and v5 evidence-selection failures. This is a selected historical export, not fresh inference.
+- Imported the [offline reference](04-foundry-ai-engineering/AI-001/offline-reference/README.md) with source hashes and explicit chunk-ID sanitization; all five reviewed Markdown views and source passage text are preserved. Original lab packages remain unchanged.
+- Eight local contract tests passed, including all five cases in both formats after relocating only the script and inputs. No Azure, model or original lab folder is needed for replay.
+- Recorded focused user feedback: both procedure views were easy to navigate; clarification questions and refusal wording were clear. Full semantic evaluation and remaining review-template judgments are not inferred from that feedback.
+- Next: independently reviewed development examples for full relationships and a declared investigation of the force-commit evidence gap. Reserved cases, source eligibility, issue status and skill scores are unchanged.
+
+### 2026-09-21 — AI-001 force-commit retrieval gap diagnosed
+
+- Executed [two predeclared read-only comparisons](04-foundry-ai-engineering/AI-001/evidence/azure-force-commit-diagnostic-13.md): 15 query requests plus 16 control reads, all successful, with unchanged configuration and the exact historical 18-record corpus.
+- Corrective state action appears at keyword rank 8 and direct-semantic rank 9 for both original and saved automatic queries. Default knowledge-base retrieval omits it at limits five and eighteen; the source-informed manual control ranks it first.
+- A separately declared original-query follow-up restores the passage at rank 9 with `rerankerThreshold: 0` and rank 8 with reranking disabled. Threshold sensitivity is observed; the effective default value is not established and the top-five gap remains.
+- Seven local diagnostic tests passed. Retain the existing configuration and frozen offline reference; no model generation, reserved-case execution, issue closure or skill-score change. Next: a development-wide query-expansion or combined-retrieval comparison with a fixed context budget and regression checks.

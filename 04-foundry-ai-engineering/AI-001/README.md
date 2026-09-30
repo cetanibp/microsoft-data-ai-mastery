@@ -1,6 +1,6 @@
 # AI-001 — Grounded retrieval baseline
 
-Status: local preparation, Azure retrieval, bounded model-answer/reformulation evaluations and three guard iterations recorded. No serving application is deployed; no guard candidate is ready to adopt. See [current checkpoint 11](evidence/azure-answer-guards-11.md).
+Status: local preparation, Azure retrieval, bounded model/guard experiments and a portable offline reference recorded. The force-commit gap now has controlled ranking/threshold evidence. No serving application is deployed; no guard candidate is ready to adopt. See [current checkpoint 13](evidence/azure-force-commit-diagnostic-13.md) and the [runnable reference](offline-reference/README.md).
 
 ## Guided learning checkpoints
 
@@ -37,8 +37,30 @@ Related: [#13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13),
 
 [Clarification results](evidence/azure-clarification-retrieval-10.md): both synthetic variants retrieved all required passages; original gaps and force-commit control reproduced. Fixed Git Bash CRLF handling. [First answer evaluation](evaluation/answer-evaluation-01.md) defines context, prompt and per-case expectations before model execution. Existing model deployment details are the next dependency; no generation or reserved evaluation has run.
 
-## Current checkpoint 11 — answer and guard evaluations
+## Historical checkpoint 11 — answer and guard evaluations
 
 [Consolidated results](evidence/azure-answer-guards-11.md) record clarification failures, limited automatic-reformulation gains, and local guard implementations through v3. V2/v3 route all five saved cases as intended, but neither accepts either generated procedure answer. V3 confirms schema support; quote and splitting failures block semantic review. The saved compound force-commit reviewer failure remains unresolved.
 
-Next: precomputed source-span selection, source-preserving assertion boundaries, and independently runnable reviewer diagnostics. No reserved evaluation, runtime readiness, issue closure or score change.
+At checkpoint 11, next work was precomputed source-span selection, source-preserving assertion boundaries, and independently runnable reviewer diagnostics. No reserved evaluation, runtime readiness, issue closure or score change.
+
+## September 21 follow-up — offline reference user review
+
+Later local span-v4, extractive-v5, and offline-reference packages were located in `NorthstarLab`; checkpoint 11 does not include their results. The latest reference package is `offline-reference-v2-w609x6jv`.
+
+[Recorded user feedback](evidence/offline-reference-navigation-human-feedback.md): both procedure views were easy to navigate, and the two clarification responses and force-commit refusal were clear. Fresh offline checks reproduced all five saved views and verified unchanged input bytes/hashes, internal anchor targets, and preservation of all five passages in each procedure view. This focused review supports retaining the presentation; it is not a full application evaluation.
+
+The subsequent repository consolidation is recorded in checkpoint 12 below. The full review template, semantic correctness, force-commit evidence gap, and application readiness remain open.
+
+## Historical checkpoint 12 — portable offline reference
+
+[Results and provenance](evidence/azure-answer-reference-12.md) preserve v4's authentication failure and recovery, the unresolved reviewer false acceptances, and v5's selection-completeness failures. Exact quotations improved copying fidelity; they did not establish semantic support. The model selector omitted required evidence in both procedure cases.
+
+The [offline reference](offline-reference/README.md) replays all five saved cases without Azure or the original lab directory. Its procedure views retain all five passages. Eight fresh contract tests passed, including relocated execution of both output formats. Inputs use explicitly sanitized chunk IDs with recorded hashes; source text and Markdown views are preserved.
+
+Next: expand independently reviewed development cases for complete relationships and investigate the force-commit retrieval gap under a declared comparison. No reserved-case run, deployment, issue closure or score change.
+
+## Current checkpoint 13 — force-commit ranking and threshold diagnostic
+
+[Controlled results](evidence/azure-force-commit-diagnostic-13.md): the original and automatic queries place Corrective state action at keyword rank 8 and semantic rank 9; default knowledge-base output omits it even at an eighteen-document limit. A separately declared original-query follow-up restores it at rank 9 with an explicit zero threshold and rank 8 with reranking disabled. Both batches preserved the corpus and stored configuration; 31 read-only Azure requests completed and seven local diagnostic tests passed.
+
+This establishes low rank and request-threshold sensitivity, not a top-five fix. Keep the existing configuration and frozen reference. Next: compare intent-preserving query expansion or combined retrieval across development cases with a fixed total context budget. Source-informed manual success, semantic answer support, and reserved evaluation remain separate.

@@ -21,6 +21,14 @@ The [DATA-001 corpus walkthrough](../06-ai-ready-data/DATA-001/README.md) now pr
 
 [Post-maintenance retrieval and scoring diagnostic](AI-001/evidence/azure-post-maintenance-retrieval-08.md) records primary ranks 1,1,2,1,2: identifiers regressed to second; four other primary ranks reproduced. Four repeated samples and a default/global scoring pair produced identical identifier ordering and scores. Cause remains unconfirmed. Keep separate headings/default scoring provisionally; automatic population is verified but rank parity is not. Next: the prepared broader development retrieval batch (AI001-001, 011, 012, 013, 025). No model or reserved evaluation is claimed.
 
-## Current checkpoint 11 — bounded model and guard experiments
+## Historical checkpoint 11 — bounded model and guard experiments
 
 [AI-001 results](AI-001/evidence/azure-answer-guards-11.md) now include saved-context answer evaluation, knowledge-base diagnostics, automatic reformulation and three local guard iterations. Schema-constrained output works for the tested requests, but quote fidelity, assertion splitting and compound-claim support remain blockers. No serving candidate is ready; reserved evaluation, approval/access/freshness controls and deployment remain open. Skill scores and issue status are unchanged.
+
+## Historical checkpoint 12 — portable reference and later experiment evidence
+
+[Checkpoint 12](AI-001/evidence/azure-answer-reference-12.md) records later span and extractive-selection outcomes: source copying improved, but semantic-review false acceptances and evidence omissions remain. The [offline reference](AI-001/offline-reference/README.md) is now reproducible from repository files, with eight passing local contract tests and focused user feedback supporting its navigation and wording. It is a saved-case evidence viewer; no serving candidate, full evaluation pass, issue closure or skill-score change is claimed.
+
+## Current checkpoint 13 — force-commit retrieval diagnostic
+
+[Checkpoint 13](AI-001/evidence/azure-force-commit-diagnostic-13.md) records two controlled read-only batches: Corrective state action is present at direct ranks 8/9, while default knowledge-base retrieval excludes it. Per-request zero threshold or disabled reranking restores it below rank five. The top-five gap remains; stored configuration and the 18-record corpus were preserved. Seven local tests passed; no new model generation, reserved evaluation, deployment or score change.

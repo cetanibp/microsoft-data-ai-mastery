@@ -1,0 +1,73 @@
+{
+  "case_id": "AI001-012-C1",
+  "original_question": "I mean an ingestion run in development that failed after writing the target. Before deciding whether to replay it, how should I check its current state, fixed boundary, and whether another attempt owns it?",
+  "mode": "evidence_only",
+  "passages": [
+    {
+      "id": "E1",
+      "chunk_id": "sha256:b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+      "document_id": "northstar-triage",
+      "heading_h1": "Runbook \u2014 Triage",
+      "heading_h1_search_v1": "Runbook \u2014 Triage",
+      "heading_h2": "Procedure",
+      "heading_h2_search_v1": "Procedure",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+      "text": "1. Record acknowledgement time and operator identity.\r\n2. Use `queries.sql` to locate the routing decision, evaluation, occurrence, and quality/state evidence.\r\n3. Confirm the environment and metadata release recorded by the evidence. Do not substitute the currently active release.\r\n4. Determine whether the occurrence is still in progress. An active `CLAIMED`, `EXTRACTING`, `VALIDATING`, or `PUBLISHING` occurrence is not replayed.\r\n5. Classify the primary category:\r\n   - execution failure;\r\n   - freshness or duration breach;\r\n   - quality block or warning;\r\n   - watermark concurrency/recovery condition;\r\n   - telemetry or routing failure; or\r\n   - quality-enforcement integrity breach.\r\n6. Check `ops.vw_QualityEnforcementIntegrity` before any recovery action.\r\n7. Identify the fixed input boundary, candidate status, committed state version, and last committing object run.\r\n8. Determine affected downstream objects and consumer deadlines.\r\n9. Resolve the accountable owner from the run's release-scoped ownership metadata.\r\n10. Assign severity using the escalation runbook.\r\n11. Select the recovery pattern and document why alternatives were rejected."
+    },
+    {
+      "id": "E2",
+      "chunk_id": "sha256:4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+      "document_id": "northstar-recovery",
+      "heading_h1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h1_search_v1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h2": "Select a pattern",
+      "heading_h2_search_v1": "Select a pattern",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "text": "| Condition | Recovery pattern | Do not do |\r\n|---|---|---|\r\n| Transient execution failure before accepted publication | Correct dependency and use safe replay | Advance watermark or delete attempt evidence |\r\n| Durable target write followed by failure | Replay the same fixed boundary through the idempotent merge | Truncate target or create a new boundary |\r\n| Quality BLOCK | Correct data or contract implementation, then replay; policy changes require a future reviewed release | Bypass, downgrade, or delete the block |\r\n| Stale candidate/concurrent winner | Keep winner, abandon stale candidate, reconcile target, then decide whether replay is necessary | Force stale candidate to commit |\r\n| Metadata/configuration defect | Correct code/config through governed delivery and validate release compatibility | Edit an approved immutable release in place |\r\n| Telemetry or routing failure | Restore telemetry/routing and replay the evaluator/router idempotently | Rerun ingestion when data/state already succeeded |\r\n| Quality-enforcement integrity breach | P1 containment, state reconstruction, two-person corrective plan, and separately governed state recovery | Use normal replay until safety is established |"
+    },
+    {
+      "id": "E3",
+      "chunk_id": "sha256:8cd5bde34e58ba6ae3bfb9fc491dad6a5bc761f029318fabb3c6f1e0f4a211ce",
+      "document_id": "northstar-triage",
+      "heading_h1": "Runbook \u2014 Triage",
+      "heading_h1_search_v1": "Runbook \u2014 Triage",
+      "heading_h2": "Completion criteria",
+      "heading_h2_search_v1": "Completion criteria",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+      "text": "Triage is complete when the incident record contains category, severity, environment, release, occurrence identity, fixed boundary, current state, impact, owner, selected recovery pattern, and the evidence supporting each conclusion."
+    },
+    {
+      "id": "E4",
+      "chunk_id": "sha256:7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+      "document_id": "northstar-triage",
+      "heading_h1": "Runbook \u2014 Triage",
+      "heading_h1_search_v1": "Runbook \u2014 Triage",
+      "heading_h2": "Stop conditions",
+      "heading_h2_search_v1": "Stop conditions",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+      "text": "Stop and escalate as P1 when:\r\n- a blocked decision has a committed candidate or accepted terminal status;\r\n- `WatermarkState.committed_object_run_id` references a blocked run;\r\n- evidence identities conflict or hashes do not reconcile;\r\n- a credential or sensitive payload appears in telemetry;\r\n- the required release, boundary, or owner cannot be established; or\r\n- another active attempt owns the same boundary."
+    },
+    {
+      "id": "E5",
+      "chunk_id": "sha256:cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+      "document_id": "northstar-recovery",
+      "heading_h1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h1_search_v1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h2": "Corrective state action",
+      "heading_h2_search_v1": "Corrective state action",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "text": "Normal replay must not mutate committed state outside the compare-and-commit protocol. If state is already incorrect, stop and create a separately approved corrective plan containing before/after values and hashes, affected boundaries, target reconciliation, actor separation, validation queries, rollback/forward-recovery decision, and permanent audit evidence."
+    }
+  ],
+  "generated_procedural_claims": false
+}

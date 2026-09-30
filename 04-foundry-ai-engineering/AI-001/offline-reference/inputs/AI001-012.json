@@ -1,0 +1,24 @@
+{
+  "case_id": "AI001-012",
+  "split": "development",
+  "original_question": "Can I rerun it?",
+  "variant": "original",
+  "route": "clarify",
+  "message": "Which component or operation do you mean? Which run or occurrence are you referring to? What happened, and at which stage did it fail?",
+  "passages": [
+    {
+      "id": "E1",
+      "chunk_id": "sha256:4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+      "document_id": "northstar-recovery",
+      "heading_h1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h1_search_v1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h2": "Select a pattern",
+      "heading_h2_search_v1": "Select a pattern",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "text": "| Condition | Recovery pattern | Do not do |\r\n|---|---|---|\r\n| Transient execution failure before accepted publication | Correct dependency and use safe replay | Advance watermark or delete attempt evidence |\r\n| Durable target write followed by failure | Replay the same fixed boundary through the idempotent merge | Truncate target or create a new boundary |\r\n| Quality BLOCK | Correct data or contract implementation, then replay; policy changes require a future reviewed release | Bypass, downgrade, or delete the block |\r\n| Stale candidate/concurrent winner | Keep winner, abandon stale candidate, reconcile target, then decide whether replay is necessary | Force stale candidate to commit |\r\n| Metadata/configuration defect | Correct code/config through governed delivery and validate release compatibility | Edit an approved immutable release in place |\r\n| Telemetry or routing failure | Restore telemetry/routing and replay the evaluator/router idempotently | Rerun ingestion when data/state already succeeded |\r\n| Quality-enforcement integrity breach | P1 containment, state reconstruction, two-person corrective plan, and separately governed state recovery | Use normal replay until safety is established |"
+    }
+  ],
+  "source_response_sha256": "7872a8fb34eb2500547d71519a5c01ae9116fd237631cda1d5291fa2605f3100"
+}

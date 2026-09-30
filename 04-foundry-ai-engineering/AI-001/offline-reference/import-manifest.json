@@ -1,0 +1,119 @@
+{
+  "source_package": "offline-reference-v2-w609x6jv",
+  "imported_at_utc": "2026-09-22T03:57:34.140543+00:00",
+  "source_inventory_sha256": "4d49ddef8b08b208de6820c522c89a55cbb902774b150e12ff0383c273eb5251",
+  "scope": "sanitized portable replay of five saved development cases",
+  "chunk_id_transformation": "sha256: followed by SHA-256 of the original chunk_id UTF-8 bytes; Azure-derived IDs are not published",
+  "source_text_headings_order_urls_and_eligibility_unchanged": true,
+  "markdown_views_byte_identical": true,
+  "files": [
+    {
+      "file": "reference.py",
+      "source_sha256": "374281e33b0dbc1c8cf0a1113758bc22568cac898ab49f517c24ddbb977f7d1b",
+      "repository_sha256": "374281e33b0dbc1c8cf0a1113758bc22568cac898ab49f517c24ddbb977f7d1b",
+      "transformation": "none"
+    },
+    {
+      "file": "inputs/AI001-012.json",
+      "source_sha256": "07ea93df63673e7371cfb5e10101390bd0c893d9a0c8b9e0262a8e9e8cf5930c",
+      "repository_sha256": "b6249aed48b2ce74e9f295cbb0a33254f4df02acbb2b7eb948a23333fa4f04ae",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "views/AI001-012.md",
+      "source_sha256": "02ecb47d8b425ebf295ea96e3269b2fdb6b76c9e8adcae37ebf9ed4f1174e1e3",
+      "repository_sha256": "02ecb47d8b425ebf295ea96e3269b2fdb6b76c9e8adcae37ebf9ed4f1174e1e3",
+      "transformation": "none"
+    },
+    {
+      "file": "views/AI001-012.json",
+      "source_sha256": "f9facf117950b7020d389ca1262984ced23cb9c7a93b8d7a3bfd00ab125a11df",
+      "repository_sha256": "f9facf117950b7020d389ca1262984ced23cb9c7a93b8d7a3bfd00ab125a11df",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "inputs/AI001-012-C1.json",
+      "source_sha256": "249b31e63a739cf8ffcfa2e93007ff864f032c5910e44d3f916b919707eb077d",
+      "repository_sha256": "9f132798d1b4b727340ff2dde9bec6f4b2ab8becde081e4671f291cccea5962d",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "views/AI001-012-C1.md",
+      "source_sha256": "f257afd7ecf1559c9b3025d6d3d9f1b6bcf79d63013d9a047607769bd727670d",
+      "repository_sha256": "f257afd7ecf1559c9b3025d6d3d9f1b6bcf79d63013d9a047607769bd727670d",
+      "transformation": "none"
+    },
+    {
+      "file": "views/AI001-012-C1.json",
+      "source_sha256": "759fda15f215a694283d82a844d6753360296ce163dfb5bad46a64c60a194dfd",
+      "repository_sha256": "5a88f900a128672dc3366098a45287367e786bcb1bdd948008bb97c29953095f",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "inputs/AI001-013.json",
+      "source_sha256": "b6b15ef71b45a840f735ec341ec180c0792884c0ed034f97f5d9bf4221bd66a7",
+      "repository_sha256": "20b1fda459b3f33549d2f4a4cac1b02ae3287ba175927b58c6fe0426a0f95f3a",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "views/AI001-013.md",
+      "source_sha256": "8b584b690c67515688958c514b0ff2fe143e3761bda85e6aa273cfccdcb647ee",
+      "repository_sha256": "8b584b690c67515688958c514b0ff2fe143e3761bda85e6aa273cfccdcb647ee",
+      "transformation": "none"
+    },
+    {
+      "file": "views/AI001-013.json",
+      "source_sha256": "b83ae457085fcd6e27d17dd89a00d5f3e7453295a93d7d9aec27c554f68f153d",
+      "repository_sha256": "b83ae457085fcd6e27d17dd89a00d5f3e7453295a93d7d9aec27c554f68f153d",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "inputs/AI001-013-C1.json",
+      "source_sha256": "164614e116b84cd51303be39aa3873be7539e3eb48b57141ebc0b9e852c11cde",
+      "repository_sha256": "e20b680f642ef62eb5495ea058e9bbf371333d4f9ad9eb354389a11765cfacc5",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "views/AI001-013-C1.md",
+      "source_sha256": "1989f06de3c5b7d3694dcd38362f54501aac4dc4e1b22cd5fa3bd6732185d615",
+      "repository_sha256": "1989f06de3c5b7d3694dcd38362f54501aac4dc4e1b22cd5fa3bd6732185d615",
+      "transformation": "none"
+    },
+    {
+      "file": "views/AI001-013-C1.json",
+      "source_sha256": "24c6fa784782d29c7e077ab0826aeda466f312013e4ebf6c35e469f70fa1aa34",
+      "repository_sha256": "56d42988d6fdaba56657ab7e3f9b914dfa3b82044733cf8b693ca3bd79b936b4",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "inputs/AI001-025.json",
+      "source_sha256": "f6dbe250fb141f869c140f0582c8ac32df257215bfedf84dd11b881fd20bceb9",
+      "repository_sha256": "4f48a27d77e3ff7d24830750cff187f3b1f6ded2ba0fd8199276381e3720a4a2",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "views/AI001-025.md",
+      "source_sha256": "380dafda53a0730d672b2ef8a4164b5489f9eec3aef2de8ef2a875f384bbbb33",
+      "repository_sha256": "380dafda53a0730d672b2ef8a4164b5489f9eec3aef2de8ef2a875f384bbbb33",
+      "transformation": "none"
+    },
+    {
+      "file": "views/AI001-025.json",
+      "source_sha256": "79f884325f1674b1bd1c1aba954997bc7c01010f2f01f45b0bf66f96d7be8127",
+      "repository_sha256": "79f884325f1674b1bd1c1aba954997bc7c01010f2f01f45b0bf66f96d7be8127",
+      "transformation": "chunk_id replaced with sha256 of original UTF-8 ID; JSON reserialized"
+    },
+    {
+      "file": "inputs/index.json",
+      "source_sha256": "148cce5945753853793c334afdd0563d5c8114f934256dfb88252bd5ff687b31",
+      "repository_sha256": "400a33f9ae150f03ba2baad04226c4d7b85a06360bee12e3a9881f95a46124fe",
+      "transformation": "input hashes updated for sanitized copies"
+    },
+    {
+      "file": "review/prior-codex-review.json",
+      "source_sha256": "1b1abf37c5a1be50de24e551347d8b09f25009ab702069a877f87e92923edc71",
+      "repository_sha256": "1b1abf37c5a1be50de24e551347d8b09f25009ab702069a877f87e92923edc71",
+      "transformation": "none; historical agent assessment"
+    }
+  ]
+}
