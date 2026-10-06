@@ -33,6 +33,15 @@ The [DATA-001 corpus walkthrough](../06-ai-ready-data/DATA-001/README.md) now pr
 
 [Checkpoint 13](AI-001/evidence/azure-force-commit-diagnostic-13.md) records two controlled read-only batches: Corrective state action is present at direct ranks 8/9, while default knowledge-base retrieval excludes it. Per-request zero threshold or disabled reranking restores it below rank five. The top-five gap remains; stored configuration and the 18-record corpus were preserved. Seven local tests passed; no new model generation, reserved evaluation, deployment or score change.
 
-## Current checkpoint 14 — fixed-budget development fusion
+## Historical checkpoint 14 — fixed-budget development fusion
 
 [Checkpoint 14](AI-001/evidence/azure-development-query-expansion-14.md) compares original and manually expanded semantic queries across five development cases. Reciprocal-rank fusion raises exact required-evidence completeness from three to four cases while retaining a five-passage final context and preserving every complete original case. The force-commit target improves only from candidate rank nine to six and remains outside five after fusion. This is a development candidate, not an adopted retrieval configuration or application pass.
+
+## Retrieval handoff — October 6, 2026
+
+[Checkpoint 15](AI-001/evidence/azure-development-query-expansion-15.md) is the
+latest executed comparison: original 3/5, expanded 4/5 and fused 3/5 complete
+contexts. The user directed a move on from this area. Retrieval tuning is
+deferred; comparison 03 remains a draft pending independent review. Continue
+with [AGENT-001](../05-agent-engineering/AGENT-001/README.md). AI-001's remaining
+gaps and issue status are unchanged.

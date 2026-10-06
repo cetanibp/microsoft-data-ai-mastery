@@ -1,6 +1,6 @@
 # AI-001 — Grounded retrieval baseline
 
-Status: local preparation, Azure retrieval, bounded model/guard experiments and a portable offline reference recorded. Fixed-budget development fusion improves exact evidence coverage to four of five cases; the force-commit gap remains. No serving application is deployed; no retrieval/guard candidate is ready to adopt. See [current checkpoint 14](evidence/azure-development-query-expansion-14.md) and the [runnable reference](offline-reference/README.md).
+Status: retrieval tuning deferred on October 6, 2026 at the user's direction; continue with [AGENT-001](../../05-agent-engineering/AGENT-001/README.md). Local preparation, Azure retrieval, bounded model/guard experiments and a portable offline reference are recorded. Fixed-rule expansion completes four of five development contexts, but fusion loses that gain and completes three of five; the force-commit gap remains. No serving application is deployed; no retrieval/guard candidate is ready to adopt. See [current checkpoint 15](evidence/azure-development-query-expansion-15.md) and the [runnable reference](offline-reference/README.md). Comparison 03 remains a draft pending independent review; AI-001 is not complete.
 
 ## Guided learning checkpoints
 
@@ -65,8 +65,16 @@ Next: expand independently reviewed development cases for complete relationships
 
 This establishes low rank and request-threshold sensitivity, not a top-five fix. Keep the existing configuration and frozen reference. Next: compare intent-preserving query expansion or combined retrieval across development cases with a fixed total context budget. Source-informed manual success, semantic answer support, and reserved evaluation remain separate.
 
-## Current checkpoint 14 — fixed-budget query expansion and fusion
+## Historical checkpoint 14 — fixed-budget query expansion and fusion
 
 [Controlled results](evidence/azure-development-query-expansion-14.md): original and manually expanded semantic queries were fused locally while every final context remained capped at five passages. Exact required-evidence completeness improved from three of five to four of five development cases with no regression among the three complete originals. Fusion combined complementary evidence for AI001-012; its original and expanded lists were each incomplete alone.
 
 AI001-025 remains unresolved: its target moved from candidate rank nine to six under expansion and fused to rank eight, still outside five. All eighteen read-only requests succeeded, corpus/configuration controls remained unchanged, and 38 local tests passed with one privilege-dependent skip. This supports further development evaluation, not adoption. Next: fix a query-generation rule independently of expected passages or add independently reviewed development cases before another retrieval run.
+
+## Current checkpoint 15 — fixed-rule query expansion and fusion
+
+[Comparison 02](evaluation/development-query-expansion-02.md) executed with one question-only suffix across the same five development cases, ten candidates per query and five final passages. [Results](evidence/azure-development-query-expansion-15.md): 3/5 original, 4/5 expanded and 3/5 fused complete contexts. Fusion moved AI001-012's required Procedure passage from expanded rank five to fused rank six, losing the expansion gain. AI001-025 remained at candidate rank nine in all three lists. All eighteen experiment requests succeeded; corpus/configuration controls and the frozen spec remained unchanged. No complete original case regressed, but fusion did not meet the declared improvement condition. Next: independently authored/reviewed development cases before another batch; answer-quality evaluation and the force-commit gap remain open.
+
+## Prepared follow-up: review packet and comparison 03
+
+[Six supplemental proposals](evaluation/development-cases-02-review.md) add compound recovery/closure relationships and ambiguous paraphrases. They were authored by Codex after checkpoint 15 and await independent review. [Comparison 03](evaluation/development-query-expansion-03.md) keeps the fixed suffix and five-passage budget, with six new cases reported separately from five historical controls. It is a draft, not frozen or live-executed. The runner checks the supplemental registry hash and blocks live requests until review of the exact case contents is recorded and the comparison is frozen. The original dataset and reserved split are unchanged.

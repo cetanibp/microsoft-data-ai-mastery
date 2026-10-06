@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:northstar:agent-001:inspect-object-run:1.0.0",
+  "title": "Northstar inspect_object_run contract 1.0.0",
+  "$defs": {
+    "environment": {"enum": ["development", "test", "production"]},
+    "uuid": {"type": "string", "format": "uuid"},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "object_run_id"],
+      "properties": {
+        "environment": {"$ref": "#/$defs/environment"},
+        "object_run_id": {"$ref": "#/$defs/uuid"}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "object_run_id", "run_id", "release_id", "ingestion_object_key", "attempt_number", "input_boundary_hash", "object_run_status", "quality_decision_status", "watermark_candidate_status", "state_version", "committed_object_run_id"],
+      "properties": {
+        "environment": {"$ref": "#/$defs/environment"},
+        "object_run_id": {"$ref": "#/$defs/uuid"},
+        "run_id": {"$ref": "#/$defs/uuid"},
+        "release_id": {"$ref": "#/$defs/uuid"},
+        "ingestion_object_key": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,149}$"},
+        "attempt_number": {"type": "integer", "minimum": 1, "maximum": 100},
+        "input_boundary_hash": {"$ref": "#/$defs/hash"},
+        "object_run_status": {"enum": ["REQUESTED", "CLAIMED", "EXTRACTING", "VALIDATING", "PUBLISHING", "SUCCEEDED", "SUCCEEDED_WITH_WARNINGS", "FAILED", "CANCELLED", "RECOVERY_REQUIRED"]},
+        "quality_decision_status": {"enum": [null, "ACCEPTED", "ACCEPTED_WITH_WARNING", "BLOCKED"]},
+        "watermark_candidate_status": {"enum": [null, "PROPOSED", "ABANDONED", "COMMITTED"]},
+        "state_version": {"type": ["integer", "null"], "minimum": 0},
+        "committed_object_run_id": {"anyOf": [{"$ref": "#/$defs/uuid"}, {"type": "null"}]}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "kind", "source", "value"],
+      "properties": {
+        "rank": {"type": "integer", "minimum": 1, "maximum": 3},
+        "kind": {"enum": ["QUALITY_ENFORCEMENT", "RUN_STATE", "QUALITY_DECISION"]},
+        "source": {"enum": ["ops.ObjectRun", "ops.QualityDecision", "ops.vw_OperationalOccurrence contract"]},
+        "value": {"enum": ["PASS", "BREACH", "UNKNOWN", "NOT_APPLICABLE", "REQUESTED", "CLAIMED", "EXTRACTING", "VALIDATING", "PUBLISHING", "SUCCEEDED", "SUCCEEDED_WITH_WARNINGS", "FAILED", "CANCELLED", "RECOVERY_REQUIRED", "ACCEPTED", "ACCEPTED_WITH_WARNING", "BLOCKED"]}
+      }
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["contract_version", "correlation_id", "status", "data"],
+          "properties": {
+            "contract_version": {"const": "1.0.0"},
+            "correlation_id": {"$ref": "#/$defs/uuid"},
+            "status": {"const": "ok"},
+            "data": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["record", "quality_enforcement", "evidence", "observation_kind", "observed_at_utc"],
+              "properties": {
+                "record": {"$ref": "#/$defs/record"},
+                "quality_enforcement": {"enum": ["PASS", "BREACH", "UNKNOWN", "NOT_APPLICABLE"]},
+                "evidence": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/evidence"}},
+                "observation_kind": {"const": "synthetic_fixture"},
+                "observed_at_utc": {"type": "string", "format": "date-time"}
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["contract_version", "correlation_id", "status", "error"],
+          "properties": {
+            "contract_version": {"const": "1.0.0"},
+            "correlation_id": {"$ref": "#/$defs/uuid"},
+            "status": {"const": "error"},
+            "error": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["code", "retryable"],
+              "properties": {
+                "code": {"enum": ["INVALID_ARGUMENT", "ACCESS_DENIED", "NOT_FOUND", "DEADLINE_EXCEEDED", "CANCELLED", "RATE_LIMITED", "DEPENDENCY_UNAVAILABLE", "INVALID_EVIDENCE"]},
+                "retryable": {"type": "boolean"}
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

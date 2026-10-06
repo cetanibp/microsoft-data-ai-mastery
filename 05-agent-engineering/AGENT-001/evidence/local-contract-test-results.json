@@ -1,0 +1,43 @@
+{
+  "contract": "AGENT-001.inspect_object_run",
+  "contract_version": "1.0.0",
+  "evidence_class": "local_synthetic_behavior",
+  "status": "PASS",
+  "tests_run": 21,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "python_version": "3.14.2",
+  "dependencies": {
+    "jsonschema": "4.26.0",
+    "attrs": "26.1.0",
+    "referencing": "0.37.0",
+    "jsonschema-specifications": "2025.9.1",
+    "rpds-py": "2026.9.1"
+  },
+  "validated_at_utc": "2026-10-06T16:15:25.996875+00:00",
+  "artifact_sha256": {
+    "requirements.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+    "contracts/inspect-object-run-v1.schema.json": "f83e89c763c9a9b19add9bda35edfdf501bdadfe34aa47fde842332094b18125",
+    "runtime/read_only_tools.py": "ed1e7fccbbb7339b48b1db378ef2c918c59cffbb86fa6c920c1034853d148121",
+    "fixtures/object-runs.json": "bec18dc6ecffe9e54cad4205e82bf0f72f572b20012cadd6256b677c4637a4bf",
+    "tests/test_read_only_tools.py": "96d2bcacaca2371ff6f7bd763b8c37f2ea2f3940041468dd32dd87ec539e779f",
+    "tests/run_contract_tests.py": "d1af2800485dfdd45cc6041b17ddd9ccd48051521808e1aa25b1314783e2eef4",
+    "README.md": "5c7acdf5b0a14fd456d9be69fefbf54e9b79cd3f870fc7801d7c6d596d9b53f8",
+    "tool-contract.md": "5e7270771f048e7f1b6a929a222d5bd87723d747f0c1fa0f905c252027f07baa",
+    "threat-model.md": "94f4bc245e943b71cdfef1e477f69103e7ccace105d6c86ee6fee7ac212fddb8",
+    "RETRO.md": "52d65fa4de53e8ada8d58a007dd49006d8feacb13f1cbaafb4c0a3a68845fae0"
+  },
+  "execution": {
+    "network_requests": 0,
+    "model_calls": 0,
+    "live_backend_reads": 0,
+    "operational_writes": 0
+  },
+  "limitations": [
+    "synthetic policy and data only",
+    "no authenticated MCP adapter",
+    "no live token or SQL authorization",
+    "in-memory audit only"
+  ]
+}

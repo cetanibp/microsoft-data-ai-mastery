@@ -315,3 +315,10 @@ The monthly scheduled review begins October 1, 2026, around 8 a.m. Pacific; it r
 - Original and expanded top-five views each contained all exact required evidence for three of five cases. Reciprocal-rank fusion reached four of five with no regression among complete originals by combining complementary AI001-012 evidence.
 - AI001-025 remains incomplete: the required passage moved from candidate rank nine to six under expansion and fused to rank eight, still outside five. No additional force-commit tuning is justified by this batch.
 - Thirty-eight local tests passed and one Windows symlink test was skipped for unavailable privilege. Retain fusion as a development candidate only; next fix a passage-independent query-generation rule or add independently reviewed development cases before another retrieval run.
+
+### 2026-10-06 — Move from retrieval tuning to safe agent tools
+
+- At the user's direction, deferred AI-001 tuning at [checkpoint 15](04-foundry-ai-engineering/AI-001/evidence/azure-development-query-expansion-15.md): original 3/5, expanded 4/5 and fused 3/5 complete contexts. Comparison 03 remains a draft pending independent review. Retrieval and semantic-review gaps remain open.
+- Started [AGENT-001](05-agent-engineering/AGENT-001/README.md) with a versioned `inspect_object_run` schema, runnable direct function adapter, synthetic user/workload scope intersection, sanitized audit events and bounded error handling.
+- Added 21 passing local tests covering safe/unsafe quality blocks, incomplete evidence, authorization/next-call revocation, injected arguments/source text, malformed records, deadlines, cancellation and dependency failures. [Machine-readable evidence](05-agent-engineering/AGENT-001/evidence/local-contract-test-results.json) records code/schema/fixture hashes and installed versions.
+- Next: authenticated MCP adapter and direct/MCP comparison, then bounded AGENT-002 diagnosis. No live identity/backend enforcement, consequential operation, issue closure, ADR acceptance or skill-score change is claimed.

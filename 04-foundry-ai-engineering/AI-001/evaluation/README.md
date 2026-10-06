@@ -1,6 +1,6 @@
 # AI-001 — Evaluation design, step 5
 
-**Status: draft rubric with executed development retrieval, answer/reformulation, guard, selection and fixed-budget fusion experiments plus portable offline replay; full application evaluation remains incomplete.** See [checkpoint 14](../evidence/azure-development-query-expansion-14.md) for the latest retrieval comparison. Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
+**Status: draft rubric with executed development retrieval, answer/reformulation, guard, selection and fixed-budget fusion experiments plus portable offline replay; full application evaluation remains incomplete.** See [checkpoint 15](../evidence/azure-development-query-expansion-15.md) for the latest retrieval comparison. Supports [AI-001 #13](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) and the early evaluation-design increment from [AGENT-003 #16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16).
 
 - [Dataset](dataset.json): 30 questions, expected behaviors, required assertions, original source sections and synthetic fixture conditions.
 - [Rubric](rubric.json): scoring definitions, proposed thresholds, critical gates and experiment-version requirements.
@@ -120,6 +120,14 @@ The [portable reference](../offline-reference/README.md) and eight fresh contrac
 
 [Diagnostic 01](force-commit-diagnostic-01.md) and its separately declared [follow-up](force-commit-diagnostic-02.md) executed on AI001-025 only. [Results](../evidence/azure-force-commit-diagnostic-13.md) establish that the target is indexed but ranks below five, and that request-level threshold/reranking overrides restore it only at lower ranks. No top-five improvement or answer-quality pass is claimed. All requests and selected observations are archived; the earlier offline-reference context, dataset, rubric and reserved set are unchanged.
 
-## Current checkpoint 14
+## Historical checkpoint 14
 
 [Development comparison 01](development-query-expansion-01.md) froze original and manual intent-preserving queries for five existing development cases. [Results](../evidence/azure-development-query-expansion-14.md) show three of five original top-five views complete, three of five expanded views complete, and four of five fused views complete at an unchanged five-passage final context budget. AI001-012 becomes complete only through complementary fusion; AI001-025 remains outside five. No complete original case regressed. Manual development rewrites are not automatic-query generalization, and retrieval completeness is not an answer-behavior pass.
+
+## Current checkpoint 15
+
+[Fixed-rule comparison 02](development-query-expansion-02.md) retained the same questions, evaluator targets and retrieval bounds. [Results](../evidence/azure-development-query-expansion-15.md) are 3/5 complete original contexts, 4/5 expanded and 3/5 fused at five final passages. Fusion loses AI001-012's expansion-only gain: Procedure falls from fifth to sixth. Expanded and fused arms have zero completeness regressions among the three complete originals; fusion loses one of four complete expanded contexts. The force-commit target remains ninth. All eighteen experiment requests succeeded with unchanged corpus/configuration controls and frozen spec. This does not support adopting fixed-rule fusion; independently reviewed questions and separate answer-behavior evaluation remain next.
+
+## Prepared supplemental review and comparison 03
+
+[The review packet](development-cases-02-review.md) and [case registry](development-cases-02.json) propose six source-informed questions, their expected behaviors/assertions and exact passage identities. Authorship is recorded as Codex with earlier results visible; independent review is pending. [Comparison 03](development-query-expansion-03.md) is a hash-bound draft with six new questions and five historical controls, twenty-two queries and eight control reads, and the unchanged five-passage context budget. Report the two cohorts separately and fusion losses relative to expanded views explicitly. Local validation does not approve the cases; live execution is blocked until review and freezing. The thirty-case dataset and reserved questions remain unchanged.
