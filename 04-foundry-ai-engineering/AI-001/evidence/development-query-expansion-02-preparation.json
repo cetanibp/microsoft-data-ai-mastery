@@ -1,0 +1,38 @@
+{
+  "experiment_id": "development-query-expansion-02",
+  "status": "prepared_and_locally_validated",
+  "preparation_date_pacific": "2026-10-01",
+  "live_execution_status": "not_run",
+  "query_generation_rule": "question-only-v1",
+  "development_case_count": 5,
+  "independently_authored_reviewed_cases_added": 0,
+  "candidate_limit_per_query": 10,
+  "final_context_limit": 5,
+  "declared_request_budget": 18,
+  "azure_requests_attempted": 0,
+  "model_generation_calls": 0,
+  "configuration_mutations": 0,
+  "reserved_cases_run": false,
+  "corpus_and_live_configuration_verification": "not_run",
+  "spec_canonical_sha256": "55c1a46b331bfbaf28b6d41559ba7aee1a36df40f757d9cecb3035e1d0ca26a9",
+  "local_validation": {
+    "python_version": "3.14.2",
+    "validation_command": ".venv/Scripts/python.exe -B 04-foundry-ai-engineering/AI-001/evaluation/run_development_query_expansion.py --spec 04-foundry-ai-engineering/AI-001/evaluation/development-query-expansion-02.json --validate-only",
+    "validation_status": "validated_locally",
+    "test_command": ".venv/Scripts/python.exe -B -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -v",
+    "tests_run": 45,
+    "tests_passed": 44,
+    "tests_skipped": 1,
+    "skip_reason": "Windows symlink privilege is unavailable",
+    "test_failures": 0,
+    "query_expansion_tests_passed": 12
+  },
+  "file_sha256": {
+    "evaluation/development-query-expansion-02.json": "846e1481c78c21c79f523f24b7c9457b0bbbc7d720c165abc5972aa5f1c95d71",
+    "evaluation/run_development_query_expansion.py": "49edb80fbad1c072de95d212a1b645eca5bf610d36c747e71b43580df94fb8c6",
+    "evaluation/run_force_commit_diagnostic.py": "c6ce626955d0a85569b8ae51354be8d2011b3920f5acb556a4582fe33a87d032",
+    "tests/test_development_query_expansion.py": "db205ec75de77573881a9d2a8de984b54bf99ef39c53da63aa025ae5d06efcc8"
+  },
+  "next_dependency": "Existing Azure Search service HTTPS endpoint; SEARCH_ENDPOINT was unset during preparation.",
+  "interpretation": "Local contract validation only; no new retrieval coverage, answer-quality, access/freshness or release result."
+}

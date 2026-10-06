@@ -1,0 +1,48 @@
+{
+  "experiment_id": "development-query-expansion-03",
+  "status": "prepared_pending_independent_review",
+  "preparation_date_pacific": "2026-10-01",
+  "live_execution_status": "not_run",
+  "independent_review_status": "pending",
+  "authorship": {
+    "author": "codex:/root",
+    "method": "source_informed_draft_after_checkpoint_15",
+    "independently_authored": false,
+    "prior_results_visible": true
+  },
+  "new_development_case_count": 6,
+  "historical_control_case_count": 5,
+  "declared_query_requests": 22,
+  "declared_total_request_budget": 30,
+  "candidate_limit_per_query": 10,
+  "final_context_limit": 5,
+  "azure_requests_attempted": 0,
+  "model_generation_calls": 0,
+  "configuration_mutations": 0,
+  "reserved_cases_run": false,
+  "corpus_and_live_configuration_verification": "not_run",
+  "spec_canonical_sha256": "172f766cbafedf4df8e1f1930c89de38dc5252a47caa129889be5ce68d920eb4",
+  "registry_canonical_sha256": "0502c4a61023fa1950909fb6f6cf5e1cb4d2b66783b2da0e5a3a977a1c7e8a51",
+  "local_validation": {
+    "python_version": "3.14.2",
+    "status": "structurally_valid_pending_review",
+    "live_execution_ready": false,
+    "validation_command": ".venv/Scripts/python.exe -B 04-foundry-ai-engineering/AI-001/evaluation/run_development_query_expansion.py --spec 04-foundry-ai-engineering/AI-001/evaluation/development-query-expansion-03.json --validate-only",
+    "test_command": ".venv/Scripts/python.exe -B -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -v",
+    "tests_run": 50,
+    "tests_passed": 49,
+    "tests_skipped": 1,
+    "test_failures": 0,
+    "skip_reason": "Windows symlink privilege is unavailable",
+    "query_expansion_tests_passed": 17,
+    "selected_local_source_git_blob_hashes_verified": true,
+    "note": "Synthetic review fixtures exist only in temporary test files; the real registry remains pending."
+  },
+  "file_sha256": {
+    "evaluation/development-cases-02.json": "5ea46656ad3cf0d5752b777282d19cf7b2b7af4a45c0a02ebecc0f6cdde3c7ad",
+    "evaluation/development-query-expansion-03.json": "53d66a57963bab72b64933fd4aff0f50688639c02842506329ca13ba987ac517",
+    "evaluation/run_development_query_expansion.py": "57ab5e11f2151577baafc15eefc63b59f10a8441ed15cf1934b3ddd925dbf8a6",
+    "tests/test_development_query_expansion.py": "b5113700755135e1b335741c8b445393cf57663de817c4ab6dceb07ed2c8047e"
+  },
+  "next_dependency": "Substantive independent review of the concrete six-case packet before registry approval and comparison freezing."
+}

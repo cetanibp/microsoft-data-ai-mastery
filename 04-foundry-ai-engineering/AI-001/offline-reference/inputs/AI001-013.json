@@ -1,0 +1,76 @@
+{
+  "case_id": "AI001-013",
+  "split": "development",
+  "original_question": "What is the latest watermark?",
+  "variant": "original",
+  "route": "clarify",
+  "message": "These documents cannot establish a live operational value. Which data object are you asking about? Which environment is involved? Do you mean a candidate watermark or committed watermark state?",
+  "passages": [
+    {
+      "id": "E1",
+      "chunk_id": "sha256:8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+      "document_id": "northstar-quality-gates",
+      "heading_h1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h1_search_v1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h2": "Binding upstream contracts",
+      "heading_h2_search_v1": "Binding upstream contracts",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+      "text": "- [FAB-001 control-plane metadata model](../FAB-001/README.md)\r\n- [FAB-002 resilient incremental-ingestion runtime](../FAB-002/README.md)\r\n- [OPS-001 governed delivery foundation](../../02-dataops-devops/OPS-001/README.md)\r\nFAB-003 reuses the activated `QualityPolicy` and `ObjectQualityPolicy` definitions, `run_id` and `object_run_id`, fixed input boundaries, and compare-and-commit watermark protocol. It does not create a competing metadata or execution model."
+    },
+    {
+      "id": "E2",
+      "chunk_id": "sha256:90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+      "document_id": "northstar-quality-gates",
+      "heading_h1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h1_search_v1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h2": "",
+      "heading_h2_search_v1": "",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+      "text": "FAB-003 adds policy-driven acceptance checks between FAB-002 target publication and watermark commit."
+    },
+    {
+      "id": "E3",
+      "chunk_id": "sha256:f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+      "document_id": "northstar-quality-gates",
+      "heading_h1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h1_search_v1": "FAB-003 \u2014 Reconciliation and data-quality gates",
+      "heading_h2": "Status",
+      "heading_h2_search_v1": "Status",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/01-fabric-platform-engineering/FAB-003/README.md",
+      "text": "Complete. The architecture, credential-free executable contract, durable SQL control-plane extension, Fabric quality-gate notebook, generated quality-enabled pipeline, and development Lakehouse are implemented. Thirty-three automated tests pass. Live validation proved accepted, blocked, watermark-preservation, recovery-replay, hashed quarantine, same-object-run idempotency, and isolated warning behavior."
+    },
+    {
+      "id": "E4",
+      "chunk_id": "sha256:b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+      "document_id": "northstar-triage",
+      "heading_h1": "Runbook \u2014 Triage",
+      "heading_h1_search_v1": "Runbook \u2014 Triage",
+      "heading_h2": "Procedure",
+      "heading_h2_search_v1": "Procedure",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/triage.md",
+      "text": "1. Record acknowledgement time and operator identity.\r\n2. Use `queries.sql` to locate the routing decision, evaluation, occurrence, and quality/state evidence.\r\n3. Confirm the environment and metadata release recorded by the evidence. Do not substitute the currently active release.\r\n4. Determine whether the occurrence is still in progress. An active `CLAIMED`, `EXTRACTING`, `VALIDATING`, or `PUBLISHING` occurrence is not replayed.\r\n5. Classify the primary category:\r\n   - execution failure;\r\n   - freshness or duration breach;\r\n   - quality block or warning;\r\n   - watermark concurrency/recovery condition;\r\n   - telemetry or routing failure; or\r\n   - quality-enforcement integrity breach.\r\n6. Check `ops.vw_QualityEnforcementIntegrity` before any recovery action.\r\n7. Identify the fixed input boundary, candidate status, committed state version, and last committing object run.\r\n8. Determine affected downstream objects and consumer deadlines.\r\n9. Resolve the accountable owner from the run's release-scoped ownership metadata.\r\n10. Assign severity using the escalation runbook.\r\n11. Select the recovery pattern and document why alternatives were rejected."
+    },
+    {
+      "id": "E5",
+      "chunk_id": "sha256:e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+      "document_id": "northstar-recovery",
+      "heading_h1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h1_search_v1": "Runbook \u2014 Recovery selection and verification",
+      "heading_h2": "Recovery verification",
+      "heading_h2_search_v1": "Recovery verification",
+      "runtime_eligible": false,
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "text": "Verify every applicable layer:\r\n### Execution\r\n- terminal status matches the actual outcome;\r\n- attempt history and error classification are retained;\r\n- no competing attempt remains active.\r\n### Data and quality\r\n- accepted and rejected counts reconcile;\r\n- target result is idempotent;\r\n- required rules were evaluated exactly once by stable rule identity;\r\n- quarantine evidence remains hashed and deduplicated;\r\n- no BLOCK decision was accepted.\r\n### State\r\n- candidate is committed only after acceptance, otherwise abandoned;\r\n- watermark version advanced at most once;\r\n- committing object run matches the accepted occurrence;\r\n- append-only state events explain the transition.\r\n### Observability\r\n- operational occurrence reflects the final state;\r\n- quality-enforcement integrity is `PASS`;\r\n- SLO evaluation uses the correct window and evaluator version;\r\n- routing is deduplicated and environment appropriate;\r\n- recovery and acknowledgement timestamps are recorded."
+    }
+  ],
+  "source_response_sha256": "3e4cde59433d520a035d0425a7c0c3d1d844b0bba8ddb5a5df880bdc6cce5fe4"
+}

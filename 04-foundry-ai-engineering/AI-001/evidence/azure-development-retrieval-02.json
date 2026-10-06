@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.1.0",
+  "recorded_date": "2026-09-08",
+  "evidence_level": "user_supplied_lab_responses_manually_reviewed",
+  "raw_responses_archived": false,
+  "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+  "manifest_sha256": "8cfa8f75cc7cbbe505fd09d4ad1696b67b6b3d3c9ce2077568edb1628745ff6e",
+  "query_settings": {
+    "api_version": "2024-07-01",
+    "queryType": "simple",
+    "searchMode": "any",
+    "searchFields": "text",
+    "top": 5,
+    "count": true,
+    "question_rewriting": false
+  },
+  "scope": "Five supported development cases only; retrieval component, no model-generated answers or access/freshness fixture execution.",
+  "cases": [
+    {
+      "case_id": "AI001-002",
+      "question": "A target write completed and the run then failed. What recovery pattern is documented?",
+      "split": "development",
+      "sections": {
+        "index": "northstar-ops-sections-v1",
+        "match_count": 18,
+        "required_passage_rank": 3,
+        "required_assertion_support": "present"
+      },
+      "windows": {
+        "index": "northstar-ops-windows-v1",
+        "match_count": 11,
+        "required_passage_rank": 2,
+        "required_assertion_support": "present",
+        "context_issue": null
+      },
+      "review_note": "Both retain the relevant target-write row and table headers."
+    },
+    {
+      "case_id": "AI001-003",
+      "question": "Which five layers should I verify before calling recovery complete?",
+      "split": "development",
+      "sections": {
+        "index": "northstar-ops-sections-v1",
+        "match_count": 12,
+        "required_passage_rank": 2,
+        "required_assertion_support": "present"
+      },
+      "windows": {
+        "index": "northstar-ops-windows-v1",
+        "match_count": 11,
+        "required_passage_rank": 2,
+        "required_assertion_support": "present",
+        "context_issue": "before_closure_truncated"
+      },
+      "review_note": "Both retain listed evidence groups and risks/remediation instruction. Window truncates the final before-closure qualifier."
+    },
+    {
+      "case_id": "AI001-004",
+      "question": "Which identifiers can start incident triage?",
+      "split": "development",
+      "sections": {
+        "index": "northstar-ops-sections-v1",
+        "match_count": 6,
+        "required_passage_rank": 1,
+        "required_assertion_support": "present"
+      },
+      "windows": {
+        "index": "northstar-ops-windows-v1",
+        "match_count": 6,
+        "required_passage_rank": 1,
+        "required_assertion_support": "present",
+        "context_issue": null
+      },
+      "review_note": "Both retain all identifier options, at least one qualifier, and sensitive-information caution."
+    },
+    {
+      "case_id": "AI001-005",
+      "question": "Data and state succeeded, but alert routing failed. Should I rerun ingestion?",
+      "split": "development",
+      "sections": {
+        "index": "northstar-ops-sections-v1",
+        "match_count": 16,
+        "required_passage_rank": 1,
+        "required_assertion_support": "present"
+      },
+      "windows": {
+        "index": "northstar-ops-windows-v1",
+        "match_count": 13,
+        "required_passage_rank": 1,
+        "required_assertion_support": "incomplete_prohibition_context",
+        "context_issue": "missing_table_headers"
+      },
+      "review_note": "Window retrieves the row without column headers; no other returned passage restores Do not do. Meaning of prohibited action is not explicit."
+    },
+    {
+      "case_id": "AI001-006",
+      "question": "What does the runbook require for a stale candidate when another attempt won?",
+      "split": "development",
+      "sections": {
+        "index": "northstar-ops-sections-v1",
+        "match_count": 15,
+        "required_passage_rank": 2,
+        "required_assertion_support": "present"
+      },
+      "windows": {
+        "index": "northstar-ops-windows-v1",
+        "match_count": 11,
+        "required_passage_rank": 1,
+        "required_assertion_support": "present",
+        "context_issue": null
+      },
+      "review_note": "Window rank 1 retains complete stale-candidate row and Do not do header; rank 4 contains a duplicate partial row without headers."
+    }
+  ],
+  "limitations": [
+    "Manual review of chat-pasted responses; markdown escaping normalized conceptually, not archived as pristine API JSON.",
+    "No timestamps, query latency, CLI version or live schema readback captured.",
+    "No overall winner, full evaluation pass, answer safety pass or production readiness claimed.",
+    "Existing dataset execution_status remains not_run for end-to-end cases; this separate evidence records retrieval observations.",
+    "No reserved cases executed. Cases 001 and 007+ are outside this five-case comparison; 001 has a separate shortened-keyword experiment."
+  ],
+  "next_experiment": {
+    "status": "proposed_not_implemented",
+    "rules": [
+      "Preserve table rows with their column headings.",
+      "Combine heading-only chunks and short parent introductions with relevant child content.",
+      "Preserve complete sentences and source lineage."
+    ],
+    "validation": "Inspect new chunks locally before indexing; rerun fixed development queries and report regressions as well as improvements."
+  }
+}

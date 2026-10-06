@@ -45,6 +45,8 @@ Strong evidence includes runnable code, automated tests, architecture diagrams, 
 
 ## Current learning focus
 
-Phase 0 and Phase 1 are complete. Begin [AI-001](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/13) after the minimum corpus and access-policy slice of [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19) and [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20), with evaluation cases from [#16](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/16) defined before tuning. Full governance implementation follows later.
+Phase 0 and Phase 1 are complete. Current focus as of October 6, 2026: [AGENT-001 safe operational tool contracts](05-agent-engineering/AGENT-001/README.md), beginning with a runnable read-only inspection example over synthetic pipeline evidence. Continue to an authenticated MCP adapter, then bounded diagnosis in #15.
+
+AI-001 retrieval tuning is deferred at [checkpoint 15](04-foundry-ai-engineering/AI-001/evidence/azure-development-query-expansion-15.md). Its unresolved retrieval, answer-quality and access/freshness gaps remain open; comparison 03 stays a draft pending independent review. Moving to agent engineering does not mark AI-001 complete.
 
 See the [September learning-gap review](tracking/LEARNING_GAP_REVIEW_2026-09.md) for expanded issue scope, new builds, dependencies, and optional advanced exercises. The [issue catalog](tracking/STARTER_ISSUES.md) links the live backlog; planning updates do not change skill scores.

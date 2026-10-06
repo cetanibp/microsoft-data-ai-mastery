@@ -32,7 +32,8 @@ Exit evidence: a repeatable framework, failure-injection tests, operational dash
 
 ## Phase 2 — Production AI and agent engineering
 
-**Status:** Ready to start — scope expanded September 5, 2026  
+**Status:** In progress — current focus AGENT-001 as of October 6, 2026
+
 Target: January–March 2027 (planning horizon; start ready work now)
 
 - [ ] Build a grounded AI application with retrieval, tool calling, evaluation, tracing, and safety controls.
@@ -44,6 +45,11 @@ Target: January–March 2027 (planning horizon; start ready work now)
 - [ ] Automate Fabric deployment verification, drift/state-migration controls, and RTI regression maintenance through [OPS-003](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/49) and [OPS-004](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/51).
 
 **Entry sequence:** complete only the minimum corpus/terminology/access slice of #19/#20, then #13 with the initial #16 dataset and rubric. Continue through #14/#15, complete evaluations and #17 controls, and integrate delivery. No full-governance-epic dependency is imposed on starting retrieval.
+
+**Current increment:** [AGENT-001](05-agent-engineering/AGENT-001/README.md)
+read-only contracts and synthetic direct-adapter evidence. The user deferred
+further #13 retrieval tuning at checkpoint 15; comparison 03 remains pending
+independent review. #13's remaining acceptance criteria are still open.
 
 Exit evidence: comparative retrieval results, held-out eval suite, direct/MCP tool comparison, bounded workflow, trace samples, threat model, exact-action authorization tests, reproducible deployment and rollback, live pipeline-to-diagnosis evidence, operating runbook, and demo.
 

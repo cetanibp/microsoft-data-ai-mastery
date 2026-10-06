@@ -2,6 +2,18 @@
 
 Store tool contracts, orchestration, evaluations, traces, human-approval patterns, security tests, and agent demos here.
 
+## Current focus — October 6, 2026
+
+[AGENT-001](AGENT-001/README.md) now has a versioned read-only inspection
+contract, a direct function adapter over synthetic run/quality fixtures,
+identity-scope intersection, bounded failures and local behavior tests.
+Next: the authenticated MCP adapter and direct/MCP comparison, followed by
+AGENT-002 bounded diagnosis. Live identity/backend enforcement remains open.
+
+Retrieval tuning is deferred at AI-001 checkpoint 15; comparison 03 remains
+a review-pending draft. This changes the learning focus without closing
+AI-001 or changing skill scores.
+
 ## Planned work — September 5, 2026
 
 Build typed read-only contracts and a bounded diagnostic workflow, then evaluations and exact-action approval enforcement. Define evaluations early. Use actual lab pipeline telemetry from RTI-002 for the final correlated diagnosis.

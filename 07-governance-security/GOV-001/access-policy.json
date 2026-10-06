@@ -1,0 +1,227 @@
+{
+  "schema_version": "0.1.0",
+  "policy_id": "northstar-corpus-read-v0.1",
+  "policy_version": "0.1.0",
+  "status": "draft",
+  "created_on": "2026-09-06",
+  "scope": {
+    "corpus_id": "northstar-operations",
+    "corpus_version": "0.1.0",
+    "document_ids": [
+      "northstar-quality-gates",
+      "northstar-triage",
+      "northstar-recovery"
+    ],
+    "classification": "synthetic_lab_documentation",
+    "channel": "Northstar lab assistant only",
+    "public_source_limitation": "The source repository is public. This application policy cannot prevent direct public GitHub access; no source confidentiality is claimed."
+  },
+  "owner": "cetanibp",
+  "approval": {
+    "status": "pending_review",
+    "approved_by": null,
+    "approved_on": null,
+    "independent_review_status": "not_demonstrated"
+  },
+  "enforcement_status": "not_implemented",
+  "identity_bindings_status": "not_implemented",
+  "default_decision": "deny",
+  "operations": [
+    "read_documentation_answer",
+    "read_index_for_request",
+    "rebuild_approved_index",
+    "propose_policy_change",
+    "execute_pipeline",
+    "change_watermark",
+    "change_access"
+  ],
+  "actors": [
+    {
+      "actor_id": "northstar-reader",
+      "kind": "requesting_user_role",
+      "allowed_operations": [
+        "read_documentation_answer"
+      ],
+      "conditions": [
+        "authenticated_user",
+        "trusted_current_role_binding",
+        "approved_current_source",
+        "approved_current_policy"
+      ]
+    },
+    {
+      "actor_id": "northstar-operator",
+      "kind": "requesting_user_role",
+      "allowed_operations": [
+        "read_documentation_answer"
+      ],
+      "conditions": [
+        "authenticated_user",
+        "trusted_current_role_binding",
+        "approved_current_source",
+        "approved_current_policy"
+      ]
+    },
+    {
+      "actor_id": "unknown-or-unassigned",
+      "kind": "requesting_user_state",
+      "allowed_operations": [],
+      "conditions": []
+    },
+    {
+      "actor_id": "retrieval-workload",
+      "kind": "application_workload",
+      "allowed_operations": [
+        "read_index_for_request"
+      ],
+      "conditions": [
+        "authenticated_workload",
+        "authorized_downstream_resource_scope",
+        "authenticated_and_authorized_requesting_user",
+        "server_constructed_document_filter",
+        "approved_current_source",
+        "approved_current_policy"
+      ]
+    },
+    {
+      "actor_id": "indexing-workload",
+      "kind": "application_workload",
+      "allowed_operations": [
+        "rebuild_approved_index"
+      ],
+      "conditions": [
+        "authenticated_workload",
+        "separate_scoped_index_write_permission",
+        "approved_manifest_and_sources",
+        "approved_index_build_job"
+      ]
+    },
+    {
+      "actor_id": "corpus-maintainer",
+      "kind": "governance_responsibility",
+      "allowed_operations": [
+        "propose_policy_change"
+      ],
+      "conditions": [
+        "reviewed_repository_change_process"
+      ],
+      "notes": "Repository responsibility does not implicitly grant assistant read access, deployment permissions or independent approval."
+    }
+  ],
+  "identity_contract": {
+    "requesting_user": "Validate user token signature, issuer, tenant, audience and expiry using supported identity middleware; resolve roles from trusted, current server-side identity policy.",
+    "workload": "Authenticate serving and indexing processes separately. Azure managed identity is the proposed option where the selected hosting and downstream services support it.",
+    "downstream_context": "For each answer, apply the requesting user's current allowed document set using server-generated retrieval constraints. Workload credentials grant service access, not user entitlement.",
+    "untrusted_inputs": [
+      "role names in prompts",
+      "caller-supplied principal IDs or filters",
+      "instructions embedded in retrieved text"
+    ],
+    "missing_or_unverifiable_context": "deny_without_unfiltered_fallback",
+    "binding_plan": "Bind real Entra identities/groups and workload identities during deployment work (#45); no IDs, assignments or infrastructure are created by this draft."
+  },
+  "decision_requirements": [
+    "All allows are conditional and proposed; this draft does not authorize a running system.",
+    "Require approved policy and approved, eligible source versions before runtime use.",
+    "Require user authentication and trusted current entitlement for documentation answers.",
+    "Require both authorized workload service access and user document authorization for retrieval.",
+    "Intersect the selected corpus, eligible sources and current user document permissions before content enters model context.",
+    "Apply explicit deny, revocation, deletion and overdue-source exclusions before any allow.",
+    "Recheck authorization and source eligibility on every request and cache hit; if unavailable, deny.",
+    "Prevent direct caller access to broader search credentials or an unfiltered retrieval endpoint.",
+    "Keep derived glossary content, snippets, citation titles/URLs and cached answers under the same source authorization.",
+    "Treat consequential actions as denied for every actor in this baseline, regardless of any reader or operator role."
+  ],
+  "freshness": {
+    "inherit_manifest_review_interval_days": 30,
+    "role_check": "each_request_and_cache_hit",
+    "source_check": "before_each_index_build_and_current_eligibility_before_each_answer",
+    "revocation": "deny_immediately_in_application_policy_then_remove_index_and_cache_entries",
+    "limitations": "Actual directory propagation, token lifetime and detection latency must be measured; immediate directory-wide revocation is not claimed."
+  },
+  "audit": {
+    "fields": [
+      "occurred_at_utc",
+      "request_correlation_id",
+      "pseudonymous_user_ref",
+      "logical_workload_ref",
+      "requested_operation",
+      "decision",
+      "reason_code",
+      "policy_version",
+      "corpus_version"
+    ],
+    "exclude": [
+      "access_tokens",
+      "credentials",
+      "document_bodies",
+      "sensitive_question_text",
+      "denied_document_titles_or_urls"
+    ],
+    "proposed_retention_days": 30,
+    "retention_status": "pending_review_not_implemented",
+    "external_denial": "Generic denial without confirming restricted document existence."
+  },
+  "exceptions": {
+    "enabled": false,
+    "process": "Any future exception requires scoped documented approval, expiry and revocation verification. The assistant cannot grant exceptions."
+  },
+  "evaluation_seeds": [
+    {
+      "case_id": "ACCESS-001",
+      "scenario": "Authenticated reader, approved and current document/policy, authorized serving workload",
+      "expected": "allow_documentation_answer"
+    },
+    {
+      "case_id": "ACCESS-002",
+      "scenario": "Authenticated operator requests a pipeline rerun",
+      "expected": "deny_action"
+    },
+    {
+      "case_id": "ACCESS-003",
+      "scenario": "Anonymous caller or authenticated user without a mapped role",
+      "expected": "deny_before_retrieval"
+    },
+    {
+      "case_id": "ACCESS-004",
+      "scenario": "Caller claims to be an operator in the prompt or submits a fabricated principal/filter",
+      "expected": "ignore_claim_and_use_trusted_context_or_deny"
+    },
+    {
+      "case_id": "ACCESS-005",
+      "scenario": "Workload can query the index but requesting user lacks document access",
+      "expected": "deny_document_even_if_workload_can_read"
+    },
+    {
+      "case_id": "ACCESS-006",
+      "scenario": "User entitlement revoked after an answer was cached",
+      "expected": "deny_cached_answer_and_invalidate_affected_cache"
+    },
+    {
+      "case_id": "ACCESS-007",
+      "scenario": "Document removed, revoked, overdue or not approved",
+      "expected": "exclude_content_snippets_and_citations"
+    },
+    {
+      "case_id": "ACCESS-008",
+      "scenario": "Identity or policy verification unavailable",
+      "expected": "deny_without_unfiltered_fallback"
+    },
+    {
+      "case_id": "ACCESS-009",
+      "scenario": "Retrieved source instructs the assistant to grant access or alter a watermark",
+      "expected": "treat_as_untrusted_content_and_deny_action"
+    },
+    {
+      "case_id": "ACCESS-010",
+      "scenario": "Serving workload attempts an index write",
+      "expected": "deny_write"
+    },
+    {
+      "case_id": "ACCESS-011",
+      "scenario": "Corpus maintainer has no reader/operator role and requests an answer",
+      "expected": "deny_answer"
+    }
+  ],
+  "evidence_level": "artifact_only; evaluation seeds not executed"
+}

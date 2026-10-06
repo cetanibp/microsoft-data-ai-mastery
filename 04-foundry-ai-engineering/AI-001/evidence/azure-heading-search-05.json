@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.1.0",
+  "recorded_date": "2026-09-09",
+  "execution_timestamp": null,
+  "evidence_level": "user_executed_lab_validation_and_search_responses_manually_reviewed",
+  "raw_query_responses_archived": false,
+  "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+  "index": "northstar-ops-markdown-h2-v1",
+  "baseline_evidence": "azure-aligned-api-comparison-04.json",
+  "predeclared_specification_commit": "84cc4415f9993d3ec2c7351ece3ce39577d3cf3e",
+  "arms": {
+    "A": {
+      "searchFields": "text"
+    },
+    "B": {
+      "searchFields": "text_with_headings_v1"
+    }
+  },
+  "query_settings": {
+    "api_version": "2026-04-01",
+    "queryType": "simple",
+    "searchMode": "any",
+    "count": true,
+    "top": 5,
+    "select": "document_id,heading_h1,heading_h2,text,runtime_eligible",
+    "question_rewriting": false
+  },
+  "transformation": {
+    "version": 1,
+    "input_order": [
+      "heading_h1",
+      "heading_h2",
+      "text"
+    ],
+    "separator": "\n\n",
+    "omit_null_or_empty_headings": true,
+    "nonempty_text_required": true,
+    "normalization": "none",
+    "analyzer": "en.lucene",
+    "derived_not_contiguous_source_substring": true
+  },
+  "implementation": {
+    "snapshot": {
+      "status": "PASS",
+      "chunk_count": 18,
+      "document_counts": {
+        "northstar-quality-gates": 9,
+        "northstar-recovery": 4,
+        "northstar-triage": 5
+      },
+      "schema_etag_present": true,
+      "candidate_field_existed": false
+    },
+    "reported_artifact_sha256": {
+      "index-before.json": "c83ae4dbd1a02c73540f0d1a063a9de6776433101c74de4d20343ebbcb9c03d1",
+      "chunks-before.json": "5bfab0a074cd7a81b45735c77a057b6ab12b4fd75f9947f5206bd61c181db951",
+      "index-with-headings.json": "ef4fdb1c7635b13fe7a0c4e988d961931d638453f8a53740ae770b790c31252a",
+      "heading-field.merge.json": "9cc4c454511b0834e9e2203bfd81da029020e94dca4306a3a0aaf548e63435f6"
+    },
+    "hash_evidence_note": "Reported local file hashes; files were in the user's Cloud Shell snapshot, not independently materialized or archived in this repository.",
+    "indexer_precheck": {
+      "schedule": null,
+      "disabled": null,
+      "status": "running",
+      "lastResult": {
+        "status": "success",
+        "startTime": "2026-09-08T21:51:46.837Z",
+        "endTime": "2026-09-08T21:51:47.171Z",
+        "itemsProcessed": 18,
+        "itemsFailed": 0
+      }
+    },
+    "schema_update": {
+      "status": "SCHEMA_UPDATED",
+      "field": "text_with_headings_v1",
+      "searchable": true,
+      "analyzer": "en.lucene",
+      "saved_etag_used_in_guided_request": true
+    },
+    "merge": {
+      "status": "MERGE_ACCEPTED",
+      "record_count": 18,
+      "successful_records": 18,
+      "failed_records": 0,
+      "action": "merge",
+      "fields_submitted": [
+        "chunk_id",
+        "text_with_headings_v1"
+      ]
+    },
+    "readback": {
+      "status": "PASS",
+      "chunk_count": 18,
+      "chunk_identities_unchanged": true,
+      "original_fields_unchanged": true,
+      "candidate_values_match": true,
+      "all_runtime_eligible_false": true,
+      "comparison_excludes_search_annotations": true
+    },
+    "indexer_maintains_derived_field": false
+  },
+  "cases": [
+    {
+      "case_id": "AI001-002",
+      "question": "A target write completed and the run then failed. What recovery pattern is documented?",
+      "split": "development",
+      "required_document": "northstar-recovery",
+      "required_heading": "Select a pattern",
+      "A": {
+        "required_passage_rank": 3,
+        "match_count": 14,
+        "required_passage_score": 3.9209437,
+        "baseline_rank_reproduced": true,
+        "complete_required_context_in_top_five": true
+      },
+      "B": {
+        "required_passage_rank": 2,
+        "match_count": 14,
+        "required_passage_score": 4.96058,
+        "complete_required_context_in_top_five": true
+      },
+      "outcome": "improved"
+    },
+    {
+      "case_id": "AI001-003",
+      "question": "Which five layers should I verify before calling recovery complete?",
+      "split": "development",
+      "required_document": "northstar-recovery",
+      "required_heading": "Completion criteria",
+      "A": {
+        "required_passage_rank": 1,
+        "match_count": 10,
+        "required_passage_score": 4.8681574,
+        "baseline_rank_reproduced": true,
+        "complete_required_context_in_top_five": true
+      },
+      "B": {
+        "required_passage_rank": 1,
+        "match_count": 10,
+        "required_passage_score": 5.512918,
+        "complete_required_context_in_top_five": true
+      },
+      "outcome": "unchanged",
+      "supporting_verification_rank": {
+        "A": 2,
+        "B": 2
+      },
+      "note": "Both retain complete closure wording and full verification checklist."
+    },
+    {
+      "case_id": "AI001-004",
+      "question": "Which identifiers can start incident triage?",
+      "split": "development",
+      "required_document": "northstar-triage",
+      "required_heading": "Required starting evidence",
+      "A": {
+        "required_passage_rank": 2,
+        "match_count": 5,
+        "required_passage_score": 3.970789,
+        "baseline_rank_reproduced": true,
+        "complete_required_context_in_top_five": true
+      },
+      "B": {
+        "required_passage_rank": 1,
+        "match_count": 7,
+        "required_passage_score": 8.364216,
+        "complete_required_context_in_top_five": true
+      },
+      "outcome": "improved"
+    },
+    {
+      "case_id": "AI001-005",
+      "question": "Data and state succeeded, but alert routing failed. Should I rerun ingestion?",
+      "split": "development",
+      "required_document": "northstar-recovery",
+      "required_heading": "Select a pattern",
+      "A": {
+        "required_passage_rank": 1,
+        "match_count": 13,
+        "required_passage_score": 6.3448706,
+        "baseline_rank_reproduced": true,
+        "complete_required_context_in_top_five": true
+      },
+      "B": {
+        "required_passage_rank": 1,
+        "match_count": 17,
+        "required_passage_score": 5.9437776,
+        "complete_required_context_in_top_five": true
+      },
+      "outcome": "unchanged"
+    },
+    {
+      "case_id": "AI001-006",
+      "question": "What does the runbook require for a stale candidate when another attempt won?",
+      "split": "development",
+      "required_document": "northstar-recovery",
+      "required_heading": "Select a pattern",
+      "A": {
+        "required_passage_rank": 2,
+        "match_count": 10,
+        "required_passage_score": 6.1679296,
+        "baseline_rank_reproduced": true,
+        "complete_required_context_in_top_five": true
+      },
+      "B": {
+        "required_passage_rank": 2,
+        "match_count": 12,
+        "required_passage_score": 6.8835053,
+        "complete_required_context_in_top_five": true
+      },
+      "outcome": "unchanged",
+      "supporting_verification_rank": {
+        "A": 4,
+        "B": 3
+      },
+      "note": "Required table remains rank 2; rank 1 describes an active competing attempt, distinct from a completed winner."
+    }
+  ],
+  "excluded_submission": {
+    "description": "Target-write responses were pasted again when completion results were requested. They were recognized as duplicates, excluded from case AI001-003, and replaced by correctly labeled completion responses.",
+    "extra_case_count": 0
+  },
+  "decision": {
+    "status": "provisional_development_preference",
+    "preferred_field": "text_with_headings_v1",
+    "predeclared_gate_met": true,
+    "baseline_ranks_reproduced": 5,
+    "improved": 2,
+    "unchanged": 3,
+    "regressed": 0,
+    "complete_context_cases_per_arm": 5,
+    "total_cases": 5,
+    "serving_or_production_approval": false,
+    "final_adr009_selection": false
+  },
+  "limitations": [
+    "Five repeatedly used development queries in a three-document corpus; no generalization or statistical significance claim.",
+    "API query and merge execution timestamps and actual CLI version not supplied; indexer timestamps are not experiment timestamps.",
+    "Hashes identify user-side snapshot/payload files, not an independently reproduced deployment or source-byte audit.",
+    "Pristine query responses not archived; some pasted transport annotations were truncated.",
+    "Both heading levels were added together; individual heading effects not isolated.",
+    "Scores and match counts are not calibrated answer-quality measures; lower-ranked result relevance was not fully scored.",
+    "All original field values were checked against a snapshot; this is not a complete schema-diff, lifecycle, identity, revocation or freshness test.",
+    "The derived field is populated manually and is not maintained by the indexer.",
+    "No model-generated answers, reserved-case execution, full rubric, latency/cost or serving readiness established."
+  ]
+}

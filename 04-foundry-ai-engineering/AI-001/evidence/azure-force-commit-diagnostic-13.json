@@ -1,0 +1,2798 @@
+{
+  "checkpoint": 13,
+  "recorded_date": "2026-09-21",
+  "scope": "live_read_only_development_retrieval_diagnostic",
+  "decision": "retain_existing_configuration; threshold sensitivity observed but top-five gap unresolved",
+  "total_requests": 31,
+  "retrieval_query_requests": 15,
+  "control_reads": 16,
+  "model_generation_calls": 0,
+  "configuration_mutations": 0,
+  "reserved_cases_run": false,
+  "runtime_eligibility_changed": false,
+  "batches": [
+    {
+      "experiment_id": "force-commit-diagnostic-01",
+      "specification": "../evaluation/force-commit-diagnostic-01.json",
+      "source_directory": "force-commit-diagnostic-01-20260921a",
+      "source_summary_sha256": "5be799c7f03cadc84e845bf3634eb615a699dbd1e890fb09b37c8475f00ed1d9",
+      "runner_snapshot_sha256": "9f2dbbd9c48c8af763991f03335721c7a51476f90a355b54dc8625e7b1417c02",
+      "requests": [
+        {
+          "id": "original.lexical18",
+          "query_id": "original",
+          "arm": {
+            "id": "lexical18",
+            "kind": "search",
+            "query_type": "simple",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "Give me the exact SQL command to force a watermark commit.",
+            "queryType": "simple",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1"
+          }
+        },
+        {
+          "id": "original.semantic18",
+          "query_id": "original",
+          "arm": {
+            "id": "semantic18",
+            "kind": "search",
+            "query_type": "semantic",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "Give me the exact SQL command to force a watermark commit.",
+            "queryType": "semantic",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1",
+            "semanticConfiguration": "northstar-semantic-v1"
+          }
+        },
+        {
+          "id": "original.kb5",
+          "query_id": "original",
+          "arm": {
+            "id": "kb5",
+            "kind": "knowledge_base",
+            "limit": 5
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "Give me the exact SQL command to force a watermark commit."
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 5,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "original.kb18",
+          "query_id": "original",
+          "arm": {
+            "id": "kb18",
+            "kind": "knowledge_base",
+            "limit": 18
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "Give me the exact SQL command to force a watermark commit."
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "automatic.lexical18",
+          "query_id": "automatic",
+          "arm": {
+            "id": "lexical18",
+            "kind": "search",
+            "query_type": "simple",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "SQL command to force a watermark commit in a database system",
+            "queryType": "simple",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1"
+          }
+        },
+        {
+          "id": "automatic.semantic18",
+          "query_id": "automatic",
+          "arm": {
+            "id": "semantic18",
+            "kind": "search",
+            "query_type": "semantic",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "SQL command to force a watermark commit in a database system",
+            "queryType": "semantic",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1",
+            "semanticConfiguration": "northstar-semantic-v1"
+          }
+        },
+        {
+          "id": "automatic.kb5",
+          "query_id": "automatic",
+          "arm": {
+            "id": "kb5",
+            "kind": "knowledge_base",
+            "limit": 5
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "SQL command to force a watermark commit in a database system"
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 5,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "automatic.kb18",
+          "query_id": "automatic",
+          "arm": {
+            "id": "kb18",
+            "kind": "knowledge_base",
+            "limit": 18
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "SQL command to force a watermark commit in a database system"
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "manual.lexical18",
+          "query_id": "manual",
+          "arm": {
+            "id": "lexical18",
+            "kind": "search",
+            "query_type": "simple",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "What is the documented procedure for correcting committed watermark state outside normal replay?",
+            "queryType": "simple",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1"
+          }
+        },
+        {
+          "id": "manual.semantic18",
+          "query_id": "manual",
+          "arm": {
+            "id": "semantic18",
+            "kind": "search",
+            "query_type": "semantic",
+            "limit": 18
+          },
+          "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+          "body": {
+            "search": "What is the documented procedure for correcting committed watermark state outside normal replay?",
+            "queryType": "semantic",
+            "searchMode": "any",
+            "searchFields": "heading_h1_search_v1,heading_h2_search_v1,text",
+            "count": true,
+            "top": 18,
+            "select": "chunk_id,document_id,heading_h1,heading_h2,text,source_url,source_commit,runtime_eligible,heading_h1_search_v1,heading_h2_search_v1",
+            "semanticConfiguration": "northstar-semantic-v1"
+          }
+        },
+        {
+          "id": "manual.kb5",
+          "query_id": "manual",
+          "arm": {
+            "id": "kb5",
+            "kind": "knowledge_base",
+            "limit": 5
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "What is the documented procedure for correcting committed watermark state outside normal replay?"
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 5,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "manual.kb18",
+          "query_id": "manual",
+          "arm": {
+            "id": "kb18",
+            "kind": "knowledge_base",
+            "limit": 18
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "What is the documented procedure for correcting committed watermark state outside normal replay?"
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        }
+      ],
+      "observations": {
+        "status": "completed",
+        "results": [
+          {
+            "id": "original.lexical18",
+            "returned": 10,
+            "match_count": 10,
+            "target_position": 8,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.684505,
+                "reranker_score": null
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.608233,
+                "reranker_score": null
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": null
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.217239,
+                "reranker_score": null
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.4724517,
+                "reranker_score": null
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.2251303,
+                "reranker_score": null
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1894686,
+                "reranker_score": null
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": null
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "original.semantic18",
+            "returned": 10,
+            "match_count": 10,
+            "target_position": 9,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": 2.2969565391540527
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1894686,
+                "reranker_score": 2.1481902599334717
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.217239,
+                "reranker_score": 2.027205467224121
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.905002236366272
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.4724517,
+                "reranker_score": 1.8828479051589966
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.8156760931015015
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.684505,
+                "reranker_score": 1.7150068283081055
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": 1.693029761314392
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.2251303,
+                "reranker_score": 1.3647912740707397
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.608233,
+                "reranker_score": 1.2860991954803467
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "original.kb5",
+            "returned": 5,
+            "match_count": null,
+            "target_position": null,
+            "target_exact_text_and_revision": false,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.1558063
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.88672733
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8393066
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8211867
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.815894
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 8,
+                "search": "Give me the exact SQL command to force a watermark commit.",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "original.kb18",
+            "returned": 8,
+            "match_count": null,
+            "target_position": null,
+            "target_exact_text_and_revision": false,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.1558063
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.88672733
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8393066
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8211867
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.815894
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.59536207
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.58725864
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.45973697
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 8,
+                "search": "Give me the exact SQL command to force a watermark commit.",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "automatic.lexical18",
+            "returned": 10,
+            "match_count": 10,
+            "target_position": 8,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.684505,
+                "reranker_score": null
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.608233,
+                "reranker_score": null
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": null
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.217239,
+                "reranker_score": null
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.4724517,
+                "reranker_score": null
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.2251303,
+                "reranker_score": null
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1894686,
+                "reranker_score": null
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": null
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "automatic.semantic18",
+            "returned": 10,
+            "match_count": 10,
+            "target_position": 9,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": 2.380345344543457
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1894686,
+                "reranker_score": 2.1778852939605713
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.217239,
+                "reranker_score": 2.106207847595215
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.4724517,
+                "reranker_score": 1.9587043523788452
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.9229029417037964
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.8649471998214722
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.684505,
+                "reranker_score": 1.8436790704727173
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": 1.7710129022598267
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.2251303,
+                "reranker_score": 1.503034234046936
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.608233,
+                "reranker_score": 1.327926516532898
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "automatic.kb5",
+            "returned": 5,
+            "match_count": null,
+            "target_position": null,
+            "target_exact_text_and_revision": false,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.6091449
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.3080264
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.277544
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.267107
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.2475791
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 8,
+                "search": "SQL command to force a watermark commit in a database system",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "automatic.kb18",
+            "returned": 8,
+            "match_count": null,
+            "target_position": null,
+            "target_exact_text_and_revision": false,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.6116085
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.3079345
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.2858181
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.2657819
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.2511895
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.1634772
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.91488516
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8715942
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 8,
+                "search": "SQL command to force a watermark commit in a database system",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "manual.lexical18",
+            "returned": 14,
+            "match_count": 14,
+            "target_position": 1,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": true,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 14.1655655,
+                "reranker_score": null
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 6.983647,
+                "reranker_score": null
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 6.4992814,
+                "reranker_score": null
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 3.621431,
+                "reranker_score": null
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": null
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.8463192,
+                "reranker_score": null
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "28a456544bb6b4edf964eb9b546a379f31cb2b7ae5d27331bf8b109fb6738764",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Repository contents",
+                "text_sha256": "9f1d40d5613ea20c620c47a83e4fec39a5abf52318ba06ed10baa02acaefedfd",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.7365246,
+                "reranker_score": null
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": null
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "3b854f46fba72c2c55f7320e67ec8d0f0a94f559c455da71cd1241471264ae61",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Completion criteria",
+                "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1109716,
+                "reranker_score": null
+              },
+              {
+                "position": 11,
+                "chunk_id_sha256": "61fe588644a1d878cdb72a833c61cc8c3432b7ca771fa23c8423e8d5721d312a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Objective",
+                "text_sha256": "a022ee2e1c6f9372eed04c45016688498d96bad847c147f18fe5225e8b6dfd36",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.024825,
+                "reranker_score": null
+              },
+              {
+                "position": 12,
+                "chunk_id_sha256": "8cd5bde34e58ba6ae3bfb9fc491dad6a5bc761f029318fabb3c6f1e0f4a211ce",
+                "document_id": "northstar-triage",
+                "heading_h2": "Completion criteria",
+                "text_sha256": "9e6fa8ba83afbfe79f2485d2d5d06f3e64675e7a30ae043ff721731399e970ae",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.024825,
+                "reranker_score": null
+              },
+              {
+                "position": 13,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9859244,
+                "reranker_score": null
+              },
+              {
+                "position": 14,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": null
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "manual.semantic18",
+            "returned": 14,
+            "match_count": 14,
+            "target_position": 1,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": true,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 14.1655655,
+                "reranker_score": 2.3550007343292236
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 6.983647,
+                "reranker_score": 2.2371842861175537
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9080499,
+                "reranker_score": 2.0556516647338867
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 6.4992814,
+                "reranker_score": 1.9188265800476074
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 3.621431,
+                "reranker_score": 1.8567944765090942
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.6979923248291016
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.8463192,
+                "reranker_score": 1.6582916975021362
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.6109949,
+                "reranker_score": 1.6554559469223022
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 2.5220494,
+                "reranker_score": 1.6001588106155396
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "61fe588644a1d878cdb72a833c61cc8c3432b7ca771fa23c8423e8d5721d312a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Objective",
+                "text_sha256": "a022ee2e1c6f9372eed04c45016688498d96bad847c147f18fe5225e8b6dfd36",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.024825,
+                "reranker_score": 1.5831443071365356
+              },
+              {
+                "position": 11,
+                "chunk_id_sha256": "28a456544bb6b4edf964eb9b546a379f31cb2b7ae5d27331bf8b109fb6738764",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Repository contents",
+                "text_sha256": "9f1d40d5613ea20c620c47a83e4fec39a5abf52318ba06ed10baa02acaefedfd",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.7365246,
+                "reranker_score": 1.5597493648529053
+              },
+              {
+                "position": 12,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 0.9859244,
+                "reranker_score": 1.4718409776687622
+              },
+              {
+                "position": 13,
+                "chunk_id_sha256": "3b854f46fba72c2c55f7320e67ec8d0f0a94f559c455da71cd1241471264ae61",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Completion criteria",
+                "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.1109716,
+                "reranker_score": 1.3974024057388306
+              },
+              {
+                "position": 14,
+                "chunk_id_sha256": "8cd5bde34e58ba6ae3bfb9fc491dad6a5bc761f029318fabb3c6f1e0f4a211ce",
+                "document_id": "northstar-triage",
+                "heading_h2": "Completion criteria",
+                "text_sha256": "9e6fa8ba83afbfe79f2485d2d5d06f3e64675e7a30ae043ff721731399e970ae",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": 1.024825,
+                "reranker_score": 1.3881862163543701
+              }
+            ],
+            "activity": [],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "manual.kb5",
+            "returned": 5,
+            "match_count": null,
+            "target_position": 1,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": true,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 2.558885
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.8864415
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.7734501
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.569921
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.0560207
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 10,
+                "search": "What is the documented procedure for correcting committed watermark state outside normal replay?",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "manual.kb18",
+            "returned": 10,
+            "match_count": null,
+            "target_position": 1,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": true,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 2.558544
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.8929069
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.7756201
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.5713078
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.0470797
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.0282874
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.0126268
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.7453735
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.61361563
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "28a456544bb6b4edf964eb9b546a379f31cb2b7ae5d27331bf8b109fb6738764",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Repository contents",
+                "text_sha256": "9f1d40d5613ea20c620c47a83e4fec39a5abf52318ba06ed10baa02acaefedfd",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.49861684
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 10,
+                "search": "What is the documented procedure for correcting committed watermark state outside normal replay?",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          }
+        ],
+        "model_generation_calls": 0,
+        "configuration_mutations": 0,
+        "reserved_cases_run": false,
+        "spec_sha256": "675f762885e13ac3c2f3253b181c05876837c2a0935dd744d6326e4074ed1b5c",
+        "preflight_passed": true,
+        "corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+        "semantic_configuration": {
+          "configurations": [
+            {
+              "flightingOptIn": false,
+              "name": "northstar-semantic-v1",
+              "prioritizedFields": {
+                "prioritizedContentFields": [
+                  {
+                    "fieldName": "heading_h2_search_v1"
+                  },
+                  {
+                    "fieldName": "text"
+                  }
+                ],
+                "prioritizedKeywordsFields": [],
+                "titleField": {
+                  "fieldName": "heading_h1_search_v1"
+                }
+              },
+              "rankingOrder": "BoostedRerankerScore"
+            }
+          ],
+          "defaultConfiguration": null
+        },
+        "config_before_sha256": [
+          "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+          "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+          "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+        ],
+        "config_after_sha256": [
+          "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+          "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+          "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+        ],
+        "configuration_unchanged": true,
+        "corpus_unchanged": true,
+        "calls": [
+          {
+            "id": "index-before",
+            "method": "GET",
+            "route": "indexes/northstar-ops-markdown-h2-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:11.855659+00:00",
+            "status": "succeeded",
+            "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+            "elapsed_seconds": 2.1814
+          },
+          {
+            "id": "knowledge-base-before",
+            "method": "GET",
+            "route": "knowledgebases/northstar-operations-kb-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:14.037737+00:00",
+            "status": "succeeded",
+            "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+            "elapsed_seconds": 5.6232
+          },
+          {
+            "id": "knowledge-source-before",
+            "method": "GET",
+            "route": "knowledgesources/northstar-operations-index-source-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:19.661466+00:00",
+            "status": "succeeded",
+            "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+            "elapsed_seconds": 3.0298
+          },
+          {
+            "id": "corpus-before",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:22.692156+00:00",
+            "status": "succeeded",
+            "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+            "elapsed_seconds": 3.4799
+          },
+          {
+            "id": "original.lexical18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:26.173393+00:00",
+            "status": "succeeded",
+            "response_sha256": "270bb7635c2169d9843943ab095f4f7391bd6efd2b521370a5e623d1504e728e",
+            "elapsed_seconds": 0.7913
+          },
+          {
+            "id": "original.semantic18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:26.966099+00:00",
+            "status": "succeeded",
+            "response_sha256": "ab0952ee36aa83fb71429426ed2c3fbaded2c51584f7451c4d15e7e199218c86",
+            "elapsed_seconds": 3.0874
+          },
+          {
+            "id": "original.kb5",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:30.054894+00:00",
+            "status": "succeeded",
+            "response_sha256": "16bcd1d38870d8b52299814848365a260841996339ae6bfa0ffc06f6607c63e7",
+            "elapsed_seconds": 4.185
+          },
+          {
+            "id": "original.kb18",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:34.243510+00:00",
+            "status": "succeeded",
+            "response_sha256": "4b5799556a6b6163cd335bd80711a322a6de84a846282c8efcb619011c0b2135",
+            "elapsed_seconds": 5.8496
+          },
+          {
+            "id": "automatic.lexical18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:40.094428+00:00",
+            "status": "succeeded",
+            "response_sha256": "270bb7635c2169d9843943ab095f4f7391bd6efd2b521370a5e623d1504e728e",
+            "elapsed_seconds": 0.9005
+          },
+          {
+            "id": "automatic.semantic18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:40.996193+00:00",
+            "status": "succeeded",
+            "response_sha256": "7907d6f229dd50a27ae8b99b1532c26fefe14980880789240e074a177569b88b",
+            "elapsed_seconds": 2.9874
+          },
+          {
+            "id": "automatic.kb5",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:43.986386+00:00",
+            "status": "succeeded",
+            "response_sha256": "7d18bf52b6533a08e3188041e0da89f97fc9eccb9e2777824c8d6491f155a073",
+            "elapsed_seconds": 0.9038
+          },
+          {
+            "id": "automatic.kb18",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:44.891795+00:00",
+            "status": "succeeded",
+            "response_sha256": "2254587aa6355c7e7993f355e165bed90a1bb64fcc8b6fac9a515f15c1678855",
+            "elapsed_seconds": 3.6595
+          },
+          {
+            "id": "manual.lexical18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:48.552858+00:00",
+            "status": "succeeded",
+            "response_sha256": "3777c1ad49027d0c477c06740c102f0f35ccfb00c3b9b764ff6cbbe490c57823",
+            "elapsed_seconds": 0.8322
+          },
+          {
+            "id": "manual.semantic18",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:49.386447+00:00",
+            "status": "succeeded",
+            "response_sha256": "21ce0b58263d00f5592cfb0db8379c05fba415a5125e59e56173beba846a74c1",
+            "elapsed_seconds": 2.8339
+          },
+          {
+            "id": "manual.kb5",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:52.221627+00:00",
+            "status": "succeeded",
+            "response_sha256": "67064096298d358ede6b24d06659fa71222f43cf96c85f8ece9509d9f3c4e5a8",
+            "elapsed_seconds": 0.9308
+          },
+          {
+            "id": "manual.kb18",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:53.154466+00:00",
+            "status": "succeeded",
+            "response_sha256": "224d0654350b1c223e2910af22aa215e3b852654f593c324f4d8127498f86bf3",
+            "elapsed_seconds": 2.876
+          },
+          {
+            "id": "index-after",
+            "method": "GET",
+            "route": "indexes/northstar-ops-markdown-h2-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:56.031389+00:00",
+            "status": "succeeded",
+            "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+            "elapsed_seconds": 0.7985
+          },
+          {
+            "id": "knowledge-base-after",
+            "method": "GET",
+            "route": "knowledgebases/northstar-operations-kb-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:56.830689+00:00",
+            "status": "succeeded",
+            "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+            "elapsed_seconds": 2.7977
+          },
+          {
+            "id": "knowledge-source-after",
+            "method": "GET",
+            "route": "knowledgesources/northstar-operations-index-source-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:14:59.628792+00:00",
+            "status": "succeeded",
+            "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+            "elapsed_seconds": 0.8032
+          },
+          {
+            "id": "corpus-after",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:15:00.433482+00:00",
+            "status": "succeeded",
+            "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+            "elapsed_seconds": 2.8602
+          }
+        ],
+        "finished_at_utc": "2026-09-22T04:15:03.294552+00:00"
+      }
+    },
+    {
+      "experiment_id": "force-commit-diagnostic-02",
+      "specification": "../evaluation/force-commit-diagnostic-02.json",
+      "source_directory": "force-commit-diagnostic-02-20260921a",
+      "source_summary_sha256": "566d6981f7e515151eb997c673e6013d1e8ad4f4fd48c3d0330ecdc9a8f52ed7",
+      "runner_snapshot_sha256": "c6ce626955d0a85569b8ae51354be8d2011b3920f5acb556a4582fe33a87d032",
+      "requests": [
+        {
+          "id": "original.kb18",
+          "query_id": "original",
+          "arm": {
+            "id": "kb18",
+            "kind": "knowledge_base",
+            "limit": 18
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "Give me the exact SQL command to force a watermark commit."
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "original.kb18_threshold0",
+          "query_id": "original",
+          "arm": {
+            "id": "kb18_threshold0",
+            "kind": "knowledge_base",
+            "limit": 18,
+            "rerankerThreshold": 0
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "Give me the exact SQL command to force a watermark commit."
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true,
+                "rerankerThreshold": 0
+              }
+            ]
+          }
+        },
+        {
+          "id": "original.kb18_no_rerank",
+          "query_id": "original",
+          "arm": {
+            "id": "kb18_no_rerank",
+            "kind": "knowledge_base",
+            "limit": 18,
+            "resultsProcessing": "none"
+          },
+          "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+          "body": {
+            "intents": [
+              {
+                "type": "semantic",
+                "search": "Give me the exact SQL command to force a watermark commit."
+              }
+            ],
+            "includeActivity": true,
+            "maxOutputDocuments": 18,
+            "knowledgeSourceParams": [
+              {
+                "knowledgeSourceName": "northstar-operations-index-source-v1",
+                "kind": "searchIndex",
+                "includeReferences": true,
+                "includeReferenceSourceData": true,
+                "resultsProcessing": "none"
+              }
+            ]
+          }
+        }
+      ],
+      "observations": {
+        "status": "completed",
+        "results": [
+          {
+            "id": "original.kb18",
+            "returned": 8,
+            "match_count": null,
+            "target_position": null,
+            "target_exact_text_and_revision": false,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.1558063
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.88672733
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8393066
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8211867
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.815894
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.59536207
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.58725864
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.45973697
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 8,
+                "search": "Give me the exact SQL command to force a watermark commit.",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "original.kb18_threshold0",
+            "returned": 10,
+            "match_count": null,
+            "target_position": 9,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 1.1565056
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8889454
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8396915
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8167318
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.8159789
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.595888
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.57320154
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.46344632
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.044352345
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": 0.026243726
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 10,
+                "search": "Give me the exact SQL command to force a watermark commit.",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": "northstar-semantic-v1",
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          },
+          {
+            "id": "original.kb18_no_rerank",
+            "returned": 10,
+            "match_count": null,
+            "target_position": 8,
+            "target_exact_text_and_revision": true,
+            "target_in_top5": false,
+            "ranking": [
+              {
+                "position": 1,
+                "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Status",
+                "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 2,
+                "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Issue acceptance criteria",
+                "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 3,
+                "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "",
+                "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 4,
+                "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Select a pattern",
+                "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 5,
+                "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Binding upstream contracts",
+                "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 6,
+                "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+                "document_id": "northstar-quality-gates",
+                "heading_h2": "Initial vertical slice",
+                "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 7,
+                "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Recovery verification",
+                "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 8,
+                "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+                "document_id": "northstar-recovery",
+                "heading_h2": "Corrective state action",
+                "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 9,
+                "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+                "document_id": "northstar-triage",
+                "heading_h2": "Procedure",
+                "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              },
+              {
+                "position": 10,
+                "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+                "document_id": "northstar-triage",
+                "heading_h2": "Stop conditions",
+                "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+                "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+                "runtime_eligible": false,
+                "search_score": null,
+                "reranker_score": null
+              }
+            ],
+            "activity": [
+              {
+                "type": "searchIndex",
+                "count": 10,
+                "search": "Give me the exact SQL command to force a watermark commit.",
+                "search_fields": [
+                  {
+                    "name": "heading_h1_search_v1"
+                  },
+                  {
+                    "name": "heading_h2_search_v1"
+                  },
+                  {
+                    "name": "text"
+                  }
+                ],
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": "northstar-operations-index-source-v1"
+              },
+              {
+                "type": "agenticReasoning",
+                "count": null,
+                "search": null,
+                "search_fields": null,
+                "semantic_configuration": null,
+                "filter": null,
+                "knowledge_source": null
+              }
+            ],
+            "semantic_partial_response_reason": null,
+            "semantic_partial_response_type": null
+          }
+        ],
+        "model_generation_calls": 0,
+        "configuration_mutations": 0,
+        "reserved_cases_run": false,
+        "spec_sha256": "778098975f4a297b981e5e220ee718bb17397edbb2174487ebd2e029706bdd70",
+        "preflight_passed": true,
+        "corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+        "semantic_configuration": {
+          "configurations": [
+            {
+              "flightingOptIn": false,
+              "name": "northstar-semantic-v1",
+              "prioritizedFields": {
+                "prioritizedContentFields": [
+                  {
+                    "fieldName": "heading_h2_search_v1"
+                  },
+                  {
+                    "fieldName": "text"
+                  }
+                ],
+                "prioritizedKeywordsFields": [],
+                "titleField": {
+                  "fieldName": "heading_h1_search_v1"
+                }
+              },
+              "rankingOrder": "BoostedRerankerScore"
+            }
+          ],
+          "defaultConfiguration": null
+        },
+        "config_before_sha256": [
+          "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+          "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+          "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+        ],
+        "config_after_sha256": [
+          "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+          "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+          "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+        ],
+        "configuration_unchanged": true,
+        "corpus_unchanged": true,
+        "calls": [
+          {
+            "id": "index-before",
+            "method": "GET",
+            "route": "indexes/northstar-ops-markdown-h2-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:09.436514+00:00",
+            "status": "succeeded",
+            "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+            "elapsed_seconds": 0.9479
+          },
+          {
+            "id": "knowledge-base-before",
+            "method": "GET",
+            "route": "knowledgebases/northstar-operations-kb-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:10.384893+00:00",
+            "status": "succeeded",
+            "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+            "elapsed_seconds": 2.6694
+          },
+          {
+            "id": "knowledge-source-before",
+            "method": "GET",
+            "route": "knowledgesources/northstar-operations-index-source-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:13.054817+00:00",
+            "status": "succeeded",
+            "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+            "elapsed_seconds": 2.8833
+          },
+          {
+            "id": "corpus-before",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:15.939066+00:00",
+            "status": "succeeded",
+            "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+            "elapsed_seconds": 0.9352
+          },
+          {
+            "id": "original.kb18",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:16.875752+00:00",
+            "status": "succeeded",
+            "response_sha256": "b735bca5d0378b6e759f9977b7219d31ec406dc1203d30b195c6b7495fba5eb1",
+            "elapsed_seconds": 2.024
+          },
+          {
+            "id": "original.kb18_threshold0",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:18.901168+00:00",
+            "status": "succeeded",
+            "response_sha256": "128252d2fc398080a4f55ed4d9d90c814ba9596f81cab9d1bdba943fb08cc507",
+            "elapsed_seconds": 0.878
+          },
+          {
+            "id": "original.kb18_no_rerank",
+            "method": "POST",
+            "route": "knowledgebases/northstar-operations-kb-v1/retrieve",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:19.780783+00:00",
+            "status": "succeeded",
+            "response_sha256": "3d942693744f2917ce6f1eb8971b7843f8bd75407de43ada402dcd0aeb492dc8",
+            "elapsed_seconds": 1.9135
+          },
+          {
+            "id": "index-after",
+            "method": "GET",
+            "route": "indexes/northstar-ops-markdown-h2-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:21.696824+00:00",
+            "status": "succeeded",
+            "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+            "elapsed_seconds": 0.8378
+          },
+          {
+            "id": "knowledge-base-after",
+            "method": "GET",
+            "route": "knowledgebases/northstar-operations-kb-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:22.535177+00:00",
+            "status": "succeeded",
+            "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+            "elapsed_seconds": 1.8582
+          },
+          {
+            "id": "knowledge-source-after",
+            "method": "GET",
+            "route": "knowledgesources/northstar-operations-index-source-v1",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:24.393839+00:00",
+            "status": "succeeded",
+            "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+            "elapsed_seconds": 1.7379
+          },
+          {
+            "id": "corpus-after",
+            "method": "POST",
+            "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+            "attempts": 1,
+            "started_at_utc": "2026-09-22T04:17:26.132588+00:00",
+            "status": "succeeded",
+            "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+            "elapsed_seconds": 1.7321
+          }
+        ],
+        "finished_at_utc": "2026-09-22T04:17:27.865604+00:00"
+      }
+    }
+  ],
+  "cross_batch_checks": {
+    "original_kb18_rankings_and_scores_identical": true,
+    "threshold0_preserves_original_eight_document_set": true,
+    "threshold0_first_eight_order_and_scores_identical": false,
+    "threshold0_variation": "Scores differ modestly for shared documents; original ranks 4 and 5 swap. Do not model this as an exact deterministic slice of one ranking.",
+    "no_rerank_references_omit_reranker_scores": true
+  },
+  "local_validation": {
+    "tests_passed": 7,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -p test_force_commit_diagnostic.py -v",
+    "test_file_sha256": "f77b831215c8be1cacb46feba72be32553b38425eedd110613f6b823a0c68b08",
+    "model_or_network_calls_in_tests": 0
+  }
+}

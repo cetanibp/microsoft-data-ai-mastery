@@ -1,0 +1,8 @@
+{
+  "case_id": "AI001-012",
+  "original_question": "Can I rerun it?",
+  "mode": "clarify",
+  "message": "Which component or operation do you mean? Which run or occurrence are you referring to? What happened, and at which stage did it fail?",
+  "passages": [],
+  "generated_procedural_claims": false
+}

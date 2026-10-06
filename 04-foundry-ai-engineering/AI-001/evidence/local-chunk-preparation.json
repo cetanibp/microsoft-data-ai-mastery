@@ -1,0 +1,147 @@
+{
+  "evidence_level": "local_executable_contract_and_chunk_preparation",
+  "limitations": [
+    "No retrieval quality or model evaluation run",
+    "No authorization or freshness enforcement",
+    "No cloud deployment or resource provisioning",
+    "Reserved evaluation cases were not used"
+  ],
+  "local_tests": {
+    "command": "python -m unittest discover -s 04-foundry-ai-engineering/AI-001/tests -v",
+    "failed": 0,
+    "passed": 13
+  },
+  "preparation_command": "python 04-foundry-ai-engineering/AI-001/runtime/prepare_corpus.py --repo-root . --allow-draft-local",
+  "python_version": "3.12.13",
+  "recorded_on": "2026-09-06",
+  "samples": {
+    "fixed_window": {
+      "authorization_verified": false,
+      "chunk_id": "cd3778fbbc674314d74c701582d000225f345770b526431384ea567152286e3c",
+      "chunking": {
+        "overlap_characters": 120,
+        "size_characters": 800,
+        "strategy": "fixed_window",
+        "version": "0.1.0"
+      },
+      "classification": "synthetic_lab_documentation",
+      "corpus_id": "northstar-operations",
+      "corpus_version": "0.1.0",
+      "current_freshness_verified": false,
+      "declared_reader_roles": [
+        "northstar-reader",
+        "northstar-operator"
+      ],
+      "document_id": "northstar-recovery",
+      "end_char": 800,
+      "manifest_sha256": "8cfa8f75cc7cbbe505fd09d4ad1696b67b6b3d3c9ce2077568edb1628745ff6e",
+      "mode": "offline_draft_study",
+      "policy_id": "northstar-corpus-read-v0.1",
+      "runtime_eligible": false,
+      "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_path": "02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "source_sections": [
+        {
+          "end": 49,
+          "section": "Runbook — Recovery selection and verification",
+          "section_path": [
+            "Runbook — Recovery selection and verification"
+          ],
+          "start": 0
+        },
+        {
+          "end": 800,
+          "section": "Select a pattern",
+          "section_path": [
+            "Runbook — Recovery selection and verification",
+            "Select a pattern"
+          ],
+          "start": 49
+        }
+      ],
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "start_char": 0,
+      "text": "# Runbook — Recovery selection and verification\n\n## Select a pattern\n\n| Condition | Recovery pattern | Do not do |\n|---|---|---|\n| Transient execution failure before accepted publication | Correct dependency and use safe replay | Advance watermark or delete attempt evidence |\n| Durable target write followed by failure | Replay the same fixed boundary through the idempotent merge | Truncate target or create a new boundary |\n| Quality BLOCK | Correct data or contract implementation, then replay; policy changes require a future reviewed release | Bypass, downgrade, or delete the block |\n| Stale candidate/concurrent winner | Keep winner, abandon stale candidate, reconcile target, then decide whether replay is necessary | Force stale candidate to commit |\n| Metadata/configuration defect | Corre",
+      "title": "Runbook — Recovery selection and verification"
+    },
+    "markdown_section": {
+      "authorization_verified": false,
+      "chunk_id": "75972db13f4903dc8a9f709a3ae82e997b7ce42fc3b14b1de7f5c8926da8ebaf",
+      "chunking": {
+        "strategy": "markdown_section",
+        "version": "0.1.0"
+      },
+      "classification": "synthetic_lab_documentation",
+      "corpus_id": "northstar-operations",
+      "corpus_version": "0.1.0",
+      "current_freshness_verified": false,
+      "declared_reader_roles": [
+        "northstar-reader",
+        "northstar-operator"
+      ],
+      "document_id": "northstar-recovery",
+      "end_char": 1279,
+      "manifest_sha256": "8cfa8f75cc7cbbe505fd09d4ad1696b67b6b3d3c9ce2077568edb1628745ff6e",
+      "mode": "offline_draft_study",
+      "policy_id": "northstar-corpus-read-v0.1",
+      "runtime_eligible": false,
+      "source_blob_sha": "598dfc2e127a25452bd4eaeb8631e86db495359b",
+      "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+      "source_path": "02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "source_sections": [
+        {
+          "end": 1279,
+          "section": "Select a pattern",
+          "section_path": [
+            "Runbook — Recovery selection and verification",
+            "Select a pattern"
+          ],
+          "start": 49
+        }
+      ],
+      "source_url": "https://github.com/cetanibp/microsoft-data-ai-mastery/blob/746199302b9a0275e7dba8e1e3c8ca5586043c89/02-dataops-devops/OPS-002/runbooks/recovery.md",
+      "start_char": 49,
+      "text": "## Select a pattern\n\n| Condition | Recovery pattern | Do not do |\n|---|---|---|\n| Transient execution failure before accepted publication | Correct dependency and use safe replay | Advance watermark or delete attempt evidence |\n| Durable target write followed by failure | Replay the same fixed boundary through the idempotent merge | Truncate target or create a new boundary |\n| Quality BLOCK | Correct data or contract implementation, then replay; policy changes require a future reviewed release | Bypass, downgrade, or delete the block |\n| Stale candidate/concurrent winner | Keep winner, abandon stale candidate, reconcile target, then decide whether replay is necessary | Force stale candidate to commit |\n| Metadata/configuration defect | Correct code/config through governed delivery and validate release compatibility | Edit an approved immutable release in place |\n| Telemetry or routing failure | Restore telemetry/routing and replay the evaluator/router idempotently | Rerun ingestion when data/state already succeeded |\n| Quality-enforcement integrity breach | P1 containment, state reconstruction, two-person corrective plan, and separately governed state recovery | Use normal replay until safety is established |\n\n",
+      "title": "Runbook — Recovery selection and verification"
+    }
+  },
+  "summary": {
+    "corpus_id": "northstar-operations",
+    "corpus_version": "0.1.0",
+    "current_access_and_freshness": "not_verified",
+    "document_count": 3,
+    "loader_version": "0.1.0",
+    "manifest_sha256": "8cfa8f75cc7cbbe505fd09d4ad1696b67b6b3d3c9ce2077568edb1628745ff6e",
+    "mode": "offline_draft_study",
+    "runtime_eligible": false,
+    "source_blob_verification": "PASS",
+    "source_characters": 8783,
+    "strategies": {
+      "fixed_window": {
+        "chunk_count": 15,
+        "chunks_over_800_characters": 0,
+        "max_characters": 800,
+        "min_characters": 135,
+        "per_document": {
+          "northstar-quality-gates": 6,
+          "northstar-recovery": 5,
+          "northstar-triage": 4
+        },
+        "total_chunk_characters": 10223
+      },
+      "markdown_section": {
+        "chunk_count": 24,
+        "chunks_over_800_characters": 2,
+        "max_characters": 1230,
+        "min_characters": 20,
+        "per_document": {
+          "northstar-quality-gates": 9,
+          "northstar-recovery": 9,
+          "northstar-triage": 6
+        },
+        "total_chunk_characters": 8783
+      }
+    }
+  }
+}

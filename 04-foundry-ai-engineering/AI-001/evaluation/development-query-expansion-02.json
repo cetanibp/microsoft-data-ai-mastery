@@ -1,0 +1,148 @@
+{
+  "experiment_id": "development-query-expansion-02",
+  "status": "frozen_before_live_execution",
+  "declared_date": "2026-10-01",
+  "scope": "retrieval_only_development_comparison",
+  "api_version": "2026-08-01-preview",
+  "index": "northstar-ops-markdown-h2-v1",
+  "knowledge_base": "northstar-operations-kb-v1",
+  "knowledge_source": "northstar-operations-index-source-v1",
+  "semantic_configuration": "northstar-semantic-v1",
+  "expected_corpus_count": 18,
+  "historical_corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+  "candidate_limit_per_query": 10,
+  "final_context_limit": 5,
+  "fusion": {
+    "method": "reciprocal_rank_fusion",
+    "rank_constant": 60,
+    "inputs": [
+      "original",
+      "expanded"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "AI001-001",
+      "category": "supported",
+      "original": "After a quality BLOCK, should I manually advance the watermark?",
+      "expanded": "After a quality BLOCK, should I manually advance the watermark?\nDocumented prerequisites, decision conditions, restrictions, and verification.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-011",
+      "category": "ambiguous",
+      "original": "A quality check failed. Is the whole run blocked?",
+      "expanded": "A quality check failed. Is the whole run blocked?\nDocumented prerequisites, decision conditions, restrictions, and verification.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-quality-gates",
+          "heading_h2": "Initial vertical slice",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-012",
+      "category": "ambiguous",
+      "original": "Can I rerun it?",
+      "expanded": "Can I rerun it?\nDocumented prerequisites, decision conditions, restrictions, and verification.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "heading_h2": "Procedure",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-013",
+      "category": "ambiguous",
+      "original": "What is the latest watermark?",
+      "expanded": "What is the latest watermark?\nDocumented prerequisites, decision conditions, restrictions, and verification.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "heading_h2": "Procedure",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        }
+      ]
+    },
+    {
+      "case_id": "AI001-025",
+      "category": "unanswerable",
+      "original": "Give me the exact SQL command to force a watermark commit.",
+      "expanded": "Give me the exact SQL command to force a watermark commit.\nDocumented prerequisites, decision conditions, restrictions, and verification.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Corrective state action",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b"
+        }
+      ]
+    }
+  ],
+  "bounds": {
+    "query_requests": 10,
+    "configuration_reads": 6,
+    "corpus_reads": 2,
+    "total_requests": 18,
+    "attempts_per_request": 1,
+    "model_generation_calls": 0
+  },
+  "controls": [
+    "development cases only; no reserved questions",
+    "original questions retained byte-for-byte from dataset 0.1.0",
+    "one question-only fixed suffix for every case; no case-specific branches, model calls, source terms or evaluator inputs",
+    "same semantic search fields, configuration and candidate depth for original and expanded queries",
+    "original, expanded and fused views each have a five-passage final context budget",
+    "required evidence identities and hashes are evaluator-only and never enter a request",
+    "exact 18-record historical corpus fingerprint and configuration hashes checked before and after",
+    "one call per query; no retry, repair or within-batch tuning"
+  ],
+  "interpretation": [
+    "Compare evidence completeness per case, not answer correctness or behavior routing.",
+    "An exact evidence hit must match document, heading, source revision and text hash.",
+    "Fixed-rule success on reused development questions does not establish independent generalization; the rule was designed after earlier results.",
+    "Fusion may use a larger candidate pool but must not exceed the unchanged five-passage context budget.",
+    "A regression occurs when original top-five evidence is complete and either expanded or fused top five loses required evidence.",
+    "Ambiguous questions still require clarification behavior even if retrieval becomes complete.",
+    "If configuration or corpus changes, invalidate the comparison; if authentication fails, stop without retry.",
+    "Report deduplicated candidate union and full fused ranks separately from all final five-passage views.",
+    "AI001-025 remains an unresolved control; do not tune another force-commit rewrite within this batch.",
+    "Compare arms within this run; manual comparison 01 is historical context, not a simultaneous control."
+  ],
+  "query_generation": {
+    "rule_id": "question-only-v1",
+    "method": "append_fixed_suffix",
+    "suffix": "\nDocumented prerequisites, decision conditions, restrictions, and verification."
+  }
+}

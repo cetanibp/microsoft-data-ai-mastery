@@ -1,0 +1,1607 @@
+{
+  "checkpoint": "15",
+  "experiment_id": "development-query-expansion-02",
+  "status": "completed",
+  "execution_date_pacific": "2026-10-01",
+  "executed_at_utc": {
+    "started": "2026-10-02T03:59:05.070405+00:00",
+    "finished": "2026-10-02T03:59:47.050915+00:00"
+  },
+  "scope": "retrieval_only_development_comparison",
+  "api_version": "2026-08-01-preview",
+  "query_generation": {
+    "rule_id": "question-only-v1",
+    "method": "append_fixed_suffix",
+    "suffix": "\nDocumented prerequisites, decision conditions, restrictions, and verification."
+  },
+  "case_count": 5,
+  "model_generation_calls": 0,
+  "configuration_mutations": 0,
+  "reserved_cases_run": false,
+  "candidate_limit_per_query": 10,
+  "final_context_limit": 5,
+  "request_counts": {
+    "query": 10,
+    "configuration_reads": 6,
+    "corpus_reads": 2,
+    "total": 18,
+    "succeeded": 18,
+    "failed": 0,
+    "retries": 0
+  },
+  "pre_batch_endpoint_discovery": "One additional read-only Azure resource inventory call; outside the experiment budget.",
+  "controls": {
+    "preflight_passed": true,
+    "corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+    "corpus_unchanged": true,
+    "configuration_unchanged": true,
+    "config_before_sha256": [
+      "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+      "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+      "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+    ],
+    "config_after_sha256": [
+      "df2fa166fda31a6979f3c8096cf56dbf90783f5348ebab74dd1c1639fb67a95d",
+      "c473497180e75dbdf66be1a1f18fddc326c4fa277e7cb664882c1f489e1e6ad0",
+      "a6d3565938ee85fd6da39e50e7c3e453af6302c994f050cd73e2a4decfc8466f"
+    ]
+  },
+  "metrics": {
+    "complete_final_views": {
+      "original": {
+        "numerator": 3,
+        "denominator": 5
+      },
+      "expanded": {
+        "numerator": 4,
+        "denominator": 5
+      },
+      "fused": {
+        "numerator": 3,
+        "denominator": 5
+      }
+    },
+    "regressions_relative_to_complete_original": {
+      "expanded": {
+        "numerator": 0,
+        "denominator": 3
+      },
+      "fused": {
+        "numerator": 0,
+        "denominator": 3
+      }
+    },
+    "fused_losses_relative_to_complete_expanded": {
+      "numerator": 1,
+      "denominator": 4
+    }
+  },
+  "results": [
+    {
+      "case_id": "AI001-001",
+      "category": "supported",
+      "candidate_pool": {
+        "original_count": 10,
+        "expanded_count": 10,
+        "union_count": 11
+      },
+      "candidate_evidence": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 2,
+              "heading_match_position": 2,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "views": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 2,
+              "heading_match_position": 2,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "fused": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "regressions_relative_to_complete_original": {
+        "expanded": false,
+        "fused": false
+      },
+      "fused_loses_complete_expanded": false,
+      "fused_candidates": {
+        "ranking": [
+          {
+            "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03252247488101534,
+            "source_ranks": {
+              "original": 1,
+              "expanded": 2
+            },
+            "position": 1
+          },
+          {
+            "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03252247488101534,
+            "source_ranks": {
+              "original": 2,
+              "expanded": 1
+            },
+            "position": 2
+          },
+          {
+            "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.031746031746031744,
+            "source_ranks": {
+              "original": 3,
+              "expanded": 3
+            },
+            "position": 3
+          },
+          {
+            "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Initial vertical slice",
+            "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.031009615384615385,
+            "source_ranks": {
+              "original": 4,
+              "expanded": 5
+            },
+            "position": 4
+          },
+          {
+            "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+            "document_id": "northstar-triage",
+            "heading_h2": "Stop conditions",
+            "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030330882352941176,
+            "source_ranks": {
+              "original": 8,
+              "expanded": 4
+            },
+            "position": 5
+          },
+          {
+            "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Status",
+            "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030309988518943745,
+            "source_ranks": {
+              "original": 5,
+              "expanded": 7
+            },
+            "position": 6
+          },
+          {
+            "chunk_id_sha256": "61fe588644a1d878cdb72a833c61cc8c3432b7ca771fa23c8423e8d5721d312a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Objective",
+            "text_sha256": "a022ee2e1c6f9372eed04c45016688498d96bad847c147f18fe5225e8b6dfd36",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030303030303030304,
+            "source_ranks": {
+              "original": 6,
+              "expanded": 6
+            },
+            "position": 7
+          },
+          {
+            "chunk_id_sha256": "060b1d7e2fefaa316911307283a8c9b9231f62bcd46ef1060fd6913265440f9c",
+            "document_id": "northstar-triage",
+            "heading_h2": "Trigger",
+            "text_sha256": "f0c846aa4b959173dad94ed9385362bb810a93459dbcc65f9b71b0cb2a037f76",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.029631255487269532,
+            "source_ranks": {
+              "original": 7,
+              "expanded": 8
+            },
+            "position": 8
+          },
+          {
+            "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "",
+            "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.02877846790890269,
+            "source_ranks": {
+              "original": 10,
+              "expanded": 9
+            },
+            "position": 9
+          },
+          {
+            "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Binding upstream contracts",
+            "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014492753623188406,
+            "source_ranks": {
+              "original": 9
+            },
+            "position": 10
+          },
+          {
+            "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Issue acceptance criteria",
+            "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014285714285714285,
+            "source_ranks": {
+              "expanded": 10
+            },
+            "position": 11
+          }
+        ],
+        "all_required_evidence": true,
+        "required_evidence": [
+          {
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "position": 1,
+            "heading_match_position": 1,
+            "exact_text_and_revision": true
+          },
+          {
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "position": 3,
+            "heading_match_position": 3,
+            "exact_text_and_revision": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AI001-011",
+      "category": "ambiguous",
+      "candidate_pool": {
+        "original_count": 10,
+        "expanded_count": 10,
+        "union_count": 10
+      },
+      "candidate_evidence": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-quality-gates",
+              "heading_h2": "Initial vertical slice",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-quality-gates",
+              "heading_h2": "Initial vertical slice",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "views": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-quality-gates",
+              "heading_h2": "Initial vertical slice",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-quality-gates",
+              "heading_h2": "Initial vertical slice",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "fused": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-quality-gates",
+              "heading_h2": "Initial vertical slice",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "regressions_relative_to_complete_original": {
+        "expanded": false,
+        "fused": false
+      },
+      "fused_loses_complete_expanded": false,
+      "fused_candidates": {
+        "ranking": [
+          {
+            "chunk_id_sha256": "060b1d7e2fefaa316911307283a8c9b9231f62bcd46ef1060fd6913265440f9c",
+            "document_id": "northstar-triage",
+            "heading_h2": "Trigger",
+            "text_sha256": "f0c846aa4b959173dad94ed9385362bb810a93459dbcc65f9b71b0cb2a037f76",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03278688524590164,
+            "source_ranks": {
+              "original": 1,
+              "expanded": 1
+            },
+            "position": 1
+          },
+          {
+            "chunk_id_sha256": "61fe588644a1d878cdb72a833c61cc8c3432b7ca771fa23c8423e8d5721d312a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Objective",
+            "text_sha256": "a022ee2e1c6f9372eed04c45016688498d96bad847c147f18fe5225e8b6dfd36",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03200204813108039,
+            "source_ranks": {
+              "original": 2,
+              "expanded": 3
+            },
+            "position": 2
+          },
+          {
+            "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03200204813108039,
+            "source_ranks": {
+              "original": 3,
+              "expanded": 2
+            },
+            "position": 3
+          },
+          {
+            "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Initial vertical slice",
+            "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03125,
+            "source_ranks": {
+              "original": 4,
+              "expanded": 4
+            },
+            "position": 4
+          },
+          {
+            "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+            "document_id": "northstar-triage",
+            "heading_h2": "Stop conditions",
+            "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030309988518943745,
+            "source_ranks": {
+              "original": 7,
+              "expanded": 5
+            },
+            "position": 5
+          },
+          {
+            "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Status",
+            "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030309988518943745,
+            "source_ranks": {
+              "original": 5,
+              "expanded": 7
+            },
+            "position": 6
+          },
+          {
+            "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.029857397504456328,
+            "source_ranks": {
+              "original": 6,
+              "expanded": 8
+            },
+            "position": 7
+          },
+          {
+            "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.02964426877470356,
+            "source_ranks": {
+              "original": 9,
+              "expanded": 6
+            },
+            "position": 8
+          },
+          {
+            "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Issue acceptance criteria",
+            "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.028991596638655463,
+            "source_ranks": {
+              "original": 8,
+              "expanded": 10
+            },
+            "position": 9
+          },
+          {
+            "chunk_id_sha256": "3b854f46fba72c2c55f7320e67ec8d0f0a94f559c455da71cd1241471264ae61",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Completion criteria",
+            "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.02877846790890269,
+            "source_ranks": {
+              "original": 10,
+              "expanded": 9
+            },
+            "position": 10
+          }
+        ],
+        "all_required_evidence": true,
+        "required_evidence": [
+          {
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Initial vertical slice",
+            "position": 4,
+            "heading_match_position": 4,
+            "exact_text_and_revision": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AI001-012",
+      "category": "ambiguous",
+      "candidate_pool": {
+        "original_count": 2,
+        "expanded_count": 10,
+        "union_count": 10
+      },
+      "candidate_evidence": {
+        "original": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 5,
+              "heading_match_position": 5,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "views": {
+        "original": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 5,
+              "heading_match_position": 5,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "fused": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Select a pattern",
+              "position": 1,
+              "heading_match_position": 1,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "regressions_relative_to_complete_original": {
+        "expanded": false,
+        "fused": false
+      },
+      "fused_loses_complete_expanded": true,
+      "fused_candidates": {
+        "ranking": [
+          {
+            "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03278688524590164,
+            "source_ranks": {
+              "original": 1,
+              "expanded": 1
+            },
+            "position": 1
+          },
+          {
+            "chunk_id_sha256": "61fe588644a1d878cdb72a833c61cc8c3432b7ca771fa23c8423e8d5721d312a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Objective",
+            "text_sha256": "a022ee2e1c6f9372eed04c45016688498d96bad847c147f18fe5225e8b6dfd36",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030621785881252923,
+            "source_ranks": {
+              "original": 2,
+              "expanded": 9
+            },
+            "position": 2
+          },
+          {
+            "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.016129032258064516,
+            "source_ranks": {
+              "expanded": 2
+            },
+            "position": 3
+          },
+          {
+            "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Corrective state action",
+            "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.015873015873015872,
+            "source_ranks": {
+              "expanded": 3
+            },
+            "position": 4
+          },
+          {
+            "chunk_id_sha256": "3b854f46fba72c2c55f7320e67ec8d0f0a94f559c455da71cd1241471264ae61",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Completion criteria",
+            "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.015625,
+            "source_ranks": {
+              "expanded": 4
+            },
+            "position": 5
+          },
+          {
+            "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.015384615384615385,
+            "source_ranks": {
+              "expanded": 5
+            },
+            "position": 6
+          },
+          {
+            "chunk_id_sha256": "060b1d7e2fefaa316911307283a8c9b9231f62bcd46ef1060fd6913265440f9c",
+            "document_id": "northstar-triage",
+            "heading_h2": "Trigger",
+            "text_sha256": "f0c846aa4b959173dad94ed9385362bb810a93459dbcc65f9b71b0cb2a037f76",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.015151515151515152,
+            "source_ranks": {
+              "expanded": 6
+            },
+            "position": 7
+          },
+          {
+            "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+            "document_id": "northstar-triage",
+            "heading_h2": "Stop conditions",
+            "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014925373134328358,
+            "source_ranks": {
+              "expanded": 7
+            },
+            "position": 8
+          },
+          {
+            "chunk_id_sha256": "28a456544bb6b4edf964eb9b546a379f31cb2b7ae5d27331bf8b109fb6738764",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Repository contents",
+            "text_sha256": "9f1d40d5613ea20c620c47a83e4fec39a5abf52318ba06ed10baa02acaefedfd",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014705882352941176,
+            "source_ranks": {
+              "expanded": 8
+            },
+            "position": 9
+          },
+          {
+            "chunk_id_sha256": "4515d964880d2d44f0a7a96055c5f0fe39839cf389162b842008aabae03e6a8a",
+            "document_id": "northstar-triage",
+            "heading_h2": "Required starting evidence",
+            "text_sha256": "4e82e3953e281fe0963afca75c8d20119dc6b665cd7cb1bf8402e0e67b24f236",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014285714285714285,
+            "source_ranks": {
+              "expanded": 10
+            },
+            "position": 10
+          }
+        ],
+        "all_required_evidence": true,
+        "required_evidence": [
+          {
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "position": 6,
+            "heading_match_position": 6,
+            "exact_text_and_revision": true
+          },
+          {
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "position": 1,
+            "heading_match_position": 1,
+            "exact_text_and_revision": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AI001-013",
+      "category": "ambiguous",
+      "candidate_pool": {
+        "original_count": 7,
+        "expanded_count": 10,
+        "union_count": 10
+      },
+      "candidate_evidence": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 5,
+              "heading_match_position": 5,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 2,
+              "heading_match_position": 2,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "views": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 5,
+              "heading_match_position": 5,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 4,
+              "heading_match_position": 4,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 2,
+              "heading_match_position": 2,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "fused": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-triage",
+              "heading_h2": "Procedure",
+              "position": 2,
+              "heading_match_position": 2,
+              "exact_text_and_revision": true
+            },
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Recovery verification",
+              "position": 3,
+              "heading_match_position": 3,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "regressions_relative_to_complete_original": {
+        "expanded": false,
+        "fused": false
+      },
+      "fused_loses_complete_expanded": false,
+      "fused_candidates": {
+        "ranking": [
+          {
+            "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "",
+            "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03278688524590164,
+            "source_ranks": {
+              "original": 1,
+              "expanded": 1
+            },
+            "position": 1
+          },
+          {
+            "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.0315136476426799,
+            "source_ranks": {
+              "original": 5,
+              "expanded": 2
+            },
+            "position": 2
+          },
+          {
+            "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03149801587301587,
+            "source_ranks": {
+              "original": 4,
+              "expanded": 3
+            },
+            "position": 3
+          },
+          {
+            "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Status",
+            "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.031024531024531024,
+            "source_ranks": {
+              "original": 3,
+              "expanded": 6
+            },
+            "position": 4
+          },
+          {
+            "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Binding upstream contracts",
+            "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030834914611005692,
+            "source_ranks": {
+              "original": 2,
+              "expanded": 8
+            },
+            "position": 5
+          },
+          {
+            "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Initial vertical slice",
+            "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03055037313432836,
+            "source_ranks": {
+              "original": 7,
+              "expanded": 4
+            },
+            "position": 6
+          },
+          {
+            "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03007688828584351,
+            "source_ranks": {
+              "original": 6,
+              "expanded": 7
+            },
+            "position": 7
+          },
+          {
+            "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+            "document_id": "northstar-triage",
+            "heading_h2": "Stop conditions",
+            "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.015384615384615385,
+            "source_ranks": {
+              "expanded": 5
+            },
+            "position": 8
+          },
+          {
+            "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Issue acceptance criteria",
+            "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014492753623188406,
+            "source_ranks": {
+              "expanded": 9
+            },
+            "position": 9
+          },
+          {
+            "chunk_id_sha256": "28a456544bb6b4edf964eb9b546a379f31cb2b7ae5d27331bf8b109fb6738764",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Repository contents",
+            "text_sha256": "9f1d40d5613ea20c620c47a83e4fec39a5abf52318ba06ed10baa02acaefedfd",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.014285714285714285,
+            "source_ranks": {
+              "expanded": 10
+            },
+            "position": 10
+          }
+        ],
+        "all_required_evidence": true,
+        "required_evidence": [
+          {
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "position": 2,
+            "heading_match_position": 2,
+            "exact_text_and_revision": true
+          },
+          {
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "position": 3,
+            "heading_match_position": 3,
+            "exact_text_and_revision": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AI001-025",
+      "category": "unanswerable",
+      "candidate_pool": {
+        "original_count": 10,
+        "expanded_count": 10,
+        "union_count": 10
+      },
+      "candidate_evidence": {
+        "original": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Corrective state action",
+              "position": 9,
+              "heading_match_position": 9,
+              "exact_text_and_revision": true
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": true,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Corrective state action",
+              "position": 9,
+              "heading_match_position": 9,
+              "exact_text_and_revision": true
+            }
+          ]
+        }
+      },
+      "views": {
+        "original": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Corrective state action",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            }
+          ]
+        },
+        "expanded": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Corrective state action",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            }
+          ]
+        },
+        "fused": {
+          "all_required_evidence": false,
+          "required_evidence": [
+            {
+              "document_id": "northstar-recovery",
+              "heading_h2": "Corrective state action",
+              "position": null,
+              "heading_match_position": null,
+              "exact_text_and_revision": false
+            }
+          ]
+        }
+      },
+      "regressions_relative_to_complete_original": {
+        "expanded": false,
+        "fused": false
+      },
+      "fused_loses_complete_expanded": false,
+      "fused_candidates": {
+        "ranking": [
+          {
+            "chunk_id_sha256": "7c478924608ca33b2f7eab0abac3517a497f67c0c4aa0c56d77552cb16d188b1",
+            "document_id": "northstar-triage",
+            "heading_h2": "Stop conditions",
+            "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03252247488101534,
+            "source_ranks": {
+              "original": 1,
+              "expanded": 2
+            },
+            "position": 1
+          },
+          {
+            "chunk_id_sha256": "b77b379d3b30b206722c005010fa6b62acedf0ff1067a21593f2409fd3d53ac3",
+            "document_id": "northstar-triage",
+            "heading_h2": "Procedure",
+            "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03252247488101534,
+            "source_ranks": {
+              "original": 2,
+              "expanded": 1
+            },
+            "position": 2
+          },
+          {
+            "chunk_id_sha256": "4c9abdd5e109a9ff099480812e6212666b122f6edbed46fc98cbd6c618726c38",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Select a pattern",
+            "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.031746031746031744,
+            "source_ranks": {
+              "original": 3,
+              "expanded": 3
+            },
+            "position": 3
+          },
+          {
+            "chunk_id_sha256": "911899a8cd2ab3b7ae2caf2e599f62859aba3ffebe162b43e813e2e9722b5713",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Initial vertical slice",
+            "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03125,
+            "source_ranks": {
+              "original": 4,
+              "expanded": 4
+            },
+            "position": 4
+          },
+          {
+            "chunk_id_sha256": "e8db47dd7b4b30d3e3825977ffd150f67fe5399611d8700d2ae2597c7e84e10f",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Recovery verification",
+            "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.03076923076923077,
+            "source_ranks": {
+              "original": 5,
+              "expanded": 5
+            },
+            "position": 5
+          },
+          {
+            "chunk_id_sha256": "8b556c227733503cf6f36b0b08d2154a304ae3fb758a8931297bbb435c925543",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Binding upstream contracts",
+            "text_sha256": "a0030fcc7c657036502f1e0ab7104526f87ffbf1179348902969bb5b47d8ce12",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.030303030303030304,
+            "source_ranks": {
+              "original": 6,
+              "expanded": 6
+            },
+            "position": 6
+          },
+          {
+            "chunk_id_sha256": "f95b36123087cd5330ad79e74e0cd48b1fcad9896e0dd0db2ca3a528673fa367",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Status",
+            "text_sha256": "45269627f39c4e6cb656d7193f48cda76963bdcb5e80f1174f6fe2bf5d376675",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.029850746268656716,
+            "source_ranks": {
+              "original": 7,
+              "expanded": 7
+            },
+            "position": 7
+          },
+          {
+            "chunk_id_sha256": "90d8648dcebefdb6a4f40547c192069960c4565dae5f3b5bc1b4ea48c5076189",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "",
+            "text_sha256": "a01677f7430a679af472784ddee3360fa7fe6257ed5b3a909731487b3744963e",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.029411764705882353,
+            "source_ranks": {
+              "original": 8,
+              "expanded": 8
+            },
+            "position": 8
+          },
+          {
+            "chunk_id_sha256": "cf8eb9f418a716bd596713fa4ba1ad1904eb9672cbaff14af764306966a76f92",
+            "document_id": "northstar-recovery",
+            "heading_h2": "Corrective state action",
+            "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.028985507246376812,
+            "source_ranks": {
+              "original": 9,
+              "expanded": 9
+            },
+            "position": 9
+          },
+          {
+            "chunk_id_sha256": "4396b9bb13e6e44858f35c645662cf67ad8d18b0fb35ac887dc03a98755dc00a",
+            "document_id": "northstar-quality-gates",
+            "heading_h2": "Issue acceptance criteria",
+            "text_sha256": "ad7d04d419d1063bc0aa27442a8c8d259fe2ddcaf62947d63b1781ff03bdba72",
+            "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+            "runtime_eligible": false,
+            "rrf_score": 0.02857142857142857,
+            "source_ranks": {
+              "original": 10,
+              "expanded": 10
+            },
+            "position": 10
+          }
+        ],
+        "all_required_evidence": true,
+        "required_evidence": [
+          {
+            "document_id": "northstar-recovery",
+            "heading_h2": "Corrective state action",
+            "position": 9,
+            "heading_match_position": 9,
+            "exact_text_and_revision": true
+          }
+        ]
+      }
+    }
+  ],
+  "requests": [
+    {
+      "id": "index-before",
+      "method": "GET",
+      "route": "indexes/northstar-ops-markdown-h2-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:05.070405+00:00",
+      "status": "succeeded",
+      "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+      "elapsed_seconds": 2.6494
+    },
+    {
+      "id": "knowledge-base-before",
+      "method": "GET",
+      "route": "knowledgebases/northstar-operations-kb-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:07.720392+00:00",
+      "status": "succeeded",
+      "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+      "elapsed_seconds": 5.0687
+    },
+    {
+      "id": "knowledge-source-before",
+      "method": "GET",
+      "route": "knowledgesources/northstar-operations-index-source-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:12.789616+00:00",
+      "status": "succeeded",
+      "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+      "elapsed_seconds": 3.1898
+    },
+    {
+      "id": "corpus-before",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:15.980520+00:00",
+      "status": "succeeded",
+      "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+      "elapsed_seconds": 3.2447
+    },
+    {
+      "id": "AI001-001.original",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:19.227111+00:00",
+      "status": "succeeded",
+      "response_sha256": "cffa24656d17a5859c74ccd16488e7b7b74a6f20804a11b97c50033f4af64202",
+      "elapsed_seconds": 1.0655
+    },
+    {
+      "id": "AI001-001.expanded",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:20.294613+00:00",
+      "status": "succeeded",
+      "response_sha256": "4bf31018834dddfe900999b075888b8adee3e0dd12d737d7da57bd9f6e4a6765",
+      "elapsed_seconds": 3.1279
+    },
+    {
+      "id": "AI001-011.original",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:23.424304+00:00",
+      "status": "succeeded",
+      "response_sha256": "2db35dd6daef4b3be0aac67b79f4bbce9a4cc5767e2e7b3a8c76e3082357d661",
+      "elapsed_seconds": 0.8772
+    },
+    {
+      "id": "AI001-011.expanded",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:24.303726+00:00",
+      "status": "succeeded",
+      "response_sha256": "9b5f066c2535a449083f7a53b2c3e2123f445b2a152ca809e6cb8689bf18dc07",
+      "elapsed_seconds": 2.8481
+    },
+    {
+      "id": "AI001-012.original",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:27.153392+00:00",
+      "status": "succeeded",
+      "response_sha256": "0ec58c4fe04a2c5bab596cb9bd48354385ff1cf75366c83b10a404aab63652b4",
+      "elapsed_seconds": 0.8409
+    },
+    {
+      "id": "AI001-012.expanded",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:27.995970+00:00",
+      "status": "succeeded",
+      "response_sha256": "a6f44dfd27b9fa45fdbca226980fc0b7ada27feb744d397b0ac867dafd653367",
+      "elapsed_seconds": 3.2526
+    },
+    {
+      "id": "AI001-013.original",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:31.251094+00:00",
+      "status": "succeeded",
+      "response_sha256": "5d8d430b0722f27b88da5426e27ecd9dd87b009f9e1341d3ef5deb9bdce14e98",
+      "elapsed_seconds": 1.63
+    },
+    {
+      "id": "AI001-013.expanded",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:32.882869+00:00",
+      "status": "succeeded",
+      "response_sha256": "7d0ff8adc3fbcc5f185078ac95cf6da4b8946622dbbda801b73671ee36f7ea05",
+      "elapsed_seconds": 2.8647
+    },
+    {
+      "id": "AI001-025.original",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:35.749105+00:00",
+      "status": "succeeded",
+      "response_sha256": "ab0952ee36aa83fb71429426ed2c3fbaded2c51584f7451c4d15e7e199218c86",
+      "elapsed_seconds": 0.8882
+    },
+    {
+      "id": "AI001-025.expanded",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:36.640573+00:00",
+      "status": "succeeded",
+      "response_sha256": "035b444a8a4c078e7cddb72a6557beac89d6d964a1b92f9924f996f2118b009e",
+      "elapsed_seconds": 2.9242
+    },
+    {
+      "id": "index-after",
+      "method": "GET",
+      "route": "indexes/northstar-ops-markdown-h2-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:39.566307+00:00",
+      "status": "succeeded",
+      "response_sha256": "98e91efb055f668511493e17608197f62342109a6a5ede78d274173d4f44ffa8",
+      "elapsed_seconds": 0.8965
+    },
+    {
+      "id": "knowledge-base-after",
+      "method": "GET",
+      "route": "knowledgebases/northstar-operations-kb-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:40.463328+00:00",
+      "status": "succeeded",
+      "response_sha256": "6bfdbcda6038548bf8194f6d94e692ee796e815ebf6a4e2ae1cf98a57eae02df",
+      "elapsed_seconds": 2.7852
+    },
+    {
+      "id": "knowledge-source-after",
+      "method": "GET",
+      "route": "knowledgesources/northstar-operations-index-source-v1",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:43.249017+00:00",
+      "status": "succeeded",
+      "response_sha256": "b33a0d6037008e9ec4ded033108d3b70612d2ea82a5b7fa1df262a96c3f5817f",
+      "elapsed_seconds": 0.8214
+    },
+    {
+      "id": "corpus-after",
+      "method": "POST",
+      "route": "indexes/northstar-ops-markdown-h2-v1/docs/search",
+      "attempts": 1,
+      "started_at_utc": "2026-10-02T03:59:44.071692+00:00",
+      "status": "succeeded",
+      "response_sha256": "a7f2f7a2550a6bbb0999fb59edfcf10cf7559743d07bfe9b6ad4351a0917fa59",
+      "elapsed_seconds": 2.978
+    }
+  ],
+  "spec_canonical_sha256": "55c1a46b331bfbaf28b6d41559ba7aee1a36df40f757d9cecb3035e1d0ca26a9",
+  "local_artifacts": {
+    "directory": "generated/development-query-expansion-02-20261001",
+    "raw_service_bodies_archived": false,
+    "file_sha256": {
+      "AI001-001.expanded.metrics.json": "38003cdd26c0aa51d9b712e359789fe580dd22b82cefd0a04e0184b3a81f7bf5",
+      "AI001-001.expanded.ranking.json": "a5912bbad0ad7b0dfa31929461f66e3b6cefecabbcce7b91f14d4266eb2a4228",
+      "AI001-001.expanded.request.json": "450eed857fe6e695a59275a43e8d14cbfa245c8276a00488d9189adda35088ba",
+      "AI001-001.original.metrics.json": "c144d7eebea93436786f19d19926e53d365dec2440025fc4bff671192abb4aea",
+      "AI001-001.original.ranking.json": "52781893ecdd551b7078bdff9d0b95041691c5580afa2d2ab3a9160a1673ca7a",
+      "AI001-001.original.request.json": "9899a5ec65220360ab2f30aa1827ab240fc66bff981d48a2aaf21d5bfef3a9af",
+      "AI001-011.expanded.metrics.json": "a98cf1d4f497302946d9496cd98116ca3d65c1607925c78d8864b9130adfedd7",
+      "AI001-011.expanded.ranking.json": "d298de839f8ac0750ba9883b3d1d3911c6625501e9e8e2cfb421fee532a33f4d",
+      "AI001-011.expanded.request.json": "3ef425e59c8aae02a21c93b074e55c892cb08be09cff7be5036bc8b964f0580d",
+      "AI001-011.original.metrics.json": "9e6569428d99698f34f5d3dfb1d681ac57f623f9e61486e1682452011360d84a",
+      "AI001-011.original.ranking.json": "5f0ff591652f970f7bd56d599c8adfbd2c77a5523d318e797b2fb35c1061fac1",
+      "AI001-011.original.request.json": "0b4da64ecde5dd3ed399c633949f4ad0763563189d056737b2aba8b4d3fd8c42",
+      "AI001-012.expanded.metrics.json": "e5a145d45350f3c7deca5e08fb2390c2d2e719f20cd6b790ac32e911deec839e",
+      "AI001-012.expanded.ranking.json": "32fa024481de4cdca5eb0da04338780c238404bcfaec4ec6fefde948a2eca651",
+      "AI001-012.expanded.request.json": "f1f80eb825a28d1d93473e6ab34bfb47bfa5c369169d91f16208f23a072c03b0",
+      "AI001-012.original.metrics.json": "765f79c8ae347e25130c2dbbc533cc7453f4e0a081562753bf4afe5c3d0f0bf1",
+      "AI001-012.original.ranking.json": "946b2db3029adde2490a550c6f700d5de58f2d36293064037becfcfe9564ca97",
+      "AI001-012.original.request.json": "1602bfcd7d961e9da9439611459931bb34094fd6d827fc6f86a5bb5ae37b5863",
+      "AI001-013.expanded.metrics.json": "97bc06b3b5e7b7e4640932f6df7d173bc314296377ceb995a42e87e87d40ff6b",
+      "AI001-013.expanded.ranking.json": "3082485ec712175910e168b8e7537ce0fbece5a818565854a0f65d82e5afc5a9",
+      "AI001-013.expanded.request.json": "177789cc3332ae226edce919f0b92cf0dd268677b36c192b1b5f96d2b720a928",
+      "AI001-013.original.metrics.json": "75c84c9bad130dc748c29d45500ce652cb16319ba235e16bff2440ec29c85d1f",
+      "AI001-013.original.ranking.json": "d84041a02bafb70af5be1f94d7cc807ac50822f2040957635be6f0f2a7f7051f",
+      "AI001-013.original.request.json": "ab6ef9225d988b694e6f52ecb833320bc3107170525fa76e016e64e3c09b0f09",
+      "AI001-025.expanded.metrics.json": "d6497bfca394d9e436dd7cc90cb279e1c1fc7a64335520a7e4c8f902efeff3d2",
+      "AI001-025.expanded.ranking.json": "a3f96da810e9292ba53d5392c7402b91479aa229301a31f7ea7226328349031a",
+      "AI001-025.expanded.request.json": "1cefc9de2e860aea5c2330262c548c58ea90a01842ab61f58c2be3c250f1e8a2",
+      "AI001-025.original.metrics.json": "cf3e4f3d670a5e56975fccd00d9223c52a43a7cf69034d2837ca41cee2171408",
+      "AI001-025.original.ranking.json": "f7fc8751d955b39b74ecd0a57747b2be09d5c27736f9806eb9229f9c3e1be2f8",
+      "AI001-025.original.request.json": "b63b281f5cb5761f4b1e09b41f320d9a5daa91cc35e30fa024ade450c2f4f695",
+      "corpus-after.metrics.json": "5d289a5d3a288f560ae1d7a96c232f4cd6e52e1eaa1cf5489a6812c7bee51dff",
+      "corpus-after.request.json": "48d2b49af8bf5229de6e757662c89b91a9dd8c2d633f0987ba888a077fe12605",
+      "corpus-before.metrics.json": "82c2bf7f5acca38bca69c8334f454863af55e57a215660cfc6b7a805ef6cac90",
+      "corpus-before.request.json": "48d2b49af8bf5229de6e757662c89b91a9dd8c2d633f0987ba888a077fe12605",
+      "index-after.metrics.json": "e3df26353442d7e68ca655bff8b7ec1a5c86d9a2dc4d0c6281eed10c8753ccea",
+      "index-before.metrics.json": "47ac75ab489ea36d708e87c6efcee8cf7e26ebad87642bdf18dc17828c5e02ef",
+      "knowledge-base-after.metrics.json": "fe9f2235fe2f1f3d2fc2713aa428337b3f270172600cdd1398722d639f645c3b",
+      "knowledge-base-before.metrics.json": "2f0cdaf650f2c5f83138d699440ad01fc32573337930cf0450371b585855d14a",
+      "knowledge-source-after.metrics.json": "077a0e49e673cc2bdd4dab6048c23f04b68223004047d1a0aa4dc2d012f0eafe",
+      "knowledge-source-before.metrics.json": "9666dba9dabd47790aef292ef554c91636891757bb44c6c801f374ee51d17115",
+      "reader-snapshot.py": "c6ce626955d0a85569b8ae51354be8d2011b3920f5acb556a4582fe33a87d032",
+      "runner-snapshot.py": "49edb80fbad1c072de95d212a1b645eca5bf610d36c747e71b43580df94fb8c6",
+      "spec.json": "846e1481c78c21c79f523f24b7c9457b0bbbc7d720c165abc5972aa5f1c95d71",
+      "summary.json": "7b3d7da1bc39bda267aa82a0d2b9d4ebe9fc4ab44c375c0ceac23bfb1e8c5f89"
+    }
+  },
+  "unchanged_preparation_code_sha256": {
+    "evaluation/run_development_query_expansion.py": "49edb80fbad1c072de95d212a1b645eca5bf610d36c747e71b43580df94fb8c6",
+    "evaluation/run_force_commit_diagnostic.py": "c6ce626955d0a85569b8ae51354be8d2011b3920f5acb556a4582fe33a87d032",
+    "tests/test_development_query_expansion.py": "db205ec75de77573881a9d2a8de984b54bf99ef39c53da63aa025ae5d06efcc8"
+  },
+  "decision": "Fixed-rule fusion did not improve original completeness; expansion-only gain requires independent development evaluation. No adoption."
+}

@@ -13,3 +13,7 @@ Provide the minimum identity/classification/access policy before retrieval. Expa
 | [#45](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/45) | AI-002 — Deploy the AI application with reproducible Azure infrastructure | Required planned work |
 
 Implementation evidence will be added under each planning ID as work is completed. These links represent backlog scope, not completed capability. See the [learning-gap review](../tracking/LEARNING_GAP_REVIEW_2026-09.md) for dependencies and evidence expectations.
+
+## Identity/access walkthrough started
+
+The [GOV-001 prerequisite matrix](GOV-001/README.md) and [draft policy](GOV-001/access-policy.json) separate user entitlement from workload service access for the initial three-document corpus. Eleven development scenarios specify expected behavior; no identity deployment or runtime enforcement is claimed. Next: evaluation design, then implementation and evidence for these boundaries.

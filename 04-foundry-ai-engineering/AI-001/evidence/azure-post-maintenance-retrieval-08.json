@@ -1,0 +1,85 @@
+{
+  "checkpoint": "08",
+  "evidence_type": "User-executed lab responses, manually reviewed; no independent cloud execution",
+  "post_maintenance": {
+    "recorded_at_utc": "2026-09-10T20:11:39.715280+00:00",
+    "cases": [
+      "target-write",
+      "completion",
+      "identifiers",
+      "routing",
+      "stale"
+    ],
+    "expected_primary_ranks": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "actual_primary_ranks": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "primary_rank_matches": 4,
+    "required_primary_evidence_in_top5": 5,
+    "completion_checklist_rank": 2,
+    "stale_checklist_rank": 4,
+    "all_returned_runtime_eligible_false": true
+  },
+  "identifier_repeats": {
+    "samples": 4,
+    "includes_original_batch": true,
+    "all_orderings_and_scores_identical": true,
+    "ranking": [
+      [
+        "northstar-triage",
+        "Completion criteria",
+        6.5382185
+      ],
+      [
+        "northstar-triage",
+        "Required starting evidence",
+        6.2656846
+      ],
+      [
+        "northstar-quality-gates",
+        "Objective",
+        3.1023438
+      ],
+      [
+        "northstar-triage",
+        "Procedure",
+        2.095461
+      ],
+      [
+        "northstar-quality-gates",
+        "Safety boundary",
+        1.786544
+      ]
+    ]
+  },
+  "global_diagnostic": {
+    "recorded_at_utc": "2026-09-10T20:55:36.897690+00:00",
+    "changed_parameter": "scoringStatistics",
+    "arms": [
+      "omitted (default)",
+      "global"
+    ],
+    "required_evidence_rank_both": 2,
+    "match_count_both": 7,
+    "all_top5_scores_and_ordering_identical": true,
+    "azure_configuration_changed": false
+  },
+  "decision": "Retain separate headings and default scoring as provisional development baseline; do not claim rank parity or confirmed cause",
+  "limitations": [
+    "Stored values matched baseline after ingestion, but primary ranking parity failed for identifiers.",
+    "Four identical samples show no observed variation, not a guarantee of stable rankings.",
+    "Global scoring made no difference in this pair; historical cause remains unconfirmed.",
+    "No generated answers or reserved cases evaluated.",
+    "Chat formatting is not a byte-exact raw response archive."
+  ]
+}

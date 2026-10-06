@@ -1,0 +1,146 @@
+{
+  "checkpoint": "06",
+  "recorded_date": "2026-09-10",
+  "evidence_type": "user-supplied lab responses, manually reviewed",
+  "independently_executed": false,
+  "index": "northstar-ops-markdown-h2-v1",
+  "api_version": "2026-04-01",
+  "chunk_count": 18,
+  "document_counts": {
+    "northstar-quality-gates": 9,
+    "northstar-recovery": 4,
+    "northstar-triage": 5
+  },
+  "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+  "query_settings": {
+    "queryType": "simple",
+    "searchMode": "any",
+    "top": 5,
+    "count": true,
+    "filter": null,
+    "orderby": null
+  },
+  "arms": {
+    "combined": "text_with_headings_v1",
+    "separate": "heading_h1_search_v1,heading_h2_search_v1,text"
+  },
+  "added_fields": {
+    "names": [
+      "heading_h1_search_v1",
+      "heading_h2_search_v1"
+    ],
+    "type": "Edm.String",
+    "searchable": true,
+    "retrievable": true,
+    "analyzer": "en.lucene",
+    "transformation": "Exact copies of original heading_h1 and heading_h2"
+  },
+  "validation": {
+    "successful_merge_records": 18,
+    "failed_merge_records": 0,
+    "readback": "PASS",
+    "chunk_identities_unchanged": true,
+    "preexisting_fields_unchanged": true,
+    "combined_field_unchanged": true,
+    "separate_headings_match_originals": true,
+    "all_runtime_eligible_false": true,
+    "baseline": "Recovered local snapshot after schema addition, before heading-value merge",
+    "merge_payload_sha256": "4a349c8323de838e09c0def36a67c15669f9f336d7ae0a560d11b612455ac5ca"
+  },
+  "cases": [
+    {
+      "id": "AI001-002",
+      "question": "A target write completed and the run then failed. What recovery pattern is documented?",
+      "combined": {
+        "primary_rank": 2,
+        "score": 4.96058,
+        "match_count": 14
+      },
+      "separate": {
+        "primary_rank": 1,
+        "score": 7.6826024,
+        "match_count": 14
+      },
+      "required_context_complete_in_top5_both": true
+    },
+    {
+      "id": "AI001-003",
+      "question": "Which five layers should I verify before calling recovery complete?",
+      "combined": {
+        "primary_rank": 1,
+        "score": 5.512918,
+        "match_count": 10
+      },
+      "separate": {
+        "primary_rank": 1,
+        "score": 8.165254,
+        "match_count": 10
+      },
+      "required_context_complete_in_top5_both": true
+    },
+    {
+      "id": "AI001-004",
+      "question": "Which identifiers can start incident triage?",
+      "combined": {
+        "primary_rank": 1,
+        "score": 8.364216,
+        "match_count": 7
+      },
+      "separate": {
+        "primary_rank": 1,
+        "score": 7.2638664,
+        "match_count": 7
+      },
+      "required_context_complete_in_top5_both": true
+    },
+    {
+      "id": "AI001-005",
+      "question": "Data and state succeeded, but alert routing failed. Should I rerun ingestion?",
+      "combined": {
+        "primary_rank": 1,
+        "score": 5.9437776,
+        "match_count": 17
+      },
+      "separate": {
+        "primary_rank": 1,
+        "score": 6.3448706,
+        "match_count": 17
+      },
+      "required_context_complete_in_top5_both": true
+    },
+    {
+      "id": "AI001-006",
+      "question": "What does the runbook require for a stale candidate when another attempt won?",
+      "combined": {
+        "primary_rank": 2,
+        "score": 6.8835053,
+        "match_count": 12
+      },
+      "separate": {
+        "primary_rank": 2,
+        "score": 6.890642,
+        "match_count": 12
+      },
+      "required_context_complete_in_top5_both": true
+    }
+  ],
+  "outcome": {
+    "primary_improved": 1,
+    "primary_unchanged": 4,
+    "primary_regressed": 0,
+    "combined_primary_top1": 3,
+    "separate_primary_top1": 4,
+    "complete_context_top5_both": 5,
+    "secondary_regression": "AI001-006 Recovery verification rank 3 to 4",
+    "completion_checklist_rank_both": 2,
+    "decision": "Provisionally prefer separate searchable headings for development; maintenance not implemented"
+  },
+  "limitations": [
+    "Five development questions only; no reserved cases or generated answers tested.",
+    "Chat pastes contain formatting artifacts; this is a normalized observation record, not an archive of raw JSON.",
+    "Local command workflow saved raw and normalized responses; those files were not independently retrieved here.",
+    "No latency/cost measurements or statistical significance claim.",
+    "Schema update initially reported an error; existence/configuration was subsequently observed and values verified. No successful ETag transaction is claimed for that update.",
+    "All candidate values currently come from manual merges, not automatic indexer maintenance."
+  ]
+}

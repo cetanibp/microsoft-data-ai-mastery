@@ -1,0 +1,78 @@
+{
+  "experiment_id": "force-commit-diagnostic-02",
+  "status": "frozen_before_live_execution",
+  "declared_date": "2026-09-21",
+  "scope": "request_level_reranking_diagnostic_for_original_development_query",
+  "case_id": "AI001-025",
+  "api_version": "2026-08-01-preview",
+  "index": "northstar-ops-markdown-h2-v1",
+  "knowledge_base": "northstar-operations-kb-v1",
+  "knowledge_source": "northstar-operations-index-source-v1",
+  "semantic_configuration": "northstar-semantic-v1",
+  "expected_corpus_count": 18,
+  "historical_corpus_fingerprint": "f7c05ebb9deec60e513bc729d8366bd37f88ec99e04e05280428988441a78257",
+  "historical_baseline": {
+    "directory": "automatic-reformulation-65eylx29",
+    "file": "corpus-before.response.json",
+    "sha256": "4abae1915821083ae8de50eacc6efc3a9e60c8a784fe332f3b66802c7deeeaed"
+  },
+  "target": {
+    "document_id": "northstar-recovery",
+    "heading_h2": "Corrective state action",
+    "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+    "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b"
+  },
+  "queries": [
+    {
+      "id": "original",
+      "text": "Give me the exact SQL command to force a watermark commit.",
+      "provenance": "unchanged_development_question"
+    }
+  ],
+  "arms": [
+    {
+      "id": "kb18",
+      "kind": "knowledge_base",
+      "limit": 18
+    },
+    {
+      "id": "kb18_threshold0",
+      "kind": "knowledge_base",
+      "limit": 18,
+      "rerankerThreshold": 0
+    },
+    {
+      "id": "kb18_no_rerank",
+      "kind": "knowledge_base",
+      "limit": 18,
+      "resultsProcessing": "none"
+    }
+  ],
+  "bounds": {
+    "query_requests": 3,
+    "configuration_reads": 6,
+    "corpus_reads": 2,
+    "total_requests": 11,
+    "attempts_per_request": 1,
+    "model_generation_calls": 0
+  },
+  "controls": [
+    "same search fields and API version",
+    "no filters, boosts, synonyms or index mutations introduced",
+    "knowledge-base minimal effort and extractiveData with no models",
+    "exact 18-record historical corpus fingerprint before and after",
+    "full configuration hashes before and after",
+    "one call per arm; no repair or retry within batch"
+  ],
+  "interpretation": [
+    "This follow-up was declared after diagnostic 01; it does not retroactively change that matrix.",
+    "The repeated baseline must reproduce the missing target; otherwise report instability.",
+    "Target appears only with explicit zero threshold: evidence for request-level threshold sensitivity, not proof of the undocumented effective default.",
+    "Target appears only when reranking is disabled: evidence for reranking-path sensitivity, not proof of a specific internal filter.",
+    "If neither intervention restores the target, inspect candidate generation or other KB source/output processing; do not claim a threshold explanation.",
+    "All arms use maxOutputDocuments 18. A restored result below rank five does not repair the original top-five requirement.",
+    "These are per-request diagnostics only. No persistent source or knowledge-base configuration changes."
+  ],
+  "parent_experiment": "force-commit-diagnostic-01",
+  "parent_summary_sha256": "5be799c7f03cadc84e845bf3634eb615a699dbd1e890fb09b37c8475f00ed1d9"
+}

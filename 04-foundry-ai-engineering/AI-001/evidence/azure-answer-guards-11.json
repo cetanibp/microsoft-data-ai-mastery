@@ -1,0 +1,882 @@
+{
+  "checkpoint": 11,
+  "recorded_date": "2026-09-12",
+  "scope": "offline_selected_export_of_executed_development_evidence",
+  "decision": "not_ready_for_adoption",
+  "reserved_cases_run": false,
+  "runtime_eligible_changed": false,
+  "raw_evidence_location": "operator NorthstarLab; not committed",
+  "batches": [
+    {
+      "directory": "answer-evaluation-vqh3ed44",
+      "kind": "saved_context_answer_generation",
+      "case_count": 5,
+      "model_calls": 5,
+      "started_at_utc": "2026-09-11T00:20:27.286957+00:00",
+      "usage": {
+        "input_tokens": 5638,
+        "output_tokens": 1077,
+        "total_tokens": 6715
+      },
+      "results": [
+        {
+          "case_id": "AI001-012",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 3.88,
+          "usage": {
+            "input_tokens": 660,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 176,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 836
+          }
+        },
+        {
+          "case_id": "AI001-012-C1",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 4.028,
+          "usage": {
+            "input_tokens": 1335,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 300,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1635
+          }
+        },
+        {
+          "case_id": "AI001-013",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 2.577,
+          "usage": {
+            "input_tokens": 1078,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 154,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1232
+          }
+        },
+        {
+          "case_id": "AI001-013-C1",
+          "behavior": "answer",
+          "citation_list_matches_text": false,
+          "elapsed_seconds": 4.428,
+          "usage": {
+            "input_tokens": 1459,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 360,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1819
+          }
+        },
+        {
+          "case_id": "AI001-025",
+          "behavior": "decline",
+          "citation_list_matches_text": false,
+          "elapsed_seconds": 2.129,
+          "usage": {
+            "input_tokens": 1106,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 87,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1193
+          }
+        }
+      ]
+    },
+    {
+      "directory": "answer-prompt-v2-9ftr8e9j",
+      "kind": "saved_context_answer_generation",
+      "case_count": 5,
+      "model_calls": 5,
+      "started_at_utc": "2026-09-11T00:30:10.013998+00:00",
+      "usage": {
+        "input_tokens": 7573,
+        "output_tokens": 1162,
+        "total_tokens": 8735
+      },
+      "results": [
+        {
+          "case_id": "AI001-012",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 2.766,
+          "usage": {
+            "input_tokens": 1047,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 186,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1233
+          }
+        },
+        {
+          "case_id": "AI001-012-C1",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 3.099,
+          "usage": {
+            "input_tokens": 1722,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 262,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1984
+          }
+        },
+        {
+          "case_id": "AI001-013",
+          "behavior": "answer",
+          "citation_list_matches_text": false,
+          "elapsed_seconds": 2.166,
+          "usage": {
+            "input_tokens": 1465,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 110,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1575
+          }
+        },
+        {
+          "case_id": "AI001-013-C1",
+          "behavior": "answer",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 4.671,
+          "usage": {
+            "input_tokens": 1846,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 478,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2324
+          }
+        },
+        {
+          "case_id": "AI001-025",
+          "behavior": "decline",
+          "citation_list_matches_text": true,
+          "elapsed_seconds": 2.336,
+          "usage": {
+            "input_tokens": 1493,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 126,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1619
+          }
+        }
+      ]
+    },
+    {
+      "directory": "automatic-reformulation-65eylx29",
+      "kind": "automatic_reformulation",
+      "model_calls": 5,
+      "retrieval_calls": 10,
+      "usage": {
+        "input_tokens": 836,
+        "output_tokens": 86,
+        "total_tokens": 922
+      },
+      "coverage": {
+        "all_five_cases": {
+          "original_complete": 3,
+          "generated_complete": 4,
+          "total": 5,
+          "original_passages": 7,
+          "generated_passages": 8,
+          "required_passages": 9
+        },
+        "three_original_questions": {
+          "original_complete": 1,
+          "generated_complete": 2,
+          "total": 3
+        },
+        "two_synthetic_clarifications": {
+          "original_complete": 2,
+          "generated_complete": 2,
+          "total": 2
+        }
+      },
+      "results": [
+        {
+          "case_id": "AI001-012",
+          "variant": "original",
+          "original_question": "Can I rerun it?",
+          "generated_query": "Can I rerun the process or operation?",
+          "arms": {
+            "original": {
+              "matched_required": 1,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": null
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Select a pattern",
+                  "position": 1
+                }
+              ]
+            },
+            "generated": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 2
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Select a pattern",
+                  "position": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "case_id": "AI001-012-C1",
+          "variant": "synthetic_clarification",
+          "original_question": "I mean an ingestion run in development that failed after writing the target. Before deciding whether to replay it, how should I check its current state, fixed boundary, and whether another attempt owns it?",
+          "generated_query": "How to check the current state, fixed boundary, and ownership status of a failed ingestion run in development after writing the target before deciding to replay it?",
+          "arms": {
+            "original": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 1
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Select a pattern",
+                  "position": 2
+                }
+              ]
+            },
+            "generated": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 1
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Select a pattern",
+                  "position": 2
+                }
+              ]
+            }
+          }
+        },
+        {
+          "case_id": "AI001-013",
+          "variant": "original",
+          "original_question": "What is the latest watermark?",
+          "generated_query": "What is the latest watermark version or status in the documentation?",
+          "arms": {
+            "original": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 4
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Recovery verification",
+                  "position": 5
+                }
+              ]
+            },
+            "generated": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 3
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Recovery verification",
+                  "position": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "case_id": "AI001-013-C1",
+          "variant": "synthetic_clarification",
+          "original_question": "I mean the committed watermark for the encounter object in development, not a candidate. What runbook procedure and state checks should I use to verify it? I am asking for the verification steps, not a live value.",
+          "generated_query": "Runbook procedures and state verification steps for checking the committed watermark of an encounter object in development environments",
+          "arms": {
+            "original": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 2
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Recovery verification",
+                  "position": 1
+                }
+              ]
+            },
+            "generated": {
+              "matched_required": 2,
+              "required_count": 2,
+              "required_positions": [
+                {
+                  "document_id": "northstar-triage",
+                  "heading_h2": "Procedure",
+                  "position": 2
+                },
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Recovery verification",
+                  "position": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "case_id": "AI001-025",
+          "variant": "unchanged_control",
+          "original_question": "Give me the exact SQL command to force a watermark commit.",
+          "generated_query": "SQL command to force a watermark commit in a database system",
+          "arms": {
+            "original": {
+              "matched_required": 0,
+              "required_count": 1,
+              "required_positions": [
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Corrective state action",
+                  "position": null
+                }
+              ]
+            },
+            "generated": {
+              "matched_required": 0,
+              "required_count": 1,
+              "required_positions": [
+                {
+                  "document_id": "northstar-recovery",
+                  "heading_h2": "Corrective state action",
+                  "position": null
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "directory": "answer-guard-evaluation-c1lwggq5",
+      "kind": "answer_guard_development",
+      "model_calls": {
+        "gate": 5,
+        "new_answer": 0,
+        "new_claim_reviewer": 0,
+        "separate_saved_answer_review": 5,
+        "total": 10
+      },
+      "usage": {
+        "input_tokens": 6165,
+        "output_tokens": 554,
+        "total_tokens": 6719
+      },
+      "review": {
+        "decision": "not_ready_for_adoption",
+        "calls": {
+          "gate": 5,
+          "new_answer": 0,
+          "new_claim_reviewer": 0,
+          "separate_saved_answer_review": 5,
+          "total": 10
+        },
+        "usage": {
+          "input_tokens": 6165,
+          "output_tokens": 554,
+          "total_tokens": 6719
+        },
+        "tests": {
+          "guard_unit_tests": 12,
+          "citation_fixture_assertions": 5,
+          "passed": true
+        },
+        "gate_behavior_label_matches": {
+          "matched": 3,
+          "total": 5
+        },
+        "known_gate_failures": [
+          {
+            "case_id": "AI001-012",
+            "finding": "Clarify label matches, but slots assume a watermark topic absent from the question and fail to ask which component/occurrence failed. Required clarification assertions are not satisfied."
+          },
+          {
+            "case_id": "AI001-012-C1",
+            "finding": "Overclarifies and mislabels a procedural request as a live-value request; asks again for supplied environment and failure stage. No answer generated."
+          },
+          {
+            "case_id": "AI001-013-C1",
+            "finding": "Overclarifies despite explicit committed state, encounter object, development environment and procedural intent. No answer generated."
+          }
+        ],
+        "gate_successes": [
+          {
+            "case_id": "AI001-013",
+            "finding": "Asks object/environment/state-kind and states documentation cannot establish a live value."
+          },
+          {
+            "case_id": "AI001-025",
+            "finding": "Application boundary declines force-command request without falsely attributing it to retrieved text. Does not supply the saved rubric required corrective procedure; answer completeness is not established."
+          }
+        ],
+        "citation_audit": {
+          "format_passed": 4,
+          "total": 5,
+          "failure_case": "AI001-013",
+          "failure": "Evidence IDs E1/E3/E4/E5 listed without square-bracket citations in answer."
+        },
+        "semantic_reviewer": {
+          "accepted": 5,
+          "total": 5,
+          "known_overacceptance": "AI001-025",
+          "manual_finding": "Cited E4 forbids forcing a stale candidate in a specific condition. E3 describes policy-driven acceptance, and E5 names compare-and-commit. These passages do not establish the answer's broad claim that the recovery runbook explicitly prohibits forcing all watermark commits or bypassing the protocol. The reviewer further infers that no exact SQL command exists, which is not established by absence from this evidence.",
+          "other_limit": "AI001-012 is accepted for procedural support even though it fails the original clarification behavior; semantic support is not behavior correctness."
+        },
+        "untested": "No gate decision proceeded; new structured-claim generation and its live semantic-review path were not exercised. Unit tests cover local rejection/rendering only; saved-answer audit is separate.",
+        "preservation": "Original questions and prior evidence hashes verified unchanged; repository unchanged; zero retrieval or cloud configuration calls; reserved cases untouched.",
+        "remaining_work": [
+          "Require every proposed missing-context slot to be checked against exact spans of the original question; prevent unsupported topic assumptions and requests for supplied details.",
+          "Freeze gate expectations and adversarial counterexamples before another bounded run; include procedure-versus-live-value and unresolved-pronoun cases.",
+          "Add known unsupported generalization/negation counterexamples to semantic-review evaluation. Keep quote identity, entailment and behavior separate.",
+          "Exercise the structured answer path independently in a declared diagnostic; do not bypass failed gates for user delivery.",
+          "Only integrate into the repository after reconciling the older local checkout; no push/merge or runtime enabling is authorized by this result."
+        ]
+      }
+    },
+    {
+      "directory": "answer-guard-v2-yqmdzn8n",
+      "kind": "answer_guard_development",
+      "model_calls": 9,
+      "usage": {
+        "input_tokens": 7874,
+        "output_tokens": 1868,
+        "total_tokens": 9742
+      },
+      "review": {
+        "decision": "not_ready_for_adoption",
+        "gate_decision_matches": {
+          "matched": 5,
+          "total": 5
+        },
+        "final_behavior_matches": {
+          "matched": 3,
+          "total": 5
+        },
+        "structured_answers": {
+          "attempted": 2,
+          "accepted": 0,
+          "answer_review_calls": 0
+        },
+        "semantic_diagnostics": {
+          "matches": 6,
+          "total": 7,
+          "supported_controls_accepted": 2,
+          "supported_controls_total": 2,
+          "unsupported_rejected": 4,
+          "unsupported_total": 5,
+          "known_failure": "D07: unchanged saved compound force-commit answer remains overaccepted"
+        },
+        "quote_diagnostics": [
+          {
+            "case_id": "AI001-012-C1",
+            "markdown_fence": true,
+            "non_exact_quotes": [
+              {
+                "claim_index_zero_based": 3,
+                "evidence_id": "E4",
+                "quote": "Stop and escalate as P1 when: ... another active attempt owns the same boundary.",
+                "matches_if_whitespace_collapsed": false
+              },
+              {
+                "claim_index_zero_based": 5,
+                "evidence_id": "E4",
+                "quote": "Stop and escalate as P1 when: ... `WatermarkState.committed_object_run_id` references a blocked run; evidence identities conflict or hashes do not reconcile;",
+                "matches_if_whitespace_collapsed": false
+              }
+            ],
+            "batch_outcome_unchanged": "insufficient_evidence"
+          },
+          {
+            "case_id": "AI001-013-C1",
+            "markdown_fence": false,
+            "non_exact_quotes": [
+              {
+                "claim_index_zero_based": 4,
+                "evidence_id": "E1",
+                "quote": "Verify every applicable layer:\n### Execution\n- terminal status matches the actual outcome;\n- attempt history and error classification are retained;\n- no competing attempt remains active.\n### Data and quality\n- accepted and rejected counts reconcile;\n- target result is idempotent;\n- required rules were evaluated exactly once by stable rule identity;\n- quarantine evidence remains hashed and deduplicated;\n- no BLOCK decision was accepted.\n### State\n- candidate is committed only after acceptance, otherwise abandoned;\n- watermark version advanced at most once;\n- committing object run matches the accepted occurrence;\n- append-only state events explain the transition.\n### Observability\n- operational occurrence reflects the final state;\n- quality-enforcement integrity is `PASS`;\n- SLO evaluation uses the correct window and evaluator version;\n- routing is deduplicated and environment appropriate;\n- recovery and acknowledgement timestamps are recorded.",
+                "matches_if_whitespace_collapsed": true
+              }
+            ],
+            "batch_outcome_unchanged": "insufficient_evidence"
+          }
+        ],
+        "calls": 9,
+        "usage": {
+          "input_tokens": 7874,
+          "output_tokens": 1868,
+          "total_tokens": 9742
+        },
+        "tests_passed": 12,
+        "limits": [
+          "Gate rules were developed from known failures and tested only on five saved cases plus twelve local tests; not a general language understanding claim.",
+          "Gate lexical rules can mishandle paraphrases, negation, instructions and compound procedure/live-value requests; exact spans verify text presence, not correct interpretation.",
+          "Semantic reviewer uses the same model as generation and still overaccepts the actual saved failure despite passing simpler counterexamples.",
+          "Quote formatting failures are separate from factual unsupportedness. Neither rejected new answer received semantic review.",
+          "Reviewer fixture expectations are newly authored development diagnostics, frozen before calls; these are not held-out evaluation results.",
+          "Decline does not supply missing corrective procedure; behavior labels alone do not satisfy all required assertions."
+        ],
+        "preservation": {
+          "all_frozen_files_unchanged": true,
+          "inputs_unchanged": true,
+          "prior_evidence_unchanged": true,
+          "repo_unchanged": true,
+          "call_limit": true
+        },
+        "next": [
+          "Use a schema-constrained generation response if supported by this deployment; preserve fail-closed handling.",
+          "Require short exact contiguous quotations, or define a versioned, narrow whitespace-normalization rule with preserved originals and offset mapping; never treat synthesized ellipses as exact quotations.",
+          "Split compound assertions for entailment checks and retain D07 as a required development negative control.",
+          "Expand frozen gate tests for unsupported paraphrases, negation and compound requests before promoting the gate.",
+          "Keep repository and runtime integration pending; do not run reserved cases until the development design is frozen."
+        ]
+      }
+    },
+    {
+      "directory": "answer-guard-v3-94so5pmc",
+      "kind": "answer_guard_development",
+      "model_calls": 3,
+      "usage": {
+        "input_tokens": 4424,
+        "output_tokens": 1227,
+        "total_tokens": 5651
+      },
+      "review": {
+        "decision": "not_ready_for_adoption",
+        "schema_requests_accepted": 3,
+        "schema_responses_locally_validated": 3,
+        "gate_decisions": "unchanged_v2_5_of_5_intended_routes",
+        "final_behavior_matches": 3,
+        "case_count": 5,
+        "answer_attempts": 2,
+        "accepted_answers": 0,
+        "semantic_review_calls": 0,
+        "tests_passed": 12,
+        "quote_failures": [
+          {
+            "case_id": "AI001-012-C1",
+            "claim_index": 4,
+            "quote": "Stop and escalate as P1 when: ... another active attempt owns the same boundary.",
+            "source_id": "E4",
+            "exact_substring": false,
+            "length": 80
+          },
+          {
+            "case_id": "AI001-012-C1",
+            "claim_index": 6,
+            "quote": "Triage is complete when the incident record contains category, severity, environment, release, occurrence identity, fixed boundary, current state, impact, owner, selected recovery pattern, and the evidence supporting each conclusion.",
+            "source_id": "E3",
+            "exact_substring": true,
+            "length": 233
+          },
+          {
+            "case_id": "AI001-013-C1",
+            "claim_index": 6,
+            "quote": "If state is already incorrect, stop and create a separately approved corrective plan containing before/after values and hashes, affected boundaries, target reconciliation, actor separation, validation queries, rollback/forward-recovery decision, and permanent audit evidence.",
+            "source_id": "E5",
+            "exact_substring": true,
+            "length": 275
+          }
+        ],
+        "split_diagnostics": [
+          {
+            "id": "D01",
+            "part_count": 2,
+            "issues": [
+              {
+                "issue": "uncovered_characters",
+                "text": "; "
+              }
+            ]
+          },
+          {
+            "id": "D02",
+            "part_count": 1,
+            "issues": []
+          },
+          {
+            "id": "D03",
+            "part_count": 1,
+            "issues": []
+          },
+          {
+            "id": "D04",
+            "part_count": 1,
+            "issues": []
+          },
+          {
+            "id": "D05",
+            "part_count": 1,
+            "issues": []
+          },
+          {
+            "id": "D06",
+            "part_count": 1,
+            "issues": []
+          },
+          {
+            "id": "D07",
+            "part_count": 3,
+            "issues": []
+          }
+        ],
+        "split_quality_manual_review": "D01 omitted a semicolon between copied parts; this violates the frozen exact-coverage rule but is not a demonstrated semantic reversal. D07 retained three sentence-sized parts and did not separate the multiple assertions in its second sentence. Atomicity is not guaranteed by exact coverage.",
+        "reviewer_accuracy": "Not measured in this batch: splitter failure blocked the planned reviewer call. Prior D07 overacceptance remains unresolved.",
+        "calls": 3,
+        "usage": {
+          "input_tokens": 4424,
+          "output_tokens": 1227,
+          "total_tokens": 5651
+        },
+        "preservation": {
+          "prior_files_unchanged": true,
+          "frozen_files_unchanged": true,
+          "inputs_unchanged": true,
+          "repo_unchanged": true,
+          "call_bound": true
+        },
+        "remaining_work": [
+          "Replace model-recopied quotes with selection from precomputed source spans; assemble quote text and provenance locally.",
+          "Use source-preserving boundary selection for splitting, then measure whether resulting spans are actually atomic; define punctuation policy before evaluation.",
+          "Keep independently runnable reviewer diagnostics so one malformed split does not obscure all support-review results, without treating missing reviews as passes.",
+          "Rerun only as a newly frozen development batch; no reserved cases, runtime rollout or repository integration yet."
+        ]
+      }
+    }
+  ],
+  "manual_diagnostic": {
+    "method": "manually_authored_diagnostic",
+    "results": [
+      {
+        "arm": "original",
+        "question": "Give me the exact SQL command to force a watermark commit.",
+        "required_evidence_position": null,
+        "returned_reference_count": 5
+      },
+      {
+        "arm": "reformulated",
+        "question": "What is the documented procedure for correcting committed watermark state outside normal replay?",
+        "required_evidence_position": 1,
+        "returned_reference_count": 5
+      }
+    ]
+  },
+  "source_files": [
+    {
+      "directory": "answer-evaluation-vqh3ed44",
+      "file": "batch-summary.json",
+      "sha256": "d41f9067aa51d09bd61f4d7e4fc564acb01fa7016be561365c7fcf09dbdb113e",
+      "bytes": 9157
+    },
+    {
+      "directory": "answer-evaluation-vqh3ed44",
+      "file": "run-manifest.json",
+      "sha256": "98e44b9daffe78a6661de86e9919861f5ab36e95deafe683c540cc3805a9dea3",
+      "bytes": 556
+    },
+    {
+      "directory": "answer-prompt-v2-9ftr8e9j",
+      "file": "batch-summary.json",
+      "sha256": "ac121d4e4a88f490bc53943b6ba70c691687ea28a01b29bd8978b186d16f5bc5",
+      "bytes": 9242
+    },
+    {
+      "directory": "answer-prompt-v2-9ftr8e9j",
+      "file": "run-manifest.json",
+      "sha256": "bc899334fef2b68010fb87bb6a364ab66a9d18a2193ecd65fdd5cb33d8ab19da",
+      "bytes": 421
+    },
+    {
+      "directory": "automatic-reformulation-65eylx29",
+      "file": "run-manifest.json",
+      "sha256": "ef2feaf824a3aa5e402f13b64ccfc4f3be1caff18ab35a784136309618cdbeea",
+      "bytes": 1535
+    },
+    {
+      "directory": "automatic-reformulation-65eylx29",
+      "file": "batch-summary.json",
+      "sha256": "0aec8e555422cfcded617e4eacf893375a1fc1ec1adc655b9d589d99435d682f",
+      "bytes": 79342
+    },
+    {
+      "directory": "automatic-reformulation-65eylx29",
+      "file": "review.json",
+      "sha256": "98bd75b9b3905baf45b192bb3280fe3b077bd809c2d751af00b9cdc49205b86f",
+      "bytes": 3212
+    },
+    {
+      "directory": "answer-guard-evaluation-c1lwggq5",
+      "file": "final-review.json",
+      "sha256": "7fdaf7c5aed59f96d90cb575ea4de476b7177d8d3c0b7d88eae811ac7d4cde74",
+      "bytes": 3699
+    },
+    {
+      "directory": "answer-guard-evaluation-c1lwggq5",
+      "file": "run-manifest.json",
+      "sha256": "b41d7bd5b3d411df3b2ef68776f39ea4d36c1cf55e6c44200539bceecb4a21ff",
+      "bytes": 2015
+    },
+    {
+      "directory": "answer-guard-v2-yqmdzn8n",
+      "file": "final-review.json",
+      "sha256": "8ded378c23228741cc8746f8fadfce791f62bf0bd088623cc666df70a679cac6",
+      "bytes": 4561
+    },
+    {
+      "directory": "answer-guard-v2-yqmdzn8n",
+      "file": "run-manifest.json",
+      "sha256": "2bdca6d9f98db065f99e738354f34dd9f1dd71498dbdf41377ce2b3e6d6445c3",
+      "bytes": 1589
+    },
+    {
+      "directory": "answer-guard-v3-94so5pmc",
+      "file": "final-review.json",
+      "sha256": "29e4f9e30973f8a2ed56e1579bc4b2ca30e865b39ca8949d25864479af268710",
+      "bytes": 3452
+    },
+    {
+      "directory": "answer-guard-v3-94so5pmc",
+      "file": "run-manifest.json",
+      "sha256": "1663d511b3844985ae9eacd6ed8090fd3b3fc1286ec3426018343352b4fa1a9b",
+      "bytes": 1588
+    },
+    {
+      "directory": "kb-query-comparison-nDdVaG",
+      "file": "summary.json",
+      "sha256": "eb8628268e8f27b7e60b452164905a45e70c5ba0c24d652d18bd4f6e98da30da",
+      "bytes": 7484
+    },
+    {
+      "directory": "kb-retrieval-acNF95",
+      "file": "request.json",
+      "sha256": "d1e66f50210fa194cf4bb5b4243c0476ff9677f73b11098aaf5d92d87a6d4d56",
+      "bytes": 409
+    },
+    {
+      "directory": "kb-retrieval-bezgw9",
+      "file": "request.json",
+      "sha256": "6366e9f056f9fc72e9578d2b8a812dd0f68b6ad01ca2f5c2d80e622028c75c13",
+      "bytes": 410
+    },
+    {
+      "directory": "kb-source-fields-H5Rnp9",
+      "file": "after.json",
+      "sha256": "68f3d1ca30b07003209d74fe511c07322cb2681d95b8bc57ee516d47ac785efc",
+      "bytes": 1208
+    },
+    {
+      "directory": "automatic-reformulation-65eylx29",
+      "file": "hashes.json",
+      "sha256": "8ad630590eeae1d3fe2250b9bde8230fbaf0e947d0b31938113eca5b231587a3",
+      "bytes": 13347
+    },
+    {
+      "directory": "answer-guard-evaluation-c1lwggq5",
+      "file": "final-hashes.json",
+      "sha256": "aa17d7e2efab8e1d2149aefa621bdf15bcf7f212a8ba87d0cff80d45301f7af4",
+      "bytes": 8356
+    },
+    {
+      "directory": "answer-guard-v2-yqmdzn8n",
+      "file": "final-hashes.json",
+      "sha256": "8aad619f87658da393e3a11d9e1a5baee45734a12b82ee335aec82e0b1d158bf",
+      "bytes": 8154
+    },
+    {
+      "directory": "answer-guard-v3-94so5pmc",
+      "file": "final-hashes.json",
+      "sha256": "798398a7df834f5bf4f714ef0343d6193abe47a842a9c66f9fa48692b31a146e",
+      "bytes": 4685
+    }
+  ]
+}

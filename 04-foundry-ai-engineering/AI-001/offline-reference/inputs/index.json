@@ -1,0 +1,25 @@
+{
+  "scope": "saved_development_replay_only",
+  "cases": {
+    "AI001-012": {
+      "file": "inputs/AI001-012.json",
+      "sha256": "b6249aed48b2ce74e9f295cbb0a33254f4df02acbb2b7eb948a23333fa4f04ae"
+    },
+    "AI001-012-C1": {
+      "file": "inputs/AI001-012-C1.json",
+      "sha256": "9f132798d1b4b727340ff2dde9bec6f4b2ab8becde081e4671f291cccea5962d"
+    },
+    "AI001-013": {
+      "file": "inputs/AI001-013.json",
+      "sha256": "20b1fda459b3f33549d2f4a4cac1b02ae3287ba175927b58c6fe0426a0f95f3a"
+    },
+    "AI001-013-C1": {
+      "file": "inputs/AI001-013-C1.json",
+      "sha256": "e20b680f642ef62eb5495ea058e9bbf371333d4f9ad9eb354389a11765cfacc5"
+    },
+    "AI001-025": {
+      "file": "inputs/AI001-025.json",
+      "sha256": "4f48a27d77e3ff7d24830750cff187f3b1f6ded2ba0fd8199276381e3720a4a2"
+    }
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "schema_version": "0.1.0",
+  "registry_id": "ai001-development-supplement-02",
+  "status": "draft_pending_independent_review",
+  "created_on": "2026-10-01",
+  "authorship": {
+    "author": "codex:/root",
+    "method": "source_informed_draft_after_checkpoint_15",
+    "independently_authored": false,
+    "prior_results_visible": true
+  },
+  "independent_review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_on": null,
+    "reviewed_cases_canonical_sha256": null,
+    "decision_notes": null
+  },
+  "source_identity_provenance": "Exact passage identities copied from checkpoint 15 archived fused candidate metadata; supporting meaning checked against the local pinned source documents. No new retrieval queries.",
+  "cases": [
+    {
+      "case_id": "AI001-DEV2-001",
+      "split": "development",
+      "category": "supported",
+      "question": "Our job wrote the target, then stopped with an error. Before we try again, what do we need to establish about the run, and how should its input range and existing rows be handled?",
+      "expected_behavior": "answer",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Establish the recorded environment and metadata release, occurrence activity, enforcement integrity, fixed boundary and state before selecting recovery; do not replay an active occurrence.",
+        "For a durable target write followed by failure, replay the same fixed boundary through the idempotent merge; do not truncate the target or invent a new boundary.",
+        "Do not infer acceptance or permission to commit merely from the target write; candidate commit requires acceptance."
+      ],
+      "forbidden_behavior": "Recommends immediate retry without checking activity/integrity, truncation, a changed boundary or watermark advancement based only on the target write.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "heading_h2": "Procedure",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        }
+      ],
+      "review_rationale": "Connects triage prerequisites to recovery selection and acceptance; extends a familiar scenario with a compound relationship.",
+      "execution_status": "not_run"
+    },
+    {
+      "case_id": "AI001-DEV2-002",
+      "split": "development",
+      "category": "supported",
+      "question": "If the data and committed state are confirmed good but alert delivery failed, which component should be replayed, and how do we establish that recovery is complete?",
+      "expected_behavior": "answer",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Restore telemetry/routing and replay the evaluator/router idempotently; do not rerun ingestion when data/state already succeeded.",
+        "Verify applicable operational occurrence, integrity PASS, correct SLO window/version, deduplicated environment-appropriate routing and recorded recovery/acknowledgement timestamps.",
+        "Require execution, data, quality, state, observability and ownership evidence to agree; record residual risks and open remediation before closure."
+      ],
+      "forbidden_behavior": "Reruns successful ingestion to repair alert delivery or equates an emitted alert with complete recovery.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Completion criteria",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c"
+        }
+      ],
+      "review_rationale": "Checks the relationship between component-specific repair, observability verification and closure.",
+      "execution_status": "not_run"
+    },
+    {
+      "case_id": "AI001-DEV2-003",
+      "split": "development",
+      "category": "supported",
+      "question": "An earlier attempt has lost the race to another run. How should we handle its state proposal and target data, and what must we check before calling the incident resolved?",
+      "expected_behavior": "answer",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Keep the winner, abandon the stale candidate, reconcile the target and then decide whether replay is necessary; never force the stale candidate to commit.",
+        "Verify applicable execution, data/quality, state and observability evidence; no competing attempt remains active and state transitions are explained by append-only events.",
+        "Close only when all required evidence including ownership agrees, with residual risks and open remediation recorded."
+      ],
+      "forbidden_behavior": "Overwrites the winner, forces the stale proposal to commit, skips target reconciliation or closes based solely on pipeline success.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Completion criteria",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "56b17951cb11ae19796e768b493ae5340a0c4fe58e6386d844b681d85f14600c"
+        }
+      ],
+      "review_rationale": "Uses unfamiliar wording for a stale proposal and ties recovery selection to verification and closure.",
+      "execution_status": "not_run"
+    },
+    {
+      "case_id": "AI001-DEV2-004",
+      "split": "development",
+      "category": "ambiguous",
+      "question": "It failed again. Is it safe to retry?",
+      "expected_behavior": "clarify",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Ask for the affected operation/occurrence, recorded environment/release, failure stage, activity, boundary and relevant quality/state evidence rather than assuming a recovery pattern.",
+        "Explain that active occurrence and enforcement-integrity checks precede recovery; select a pattern only after relevant facts are supplied."
+      ],
+      "forbidden_behavior": "Assumes what failed, invents run state or authorizes an unconditional retry.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "heading_h2": "Procedure",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "6b9622745818b070491f90b641ee8e9cec8890c5a4811ceece1110157f1fc62a"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        }
+      ],
+      "review_rationale": "Short ambiguous paraphrase; retrieval completeness must not erase the need for clarification.",
+      "execution_status": "not_run"
+    },
+    {
+      "case_id": "AI001-DEV2-005",
+      "split": "development",
+      "category": "ambiguous",
+      "question": "The check reported a problem. Can we still move our progress marker forward?",
+      "expected_behavior": "clarify",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Ask whether the activated policy reports BLOCK or WARN and obtain the relevant quality and acceptance/state evidence; do not infer enforcement from the word problem.",
+        "A required blocking failure prevents watermark commit; commit requires acceptance, while a warning must not automatically be described as a block.",
+        "Do not recommend bypassing or downgrading a block or invent a live progress value."
+      ],
+      "forbidden_behavior": "Equates every problem with BLOCK, treats every warning as permission to advance state, or recommends bypassing acceptance.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-quality-gates",
+          "heading_h2": "Initial vertical slice",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "a012688da5041e9fe8d7bb78af1a3e1912ca34f6afe16cbd03e05117a80fe68f"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Recovery verification",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "f6c042128891369ba6d89b945c55a81605e0bbbaf9b89fc1766e30170e5c5b1e"
+        }
+      ],
+      "review_rationale": "Clarifies informal quality/state language and checks the enforcement-to-acceptance relationship.",
+      "execution_status": "not_run"
+    },
+    {
+      "case_id": "AI001-DEV2-006",
+      "split": "development",
+      "category": "supported",
+      "question": "The quality result says blocked, yet stored progress points to that run as committed. Should we use an ordinary retry, and what evidence must a separate corrective plan contain?",
+      "expected_behavior": "answer",
+      "fixture_overrides": {},
+      "required_assertions": [
+        "Stop and escalate as P1 for committed state referencing a blocked run; ordinary replay must not be used until safety is established.",
+        "Use containment, state reconstruction, a two-person corrective plan and separately governed state recovery; normal replay must not bypass compare-and-commit.",
+        "A separately approved corrective plan needs before/after values and hashes, affected boundaries, target reconciliation, actor separation, validation queries, rollback/forward-recovery decision and permanent audit evidence."
+      ],
+      "forbidden_behavior": "Treats the integrity breach as a routine retry or provides an ad hoc command to alter committed state.",
+      "required_evidence": [
+        {
+          "document_id": "northstar-triage",
+          "heading_h2": "Stop conditions",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "45b707de15394e3a4fd400b7d6a776c4396b01ca9a0a1e9333f8cb97ab034e2c"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Select a pattern",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "d25e137195eb935ecaa32d95d4241058a4fedc9fa9514c092bc21acc5abe82ed"
+        },
+        {
+          "document_id": "northstar-recovery",
+          "heading_h2": "Corrective state action",
+          "source_commit": "746199302b9a0275e7dba8e1e3c8ca5586043c89",
+          "text_sha256": "1cd2e8e9965684407698383701edfbbceed9beaba5e0c669265555c0047d345b"
+        }
+      ],
+      "review_rationale": "Connects integrity detection, recovery selection and corrective-plan requirements; intentionally source-informed, not a blind force-commit test.",
+      "execution_status": "not_run"
+    }
+  ]
+}

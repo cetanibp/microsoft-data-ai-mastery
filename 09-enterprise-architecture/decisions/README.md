@@ -84,6 +84,12 @@ The learning-gap review linked each remaining decision to implementation and rev
 | ADR-011 capacity/cost | FAB-004 supports a bounded decision draft; actual cost model and optional contention evidence deepen it | [#50](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/50), [#23](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/23), optional [#54](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/54) |
 | ADR-012 governance authority | Product ownership, stewardship, exceptions, retention and policy enforcement | [#19](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/19), [#20](https://github.com/cetanibp/microsoft-data-ai-mastery/issues/20) |
 
+October 6, 2026 ADR-010 input: [AGENT-001](../../05-agent-engineering/AGENT-001/README.md)
+provides a typed read-only tool example, local synthetic behavior tests and
+[exact-action approval requirements](../../05-agent-engineering/AGENT-001/threat-model.md).
+Authenticated MCP, live authorization and executable action binding remain
+open; ADR-010 remains Planned.
+
 ### Original approval-condition follow-up
 
 This is a tracking map, not a replacement for the August 23 architecture review or a new approval. Reassess each condition against actual evidence in #50 and the final #24 review.
